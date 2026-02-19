@@ -6,45 +6,55 @@ import Image from "next/image";
 const work = [
   {
     title: "Hooglee",
-    desc: "Search & Discovery, video AI startup",
+    desc: "0→1 product hire at Eric Schmidt's video AI startup. Owned UX & user testing; shipped search/discovery (PM), account system (PM), admin dashboard (SWE).",
     tags: ["Product", "Go", "AI"],
     href: "https://hooglee.com",
+    articleHref: "https://www.forbes.com/sites/sarahemerson/2025/01/09/eric-schmidt-is-working-on-an-ai-startup-called-hooglee/",
     year: "2024–25",
   },
   {
     title: "AgentHLE Finance",
-    desc: "SEC EDGAR XBRL extraction for IBD analysts",
-    tags: ["Python"],
+    desc: "Automated SEC EDGAR XBRL extraction — pulls financials, comps, and DCF inputs from 10-K/Q filings for IBD analysts.",
+    tags: ["Python", "SEC EDGAR"],
     href: "https://github.com/yslidev/agenthle-finance",
+    articleHref: null,
     year: "2026",
   },
   {
     title: "Global Student Startup Competition",
-    desc: "Berkeley's first in Korea — organized as Head TA",
-    tags: ["Teaching"],
+    desc: "Organized Berkeley's first Global Student Startup Competition in Korea as Head TA. Mentored the champion team and 500+ students in ENGIN 183B.",
+    tags: ["Teaching", "Startups"],
     href: "#",
+    articleHref: null,
     year: "2024–25",
   },
 ];
 
 const writing = [
   {
-    title: "Notes on building search at a startup",
-    desc: "Gemini embeddings, latency, and tradeoffs",
-    href: "https://liyushan.notion.site",
-    year: "2025",
+    title: "Learning, In The Omnipresent Classroom",
+    desc: "Winter 2025, 1/4",
+    href: "https://liyushan27.substack.com/p/learning-in-the-omnipresent-classroom",
+    year: "Feb 2025",
   },
   {
-    title: "Teaching 500 students to start companies",
-    desc: "What I learned as Head TA at Berkeley",
-    href: "https://liyushan.notion.site",
-    year: "2025",
+    title: "The Power of Cults, Charisma, and the Fluidity of Influence",
+    desc: "not inspired by election and AI corporate dramas",
+    href: "https://liyushan27.substack.com/p/the-power-of-cults-charisma-and-the",
+    year: "Dec 2024",
+  },
+  {
+    title: "Turning Tides: The Unseen Journeys of Grief and Growth",
+    desc: "The unexpected will surely happen again, like waves.",
+    href: "https://liyushan27.substack.com/p/turning-tides-the-unseen-journeys",
+    year: "Mar 2024",
   },
 ];
 
 const links = [
   { label: "github", href: "https://github.com/yslidev" },
-  { label: "linkedin", href: "https://linkedin.com/in/yushan-li" },
+  { label: "linkedin", href: "https://linkedin.com/in/liyushan27" },
+  { label: "substack", href: "https://liyushan27.substack.com" },
   { label: "email", href: "mailto:yushanli@berkeley.edu" },
 ];
 
@@ -80,28 +90,29 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* Hero — single centered column */}
+        {/* Hero */}
         <section style={{ maxWidth: "600px", margin: "0 auto", padding: "140px 32px 80px" }}>
 
           <p className="fade-up fade-up-1" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
             Yushan Li
           </p>
 
-          <p className="fade-up fade-up-2" style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.1rem)", fontWeight: 500, lineHeight: 1.25, letterSpacing: "-0.02em", color: "#111", marginBottom: "28px" }}>
-            CS & Cognitive Science at Berkeley.
-            <br />
-            <span style={{ color: "#999", fontWeight: 300 }}>Product, eng, and the space between.</span>
+          <p className="fade-up fade-up-2" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "28px" }}>
+            CS<sup style={{ fontSize: "0.6em" }}>2</sup> at Berkeley.{" "}
+            <span style={{ color: "#999", fontWeight: 300 }}>Building things, figuring the rest out.</span>
           </p>
 
-          <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#777", maxWidth: "480px", marginBottom: "32px" }}>
-            I was the first junior hire at{" "}
-            <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
-            {" "}— an ex-Google CEO's video AI startup — where I built search infrastructure end-to-end.
-            Spent a year teaching 500+ students to build companies as Head TA at Berkeley.
-            I care about interfaces that feel inevitable.
+          <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "32px" }}>
+            I study CS + Cognitive Science at UC Berkeley, fully sponsored as a{" "}
+            <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
+            Before that, I went to{" "}
+            <a href="https://uwcsa.org" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
+            in 🇧🇦 and studied Cultural Anthropology.
+            I travel, paint, and occasionally make things — including this{" "}
+            <span style={{ color: "#bbb" }}>logo & banner</span>.
           </p>
 
-          <div className="fade-up fade-up-4" style={{ display: "flex", gap: "20px" }}>
+          <div className="fade-up fade-up-5" style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
             {links.map((l) => (
               <a key={l.label} href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
@@ -124,15 +135,26 @@ export default function Home() {
             work
           </p>
           {work.map((p, i) => (
-            <a key={i} href={p.href}
-              target={p.href !== "#" ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              className="superlink">
-              <span className="superlink-title">{p.title}</span>
-              <span className="superlink-desc">{p.desc}</span>
-              <span className="superlink-year">{p.year}</span>
-              <span className="superlink-arrow">↗</span>
-            </a>
+            <div key={i} className="superlink-wrapper">
+              <a href={p.href}
+                target={p.href !== "#" ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="superlink">
+                <span className="superlink-title">{p.title}</span>
+                <span className="superlink-desc">{p.desc}</span>
+                <span className="superlink-year">{p.year}</span>
+                <span className="superlink-arrow">↗</span>
+              </a>
+              {p.articleHref && (
+                <p style={{ fontSize: "0.72rem", color: "#bbb", padding: "4px 0 10px", borderBottom: "1px solid #ececec" }}>
+                  <a href={p.articleHref} target="_blank" rel="noopener noreferrer"
+                    className="text-link" style={{ fontSize: "0.72rem", color: "#bbb" }}>
+                    Forbes ↗
+                  </a>
+                  {" "}— first journalist to report on Hooglee
+                </p>
+              )}
+            </div>
           ))}
         </section>
 
@@ -158,8 +180,9 @@ export default function Home() {
           ))}
           <p style={{ fontSize: "0.75rem", color: "#ccc", marginTop: "16px" }}>
             more on{" "}
-            <a href="https://liyushan.notion.site" target="_blank" rel="noopener noreferrer" className="text-link" style={{ fontSize: "0.75rem", color: "#aaa" }}>
-              notion
+            <a href="https://liyushan27.substack.com" target="_blank" rel="noopener noreferrer"
+              className="text-link" style={{ fontSize: "0.75rem", color: "#aaa" }}>
+              Substack
             </a>
           </p>
         </section>
@@ -173,10 +196,9 @@ export default function Home() {
           <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
             now
           </p>
-          <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "12px", maxWidth: "440px" }}>
-            <p>Third-year at UC Berkeley, CS & Cognitive Science. Full scholarship — Shelby Davis Foundation.</p>
-            <p>Grew up in China, spent time in Canada, landed in California.</p>
-            <p>Figure skating on the Cal team, 20+ countries, former national champion in artistic swimming.</p>
+          <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "10px", maxWidth: "440px" }}>
+            <p>Fourth-year at UC Berkeley. Grew up in China, spent time in Canada, landed in California.</p>
+            <p>On campus I skate, paint, and try to visit a new country every few months. Former national champion in artistic swimming, though that was another life.</p>
             <p>Currently figuring out what's next.</p>
           </div>
 
@@ -196,7 +218,6 @@ export default function Home() {
 
         {/* Water wave transition → banner */}
         <div className="water-transition">
-          {/* SVG wave: transitions from page background to teal */}
           <svg
             viewBox="0 0 1440 120"
             preserveAspectRatio="none"
@@ -205,14 +226,13 @@ export default function Home() {
           >
             <defs>
               <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="var(--background)" />
-                <stop offset="100%" stopColor="#4eb3b3" />
+                <stop offset="0%" stopColor="#f5f7f6" />
+                <stop offset="100%" stopColor="#5ec2c2" />
               </linearGradient>
             </defs>
             <rect width="1440" height="120" fill="url(#waveGrad)" />
-            {/* Wave pattern lines suggesting water ripples */}
             <path d="M0,60 C200,30 400,90 600,60 C800,30 1000,80 1200,55 C1320,40 1380,65 1440,60 L1440,120 L0,120 Z"
-              fill="rgba(255,255,255,0.08)" />
+              fill="rgba(255,255,255,0.09)" />
             <path d="M0,75 C180,50 360,95 540,70 C720,45 900,85 1080,65 C1260,45 1350,75 1440,70 L1440,120 L0,120 Z"
               fill="rgba(255,255,255,0.06)" />
             <path d="M0,90 C240,70 480,105 720,85 C960,65 1200,100 1440,85 L1440,120 L0,120 Z"
@@ -220,7 +240,7 @@ export default function Home() {
           </svg>
         </div>
 
-        {/* Banner image */}
+        {/* Banner */}
         <div style={{ position: "relative", width: "100%", height: "300px", marginTop: "-1px" }}>
           <Image
             src="/banner.jpg"
@@ -231,10 +251,10 @@ export default function Home() {
           />
         </div>
 
-        {/* Footer — matches banner ink color */}
+        {/* Footer */}
         <footer style={{ background: "#1a1a1a", color: "#444", padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <p style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>ysli.dev</p>
-          <div style={{ display: "flex", gap: "20px" }}>
+          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
             {links.map((l) => (
               <a key={l.label} href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}

@@ -6,20 +6,15 @@ interface Fish {
   x: number;
   y: number;
   angle: number;
-  speed: number;
   size: number;
   opacity: number;
   wobble: number;
   wobbleSpeed: number;
-  // For idle roaming
+  // Idle roam state
   roamAngle: number;
-  roamTurnSpeed: number;
   roamTurnTimer: number;
   roamTurnInterval: number;
-}
-
-function lerp(a: number, b: number, t: number) {
-  return a + (b - a) * t;
+  baseSpeed: number;
 }
 
 function lerpAngle(a: number, b: number, t: number) {
@@ -42,37 +37,37 @@ function drawFish(
   ctx.translate(x, y);
   ctx.rotate(angle);
 
-  const tailWag = Math.sin(wobble) * 0.3;
+  const tailWag = Math.sin(wobble) * 0.28;
 
   ctx.globalAlpha = opacity;
 
   // Body
   ctx.fillStyle = "#1a2a2a";
   ctx.beginPath();
-  ctx.ellipse(0, 0, size, size * 0.42, 0, 0, Math.PI * 2);
+  ctx.ellipse(0, 0, size, size * 0.4, 0, 0, Math.PI * 2);
   ctx.fill();
 
   // Tail
   ctx.beginPath();
   ctx.moveTo(-size * 0.85, 0);
-  ctx.lineTo(-size * 1.5, -size * 0.45 + tailWag * size);
-  ctx.lineTo(-size * 1.5, size * 0.45 + tailWag * size);
+  ctx.lineTo(-size * 1.5, -size * 0.42 + tailWag * size);
+  ctx.lineTo(-size * 1.5,  size * 0.42 + tailWag * size);
   ctx.closePath();
   ctx.fill();
 
   // Eye
-  ctx.globalAlpha = opacity * 1.8;
+  ctx.globalAlpha = opacity * 2.0;
   ctx.fillStyle = "#4eb3b3";
   ctx.beginPath();
-  ctx.arc(size * 0.45, -size * 0.1, size * 0.11, 0, Math.PI * 2);
+  ctx.arc(size * 0.45, -size * 0.08, size * 0.1, 0, Math.PI * 2);
   ctx.fill();
 
   // Dorsal fin
-  ctx.globalAlpha = opacity * 0.65;
+  ctx.globalAlpha = opacity * 0.6;
   ctx.fillStyle = "#1a2a2a";
   ctx.beginPath();
-  ctx.moveTo(size * 0.1, -size * 0.38);
-  ctx.quadraticCurveTo(size * 0.3, -size * 0.72, size * 0.5, -size * 0.4);
+  ctx.moveTo(size * 0.1, -size * 0.36);
+  ctx.quadraticCurveTo(size * 0.3, -size * 0.68, size * 0.5, -size * 0.38);
   ctx.closePath();
   ctx.fill();
 
@@ -107,20 +102,19 @@ export default function FishCanvas() {
     window.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseleave", onMouseLeave);
 
-    const fishCount = 12;
+    const fishCount = 14;
     fishRef.current = Array.from({ length: fishCount }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       angle: Math.random() * Math.PI * 2,
-      speed: 0.9 + Math.random() * 0.8,        // px per frame for roaming
-      size: 9 + Math.random() * 13,
-      opacity: 0.12 + Math.random() * 0.18,
+      size: 8 + Math.random() * 14,
+      opacity: 0.10 + Math.random() * 0.16,
       wobble: Math.random() * Math.PI * 2,
-      wobbleSpeed: 0.04 + Math.random() * 0.03,
+      wobbleSpeed: 0.035 + Math.random() * 0.03,
       roamAngle: Math.random() * Math.PI * 2,
-      roamTurnSpeed: 0.02 + Math.random() * 0.02,
-      roamTurnTimer: 0,
-      roamTurnInterval: 80 + Math.floor(Math.random() * 120),
+      roamTurnTimer: Math.floor(Math.random() * 120),
+      roamTurnInterval: 90 + Math.floor(Math.random() * 110),
+      baseSpeed: 0.5 + Math.random() * 0.6,
     }));
 
     function animate() {
@@ -130,55 +124,63 @@ export default function FishCanvas() {
       const my = mouseRef.current.y;
       const mouseActive = mouseRef.current.active;
 
+      // Screen diagonal for normalizing distance
+      const diag = Math.sqrt(canvas!.width ** 2 + canvas!.height ** 2);
+
       fishRef.current.forEach((fish) => {
         fish.wobble += fish.wobbleSpeed;
         fish.roamTurnTimer++;
 
-        // Periodically nudge roam direction
+        // Periodically nudge idle roam direction
         if (fish.roamTurnTimer >= fish.roamTurnInterval) {
           fish.roamTurnTimer = 0;
-          fish.roamTurnInterval = 80 + Math.floor(Math.random() * 120);
-          fish.roamAngle += (Math.random() - 0.5) * Math.PI * 0.9;
+          fish.roamTurnInterval = 90 + Math.floor(Math.random() * 110);
+          fish.roamAngle += (Math.random() - 0.5) * Math.PI * 0.8;
         }
 
-        // Check distance to cursor
         const dx = mx - fish.x;
         const dy = my - fish.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        const attractRadius = 220;
 
         let targetAngle: number;
-        let moveSpeed: number;
+        let speed: number;
 
-        if (mouseActive && dist < attractRadius) {
-          // Swim toward cursor — faster as it gets closer
-          targetAngle = Math.atan2(dy, dx);
-          // Ease off speed as it gets very close (don't pile on top of cursor)
-          const closeness = Math.max(0, 1 - dist / attractRadius);
-          moveSpeed = fish.speed * (0.5 + closeness * 1.5);
-          fish.roamAngle = targetAngle; // sync roam so it doesn't snap away
+        if (mouseActive) {
+          // Soft falloff: all fish orient toward cursor, stronger when closer
+          // attractStrength: 1 when right on cursor, ~0.05 at screen edge
+          const attractStrength = Math.max(0, 1 - dist / (diag * 0.65));
+          const towardCursor = Math.atan2(dy, dx);
+
+          // Blend between roam angle and cursor angle by attractStrength
+          // Use lerpAngle so it doesn't snap
+          targetAngle = lerpAngle(fish.roamAngle, towardCursor, attractStrength * 0.9);
+
+          // Speed: base + boost when close
+          speed = fish.baseSpeed * (1 + attractStrength * 1.4);
+
+          // Keep roamAngle roughly in sync so fish don't jerk when cursor leaves
+          if (attractStrength > 0.1) {
+            fish.roamAngle = lerpAngle(fish.roamAngle, towardCursor, 0.01);
+          }
         } else {
-          // Idle roam
           targetAngle = fish.roamAngle;
-          moveSpeed = fish.speed * 0.5;
+          speed = fish.baseSpeed * 0.55;
         }
 
-        fish.angle = lerpAngle(fish.angle, targetAngle, 0.05);
+        // Smooth angle turn (fish can't pivot instantly)
+        fish.angle = lerpAngle(fish.angle, targetAngle, 0.04);
 
-        const vx = Math.cos(fish.angle) * moveSpeed;
-        const vy = Math.sin(fish.angle) * moveSpeed;
+        fish.x += Math.cos(fish.angle) * speed;
+        fish.y += Math.sin(fish.angle) * speed;
 
-        fish.x += vx;
-        fish.y += vy;
-
-        // Wrap around edges
+        // Wrap at edges
         const w = canvas!.width;
         const h = canvas!.height;
-        const margin = fish.size * 2;
-        if (fish.x < -margin) fish.x = w + margin;
-        if (fish.x > w + margin) fish.x = -margin;
-        if (fish.y < -margin) fish.y = h + margin;
-        if (fish.y > h + margin) fish.y = -margin;
+        const m = fish.size * 2;
+        if (fish.x < -m) fish.x = w + m;
+        if (fish.x > w + m) fish.x = -m;
+        if (fish.y < -m) fish.y = h + m;
+        if (fish.y > h + m) fish.y = -m;
 
         drawFish(ctx!, fish.x, fish.y, fish.angle, fish.size, fish.opacity, fish.wobble);
       });
