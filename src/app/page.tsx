@@ -77,16 +77,20 @@ export default function Home() {
             <p>
               Fourth-year CS + Cognitive Science at UC Berkeley, fully funded as a{" "}
               <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
-              Currently researching X's open-source rec-sys and building the{" "}
-              <a href="https://github.com/yslidev/agenthle-finance" target="_blank" rel="noopener noreferrer" className="text-link">AgentHLE benchmark</a>.
+              Currently researching X's open-source rec-sys and building the AgentHLE benchmark.
             </p>
             <p>
               In 2024–25 I was the first junior hire at{" "}
               <a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">an NDA billionaire</a>
-              's video AI startup, owning UX from day one to Series A.
-              Beyond the UX work, I shipped search & discovery as PM, built the account system as PM and admin dashboard as SWE,
-              ran a 200+ creator influencer program as user ops, and won the internal hackathon on rec-sys user profiling.
+              's video AI startup, owning UX from day one to Series A:
             </p>
+            <ul className="bullet-list">
+              <li>Shipped search & discovery — as PM</li>
+              <li>Built the account system — as PM</li>
+              <li>Built the admin dashboard — as SWE</li>
+              <li>Ran a 200+ creator influencer program — as user ops</li>
+              <li>Won the internal hackathon on rec-sys user profiling</li>
+            </ul>
             <p>
               I also spent a year as Head TA for Berkeley's largest engineering startup class,
               mentored 500+ student founders, and helped organize the first{" "}
@@ -157,6 +161,9 @@ export default function Home() {
 
 
       </div>
+
+      {/* Transparent scroll spacer so banner is never hidden behind page-content */}
+      <div className="banner-spacer" />
     </>
   );
 }
