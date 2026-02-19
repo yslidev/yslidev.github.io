@@ -3,20 +3,45 @@
 import FishCanvas from "@/components/FishCanvas";
 import Image from "next/image";
 
-const work = [
+const currentWork = [
+  {
+    title: "X (Twitter) Rec-Sys",
+    role: "Research",
+    year: "2025–26",
+    href: "https://github.com/twitter/the-algorithm",
+    forbesNote: null,
+    tags: ["Research", "Rec-Sys", "Open Source"],
+    bullets: [
+      "Studying Twitter's open-source recommendation algorithm and contributing to research on social media content ranking and distribution.",
+    ],
+  },
+  {
+    title: "AgentHLE Benchmark",
+    role: "Open Source",
+    year: "2026",
+    href: "https://github.com/yslidev/agenthle-finance",
+    forbesNote: null,
+    tags: ["Python", "Evals", "AI"],
+    bullets: [
+      "Helping build AgentHLE — an agentic benchmark for evaluating AI on expert-level tasks. Finance module: automated SEC EDGAR XBRL extraction for IBD analysts.",
+    ],
+  },
+];
+
+const prevWork = [
   {
     title: "Hooglee",
     role: "Product Intern (& SWE)",
     year: "2024–25",
     href: "https://hooglee.com",
-    articleHref: "https://www.forbes.com/sites/sarahemerson/2025/01/09/eric-schmidt-is-working-on-an-ai-startup-called-hooglee/",
+    forbesNote: "as reported by Forbes",
     tags: ["Product", "Go", "AI"],
     bullets: [
       "First junior hire at ex-Google CEO's video AI startup — reporting to ex-TikTok Head of Product, from day one to Series A.",
-      "Owned Search & Discovery end-to-end: led PRD, design, and cross-functional launch with 2 engineers. Gemini 2.5 Pro embeddings + vector retrieval, <200ms latency.",
-      "Built account system, notifications, and admin panel for trust & safety, user management, and growth analytics.",
+      "Owned Search & Discovery end-to-end: PRD, design, cross-functional launch with 2 engineers. Gemini 2.5 Pro embeddings + vector retrieval, <200ms latency.",
+      "Built account system, notifications, and admin panel for trust & safety and growth analytics.",
       "Built user research funnel and 4-batch influencer program (200+ creators), 100+ interviews to validate PMF.",
-      "Won internal hackathon — context personalization feature became the foundation for the content discovery system.",
+      "Won internal hackathon — context personalization became the foundation for the content discovery system.",
       "Refactored GoLang services (identity UID, middleware, notifications APIs) as platform scaled to Series A.",
     ],
   },
@@ -25,23 +50,12 @@ const work = [
     role: "UC Berkeley College of Engineering",
     year: "2024–25",
     href: "https://entrepreneurship.berkeley.edu/engin-183b/",
-    articleHref: null,
+    forbesNote: null,
     tags: ["Teaching", "Startups"],
     bullets: [
       "Head TA for ENGIN 183B — Berkeley's largest startup class for engineering students, 500+ students per semester.",
       "Organized Berkeley's first Global Student Startup Competition in Korea; mentored the champion team.",
-      "Directed market research of 300+ startups across AI, blockchain, and healthcare for ENGIN 283. Produced an eBook on trends in future technology.",
-    ],
-  },
-  {
-    title: "AgentHLE Finance",
-    role: "Personal project",
-    year: "2026",
-    href: "https://github.com/yslidev/agenthle-finance",
-    articleHref: null,
-    tags: ["Python", "SEC EDGAR"],
-    bullets: [
-      "Automated SEC EDGAR XBRL extraction — pulls financials, comps, and DCF inputs from 10-K/Q filings for IBD analysts.",
+      "Directed market research of 300+ startups across AI, blockchain, and healthcare for ENGIN 283. Produced an eBook on future technology trends.",
     ],
   },
 ];
@@ -74,6 +88,39 @@ const links = [
   { label: "email", href: "mailto:yushanli@berkeley.edu" },
 ];
 
+function WorkEntry({ p }: { p: typeof prevWork[0] }) {
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "4px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" }}>
+          <a href={p.href} target="_blank" rel="noopener noreferrer"
+            style={{ fontSize: "0.9rem", fontWeight: 500, color: "#111", textDecoration: "none" }}
+            onMouseEnter={e => (e.currentTarget.style.color = "var(--accent)")}
+            onMouseLeave={e => (e.currentTarget.style.color = "#111")}>
+            {p.title} ↗
+          </a>
+          <span style={{ fontSize: "0.75rem", color: "#bbb" }}>{p.role}</span>
+        </div>
+        <span style={{ fontSize: "0.7rem", color: "#ccc", fontFamily: "monospace", flexShrink: 0, marginLeft: "8px" }}>{p.year}</span>
+      </div>
+      <div style={{ display: "flex", gap: "6px", marginBottom: "12px" }}>
+        {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
+      </div>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "7px" }}>
+        {p.bullets.map((b, j) => (
+          <li key={j} style={{ fontSize: "0.82rem", color: "#888", lineHeight: 1.7, paddingLeft: "12px", position: "relative" }}>
+            <span style={{ position: "absolute", left: 0, color: "#ccc" }}>·</span>
+            {b}
+          </li>
+        ))}
+      </ul>
+      {"forbesNote" in p && p.forbesNote && (
+        <p style={{ marginTop: "8px", fontSize: "0.72rem", color: "#bbb", fontStyle: "italic" }}>{p.forbesNote}</p>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -83,7 +130,7 @@ export default function Home() {
 
         {/* Nav */}
         <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between"
-          style={{ background: "rgba(235,246,246,0.88)", backdropFilter: "blur(14px)", borderBottom: "1px solid #cde4e4" }}>
+          style={{ background: "rgba(232,244,244,0.9)", backdropFilter: "blur(14px)", borderBottom: "1px solid #cde4e4" }}>
           <a href="#" className="flex items-center gap-2.5">
             <Image src="/logo.jpg" alt="ysli" width={24} height={24} className="rounded-sm" />
             <span style={{ fontSize: "0.8rem", color: "#999", letterSpacing: "-0.01em" }}>ysli.dev</span>
@@ -107,10 +154,10 @@ export default function Home() {
           </p>
 
           <p className="fade-up fade-up-2" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "16px" }}>
-            I build product at{" "}
+            Previously built product at{" "}
             <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
-            {" "}— Eric Schmidt's video AI startup — where I was the first junior hire, reporting to the ex-TikTok Head of Product.
-            I also run Berkeley's largest engineering startup class as Head TA, where I've mentored 500+ students and organized the{" "}
+            {" "}— Eric Schmidt's video AI startup — as first junior hire, reporting to the ex-TikTok Head of Product.
+            Also ran Berkeley's largest engineering startup class as Head TA, mentoring 500+ students and organizing the{" "}
             <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
             in Korea.
           </p>
@@ -118,7 +165,7 @@ export default function Home() {
           <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "32px" }}>
             CS + Cognitive Science at UC Berkeley, fully sponsored as a{" "}
             <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
-            {" "}Before Berkeley, I went to{" "}
+            {" "}Before that, I went to{" "}
             <a href="https://uwcsa.org" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
             in 🇧🇦 and studied Cultural Anthropology.
             I travel, paint, and make things — including this logo & banner.
@@ -144,53 +191,17 @@ export default function Home() {
         {/* Work */}
         <section id="work" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px" }}>
           <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "28px" }}>
-            work
+            now
           </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "36px", marginBottom: "52px" }}>
+            {currentWork.map((p, i) => <WorkEntry key={i} p={p} />)}
+          </div>
 
+          <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "28px" }}>
+            prev
+          </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-            {work.map((p, i) => (
-              <div key={i}>
-                {/* Header row */}
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "4px" }}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
-                    <a href={p.href} target={p.href !== "#" ? "_blank" : undefined} rel="noopener noreferrer"
-                      style={{ fontSize: "0.9rem", fontWeight: 500, color: "#111", textDecoration: "none" }}
-                      onMouseEnter={e => (e.currentTarget.style.color = "var(--accent)")}
-                      onMouseLeave={e => (e.currentTarget.style.color = "#111")}>
-                      {p.title} ↗
-                    </a>
-                    <span style={{ fontSize: "0.75rem", color: "#bbb" }}>{p.role}</span>
-                  </div>
-                  <span style={{ fontSize: "0.7rem", color: "#ccc", fontFamily: "monospace", flexShrink: 0 }}>{p.year}</span>
-                </div>
-
-                {/* Tags */}
-                <div style={{ display: "flex", gap: "6px", marginBottom: "12px" }}>
-                  {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                </div>
-
-                {/* Bullets */}
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "7px" }}>
-                  {p.bullets.map((b, j) => (
-                    <li key={j} style={{ fontSize: "0.82rem", color: "#888", lineHeight: 1.7, paddingLeft: "12px", position: "relative" }}>
-                      <span style={{ position: "absolute", left: 0, color: "#ccc" }}>·</span>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Forbes note for Hooglee */}
-                {p.articleHref && (
-                  <p style={{ marginTop: "10px", fontSize: "0.72rem", color: "#ccc" }}>
-                    Coverage:{" "}
-                    <a href={p.articleHref} target="_blank" rel="noopener noreferrer" className="text-link"
-                      style={{ fontSize: "0.72rem", color: "#bbb" }}>
-                      Forbes, Sarah Emerson ↗
-                    </a>
-                  </p>
-                )}
-              </div>
-            ))}
+            {prevWork.map((p, i) => <WorkEntry key={i} p={p} />)}
           </div>
         </section>
 
@@ -227,12 +238,11 @@ export default function Home() {
         {/* Now */}
         <section id="now" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px 80px" }}>
           <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
-            now
+            about
           </p>
           <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "10px", maxWidth: "440px" }}>
             <p>Fourth-year at UC Berkeley. Grew up in China, went to school in Bosnia, landed in California.</p>
             <p>I skate, paint, and try to visit a new country every few months. Former national champion in artistic swimming — that was another life.</p>
-            <p>Currently figuring out what's next.</p>
           </div>
 
           <div style={{ marginTop: "32px", display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -249,29 +259,31 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Wave → banner */}
-        <div className="water-transition">
-          <svg viewBox="0 0 1440 120" preserveAspectRatio="none"
-            style={{ display: "block", width: "100%", height: "120px", marginBottom: "-2px" }}
+        {/* Wave → banner: taller, more gradual, matches page bg exactly */}
+        <div style={{ position: "relative", width: "100%", marginBottom: "-2px" }}>
+          <svg viewBox="0 0 1440 200" preserveAspectRatio="none"
+            style={{ display: "block", width: "100%", height: "200px" }}
             xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#f0f7f7" />
-                <stop offset="100%" stopColor="#96cfd2" />
+                <stop offset="0%" stopColor="#e8f4f4" />
+                <stop offset="60%" stopColor="#a8d8d8" />
+                <stop offset="100%" stopColor="#5cbfc0" />
               </linearGradient>
             </defs>
-            <rect width="1440" height="120" fill="url(#waveGrad)" />
-            <path d="M0,60 C200,30 400,90 600,60 C800,30 1000,80 1200,55 C1320,40 1380,65 1440,60 L1440,120 L0,120 Z"
-              fill="rgba(255,255,255,0.09)" />
-            <path d="M0,75 C180,50 360,95 540,70 C720,45 900,85 1080,65 C1260,45 1350,75 1440,70 L1440,120 L0,120 Z"
+            <rect width="1440" height="200" fill="url(#waveGrad)" />
+            {/* Water ripple lines */}
+            <path d="M0,110 C240,85 480,135 720,110 C960,85 1200,130 1440,110 L1440,200 L0,200 Z"
+              fill="rgba(255,255,255,0.08)" />
+            <path d="M0,135 C200,115 400,155 600,135 C800,115 1000,150 1200,130 C1320,118 1380,138 1440,132 L1440,200 L0,200 Z"
               fill="rgba(255,255,255,0.06)" />
-            <path d="M0,90 C240,70 480,105 720,85 C960,65 1200,100 1440,85 L1440,120 L0,120 Z"
-              fill="rgba(255,255,255,0.04)" />
+            <path d="M0,158 C280,142 560,168 840,152 C1120,136 1300,162 1440,155 L1440,200 L0,200 Z"
+              fill="rgba(255,255,255,0.05)" />
           </svg>
         </div>
 
         {/* Banner */}
-        <div style={{ position: "relative", width: "100%", height: "300px", marginTop: "-1px" }}>
+        <div style={{ position: "relative", width: "100%", height: "320px" }}>
           <Image src="/banner.jpg" alt="" fill className="object-cover object-top" priority />
         </div>
 

@@ -2,11 +2,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f0f7f7;
+  --background: #e8f4f4;
   --foreground: #111111;
   --accent: #f97316;
   --muted: #888;
-  --border: #dde8e8;
+  --border: #cfe0e0;
   --teal: #96cfd2;
   --teal-dark: #4a9fa3;
   --banner-top: #96cfd2;
@@ -20,7 +20,6 @@
 
 html {
   scroll-behavior: smooth;
-  /* Background on html so it shows behind the fixed canvas */
   background: var(--background);
 }
 
@@ -52,8 +51,8 @@ body {
 .page-content {
   position: relative;
   z-index: 1;
-  background: rgba(240, 247, 247, 0.82);
-  backdrop-filter: blur(0px);
+  /* Semi-transparent so fish canvas shows through behind content */
+  background: rgba(232, 244, 244, 0.80);
 }
 
 /* Content sections get a slightly more opaque backing for readability */
