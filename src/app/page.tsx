@@ -36,13 +36,10 @@ export default function Home() {
     <>
       <FishCanvas />
 
-      {/* Fixed teal water background — always behind everything */}
-      <div className="fixed-water" />
-
-      {/* Fixed building skyline — transparent PNG floats on teal water */}
+      {/* Fixed colorful banner at bottom — always visible like a skyline */}
       <div className="fixed-banner">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/building.png" alt="" />
+        <img src="/banner.jpg" alt="" />
       </div>
 
       <div className="page-content">
