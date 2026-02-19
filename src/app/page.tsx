@@ -2,315 +2,211 @@
 
 import FishCanvas from "@/components/FishCanvas";
 import Image from "next/image";
-import { useState } from "react";
 
 const projects = [
   {
+    title: "Hooglee",
+    desc: "First junior hire at an ex-Google CEO's video AI startup. Built Search & Discovery with Gemini embeddings (<200ms latency), led influencer program (200+ creators), won internal hackathon.",
+    tags: ["Product", "GoLang", "AI"],
+    href: "https://hooglee.com",
+    year: "2024–25",
+  },
+  {
     title: "AgentHLE Finance",
-    desc: "Automated SEC EDGAR XBRL extraction for IBD analysts. Pulls financials, comps, and DCF inputs from 10-K/Q filings with 100% accuracy targets.",
-    tags: ["Python", "SEC EDGAR", "Finance"],
+    desc: "Automated SEC EDGAR XBRL extraction for IBD analysts — pulls financials, comps, and DCF inputs from 10-K/Q filings.",
+    tags: ["Python", "SEC EDGAR"],
     href: "https://github.com/yslidev/agenthle-finance",
     year: "2026",
   },
   {
-    title: "Unwind",
-    desc: "A project exploring how people decompress. Built during a late-night stretch of curiosity.",
-    tags: ["Design", "App"],
-    href: "https://github.com/yslidev/unwind",
-    year: "2024",
-  },
-  {
-    title: "WalkWithMe",
-    desc: "CS160 HCI project — a companion app for solo walks, designed around safety and light social connection.",
-    tags: ["HCI", "Mobile", "UX Research"],
+    title: "Berkeley Entrepreneurship Bootcamp",
+    desc: "Head TA for ENGIN 183B. Mentored 500+ students, organized the first Global Student Startup Competition in Korea.",
+    tags: ["Teaching", "Startups"],
     href: "#",
-    year: "2025",
-  },
-];
-
-const writings = [
-  {
-    title: "On building things when you don't know what you're doing",
-    date: "Feb 2026",
-    desc: "A braindump on starting projects before you feel ready.",
-  },
-  {
-    title: "What Socratica taught me about showing up",
-    date: "Jan 2026",
-    desc: "Notes from a semester of maker dinners and unfinished ideas.",
-  },
-  {
-    title: "Finance as a lens, not a career",
-    date: "Dec 2025",
-    desc: "Why I keep building finance tools even though I'm not going to Wall Street.",
+    year: "2024–25",
   },
 ];
 
 const links = [
-  { label: "GitHub", href: "https://github.com/yslidev" },
-  { label: "Notion", href: "https://liyushan.notion.site" },
-  { label: "Email", href: "mailto:yushan@berkeley.edu" },
+  { label: "github", href: "https://github.com/yslidev" },
+  { label: "linkedin", href: "https://linkedin.com/in/yushan-li" },
+  { label: "email", href: "mailto:yushanli@berkeley.edu" },
 ];
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-
   return (
     <>
       <FishCanvas />
 
-      <div className="relative z-10 min-h-screen" style={{ background: "var(--background)" }}>
+      <div className="relative z-10" style={{ background: "var(--background)" }}>
 
         {/* Nav */}
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6"
-          style={{ background: "linear-gradient(to bottom, #080808ee, transparent)" }}>
-          <a href="#" className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
+        <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between"
+          style={{ background: "linear-gradient(to bottom, #0a0f1ef5, transparent)" }}>
+          <a href="#" className="flex items-center gap-2.5 group">
             <Image
               src="/logo.jpg"
               alt="ysli"
-              width={32}
-              height={32}
-              className="rounded-sm"
+              width={28}
+              height={28}
+              className="rounded-sm opacity-90 group-hover:opacity-100 transition-opacity"
             />
-            <span className="text-sm font-medium tracking-tight" style={{ color: "var(--foreground)" }}>
-              ysli.dev
-            </span>
+            <span className="text-sm tracking-tight" style={{ color: "#666" }}>ysli.dev</span>
           </a>
 
           <div className="flex items-center gap-8">
-            {["work", "writing", "about"].map((s) => (
-              <a
-                key={s}
-                href={`#${s}`}
-                className="text-xs uppercase tracking-widest transition-colors"
-                style={{ color: activeSection === s ? "var(--accent)" : "var(--muted)" }}
-                onMouseEnter={() => setActiveSection(s)}
-                onMouseLeave={() => setActiveSection(null)}
-              >
-                {s}
+            {[["work", "#work"], ["writing", "#writing"], ["now", "#now"]].map(([label, href]) => (
+              <a key={label} href={href}
+                className="text-xs uppercase tracking-widest transition-colors hover:text-white"
+                style={{ color: "#444" }}>
+                {label}
               </a>
             ))}
           </div>
         </nav>
 
         {/* Hero */}
-        <section className="flex flex-col justify-end min-h-screen px-8 pb-24 pt-32 max-w-3xl mx-auto">
-          <div className="fade-up fade-up-1">
-            <p className="text-xs uppercase tracking-widest mb-6" style={{ color: "var(--muted)" }}>
-              yushan li · berkeley, ca
-            </p>
-          </div>
-
-          <h1 className="fade-up fade-up-2 text-5xl sm:text-6xl font-semibold tracking-tight leading-[1.1] mb-8"
-            style={{ color: "var(--foreground)" }}>
-            Student.<br />
-            Builder.<br />
-            <span style={{ color: "var(--accent)" }}>Occasional deep-thinker.</span>
-          </h1>
-
-          <p className="fade-up fade-up-3 text-lg leading-relaxed max-w-xl mb-10"
-            style={{ color: "var(--muted)", fontSize: "1rem" }}>
-            I study CS + Cognitive Science at UC Berkeley and spend my nights building
-            things I find interesting — finance tools, interaction experiments, small
-            software for real problems. I care a lot about how people think, what
-            makes a good interface, and why most things are under-designed.
-            Currently into AI agents, HCI research, and the Socratica way of doing things.
+        <section className="min-h-screen flex flex-col justify-end px-8 pb-20 pt-32 max-w-2xl mx-auto">
+          <p className="fade-up fade-up-1 text-xs tracking-widest uppercase mb-8" style={{ color: "#444" }}>
+            yushan li
           </p>
 
-          <div className="fade-up fade-up-4 flex flex-wrap items-center gap-6">
+          <h1 className="fade-up fade-up-2 font-semibold leading-[1.08] tracking-tight mb-8"
+            style={{ fontSize: "clamp(2.8rem, 7vw, 5rem)", color: "var(--foreground)" }}>
+            CS & CogSci at Berkeley.<br />
+            <span style={{ color: "var(--accent)" }}>Product, eng, and the stuff in between.</span>
+          </h1>
+
+          <p className="fade-up fade-up-3 leading-relaxed mb-10 max-w-lg"
+            style={{ fontSize: "0.9rem", color: "#666" }}>
+            I was the first junior hire at Hooglee, built search & discovery for a video AI platform,
+            and spent a year teaching 500 students how to start companies.
+            I care about interfaces that feel inevitable, and software that does more than it says.
+          </p>
+
+          <div className="fade-up fade-up-4 flex items-center gap-6">
             {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
+              <a key={l.label} href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className="underline-hover text-sm"
-                style={{ color: "var(--foreground)" }}
-              >
+                style={{ color: "#555" }}>
                 {l.label}
               </a>
             ))}
           </div>
         </section>
 
-        {/* Divider */}
-        <div className="max-w-3xl mx-auto px-8">
-          <div style={{ height: "1px", background: "var(--border)" }} />
-        </div>
-
         {/* Work */}
-        <section id="work" className="max-w-3xl mx-auto px-8 py-24">
-          <p className="text-xs uppercase tracking-widest mb-12" style={{ color: "var(--muted)" }}>
-            Selected Work
-          </p>
+        <section id="work" className="max-w-2xl mx-auto px-8 py-20">
+          <p className="text-xs uppercase tracking-widest mb-10" style={{ color: "#3d4a6a" }}>work</p>
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-10">
             {projects.map((p, i) => (
-              <a
-                key={i}
-                href={p.href}
+              <a key={i} href={p.href}
                 target={p.href !== "#" ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="group block"
-                style={{ textDecoration: "none" }}
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <h2
-                    className="text-xl font-medium tracking-tight transition-colors"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    <span className="group-hover:text-orange-400 transition-colors duration-200">
-                      {p.title}
-                    </span>
-                    <span className="ml-2 text-sm opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "var(--accent)" }}>
-                      ↗
-                    </span>
+                className="group"
+                style={{ textDecoration: "none" }}>
+                <div className="flex items-baseline justify-between mb-2">
+                  <h2 className="text-base font-medium group-hover:text-orange-400 transition-colors duration-150"
+                    style={{ color: "var(--foreground)" }}>
+                    {p.title}
+                    <span className="ml-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-sm" style={{ color: "var(--accent)" }}>↗</span>
                   </h2>
-                  <span className="text-xs font-mono mt-1" style={{ color: "var(--muted)" }}>
-                    {p.year}
-                  </span>
+                  <span className="text-xs font-mono" style={{ color: "#3d4a6a" }}>{p.year}</span>
                 </div>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
-                  {p.desc}
-                </p>
-                <div className="flex gap-2 flex-wrap">
-                  {p.tags.map((t) => (
-                    <span key={t} className="tag">{t}</span>
-                  ))}
+                <p className="text-sm leading-relaxed mb-3" style={{ color: "#555" }}>{p.desc}</p>
+                <div className="flex gap-2">
+                  {p.tags.map((t) => <span key={t} className="tag">{t}</span>)}
                 </div>
               </a>
             ))}
           </div>
         </section>
 
-        {/* Divider */}
-        <div className="max-w-3xl mx-auto px-8">
-          <div style={{ height: "1px", background: "var(--border)" }} />
-        </div>
+        <div className="max-w-2xl mx-auto px-8"><div style={{ height: "1px", background: "#141929" }} /></div>
 
         {/* Writing */}
-        <section id="writing" className="max-w-3xl mx-auto px-8 py-24">
-          <p className="text-xs uppercase tracking-widest mb-12" style={{ color: "var(--muted)" }}>
-            Writing / Braindumps
-          </p>
+        <section id="writing" className="max-w-2xl mx-auto px-8 py-20">
+          <p className="text-xs uppercase tracking-widest mb-10" style={{ color: "#3d4a6a" }}>writing</p>
 
-          <div className="flex flex-col gap-10">
-            {writings.map((w, i) => (
-              <div key={i} className="group flex gap-8 items-start">
-                <span className="text-xs font-mono pt-1 shrink-0" style={{ color: "#333" }}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3
-                    className="text-base font-medium mb-2 transition-colors cursor-default"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    {w.title}
-                  </h3>
-                  <p className="text-sm mb-3" style={{ color: "var(--muted)" }}>
-                    {w.desc}
-                  </p>
-                  <span className="text-xs font-mono" style={{ color: "#333" }}>
-                    {w.date}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-16 text-sm italic" style={{ color: "#2a2a2a" }}>
-            More on Notion →
+          <p className="text-sm" style={{ color: "#444" }}>
+            Braindumps and notes — coming soon.{" "}
+            <a href="https://liyushan.notion.site" target="_blank" rel="noopener noreferrer"
+              className="underline-hover" style={{ color: "#666" }}>
+              Notion →
+            </a>
           </p>
         </section>
 
-        {/* About */}
-        <section id="about" className="max-w-3xl mx-auto px-8 py-24">
-          <div style={{ height: "1px", background: "var(--border)", marginBottom: "96px" }} />
+        <div className="max-w-2xl mx-auto px-8"><div style={{ height: "1px", background: "#141929" }} /></div>
 
-          <p className="text-xs uppercase tracking-widest mb-12" style={{ color: "var(--muted)" }}>
-            About
-          </p>
+        {/* Now / About */}
+        <section id="now" className="max-w-2xl mx-auto px-8 py-20">
+          <p className="text-xs uppercase tracking-widest mb-10" style={{ color: "#3d4a6a" }}>now</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-16">
-            <div>
-              <p className="text-sm leading-loose" style={{ color: "var(--muted)" }}>
-                I&apos;m a third-year at UC Berkeley studying Computer Science and Cognitive Science.
-                I grew up in China, moved to Canada, ended up in California. I like problems
-                that sit at the edge of technology and human behavior — which is why HCI,
-                AI agents, and behavioral finance all feel like the same thing to me.
-              </p>
-              <br />
-              <p className="text-sm leading-loose" style={{ color: "var(--muted)" }}>
-                When I&apos;m not building, I&apos;m probably reading something about decision-making,
-                arguing about product decisions with friends, or trying to make my Notion
-                more organized (it never is).
-              </p>
-            </div>
+          <div className="flex flex-col gap-5 text-sm" style={{ color: "#555", lineHeight: "1.8" }}>
+            <p>
+              Third-year at UC Berkeley, CS & Cognitive Science. Full scholarship — Shelby Davis Foundation.
+            </p>
+            <p>
+              I grew up in China, spent time in Canada, landed in California.
+              I like problems at the edge of technology and human behavior.
+            </p>
+            <p>
+              Outside of work: figure skating on the Cal team, 20+ countries visited,
+              and former national champion in artistic swimming (2015).
+            </p>
+            <p>
+              Currently looking for what&apos;s next.
+            </p>
+          </div>
 
-            <div className="flex flex-col gap-8">
-              <div>
-                <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "#333" }}>
-                  Currently
-                </p>
-                <ul className="text-sm flex flex-col gap-2" style={{ color: "var(--muted)" }}>
-                  <li>← CS + Cognitive Science @ Berkeley</li>
-                  <li>← Building agentic finance tools</li>
-                  <li>← HCI research (CS160)</li>
-                  <li>← Socratica attendee</li>
-                </ul>
+          <div className="mt-10 flex flex-col gap-2">
+            {[
+              ["CS & Cognitive Science", "UC Berkeley, graduating Dec 2026"],
+              ["Product + SWE", "Hooglee (ex-Google CEO's startup, Series A)"],
+              ["Head TA", "Berkeley Engineering Entrepreneurship"],
+            ].map(([role, detail]) => (
+              <div key={role} className="flex gap-4 items-baseline text-sm">
+                <span style={{ color: "#333", minWidth: "160px" }}>{role}</span>
+                <span style={{ color: "#444" }}>{detail}</span>
               </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-widest mb-3" style={{ color: "#333" }}>
-                  Interests
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {["HCI", "AI Agents", "Behavioral Finance", "Product", "Language", "Design"].map((t) => (
-                    <span key={t} className="tag">{t}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* Banner */}
-        <div className="relative w-full mt-12 overflow-hidden" style={{ height: "200px" }}>
+        <div className="relative w-full overflow-hidden" style={{ height: "220px" }}>
           <Image
             src="/banner.jpg"
-            alt="banner"
+            alt=""
             fill
             className="object-cover object-top"
             priority
           />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(to bottom, #080808 0%, transparent 30%, transparent 70%, #080808 100%)",
-            }}
+          <div className="absolute inset-0"
+            style={{ background: "linear-gradient(to bottom, #0a0f1e 0%, transparent 25%, transparent 75%, #0a0f1e 100%)" }}
           />
         </div>
 
         {/* Footer */}
-        <footer className="max-w-3xl mx-auto px-8 py-12 flex items-center justify-between">
-          <p className="text-xs font-mono" style={{ color: "#2a2a2a" }}>
-            ysli.dev · {new Date().getFullYear()}
-          </p>
+        <footer className="max-w-2xl mx-auto px-8 py-10 flex items-center justify-between">
+          <p className="text-xs font-mono" style={{ color: "#3d4a6a" }}>© {new Date().getFullYear()}</p>
           <div className="flex gap-6">
             {links.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
+              <a key={l.label} href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className="text-xs underline-hover"
-                style={{ color: "#333" }}
-              >
+                style={{ color: "#333" }}>
                 {l.label}
               </a>
             ))}
           </div>
         </footer>
+
       </div>
     </>
   );
