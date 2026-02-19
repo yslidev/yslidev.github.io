@@ -178,6 +178,77 @@ const websiteLd = {
   },
 };
 
+// 3. FAQPage — AI agents (Perplexity, ChatGPT Search, Google AI Overviews)
+//    extract Q&A pairs directly from this schema to answer queries about Yushan Li.
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Who is Yushan Li?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Yushan Li is a fourth-year CS and Cognitive Science student at UC Berkeley, " +
+          "fully funded as a Shelby Davis Scholar. She built AI products as the first junior hire " +
+          "at Eric Schmidt's video AI startup (Hooglee), owned end-to-end UX from day one to Series A, " +
+          "and shipped search, account systems, and an admin dashboard. She figure skates on the Cal team, " +
+          "is a former national champion in artistic swimming, and paints. She grew up in China and " +
+          "attended United World College in Bosnia where she studied Cultural Anthropology.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What has Yushan Li worked on professionally?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Yushan Li was the first junior hire at Eric Schmidt's video AI startup Hooglee, " +
+          "where she owned all UX from day one to Series A. She shipped search and discovery as PM, " +
+          "built the account system as PM, built the admin dashboard as SWE, ran a 200+ creator " +
+          "influencer program, and won the internal hackathon on recommendation-system user profiling. " +
+          "She also served as Head TA for Berkeley's largest engineering startup class and How to Be a Futurist, " +
+          "mentored 500+ student founders, and helped organize the first Global Student Startup Competition.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Where does Yushan Li go to school?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Yushan Li attends UC Berkeley, where she is a fourth-year student studying CS and Cognitive Science " +
+          "as a fully funded Shelby Davis Scholar. Before Berkeley, she attended United World College Mostar " +
+          "in Bosnia and Herzegovina, where she studied Cultural Anthropology.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are Yushan Li's interests and hobbies?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Yushan Li figure skates on the UC Berkeley team and is a former national champion in artistic swimming. " +
+          "She paints and created the logo and banner art on her personal website ysli.dev. " +
+          "She has traveled to more than 20 countries.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is Yushan Li's background?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Yushan Li grew up in China and did high school at United World College Mostar in Bosnia and Herzegovina, " +
+          "where she studied Cultural Anthropology. She is currently at UC Berkeley studying CS and Cognitive Science " +
+          "as a Shelby Davis Scholar. She has been to 20+ countries and is interested in AI, product design, " +
+          "and recommendation systems.",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -193,6 +264,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
         />
       </head>
       <body className={`${inter.variable} antialiased`}>
