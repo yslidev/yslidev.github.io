@@ -130,7 +130,7 @@ export default function Home() {
 
         {/* Nav */}
         <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between"
-          style={{ background: "rgba(232,244,244,0.9)", backdropFilter: "blur(14px)", borderBottom: "1px solid #cde4e4" }}>
+          style={{ background: "rgba(228,246,250,0.88)", backdropFilter: "blur(14px)", borderBottom: "1px solid #9dd4db" }}>
           <a href="#" className="flex items-center gap-2.5">
             <Image src="/logo.jpg" alt="ysli" width={24} height={24} className="rounded-sm" />
             <span style={{ fontSize: "0.8rem", color: "#999", letterSpacing: "-0.01em" }}>ysli.dev</span>
@@ -238,7 +238,7 @@ export default function Home() {
         {/* Now */}
         <section id="now" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px 80px" }}>
           <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
-            about
+            now
           </p>
           <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "10px", maxWidth: "440px" }}>
             <p>Fourth-year at UC Berkeley. Grew up in China, went to school in Bosnia, landed in California.</p>
@@ -259,26 +259,28 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Wave → banner: taller, more gradual, matches page bg exactly */}
+        {/* Wave → banner */}
         <div style={{ position: "relative", width: "100%", marginBottom: "-2px" }}>
-          <svg viewBox="0 0 1440 200" preserveAspectRatio="none"
-            style={{ display: "block", width: "100%", height: "200px" }}
+          <svg viewBox="0 0 1440 260" preserveAspectRatio="none"
+            style={{ display: "block", width: "100%", height: "260px" }}
             xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#e8f4f4" />
-                <stop offset="60%" stopColor="#a8d8d8" />
-                <stop offset="100%" stopColor="#5cbfc0" />
+                <stop offset="0%" stopColor="#e8f6f8" />
+                <stop offset="55%" stopColor="#64cad1" />
+                <stop offset="100%" stopColor="#3ab0be" />
               </linearGradient>
             </defs>
-            <rect width="1440" height="200" fill="url(#waveGrad)" />
-            {/* Water ripple lines */}
-            <path d="M0,110 C240,85 480,135 720,110 C960,85 1200,130 1440,110 L1440,200 L0,200 Z"
-              fill="rgba(255,255,255,0.08)" />
-            <path d="M0,135 C200,115 400,155 600,135 C800,115 1000,150 1200,130 C1320,118 1380,138 1440,132 L1440,200 L0,200 Z"
-              fill="rgba(255,255,255,0.06)" />
-            <path d="M0,158 C280,142 560,168 840,152 C1120,136 1300,162 1440,155 L1440,200 L0,200 Z"
+            <rect width="1440" height="260" fill="url(#waveGrad)" />
+            {/* White wave ripples echoing the banner illustration */}
+            <path d="M0,140 C240,112 480,168 720,140 C960,112 1200,162 1440,140 L1440,260 L0,260 Z"
+              fill="rgba(255,255,255,0.10)" />
+            <path d="M0,170 C200,148 400,192 600,170 C800,148 1040,188 1240,165 C1340,153 1400,172 1440,168 L1440,260 L0,260 Z"
+              fill="rgba(255,255,255,0.07)" />
+            <path d="M0,200 C280,182 560,218 840,200 C1120,182 1300,210 1440,202 L1440,260 L0,260 Z"
               fill="rgba(255,255,255,0.05)" />
+            <path d="M0,228 C320,216 640,238 960,224 C1200,213 1360,230 1440,225 L1440,260 L0,260 Z"
+              fill="rgba(255,255,255,0.04)" />
           </svg>
         </div>
 

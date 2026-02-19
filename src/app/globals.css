@@ -2,14 +2,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #e8f4f4;
+  --background: #e8f6f8;
   --foreground: #111111;
   --accent: #f97316;
   --muted: #888;
-  --border: #cfe0e0;
-  --teal: #96cfd2;
-  --teal-dark: #4a9fa3;
-  --banner-top: #96cfd2;
+  --border: #b2dce2;
+  --teal: #64cad1;
+  --teal-deep: #2596be;
+  --teal-dark: #1a7a9e;
 }
 
 * {
@@ -24,7 +24,6 @@ html {
 }
 
 body {
-  /* Transparent so fish canvas fixed layer shows through */
   background: transparent;
   color: var(--foreground);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -51,8 +50,7 @@ body {
 .page-content {
   position: relative;
   z-index: 1;
-  /* Semi-transparent so fish canvas shows through behind content */
-  background: rgba(232, 244, 244, 0.80);
+  background: rgba(232, 246, 248, 0.78);
 }
 
 /* Content sections get a slightly more opaque backing for readability */
@@ -137,10 +135,10 @@ body {
 .tag {
   display: inline-block;
   padding: 1px 7px;
-  border: 1px solid #c8dcdc;
+  border: 1px solid #9dd4db;
   border-radius: 999px;
   font-size: 9px;
-  color: #7aadad;
+  color: #2596be;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-family: 'Courier New', monospace;
