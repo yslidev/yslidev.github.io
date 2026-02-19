@@ -110,7 +110,7 @@ export default function Home() {
           <div className="fade-up fade-up-4 prose-block">
             <p>
               Grew up in China, went to{" "}
-              <a href="https://uwcsa.org" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
+              <a href="https://uwc.org/school/uwc-mostar/" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
               in 🇧🇦 where I studied Cultural Anthropology. 20+ countries and counting.
             </p>
             <p>
