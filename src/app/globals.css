@@ -253,9 +253,14 @@ nav a { cursor: crosshair; }
     padding-right: 20px !important;
   }
 
-  /* Hero name: slightly smaller floor */
+  /* Hero banner: slightly smaller top clearance on mobile nav */
+  .hero-banner {
+    padding-top: 52px;
+  }
+
+  /* Hero name: small gap below the banner */
   section:first-of-type {
-    padding-top: 100px !important;
+    padding-top: 24px !important;
     padding-bottom: 36px !important;
   }
 
