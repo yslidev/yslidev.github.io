@@ -113,9 +113,9 @@ export default async function Home() {
 
         {/* Hero / name */}
         <section style={{ maxWidth: "600px", margin: "0 auto", padding: "40px 32px 60px" }}>
-          <p className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "0" }}>
+          <h1 className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "0" }}>
             Yushan Li
-          </p>
+          </h1>
         </section>
 
         {/* About */}
