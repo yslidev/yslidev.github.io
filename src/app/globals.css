@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0f1e;
-  --foreground: #e8eaf0;
+  --background: #f4f6f5;
+  --foreground: #111111;
   --accent: #f97316;
-  --muted: #556;
-  --border: #141929;
-  --card: #0d1220;
+  --muted: #888;
+  --border: #e0e4e2;
+  --teal: #4eb3b3;
 }
 
 * {
@@ -26,6 +26,7 @@ body {
   overflow-x: hidden;
   cursor: none;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 a, button, [role="button"] {
@@ -42,42 +43,22 @@ a, button, [role="button"] {
   z-index: 9999;
 }
 
-::-webkit-scrollbar {
-  width: 3px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #222;
-  border-radius: 2px;
-}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d0d4d2; border-radius: 2px; }
 
-::selection {
-  background: rgba(249, 115, 22, 0.25);
-  color: #fff;
-}
+::selection { background: rgba(249, 115, 22, 0.15); }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.fade-up {
-  opacity: 0;
-  animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.fade-up-1 { animation-delay: 0.1s; }
-.fade-up-2 { animation-delay: 0.2s; }
-.fade-up-3 { animation-delay: 0.3s; }
-.fade-up-4 { animation-delay: 0.4s; }
-.fade-up-5 { animation-delay: 0.5s; }
+.fade-up { opacity: 0; animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.fade-up-1 { animation-delay: 0.05s; }
+.fade-up-2 { animation-delay: 0.15s; }
+.fade-up-3 { animation-delay: 0.25s; }
+.fade-up-4 { animation-delay: 0.35s; }
 
 .underline-hover {
   position: relative;
@@ -90,26 +71,19 @@ a, button, [role="button"] {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent);
-  transition: width 0.25s ease;
+  background: var(--foreground);
+  transition: width 0.2s ease;
 }
-.underline-hover:hover::after {
-  width: 100%;
-}
+.underline-hover:hover::after { width: 100%; }
 
 .tag {
   display: inline-block;
-  padding: 3px 10px;
-  border: 1px solid #222;
+  padding: 2px 9px;
+  border: 1px solid #d4d8d6;
   border-radius: 999px;
   font-size: 10px;
-  color: #555;
-  letter-spacing: 0.08em;
+  color: #999;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  transition: all 0.2s ease;
   font-family: 'Courier New', monospace;
-}
-.tag:hover {
-  border-color: var(--accent);
-  color: var(--accent);
 }

@@ -44,7 +44,7 @@ function drawFish(
   ctx.globalAlpha = opacity;
 
   // Body
-  ctx.fillStyle = "#1c1c1c";
+  ctx.fillStyle = "#1a2a2a";
   ctx.beginPath();
   ctx.ellipse(0, 0, size, size * 0.42, 0, 0, Math.PI * 2);
   ctx.fill();
@@ -59,14 +59,14 @@ function drawFish(
 
   // Eye
   ctx.globalAlpha = opacity * 1.8;
-  ctx.fillStyle = "#3a3a3a";
+  ctx.fillStyle = "#4eb3b3";
   ctx.beginPath();
   ctx.arc(size * 0.45, -size * 0.1, size * 0.11, 0, Math.PI * 2);
   ctx.fill();
 
   // Dorsal fin
   ctx.globalAlpha = opacity * 0.65;
-  ctx.fillStyle = "#1c1c1c";
+  ctx.fillStyle = "#1a2a2a";
   ctx.beginPath();
   ctx.moveTo(size * 0.1, -size * 0.38);
   ctx.quadraticCurveTo(size * 0.3, -size * 0.72, size * 0.5, -size * 0.4);
