@@ -102,19 +102,17 @@ export default function Home() {
 
         {/* Hero */}
         <section style={{ maxWidth: "600px", margin: "0 auto", padding: "140px 32px 80px" }}>
-          <p className="fade-up fade-up-1" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
+          <p className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "28px" }}>
             Yushan Li
           </p>
 
-          <p className="fade-up fade-up-2" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "28px" }}>
+          <p className="fade-up fade-up-2" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "16px" }}>
             I build product at{" "}
-            <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer"
-              style={{ color: "inherit", textDecoration: "none", borderBottom: "1.5px solid #ccc" }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--accent)"; e.currentTarget.style.color = "var(--accent)"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "#ccc"; e.currentTarget.style.color = "inherit"; }}>
-              Hooglee
-            </a>
-            {" "}and teach startups at Berkeley.
+            <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
+            {" "}— Eric Schmidt's video AI startup — where I was the first junior hire, reporting to the ex-TikTok Head of Product.
+            I also run Berkeley's largest engineering startup class as Head TA, where I've mentored 500+ students and organized the{" "}
+            <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
+            in Korea.
           </p>
 
           <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "32px" }}>
