@@ -62,13 +62,20 @@ body {
   display: block;
 }
 
-/* Page content — opaque, scrolls above the fixed water+building zone */
+/* Page content — opaque, ends naturally above the banner zone */
 .page-content {
   position: relative;
   z-index: 5;
   background: #e8f6f8;
-  /* Push content up so it ends cleanly above the building skyline */
-  padding-bottom: var(--banner-height);
+}
+
+/* Transparent spacer BELOW page-content — creates scroll room so banner is visible */
+.banner-spacer {
+  position: relative;
+  z-index: 4;
+  height: var(--banner-height);
+  background: transparent;
+  pointer-events: none;
 }
 
 /* Content sections */
@@ -183,6 +190,29 @@ nav a { cursor: crosshair; }
   color: #777;
   max-width: 480px;
   margin-bottom: 8px;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bullet-list li {
+  font-size: 0.875rem;
+  color: #777;
+  line-height: 1.6;
+  padding-left: 14px;
+  position: relative;
+}
+.bullet-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #bbb;
+  font-size: 0.75rem;
 }
 
 .resume-link {
