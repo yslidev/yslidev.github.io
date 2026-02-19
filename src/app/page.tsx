@@ -92,7 +92,10 @@ export default function Home() {
               <li>Won the internal hackathon on rec-sys user profiling</li>
             </ul>
             <p>
-              I also spent a year as Head TA for Berkeley's largest engineering startup class,
+              I also spent a year as Head TA for{" "}
+              <a href="https://scet.berkeley.edu/students/courses/berkeley-method-of-entrepreneurship-bootcamp/" target="_blank" rel="noopener noreferrer" className="text-link">Berkeley's largest engineering startup class</a>
+              {" "}and{" "}
+              <a href="https://scet.berkeley.edu/students/courses/how-to-be-a-futurist/" target="_blank" rel="noopener noreferrer" className="text-link">How to Be a Futurist</a>,
               mentored 500+ student founders, and helped organize the first{" "}
               <a href="https://globalstudentstartup.org/" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
               — sending teams to Korea.
