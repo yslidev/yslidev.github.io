@@ -94,7 +94,7 @@ export default function Home() {
             <p>
               I also spent a year as Head TA for Berkeley's largest engineering startup class,
               mentored 500+ student founders, and helped organize the first{" "}
-              <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
+              <a href="https://globalstudentstartup.org/" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
               — sending teams to Korea.
             </p>
           </div>
