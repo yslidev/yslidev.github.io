@@ -9,15 +9,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Yushan Li",
-  description: "CS² at Berkeley. Builder, traveler, figure skater.",
-  icons: {
-    icon: "/icon.jpg",
-    shortcut: "/icon.jpg",
-    apple: "/icon.jpg",
-  },
+  description: "Product at Hooglee. CS + Cognitive Science at UC Berkeley.",
   openGraph: {
     title: "Yushan Li",
-    description: "CS² at Berkeley. Builder, traveler, figure skater.",
+    description: "Product at Hooglee. CS + Cognitive Science at UC Berkeley.",
     url: "https://ysli.dev",
     siteName: "ysli.dev",
     locale: "en_US",
