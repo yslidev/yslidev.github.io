@@ -66,14 +66,11 @@ export default function Home() {
           style={{ background: "linear-gradient(to bottom, #080808ee, transparent)" }}>
           <a href="#" className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity">
             <Image
-              src="/logo.svg"
+              src="/logo.jpg"
               alt="ysli"
               width={32}
               height={32}
               className="rounded-sm"
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
-              }}
             />
             <span className="text-sm font-medium tracking-tight" style={{ color: "var(--foreground)" }}>
               ysli.dev
@@ -280,14 +277,11 @@ export default function Home() {
         {/* Banner */}
         <div className="relative w-full mt-12 overflow-hidden" style={{ height: "200px" }}>
           <Image
-            src="/banner.png"
+            src="/banner.jpg"
             alt="banner"
             fill
             className="object-cover object-top"
             priority
-            onError={(e) => {
-              (e.target as HTMLImageElement).parentElement!.style.display = 'none';
-            }}
           />
           <div
             className="absolute inset-0"
