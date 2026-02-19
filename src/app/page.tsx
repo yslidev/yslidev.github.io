@@ -31,22 +31,15 @@ const links = [
   { label: "email", href: "mailto:yushanli@berkeley.edu" },
 ];
 
-const friends = [
-  { name: "Matthew", href: "https://matthewlee.me" },
-  { name: "Aidan", href: "https://aidanjs.com" },
-  { name: "Aiden", href: "https://aidenybai.com" },
-  { name: "Hamidah", href: "https://hamidah.me" },
-  { name: "Will", href: "https://willhath.com" },
-  { name: "Lexi", href: "https://kognise.dev" },
-  { name: "Lev", href: "https://lev.la" },
-  { name: "Claire", href: "#" },
-  { name: "Ellen", href: "#" },
-];
-
 export default function Home() {
   return (
     <>
       <FishCanvas />
+
+      {/* Fixed banner at bottom — always visible like a skyline */}
+      <div className="fixed-banner">
+        <Image src="/banner.jpg" alt="" fill className="object-cover object-top" priority />
+      </div>
 
       <div className="page-content min-h-screen">
 
@@ -141,24 +134,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Friends */}
-          <p className="section-label fade-up fade-up-5">friends</p>
-          <div className="fade-up fade-up-5" style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "8px" }}>
-            {friends.map((f) => (
-              <a key={f.name} href={f.href} target="_blank" rel="noopener noreferrer" className="friend-link">
-                {f.name}
-              </a>
-            ))}
-          </div>
-          <p className="fade-up fade-up-5" style={{ fontSize: "0.75rem", color: "#bbb", marginTop: "6px" }}>
-            you should check out their sites.
-          </p>
-
         </section>
-
-        <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px" }}>
-          <div style={{ height: "1px", background: "var(--border)" }} />
-        </div>
 
         {/* Writing */}
         <section id="writing" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px" }}>
@@ -182,10 +158,6 @@ export default function Home() {
           </p>
         </section>
 
-        <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px" }}>
-          <div style={{ height: "1px", background: "var(--border)" }} />
-        </div>
-
         {/* Now */}
         <section id="now" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px 100px" }}>
           <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
@@ -198,37 +170,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Wave → banner */}
-        <div style={{ position: "relative", width: "100%", marginBottom: "-2px" }}>
-          <svg viewBox="0 0 1440 260" preserveAspectRatio="none"
-            style={{ display: "block", width: "100%", height: "260px" }}
-            xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#e8f6f8" />
-                <stop offset="55%" stopColor="#64cad1" />
-                <stop offset="100%" stopColor="#3ab0be" />
-              </linearGradient>
-            </defs>
-            <rect width="1440" height="260" fill="url(#waveGrad)" />
-            <path d="M0,140 C240,112 480,168 720,140 C960,112 1200,162 1440,140 L1440,260 L0,260 Z"
-              fill="rgba(255,255,255,0.10)" />
-            <path d="M0,170 C200,148 400,192 600,170 C800,148 1040,188 1240,165 C1340,153 1400,172 1440,168 L1440,260 L0,260 Z"
-              fill="rgba(255,255,255,0.07)" />
-            <path d="M0,200 C280,182 560,218 840,200 C1120,182 1300,210 1440,202 L1440,260 L0,260 Z"
-              fill="rgba(255,255,255,0.05)" />
-            <path d="M0,228 C320,216 640,238 960,224 C1200,213 1360,230 1440,225 L1440,260 L0,260 Z"
-              fill="rgba(255,255,255,0.04)" />
-          </svg>
-        </div>
-
-        {/* Banner */}
-        <div style={{ position: "relative", width: "100%", height: "320px" }}>
-          <Image src="/banner.jpg" alt="" fill className="object-cover object-top" priority />
-        </div>
-
         {/* Footer */}
-        <footer style={{ background: "#1a1a1a", color: "#444", padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <footer style={{ background: "rgba(18,18,18,0.92)", color: "#444", padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <p style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>ysli.dev</p>
           <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
             {links.map((l) => (

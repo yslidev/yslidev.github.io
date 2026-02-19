@@ -10,6 +10,7 @@
   --teal: #64cad1;
   --teal-deep: #2596be;
   --teal-dark: #1a7a9e;
+  --banner-height: 260px;
 }
 
 * {
@@ -20,7 +21,8 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--background);
+  /* Teal water color — always visible as the fixed background */
+  background: #5bbcbc;
 }
 
 body {
@@ -31,9 +33,11 @@ body {
   cursor: crosshair;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* Enough bottom padding so content never hides under fixed banner */
+  padding-bottom: var(--banner-height);
 }
 
-/* Fish canvas: fixed, full-viewport, behind everything */
+/* Fish canvas: fixed, full-viewport, behind everything else but above banner */
 #fish-canvas {
   position: fixed;
   top: 0;
@@ -41,19 +45,29 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 3;
 }
 
-/* Page content sits above the canvas.
-   Use a mostly-transparent background so fish show through —
-   just enough tint so text stays readable. */
+/* Fixed banner — always anchored to bottom of viewport like a skyline */
+.fixed-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--banner-height);
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Page content sits above the fixed background layers.
+   Semi-transparent so the teal water shows through at the edges. */
 .page-content {
   position: relative;
-  z-index: 1;
-  background: rgba(232, 246, 248, 0.78);
+  z-index: 4;
+  background: rgba(232, 246, 248, 0.82);
 }
 
-/* Content sections get a slightly more opaque backing for readability */
+/* Content sections */
 .page-content section,
 .page-content footer {
   position: relative;
@@ -144,14 +158,9 @@ body {
   font-family: 'Courier New', monospace;
 }
 
-.water-transition {
-  position: relative;
-  width: 100%;
-}
-
 nav a { cursor: crosshair; }
 
-/* Section headers inside hero (about / living / friends) */
+/* Section headers inside hero (about / living) */
 .section-label {
   font-size: 0.65rem;
   letter-spacing: 0.14em;
@@ -170,20 +179,6 @@ nav a { cursor: crosshair; }
   color: #777;
   max-width: 480px;
   margin-bottom: 8px;
-}
-
-/* Friend pill links */
-.friend-link {
-  font-size: 0.8rem;
-  color: #777;
-  text-decoration: none;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 1px;
-  transition: color 0.15s, border-color 0.15s;
-}
-.friend-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
 }
 
 .resume-link {
