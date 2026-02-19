@@ -3,27 +3,42 @@
 import FishCanvas from "@/components/FishCanvas";
 import Image from "next/image";
 
-const projects = [
+const work = [
   {
     title: "Hooglee",
-    desc: "First junior hire at an ex-Google CEO's video AI startup. Built Search & Discovery end-to-end with Gemini embeddings (<200ms latency), led a 200+ creator influencer program, won the internal hackathon.",
-    tags: ["Product", "GoLang", "AI"],
+    desc: "Search & Discovery, video AI startup",
+    tags: ["Product", "Go", "AI"],
     href: "https://hooglee.com",
     year: "2024–25",
   },
   {
     title: "AgentHLE Finance",
-    desc: "Automated SEC EDGAR XBRL extraction — pulls financials, comps, and DCF inputs from 10-K/Q filings for IBD analysts.",
-    tags: ["Python", "SEC EDGAR"],
+    desc: "SEC EDGAR XBRL extraction for IBD analysts",
+    tags: ["Python"],
     href: "https://github.com/yslidev/agenthle-finance",
     year: "2026",
   },
   {
     title: "Global Student Startup Competition",
-    desc: "Organized Berkeley's first Global Student Startup Competition in Korea as Head TA. Mentored the champion team. Also mentored 500+ students in ENGIN 183B.",
-    tags: ["Teaching", "Startups"],
+    desc: "Berkeley's first in Korea — organized as Head TA",
+    tags: ["Teaching"],
     href: "#",
     year: "2024–25",
+  },
+];
+
+const writing = [
+  {
+    title: "Notes on building search at a startup",
+    desc: "Gemini embeddings, latency, and tradeoffs",
+    href: "https://liyushan.notion.site",
+    year: "2025",
+  },
+  {
+    title: "Teaching 500 students to start companies",
+    desc: "What I learned as Head TA at Berkeley",
+    href: "https://liyushan.notion.site",
+    year: "2025",
   },
 ];
 
@@ -38,127 +53,175 @@ export default function Home() {
     <>
       <FishCanvas />
 
-      <div className="relative z-10 min-h-screen" style={{ background: "var(--background)" }}>
+      <div className="page-content min-h-screen" style={{ background: "var(--background)" }}>
 
         {/* Nav */}
         <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between"
-          style={{ background: "rgba(244,246,245,0.92)", backdropFilter: "blur(10px)", borderBottom: "1px solid #eaedeb" }}>
-          <a href="#" className="flex items-center gap-2.5 group">
+          style={{ background: "rgba(245,247,246,0.9)", backdropFilter: "blur(12px)", borderBottom: "1px solid #eaedeb" }}>
+          <a href="#" className="flex items-center gap-2.5">
             <Image
               src="/logo.jpg"
               alt="ysli"
-              width={26}
-              height={26}
+              width={24}
+              height={24}
               className="rounded-sm"
             />
-            <span className="text-sm" style={{ color: "#aaa", letterSpacing: "-0.01em" }}>ysli.dev</span>
+            <span style={{ fontSize: "0.8rem", color: "#999", letterSpacing: "-0.01em" }}>ysli.dev</span>
           </a>
           <div className="flex items-center gap-8">
-            {[["work", "#work"], ["now", "#now"]].map(([label, href]) => (
+            {[["work", "#work"], ["writing", "#writing"], ["now", "#now"]].map(([label, href]) => (
               <a key={label} href={href}
-                className="text-xs uppercase tracking-widest transition-colors hover:text-black"
-                style={{ color: "#bbb" }}>
+                style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#bbb", textDecoration: "none" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#111")}
+                onMouseLeave={e => (e.currentTarget.style.color = "#bbb")}>
                 {label}
               </a>
             ))}
           </div>
         </nav>
 
-        {/* Hero */}
-        <section className="max-w-2xl mx-auto px-8 pt-40 pb-24">
-          <p className="fade-up fade-up-1 text-xs tracking-widest uppercase mb-6" style={{ color: "#bbb" }}>
-            yushan li
+        {/* Hero — single centered column */}
+        <section style={{ maxWidth: "600px", margin: "0 auto", padding: "140px 32px 80px" }}>
+
+          <p className="fade-up fade-up-1" style={{ fontSize: "0.7rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
+            Yushan Li
           </p>
 
-          <h1 className="fade-up fade-up-2 font-semibold leading-[1.1] tracking-tight mb-7"
-            style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.8rem)", color: "#111" }}>
-            CS & CogSci at Berkeley.<br />
-            <span style={{ color: "var(--accent)" }}>Product, eng, and the&nbsp;stuff&nbsp;in&nbsp;between.</span>
-          </h1>
+          <p className="fade-up fade-up-2" style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.1rem)", fontWeight: 500, lineHeight: 1.25, letterSpacing: "-0.02em", color: "#111", marginBottom: "28px" }}>
+            CS & Cognitive Science at Berkeley.
+            <br />
+            <span style={{ color: "#999", fontWeight: 300 }}>Product, eng, and the space between.</span>
+          </p>
 
-          <p className="fade-up fade-up-3 leading-relaxed mb-8 max-w-md"
-            style={{ fontSize: "0.9rem", color: "#888" }}>
-            I was the first junior hire at Hooglee — an ex-Google CEO's video AI startup.
-            Spent a year building search infrastructure and teaching 500 students to start companies.
+          <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.8, color: "#777", maxWidth: "480px", marginBottom: "32px" }}>
+            I was the first junior hire at{" "}
+            <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
+            {" "}— an ex-Google CEO's video AI startup — where I built search infrastructure end-to-end.
+            Spent a year teaching 500+ students to build companies as Head TA at Berkeley.
             I care about interfaces that feel inevitable.
           </p>
 
-          <div className="fade-up fade-up-4 flex items-center gap-5">
+          <div className="fade-up fade-up-4" style={{ display: "flex", gap: "20px" }}>
             {links.map((l) => (
               <a key={l.label} href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="underline-hover text-sm"
-                style={{ color: "#999" }}>
+                className="text-link"
+                style={{ fontSize: "0.8rem", color: "#999" }}>
                 {l.label}
               </a>
             ))}
           </div>
         </section>
 
-        <div className="max-w-2xl mx-auto px-8"><div style={{ height: "1px", background: "var(--border)" }} /></div>
+        <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px" }}>
+          <div style={{ height: "1px", background: "var(--border)" }} />
+        </div>
 
         {/* Work */}
-        <section id="work" className="max-w-2xl mx-auto px-8 py-20">
-          <p className="text-xs uppercase tracking-widest mb-10" style={{ color: "#bbb" }}>work</p>
-          <div className="flex flex-col gap-10">
-            {projects.map((p, i) => (
-              <a key={i} href={p.href}
-                target={p.href !== "#" ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className="group"
-                style={{ textDecoration: "none" }}>
-                <div className="flex items-baseline justify-between mb-1.5">
-                  <h2 className="text-sm font-medium transition-colors duration-150"
-                    style={{ color: "#111" }}>
-                    <span className="group-hover:text-orange-500 transition-colors">{p.title}</span>
-                    {p.href !== "#" && (
-                      <span className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "var(--accent)" }}>↗</span>
-                    )}
-                  </h2>
-                  <span className="text-xs font-mono" style={{ color: "#ccc" }}>{p.year}</span>
-                </div>
-                <p className="text-sm leading-relaxed mb-3" style={{ color: "#999" }}>{p.desc}</p>
-                <div className="flex gap-2">
-                  {p.tags.map((t) => <span key={t} className="tag">{t}</span>)}
-                </div>
-              </a>
-            ))}
-          </div>
+        <section id="work" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px" }}>
+          <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
+            work
+          </p>
+          {work.map((p, i) => (
+            <a key={i} href={p.href}
+              target={p.href !== "#" ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="superlink">
+              <span className="superlink-title">{p.title}</span>
+              <span className="superlink-desc">{p.desc}</span>
+              <span className="superlink-year">{p.year}</span>
+              <span className="superlink-arrow">↗</span>
+            </a>
+          ))}
         </section>
 
-        <div className="max-w-2xl mx-auto px-8"><div style={{ height: "1px", background: "var(--border)" }} /></div>
+        <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px" }}>
+          <div style={{ height: "1px", background: "var(--border)" }} />
+        </div>
+
+        {/* Writing */}
+        <section id="writing" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px" }}>
+          <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
+            writing
+          </p>
+          {writing.map((w, i) => (
+            <a key={i} href={w.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="superlink">
+              <span className="superlink-title">{w.title}</span>
+              <span className="superlink-desc">{w.desc}</span>
+              <span className="superlink-year">{w.year}</span>
+              <span className="superlink-arrow">↗</span>
+            </a>
+          ))}
+          <p style={{ fontSize: "0.75rem", color: "#ccc", marginTop: "16px" }}>
+            more on{" "}
+            <a href="https://liyushan.notion.site" target="_blank" rel="noopener noreferrer" className="text-link" style={{ fontSize: "0.75rem", color: "#aaa" }}>
+              notion
+            </a>
+          </p>
+        </section>
+
+        <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px" }}>
+          <div style={{ height: "1px", background: "var(--border)" }} />
+        </div>
 
         {/* Now */}
-        <section id="now" className="max-w-2xl mx-auto px-8 py-20">
-          <p className="text-xs uppercase tracking-widest mb-10" style={{ color: "#bbb" }}>now</p>
-
-          <div className="flex flex-col gap-4 max-w-md" style={{ fontSize: "0.9rem", color: "#888", lineHeight: "1.85" }}>
+        <section id="now" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px 80px" }}>
+          <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
+            now
+          </p>
+          <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "12px", maxWidth: "440px" }}>
             <p>Third-year at UC Berkeley, CS & Cognitive Science. Full scholarship — Shelby Davis Foundation.</p>
-            <p>I grew up in China, spent time in Canada, landed in California.</p>
-            <p>
-              Outside of work: figure skating on the Cal team, 20+ countries,
-              former national champion in artistic swimming.
-            </p>
+            <p>Grew up in China, spent time in Canada, landed in California.</p>
+            <p>Figure skating on the Cal team, 20+ countries, former national champion in artistic swimming.</p>
             <p>Currently figuring out what's next.</p>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3">
+          <div style={{ marginTop: "32px", display: "flex", flexDirection: "column", gap: "10px" }}>
             {[
-              ["CS & Cognitive Science", "UC Berkeley, Dec 2026"],
-              ["Product + SWE intern", "Hooglee — Series A"],
-              ["Head Teaching Assistant", "Berkeley Engineering Entrepreneurship"],
+              ["CS & Cognitive Science", "UC Berkeley — Dec 2026"],
+              ["Product + SWE", "Hooglee, Series A"],
+              ["Head TA", "Berkeley Engineering Entrepreneurship"],
             ].map(([role, detail]) => (
-              <div key={role} className="flex gap-6 text-xs">
-                <span style={{ color: "#bbb", minWidth: "180px" }}>{role}</span>
+              <div key={role} style={{ display: "flex", gap: "24px", fontSize: "0.75rem" }}>
+                <span style={{ color: "#bbb", minWidth: "160px" }}>{role}</span>
                 <span style={{ color: "#999" }}>{detail}</span>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Banner — full width, taller, no fade so the art shows */}
-        <div className="relative w-full overflow-hidden" style={{ height: "260px" }}>
+        {/* Water wave transition → banner */}
+        <div className="water-transition">
+          {/* SVG wave: transitions from page background to teal */}
+          <svg
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+            style={{ display: "block", width: "100%", height: "120px", marginBottom: "-2px" }}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="waveGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="var(--background)" />
+                <stop offset="100%" stopColor="#4eb3b3" />
+              </linearGradient>
+            </defs>
+            <rect width="1440" height="120" fill="url(#waveGrad)" />
+            {/* Wave pattern lines suggesting water ripples */}
+            <path d="M0,60 C200,30 400,90 600,60 C800,30 1000,80 1200,55 C1320,40 1380,65 1440,60 L1440,120 L0,120 Z"
+              fill="rgba(255,255,255,0.08)" />
+            <path d="M0,75 C180,50 360,95 540,70 C720,45 900,85 1080,65 C1260,45 1350,75 1440,70 L1440,120 L0,120 Z"
+              fill="rgba(255,255,255,0.06)" />
+            <path d="M0,90 C240,70 480,105 720,85 C960,65 1200,100 1440,85 L1440,120 L0,120 Z"
+              fill="rgba(255,255,255,0.04)" />
+          </svg>
+        </div>
+
+        {/* Banner image */}
+        <div style={{ position: "relative", width: "100%", height: "300px", marginTop: "-1px" }}>
           <Image
             src="/banner.jpg"
             alt=""
@@ -168,17 +231,17 @@ export default function Home() {
           />
         </div>
 
-        {/* Footer */}
-        <footer style={{ background: "#111", color: "#444" }}
-          className="px-8 py-6 flex items-center justify-between">
-          <p className="text-xs font-mono">ysli.dev</p>
-          <div className="flex gap-6">
+        {/* Footer — matches banner ink color */}
+        <footer style={{ background: "#1a1a1a", color: "#444", padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <p style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>ysli.dev</p>
+          <div style={{ display: "flex", gap: "20px" }}>
             {links.map((l) => (
               <a key={l.label} href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="text-xs transition-colors hover:text-white"
-                style={{ color: "#555" }}>
+                style={{ fontSize: "0.7rem", color: "#555", textDecoration: "none" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+                onMouseLeave={e => (e.currentTarget.style.color = "#555")}>
                 {l.label}
               </a>
             ))}
