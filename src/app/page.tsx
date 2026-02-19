@@ -3,63 +3,6 @@
 import FishCanvas from "@/components/FishCanvas";
 import Image from "next/image";
 
-const currentWork = [
-  {
-    title: "X (Twitter) Rec-Sys",
-    role: "Research",
-    year: "2025–26",
-    href: "https://github.com/twitter/the-algorithm",
-    forbesNote: null,
-    tags: ["Research", "Rec-Sys", "Open Source"],
-    bullets: [
-      "Studying Twitter's open-source recommendation algorithm and contributing to research on social media content ranking and distribution.",
-    ],
-  },
-  {
-    title: "AgentHLE Benchmark",
-    role: "Open Source",
-    year: "2026",
-    href: "https://github.com/yslidev/agenthle-finance",
-    forbesNote: null,
-    tags: ["Python", "Evals", "AI"],
-    bullets: [
-      "Helping build AgentHLE — an agentic benchmark for evaluating AI on expert-level tasks. Finance module: automated SEC EDGAR XBRL extraction for IBD analysts.",
-    ],
-  },
-];
-
-const prevWork = [
-  {
-    title: "Hooglee",
-    role: "Product Intern (& SWE)",
-    year: "2024–25",
-    href: "https://hooglee.com",
-    forbesNote: "as reported by Forbes",
-    tags: ["Product", "Go", "AI"],
-    bullets: [
-      "First junior hire at ex-Google CEO's video AI startup — reporting to ex-TikTok Head of Product, from day one to Series A.",
-      "Owned Search & Discovery end-to-end: PRD, design, cross-functional launch with 2 engineers. Gemini 2.5 Pro embeddings + vector retrieval, <200ms latency.",
-      "Built account system, notifications, and admin panel for trust & safety and growth analytics.",
-      "Built user research funnel and 4-batch influencer program (200+ creators), 100+ interviews to validate PMF.",
-      "Won internal hackathon — context personalization became the foundation for the content discovery system.",
-      "Refactored GoLang services (identity UID, middleware, notifications APIs) as platform scaled to Series A.",
-    ],
-  },
-  {
-    title: "Head Teaching Assistant",
-    role: "UC Berkeley College of Engineering",
-    year: "2024–25",
-    href: "https://entrepreneurship.berkeley.edu/engin-183b/",
-    forbesNote: null,
-    tags: ["Teaching", "Startups"],
-    bullets: [
-      "Head TA for ENGIN 183B — Berkeley's largest startup class for engineering students, 500+ students per semester.",
-      "Organized Berkeley's first Global Student Startup Competition in Korea; mentored the champion team.",
-      "Directed market research of 300+ startups across AI, blockchain, and healthcare for ENGIN 283. Produced an eBook on future technology trends.",
-    ],
-  },
-];
-
 const writing = [
   {
     title: "Learning, In The Omnipresent Classroom",
@@ -88,39 +31,6 @@ const links = [
   { label: "email", href: "mailto:yushanli@berkeley.edu" },
 ];
 
-function WorkEntry({ p }: { p: typeof prevWork[0] }) {
-  return (
-    <div>
-      <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: "4px" }}>
-        <div style={{ display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" }}>
-          <a href={p.href} target="_blank" rel="noopener noreferrer"
-            style={{ fontSize: "0.9rem", fontWeight: 500, color: "#111", textDecoration: "none" }}
-            onMouseEnter={e => (e.currentTarget.style.color = "var(--accent)")}
-            onMouseLeave={e => (e.currentTarget.style.color = "#111")}>
-            {p.title} ↗
-          </a>
-          <span style={{ fontSize: "0.75rem", color: "#bbb" }}>{p.role}</span>
-        </div>
-        <span style={{ fontSize: "0.7rem", color: "#ccc", fontFamily: "monospace", flexShrink: 0, marginLeft: "8px" }}>{p.year}</span>
-      </div>
-      <div style={{ display: "flex", gap: "6px", marginBottom: "12px" }}>
-        {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
-      </div>
-      <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "7px" }}>
-        {p.bullets.map((b, j) => (
-          <li key={j} style={{ fontSize: "0.82rem", color: "#888", lineHeight: 1.7, paddingLeft: "12px", position: "relative" }}>
-            <span style={{ position: "absolute", left: 0, color: "#ccc" }}>·</span>
-            {b}
-          </li>
-        ))}
-      </ul>
-      {"forbesNote" in p && p.forbesNote && (
-        <p style={{ marginTop: "8px", fontSize: "0.72rem", color: "#bbb", fontStyle: "italic" }}>{p.forbesNote}</p>
-      )}
-    </div>
-  );
-}
-
 export default function Home() {
   return (
     <>
@@ -136,7 +46,7 @@ export default function Home() {
             <span style={{ fontSize: "0.8rem", color: "#999", letterSpacing: "-0.01em" }}>ysli.dev</span>
           </a>
           <div className="flex items-center gap-8">
-            {[["work", "#work"], ["writing", "#writing"], ["now", "#now"]].map(([label, href]) => (
+            {[["writing", "#writing"], ["now", "#now"]].map(([label, href]) => (
               <a key={label} href={href}
                 style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#bbb", textDecoration: "none" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "#111")}
@@ -154,24 +64,35 @@ export default function Home() {
           </p>
 
           <p className="fade-up fade-up-2" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "16px" }}>
-            Previously built product at{" "}
+            I spent 2024–25 at{" "}
             <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
-            {" "}— Eric Schmidt's video AI startup — as first junior hire, reporting to the ex-TikTok Head of Product.
-            Also ran Berkeley's largest engineering startup class as Head TA, mentoring 500+ students and organizing the{" "}
+            {" "}— Eric Schmidt's video AI startup — as the first junior hire.
+            I owned product from day one to Series A: shipped search & discovery, account system, admin dashboard,
+            ran a 200+ creator influencer program, and won the internal hackathon.
+          </p>
+
+          <p className="fade-up fade-up-2" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "16px" }}>
+            I also spent a year as Head TA for Berkeley's largest engineering startup class,
+            mentoring 500+ students and organizing the first{" "}
             <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
             in Korea.
           </p>
 
+          <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "16px" }}>
+            These days I'm researching X's open-source rec-sys algorithm and helping build the{" "}
+            <a href="https://github.com/yslidev/agenthle-finance" target="_blank" rel="noopener noreferrer" className="text-link">AgentHLE benchmark</a>.
+          </p>
+
           <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "32px" }}>
-            CS + Cognitive Science at UC Berkeley, fully sponsored as a{" "}
-            <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
-            {" "}Before that, I went to{" "}
+            I study CS + Cognitive Science at UC Berkeley on a full{" "}
+            <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholarship</a>.
+            Before Berkeley I went to{" "}
             <a href="https://uwcsa.org" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
             in 🇧🇦 and studied Cultural Anthropology.
             I travel, paint, and make things — including this logo & banner.
           </p>
 
-          <div className="fade-up fade-up-4" style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+          <div className="fade-up fade-up-4" style={{ display: "flex", flexWrap: "wrap", gap: "20px", marginBottom: "20px" }}>
             {links.map((l) => (
               <a key={l.label} href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
@@ -182,26 +103,15 @@ export default function Home() {
               </a>
             ))}
           </div>
-        </section>
 
-        <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px" }}>
-          <div style={{ height: "1px", background: "var(--border)" }} />
-        </div>
-
-        {/* Work */}
-        <section id="work" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px" }}>
-          <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "28px" }}>
-            now
-          </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "36px", marginBottom: "52px" }}>
-            {currentWork.map((p, i) => <WorkEntry key={i} p={p} />)}
-          </div>
-
-          <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "28px" }}>
-            prev
-          </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
-            {prevWork.map((p, i) => <WorkEntry key={i} p={p} />)}
+          {/* Resume superlinks */}
+          <div className="fade-up fade-up-5" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+            <a href="#" className="resume-link">
+              résumé — product
+            </a>
+            <a href="#" className="resume-link">
+              résumé — engineering
+            </a>
           </div>
         </section>
 
@@ -236,26 +146,16 @@ export default function Home() {
         </div>
 
         {/* Now */}
-        <section id="now" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px 80px" }}>
+        <section id="now" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px 100px" }}>
           <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
             now
           </p>
-          <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, display: "flex", flexDirection: "column", gap: "10px", maxWidth: "440px" }}>
-            <p>Fourth-year at UC Berkeley. Grew up in China, went to school in Bosnia, landed in California.</p>
-            <p>I skate, paint, and try to visit a new country every few months. Former national champion in artistic swimming — that was another life.</p>
-          </div>
-
-          <div style={{ marginTop: "32px", display: "flex", flexDirection: "column", gap: "10px" }}>
-            {[
-              ["CS & Cognitive Science", "UC Berkeley — Dec 2026"],
-              ["Product + SWE", "Hooglee, Series A"],
-              ["Head TA", "Berkeley Engineering Entrepreneurship"],
-            ].map(([role, detail]) => (
-              <div key={role} style={{ display: "flex", gap: "24px", fontSize: "0.75rem" }}>
-                <span style={{ color: "#bbb", minWidth: "160px" }}>{role}</span>
-                <span style={{ color: "#999" }}>{detail}</span>
-              </div>
-            ))}
+          <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, maxWidth: "440px" }}>
+            <p>
+              Fourth-year at UC Berkeley. Grew up in China, went to school in Bosnia, landed in California.
+              I skate, paint, and try to visit a new country every few months.
+              Former national champion in artistic swimming — that was another life.
+            </p>
           </div>
         </section>
 
@@ -272,7 +172,6 @@ export default function Home() {
               </linearGradient>
             </defs>
             <rect width="1440" height="260" fill="url(#waveGrad)" />
-            {/* White wave ripples echoing the banner illustration */}
             <path d="M0,140 C240,112 480,168 720,140 C960,112 1200,162 1440,140 L1440,260 L0,260 Z"
               fill="rgba(255,255,255,0.10)" />
             <path d="M0,170 C200,148 400,192 600,170 C800,148 1040,188 1240,165 C1340,153 1400,172 1440,168 L1440,260 L0,260 Z"

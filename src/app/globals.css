@@ -150,3 +150,21 @@ body {
 }
 
 nav a { cursor: crosshair; }
+
+.resume-link {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: #2596be;
+  text-decoration: none;
+  border: 1px solid #9dd4db;
+  border-radius: 4px;
+  padding: 4px 10px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.03em;
+}
+.resume-link:hover {
+  background: #2596be;
+  color: #fff;
+  border-color: #2596be;
+}
