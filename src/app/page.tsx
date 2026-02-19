@@ -77,19 +77,25 @@ export default function Home() {
           <p className="section-label fade-up fade-up-1">about</p>
           <div className="fade-up fade-up-2 prose-block">
             <p>
-              I study CS + Cognitive Science at UC Berkeley on a full{" "}
-              <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholarship</a>.
-              In 2024–25 I was the first junior hire at{" "}
-              <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
-              {" "}— Eric Schmidt's video AI startup — owning UX from day one to Series A:
-              shipped search & discovery, account system, admin dashboard, ran a 200+ creator influencer program, and won the internal hackathon.
+              Fourth-year CS + Cognitive Science at UC Berkeley, fully funded as a{" "}
+              <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
+              Currently researching X's open-source rec-sys and building the{" "}
+              <a href="https://github.com/yslidev/agenthle-finance" target="_blank" rel="noopener noreferrer" className="text-link">AgentHLE benchmark</a>.
             </p>
             <p>
-              But who wears just one hat? I also spent a year as Head TA running Berkeley's largest engineering startup class,
-              sent 500+ founders-in-training to Korea for the first{" "}
-              <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>,
-              and currently research X's open-source rec-sys and help build the{" "}
-              <a href="https://github.com/yslidev/agenthle-finance" target="_blank" rel="noopener noreferrer" className="text-link">AgentHLE benchmark</a>.
+              In 2024–25 I was the first junior hire at{" "}
+              <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
+              {" "}—{" "}
+              <a href="https://www.forbes.com/sites/sarahemerson/2025/01/09/eric-schmidt-is-working-on-an-ai-startup-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">an NDA billionaire</a>
+              's video AI startup — owning UX from day one to Series A.
+              I shipped search & discovery as PM, built the account system as PM and admin dashboard as SWE,
+              ran a 200+ creator influencer program as user ops, and won the internal hackathon on rec-sys user profiling.
+            </p>
+            <p>
+              I also spent a year as Head TA for Berkeley's largest engineering startup class,
+              mentored 500+ student founders, and helped organize the first{" "}
+              <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
+              — sending teams to Korea.
             </p>
             <p>
               Say hi at{" "}
@@ -109,19 +115,14 @@ export default function Home() {
             <p>
               Grew up in China, went to{" "}
               <a href="https://uwcsa.org" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
-              in 🇧🇦 where I studied Cultural Anthropology and discovered that everywhere is home if you stay long enough.
-              20+ countries and counting — I'm a{" "}
-              <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>,
-              which means I believe borders are mostly an administrative inconvenience.
+              in 🇧🇦 where I studied Cultural Anthropology. 20+ countries and counting.
             </p>
             <p>
               I figure skate on the Cal team.
               I also used to be a national champion in artistic swimming — that was another life.
             </p>
             <p>
-              I paint. I made this{" "}
-              <span style={{ color: "#bbb" }}>logo & banner</span>.
-              I find it mildly embarrassing when people don't know what Cognitive Science is.
+              I paint. I made this <span style={{ color: "#bbb" }}>logo & banner</span>.
             </p>
           </div>
 
