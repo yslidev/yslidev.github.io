@@ -52,7 +52,7 @@ export default function Home() {
             <span style={{ fontSize: "0.8rem", color: "#999", letterSpacing: "-0.01em" }}>ysli.dev</span>
           </a>
           <div className="flex items-center gap-8">
-            {[["writing", "#writing"]].map(([label, href]) => (
+            {[["about", "#about"], ["living", "#living"], ["writing", "#writing"]].map(([label, href]) => (
               <a key={label} href={href}
                 style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#bbb", textDecoration: "none" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "#111")}
@@ -63,14 +63,15 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* Hero */}
-        <section style={{ maxWidth: "600px", margin: "0 auto", padding: "140px 32px 80px" }}>
-
-          <p className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "32px" }}>
+        {/* Hero / name */}
+        <section style={{ maxWidth: "600px", margin: "0 auto", padding: "140px 32px 60px" }}>
+          <p className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "0" }}>
             Yushan Li
           </p>
+        </section>
 
-          {/* About */}
+        {/* About */}
+        <section id="about" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
           <p className="section-label fade-up fade-up-1">about</p>
           <div className="fade-up fade-up-2 prose-block">
             <p>
@@ -82,8 +83,8 @@ export default function Home() {
             <p>
               In 2024–25 I was the first junior hire at{" "}
               <a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">an NDA billionaire</a>
-              's video AI startup — owning UX from day one to Series A.
-              I shipped search & discovery as PM, built the account system as PM and admin dashboard as SWE,
+              's video AI startup, owning UX from day one to Series A.
+              Beyond the UX work, I shipped search & discovery as PM, built the account system as PM and admin dashboard as SWE,
               ran a 200+ creator influencer program as user ops, and won the internal hackathon on rec-sys user profiling.
             </p>
             <p>
@@ -92,19 +93,15 @@ export default function Home() {
               <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
               — sending teams to Korea.
             </p>
-            <p>
-              Say hi at{" "}
-              <a href="mailto:yushanli@berkeley.edu" className="text-link">yushanli [at] berkeley.edu</a>!
-            </p>
           </div>
-
-          {/* Resume links */}
-          <div className="fade-up fade-up-3" style={{ display: "flex", gap: "10px", flexWrap: "wrap", margin: "20px 0 40px" }}>
+          <div className="fade-up fade-up-3" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "20px" }}>
             <a href="/resume_product.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">résumé — product ↗</a>
             <a href="/resume_engineering.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">résumé — engineering ↗</a>
           </div>
+        </section>
 
-          {/* Living */}
+        {/* Living */}
+        <section id="living" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
           <p className="section-label fade-up fade-up-3">living</p>
           <div className="fade-up fade-up-4 prose-block">
             <p>
@@ -120,27 +117,11 @@ export default function Home() {
               I paint. I made this <span style={{ color: "#bbb" }}>logo & banner</span>.
             </p>
           </div>
-
-          {/* Social links */}
-          <div className="fade-up fade-up-5" style={{ display: "flex", flexWrap: "wrap", gap: "18px", margin: "16px 0 40px" }}>
-            {links.map((l) => (
-              <a key={l.label} href={l.href}
-                target={l.href.startsWith("http") ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className="text-link"
-                style={{ fontSize: "0.8rem", color: "#999" }}>
-                {l.label}
-              </a>
-            ))}
-          </div>
-
         </section>
 
         {/* Writing */}
-        <section id="writing" style={{ maxWidth: "600px", margin: "0 auto", padding: "20px 32px 60px" }}>
-          <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
-            writing
-          </p>
+        <section id="writing" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
+          <p className="section-label fade-up fade-up-4">writing</p>
           {writing.map((w, i) => (
             <a key={i} href={w.href} target="_blank" rel="noopener noreferrer" className="superlink">
               <span className="superlink-title">{w.title}</span>
@@ -156,6 +137,22 @@ export default function Home() {
               Substack
             </a>
           </p>
+        </section>
+
+        {/* Contact */}
+        <section style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 80px" }}>
+          <p className="section-label fade-up fade-up-5">say hi</p>
+          <div className="fade-up fade-up-5" style={{ display: "flex", flexWrap: "wrap", gap: "18px" }}>
+            {links.map((l) => (
+              <a key={l.label} href={l.href}
+                target={l.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="text-link"
+                style={{ fontSize: "0.8rem", color: "#999" }}>
+                {l.label}
+              </a>
+            ))}
+          </div>
         </section>
 
 
