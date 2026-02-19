@@ -102,19 +102,19 @@ export default function FishCanvas() {
     window.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseleave", onMouseLeave);
 
-    const fishCount = 16;
+    const fishCount = window.innerWidth < 768 ? 8 : 16;
     fishRef.current = Array.from({ length: fishCount }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       angle: Math.random() * Math.PI * 2,
       size: 9 + Math.random() * 15,
-      opacity: 0.18 + Math.random() * 0.22,
+      opacity: 0.08 + Math.random() * 0.07,
       wobble: Math.random() * Math.PI * 2,
-      wobbleSpeed: 0.035 + Math.random() * 0.03,
+      wobbleSpeed: 0.0245 + Math.random() * 0.021,
       roamAngle: Math.random() * Math.PI * 2,
       roamTurnTimer: Math.floor(Math.random() * 120),
       roamTurnInterval: 90 + Math.floor(Math.random() * 110),
-      baseSpeed: 0.5 + Math.random() * 0.6,
+      baseSpeed: 0.35 + Math.random() * 0.42,
     }));
 
     function animate() {
