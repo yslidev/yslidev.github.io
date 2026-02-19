@@ -10,7 +10,7 @@
   --teal: #64cad1;
   --teal-deep: #2596be;
   --teal-dark: #1a7a9e;
-  --banner-height: 260px;
+  --banner-height: 380px;
 }
 
 * {
@@ -67,11 +67,11 @@ body {
 }
 
 /* Page content sits above the fixed background layers.
-   Semi-transparent so the teal water shows through at the edges. */
+   Fully opaque — ends before building zone, teal water shows below. */
 .page-content {
   position: relative;
   z-index: 4;
-  background: rgba(232, 246, 248, 0.82);
+  background: #e8f6f8;
 }
 
 /* Content sections */

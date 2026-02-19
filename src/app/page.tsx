@@ -159,22 +159,8 @@ export default function Home() {
           </p>
         </section>
 
-        {/* Footer */}
-        <footer style={{ background: "rgba(18,18,18,0.92)", color: "#444", padding: "20px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <p style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>ysli.dev</p>
-          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-            {links.map((l) => (
-              <a key={l.label} href={l.href}
-                target={l.href.startsWith("http") ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                style={{ fontSize: "0.7rem", color: "#555", textDecoration: "none" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={e => (e.currentTarget.style.color = "#555")}>
-                {l.label}
-              </a>
-            ))}
-          </div>
-        </footer>
+        {/* Spacer — page content ends here, teal water + building shows below */}
+        <div style={{ height: "40px" }} />
 
       </div>
     </>
