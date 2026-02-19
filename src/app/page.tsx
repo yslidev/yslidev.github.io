@@ -36,6 +36,11 @@ const friends = [
   { name: "Aidan", href: "https://aidanjs.com" },
   { name: "Aiden", href: "https://aidenybai.com" },
   { name: "Hamidah", href: "https://hamidah.me" },
+  { name: "Will", href: "https://willhath.com" },
+  { name: "Lexi", href: "https://kognise.dev" },
+  { name: "Lev", href: "https://lev.la" },
+  { name: "Claire", href: "#" },
+  { name: "Ellen", href: "#" },
 ];
 
 export default function Home() {
@@ -77,19 +82,20 @@ export default function Home() {
             <p>
               I study CS + Cognitive Science at UC Berkeley on a full{" "}
               <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholarship</a>.
-              I spent 2024–25 as the first junior hire at{" "}
+              In 2024–25 I was the first junior hire at{" "}
               <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
-              {" "}— Eric Schmidt's video AI startup — owning product from day one to Series A.
+              {" "}— Eric Schmidt's video AI startup — owning product from day one to Series A:
+              shipped search & discovery, account system, admin dashboard, ran a 200+ creator influencer program, and won the internal hackathon.
             </p>
             <p>
-              But who wears just one hat? I also spent a year as Head TA running Berkeley's largest
-              engineering startup class, sent 500+ founders-in-training to Korea for the first{" "}
+              But who wears just one hat? I also spent a year as Head TA running Berkeley's largest engineering startup class,
+              sent 500+ founders-in-training to Korea for the first{" "}
               <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>,
-              and currently research rec-sys and help build the{" "}
+              and currently research X's open-source rec-sys and help build the{" "}
               <a href="https://github.com/yslidev/agenthle-finance" target="_blank" rel="noopener noreferrer" className="text-link">AgentHLE benchmark</a>.
             </p>
             <p>
-              Feel free to reach out at{" "}
+              Say hi at{" "}
               <a href="mailto:yushanli@berkeley.edu" className="text-link">yushanli [at] berkeley.edu</a>!
             </p>
           </div>
@@ -106,17 +112,19 @@ export default function Home() {
             <p>
               Grew up in China, went to{" "}
               <a href="https://uwcsa.org" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
-              in 🇧🇦 where I studied Cultural Anthropology and learned that everywhere is home if you stay long enough.
+              in 🇧🇦 where I studied Cultural Anthropology and discovered that everywhere is home if you stay long enough.
+              20+ countries and counting — I'm a{" "}
+              <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>,
+              which means I believe borders are mostly an administrative inconvenience.
             </p>
             <p>
-              I figure skate on the Cal team. I also used to be a national champion in artistic swimming — that was another life.
+              I figure skate on the Cal team.
+              I also used to be a national champion in artistic swimming — that was another life.
             </p>
             <p>
-              I paint. I made this logo and banner. I find it embarrassing when people don't know what Cognitive Science is.
-            </p>
-            <p>
-              I'm a Shelby Davis Scholar, which means I believe borders are mostly an administrative inconvenience.
-              20+ countries and counting.
+              I paint. I made this{" "}
+              <span style={{ color: "#bbb" }}>logo & banner</span>.
+              I find it mildly embarrassing when people don't know what Cognitive Science is.
             </p>
           </div>
 
