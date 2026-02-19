@@ -33,7 +33,7 @@ async function getSubstackPosts(): Promise<WritingEntry[] | null> {
   try {
     const res = await fetch(
       "https://liyushan27.substack.com/api/v1/posts?limit=5",
-      { next: { revalidate: 3600 } }
+      { cache: "no-store" }
     );
     if (!res.ok) return null;
     const data = await res.json();
