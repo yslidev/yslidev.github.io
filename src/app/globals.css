@@ -10,7 +10,7 @@
   --teal: #64cad1;
   --teal-deep: #2596be;
   --teal-dark: #1a7a9e;
-  --banner-height: 380px;
+  --banner-height: 360px;
 }
 
 * {
@@ -45,18 +45,7 @@ body {
   z-index: 10;
 }
 
-/* Solid teal water — fills the bottom zone behind buildings */
-.fixed-water {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: var(--banner-height);
-  background: #64cad1;
-  z-index: 1;
-}
-
-/* Fixed building skyline — transparent PNG, sits above teal water */
+/* Fixed colorful banner — always anchored to bottom of viewport */
 .fixed-banner {
   position: fixed;
   bottom: 0;
