@@ -47,9 +47,11 @@ async function getSubstackPosts(): Promise<WritingEntry[] | null> {
         slug?: string;
         post_date?: string;
       }) => {
+        // Only accept https:// URLs from the API to prevent javascript: injection
         const href =
-          post.canonical_url ||
-          `https://liyushan27.substack.com/p/${post.slug ?? ""}`;
+          post.canonical_url?.startsWith("https://")
+            ? post.canonical_url
+            : `https://liyushan27.substack.com/p/${post.slug ?? ""}`;
         let year = "";
         if (post.post_date) {
           const d = new Date(post.post_date);

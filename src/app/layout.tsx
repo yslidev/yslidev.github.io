@@ -79,6 +79,12 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+// Safely serialize JSON-LD: JSON.stringify doesn't escape `<`, so a string
+// containing `</script>` could break out of the script tag. Unicode-escape it.
+function jsonLdString(obj: unknown): string {
+  return JSON.stringify(obj).replace(/</g, "\\u003c");
+}
+
 // ── Structured data ──────────────────────────────────────────────────────────
 
 // 1. ProfilePage — Google's recommended schema type for personal profile pages.
@@ -259,15 +265,15 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdString(profilePageLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdString(websiteLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdString(faqLd) }}
         />
       </head>
       <body className={`${inter.variable} antialiased`}>
