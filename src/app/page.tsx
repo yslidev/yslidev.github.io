@@ -111,7 +111,7 @@ export default function Home() {
             <p>
               Grew up in China, went to{" "}
               <a href="https://uwc.org/school/uwc-mostar/" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
-              in 🇧🇦 where I studied Cultural Anthropology. 20+ countries and counting.
+              in 🇧🇦 where I studied Cultural Anthropology. Travelled 20+ countries and counting.
             </p>
             <p>
               I figure skate on the Cal team.
