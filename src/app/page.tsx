@@ -36,13 +36,16 @@ export default function Home() {
     <>
       <FishCanvas />
 
-      {/* Fixed banner at bottom — buildings with transparent BG float on teal water */}
+      {/* Fixed teal water background — always behind everything */}
+      <div className="fixed-water" />
+
+      {/* Fixed building skyline — transparent PNG floats on teal water */}
       <div className="fixed-banner">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/building.png" alt="" />
       </div>
 
-      <div className="page-content min-h-screen">
+      <div className="page-content">
 
         {/* Nav */}
         <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between"
@@ -138,7 +141,7 @@ export default function Home() {
         </section>
 
         {/* Writing */}
-        <section id="writing" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px" }}>
+        <section id="writing" style={{ maxWidth: "600px", margin: "0 auto", padding: "20px 32px 60px" }}>
           <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
             writing
           </p>
@@ -159,8 +162,6 @@ export default function Home() {
           </p>
         </section>
 
-        {/* Spacer — page content ends here, teal water + building shows below */}
-        <div style={{ height: "40px" }} />
 
       </div>
     </>
