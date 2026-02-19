@@ -10,7 +10,6 @@
   --teal: #64cad1;
   --teal-deep: #2596be;
   --teal-dark: #1a7a9e;
-  --banner-height: 360px;
   --section-px: 32px;
 }
 
@@ -46,21 +45,20 @@ body {
   z-index: 10;
 }
 
-/* Fixed colorful banner — always anchored to bottom of viewport */
-.fixed-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+/* Cityscape hero banner — sits at top of page, below fixed nav */
+.hero-banner {
+  position: relative;
   width: 100%;
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
+  padding-top: 64px; /* clear fixed nav */
+  z-index: 3;
   pointer-events: none;
+  overflow: hidden;
 }
-.fixed-banner img {
+.hero-banner img {
   width: 100%;
   height: auto;
   display: block;
+  transform: scaleY(-1); /* flip so dark base is at the top */
 }
 
 /* Page content — opaque, ends naturally above the banner zone */
@@ -70,14 +68,6 @@ body {
   background: #e8f6f8;
 }
 
-/* Transparent spacer BELOW page-content — creates scroll room so banner is visible */
-.banner-spacer {
-  position: relative;
-  z-index: 4;
-  height: var(--banner-height);
-  background: transparent;
-  pointer-events: none;
-}
 
 /* Content sections */
 .page-content section,
@@ -137,7 +127,7 @@ body {
 }
 .superlink-desc {
   font-size: 0.8rem;
-  color: #aaa;
+  color: #666;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -153,7 +143,7 @@ body {
 }
 .superlink-year {
   font-size: 0.7rem;
-  color: #bbb;
+  color: #666;
   font-family: 'Courier New', monospace;
   flex-shrink: 0;
 }
@@ -172,12 +162,25 @@ body {
 
 nav a { cursor: crosshair; }
 
+/* Nav section links */
+.nav-link {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.nav-link:hover {
+  color: #111;
+}
+
 /* Section headers inside hero (about / living) */
 .section-label {
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #bbb;
+  color: #666;
   margin-bottom: 14px;
 }
 
@@ -212,7 +215,7 @@ nav a { cursor: crosshair; }
   content: "—";
   position: absolute;
   left: 0;
-  color: #bbb;
+  color: #666;
   font-size: 0.75rem;
 }
 
@@ -236,10 +239,6 @@ nav a { cursor: crosshair; }
 
 /* ── Mobile ── */
 @media (max-width: 640px) {
-  :root {
-    --banner-height: 180px;
-  }
-
   /* Nav: tighter padding, smaller gap */
   nav {
     padding: 14px 20px !important;
@@ -254,9 +253,14 @@ nav a { cursor: crosshair; }
     padding-right: 20px !important;
   }
 
-  /* Hero name: slightly smaller floor */
+  /* Hero banner: slightly smaller top clearance on mobile nav */
+  .hero-banner {
+    padding-top: 52px;
+  }
+
+  /* Hero name: small gap below the banner */
   section:first-of-type {
-    padding-top: 100px !important;
+    padding-top: 24px !important;
     padding-bottom: 36px !important;
   }
 

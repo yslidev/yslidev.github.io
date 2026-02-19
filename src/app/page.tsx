@@ -1,9 +1,14 @@
-"use client";
-
 import FishCanvas from "@/components/FishCanvas";
 import Image from "next/image";
 
-const writing = [
+interface WritingEntry {
+  title: string;
+  desc: string;
+  href: string;
+  year: string;
+}
+
+const writingFallback: WritingEntry[] = [
   {
     title: "Learning, In The Omnipresent Classroom",
     desc: "Winter 2025, 1/4",
@@ -24,6 +29,50 @@ const writing = [
   },
 ];
 
+async function getSubstackPosts(): Promise<WritingEntry[] | null> {
+  try {
+    const res = await fetch(
+      "https://liyushan27.substack.com/api/v1/posts?limit=5",
+      { next: { revalidate: 3600 } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) return null;
+
+    return data.map(
+      (post: {
+        title?: string;
+        subtitle?: string;
+        canonical_url?: string;
+        slug?: string;
+        post_date?: string;
+      }) => {
+        const href =
+          post.canonical_url ||
+          `https://liyushan27.substack.com/p/${post.slug ?? ""}`;
+        let year = "";
+        if (post.post_date) {
+          const d = new Date(post.post_date);
+          if (!isNaN(d.getTime())) {
+            year = d.toLocaleDateString("en-US", {
+              month: "short",
+              year: "numeric",
+            });
+          }
+        }
+        return {
+          title: post.title ?? "",
+          desc: post.subtitle ?? "",
+          href,
+          year,
+        };
+      }
+    );
+  } catch {
+    return null;
+  }
+}
+
 const links = [
   { label: "github", href: "https://github.com/yslidev" },
   { label: "linkedin", href: "https://linkedin.com/in/liyushan27" },
@@ -31,16 +80,12 @@ const links = [
   { label: "email", href: "mailto:yushanli@berkeley.edu" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const writing = (await getSubstackPosts()) ?? writingFallback;
+
   return (
     <>
       <FishCanvas />
-
-      {/* Fixed colorful banner at bottom — always visible like a skyline */}
-      <div className="fixed-banner">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/banner.jpg" alt="" />
-      </div>
 
       <div className="page-content">
 
@@ -49,25 +94,28 @@ export default function Home() {
           style={{ background: "rgba(228,246,250,0.88)", backdropFilter: "blur(14px)", borderBottom: "1px solid #9dd4db" }}>
           <a href="#" className="flex items-center gap-2.5">
             <Image src="/logo.jpg" alt="ysli" width={24} height={24} className="rounded-sm" />
-            <span style={{ fontSize: "0.8rem", color: "#999", letterSpacing: "-0.01em" }}>ysli.dev</span>
+            <span style={{ fontSize: "0.8rem", color: "#666", letterSpacing: "-0.01em" }}>ysli.dev</span>
           </a>
           <div className="flex items-center gap-8">
             {[["about", "#about"], ["living", "#living"], ["writing", "#writing"]].map(([label, href]) => (
-              <a key={label} href={href}
-                style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#bbb", textDecoration: "none" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "#111")}
-                onMouseLeave={e => (e.currentTarget.style.color = "#bbb")}>
+              <a key={label} href={href} className="nav-link">
                 {label}
               </a>
             ))}
           </div>
         </nav>
 
+        {/* Cityscape hero banner */}
+        <div className="hero-banner">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/banner.jpg" alt="" />
+        </div>
+
         {/* Hero / name */}
-        <section style={{ maxWidth: "600px", margin: "0 auto", padding: "140px 32px 60px" }}>
-          <p className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "0" }}>
+        <section style={{ maxWidth: "600px", margin: "0 auto", padding: "40px 32px 60px" }}>
+          <h1 className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "0" }}>
             Yushan Li
-          </p>
+          </h1>
         </section>
 
         {/* About */}
@@ -81,7 +129,7 @@ export default function Home() {
             </p>
             <p>
               In 2024–25 I was the first junior hire at{" "}
-              <a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">an NDA billionaire</a>
+              <a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">Eric Schmidt</a>
               's video AI startup, owning everything UX from day one to Series A. I also sidequested a lot within the company:
             </p>
             <ul className="bullet-list">
@@ -112,16 +160,17 @@ export default function Home() {
           <p className="section-label fade-up fade-up-3">living</p>
           <div className="fade-up fade-up-4 prose-block">
             <p>
-              Grew up in China, went to{" "}
+              I grew up in China and did high school at{" "}
               <a href="https://uwc.org/school/uwc-mostar/" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
-              in 🇧🇦 where I studied Cultural Anthropology. Travelled 20+ countries and counting.
+              in 🇧🇦, where I somehow ended up studying Cultural Anthropology instead of anything practical.
+              I've been to 20+ countries since — the list keeps growing and I have no plans to stop.
             </p>
             <p>
-              I figure skate on the Cal team.
-              I also used to be a national champion in artistic swimming — that was another life.
+              Right now I figure skate with the Cal team. A long time before that, I was a national champion in artistic swimming.
+              I barely talk about it anymore, but it probably shaped how I think about discipline more than anything else has.
             </p>
             <p>
-              I paint. I made this <span style={{ color: "#bbb" }}>logo & banner</span>.
+              I paint too. The <span style={{ color: "#666" }}>logo and banner</span> on this page are mine.
             </p>
           </div>
         </section>
@@ -132,15 +181,15 @@ export default function Home() {
           {writing.map((w, i) => (
             <a key={i} href={w.href} target="_blank" rel="noopener noreferrer" className="superlink">
               <span className="superlink-title">{w.title}</span>
-              <span className="superlink-desc">{w.desc}</span>
+              {w.desc && <span className="superlink-desc">{w.desc}</span>}
               <span className="superlink-year">{w.year}</span>
               <span className="superlink-arrow">↗</span>
             </a>
           ))}
-          <p style={{ fontSize: "0.75rem", color: "#ccc", marginTop: "16px" }}>
+          <p style={{ fontSize: "0.75rem", color: "#666", marginTop: "16px" }}>
             more on{" "}
             <a href="https://liyushan27.substack.com" target="_blank" rel="noopener noreferrer"
-              className="text-link" style={{ fontSize: "0.75rem", color: "#aaa" }}>
+              className="text-link" style={{ fontSize: "0.75rem", color: "#666" }}>
               Substack
             </a>
           </p>
@@ -155,18 +204,14 @@ export default function Home() {
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className="text-link"
-                style={{ fontSize: "0.8rem", color: "#999" }}>
+                style={{ fontSize: "0.8rem", color: "#666" }}>
                 {l.label}
               </a>
             ))}
           </div>
         </section>
 
-
       </div>
-
-      {/* Transparent scroll spacer so banner is never hidden behind page-content */}
-      <div className="banner-spacer" />
     </>
   );
 }
