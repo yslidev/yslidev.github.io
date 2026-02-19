@@ -31,6 +31,13 @@ const links = [
   { label: "email", href: "mailto:yushanli@berkeley.edu" },
 ];
 
+const friends = [
+  { name: "Matthew", href: "https://matthewlee.me" },
+  { name: "Aidan", href: "https://aidanjs.com" },
+  { name: "Aiden", href: "https://aidenybai.com" },
+  { name: "Hamidah", href: "https://hamidah.me" },
+];
+
 export default function Home() {
   return (
     <>
@@ -59,40 +66,62 @@ export default function Home() {
 
         {/* Hero */}
         <section style={{ maxWidth: "600px", margin: "0 auto", padding: "140px 32px 80px" }}>
-          <p className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "28px" }}>
+
+          <p className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "32px" }}>
             Yushan Li
           </p>
 
-          <p className="fade-up fade-up-2" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "16px" }}>
-            I spent 2024–25 at{" "}
-            <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
-            {" "}— Eric Schmidt's video AI startup — as the first junior hire.
-            I owned product from day one to Series A: shipped search & discovery, account system, admin dashboard,
-            ran a 200+ creator influencer program, and won the internal hackathon.
-          </p>
+          {/* About */}
+          <p className="section-label fade-up fade-up-1">about</p>
+          <div className="fade-up fade-up-2 prose-block">
+            <p>
+              I study CS + Cognitive Science at UC Berkeley on a full{" "}
+              <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholarship</a>.
+              I spent 2024–25 as the first junior hire at{" "}
+              <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
+              {" "}— Eric Schmidt's video AI startup — owning product from day one to Series A.
+            </p>
+            <p>
+              But who wears just one hat? I also spent a year as Head TA running Berkeley's largest
+              engineering startup class, sent 500+ founders-in-training to Korea for the first{" "}
+              <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>,
+              and currently research rec-sys and help build the{" "}
+              <a href="https://github.com/yslidev/agenthle-finance" target="_blank" rel="noopener noreferrer" className="text-link">AgentHLE benchmark</a>.
+            </p>
+            <p>
+              Feel free to reach out at{" "}
+              <a href="mailto:yushanli@berkeley.edu" className="text-link">yushanli [at] berkeley.edu</a>!
+            </p>
+          </div>
 
-          <p className="fade-up fade-up-2" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "16px" }}>
-            I also spent a year as Head TA for Berkeley's largest engineering startup class,
-            mentoring 500+ students and organizing the first{" "}
-            <a href="https://entrepreneurship.berkeley.edu" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
-            in Korea.
-          </p>
+          {/* Resume links */}
+          <div className="fade-up fade-up-3" style={{ display: "flex", gap: "10px", flexWrap: "wrap", margin: "20px 0 40px" }}>
+            <a href="#" className="resume-link">résumé — product ↗</a>
+            <a href="#" className="resume-link">résumé — engineering ↗</a>
+          </div>
 
-          <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "16px" }}>
-            These days I'm researching X's open-source rec-sys algorithm and helping build the{" "}
-            <a href="https://github.com/yslidev/agenthle-finance" target="_blank" rel="noopener noreferrer" className="text-link">AgentHLE benchmark</a>.
-          </p>
+          {/* Living */}
+          <p className="section-label fade-up fade-up-3">living</p>
+          <div className="fade-up fade-up-4 prose-block">
+            <p>
+              Grew up in China, went to{" "}
+              <a href="https://uwcsa.org" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
+              in 🇧🇦 where I studied Cultural Anthropology and learned that everywhere is home if you stay long enough.
+            </p>
+            <p>
+              I figure skate on the Cal team. I also used to be a national champion in artistic swimming — that was another life.
+            </p>
+            <p>
+              I paint. I made this logo and banner. I find it embarrassing when people don't know what Cognitive Science is.
+            </p>
+            <p>
+              I'm a Shelby Davis Scholar, which means I believe borders are mostly an administrative inconvenience.
+              20+ countries and counting.
+            </p>
+          </div>
 
-          <p className="fade-up fade-up-3" style={{ fontSize: "0.9rem", lineHeight: 1.85, color: "#777", maxWidth: "480px", marginBottom: "32px" }}>
-            I study CS + Cognitive Science at UC Berkeley on a full{" "}
-            <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholarship</a>.
-            Before Berkeley I went to{" "}
-            <a href="https://uwcsa.org" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
-            in 🇧🇦 and studied Cultural Anthropology.
-            I travel, paint, and make things — including this logo & banner.
-          </p>
-
-          <div className="fade-up fade-up-4" style={{ display: "flex", flexWrap: "wrap", gap: "20px", marginBottom: "20px" }}>
+          {/* Social links */}
+          <div className="fade-up fade-up-5" style={{ display: "flex", flexWrap: "wrap", gap: "18px", margin: "16px 0 40px" }}>
             {links.map((l) => (
               <a key={l.label} href={l.href}
                 target={l.href.startsWith("http") ? "_blank" : undefined}
@@ -104,15 +133,19 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Resume superlinks */}
-          <div className="fade-up fade-up-5" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-            <a href="#" className="resume-link">
-              résumé — product
-            </a>
-            <a href="#" className="resume-link">
-              résumé — engineering
-            </a>
+          {/* Friends */}
+          <p className="section-label fade-up fade-up-5">friends</p>
+          <div className="fade-up fade-up-5" style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginBottom: "8px" }}>
+            {friends.map((f) => (
+              <a key={f.name} href={f.href} target="_blank" rel="noopener noreferrer" className="friend-link">
+                {f.name}
+              </a>
+            ))}
           </div>
+          <p className="fade-up fade-up-5" style={{ fontSize: "0.75rem", color: "#bbb", marginTop: "6px" }}>
+            you should check out their sites.
+          </p>
+
         </section>
 
         <div style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px" }}>
@@ -152,9 +185,7 @@ export default function Home() {
           </p>
           <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, maxWidth: "440px" }}>
             <p>
-              Fourth-year at UC Berkeley. Grew up in China, went to school in Bosnia, landed in California.
-              I skate, paint, and try to visit a new country every few months.
-              Former national champion in artistic swimming — that was another life.
+              Fourth-year at Berkeley. Researching X's open-source rec-sys, building AgentHLE, and figuring out what comes after graduation in December 2026.
             </p>
           </div>
         </section>

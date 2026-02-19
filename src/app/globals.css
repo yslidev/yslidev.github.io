@@ -151,6 +151,41 @@ body {
 
 nav a { cursor: crosshair; }
 
+/* Section headers inside hero (about / living / friends) */
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 14px;
+}
+
+/* Prose paragraph blocks */
+.prose-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: #777;
+  max-width: 480px;
+  margin-bottom: 8px;
+}
+
+/* Friend pill links */
+.friend-link {
+  font-size: 0.8rem;
+  color: #777;
+  text-decoration: none;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.friend-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .resume-link {
   display: inline-block;
   font-size: 0.75rem;
