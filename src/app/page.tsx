@@ -76,13 +76,13 @@ export default function Home() {
           <div className="fade-up fade-up-2 prose-block">
             <p>
               Fourth-year CS + Cognitive Science at UC Berkeley, fully funded as a{" "}
-              <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
+              <a href="https://www.davisuwcscholars.org/" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
               Currently researching X's open-source rec-sys and building the AgentHLE benchmark.
             </p>
             <p>
               In 2024–25 I was the first junior hire at{" "}
               <a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">an NDA billionaire</a>
-              's video AI startup, owning UX from day one to Series A:
+              's video AI startup, owning everything UX from day one to Series A. I also sidequested a lot within the company:
             </p>
             <ul className="bullet-list">
               <li>Shipped search & discovery — as PM</li>
