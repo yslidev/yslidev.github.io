@@ -11,6 +11,7 @@
   --teal-deep: #2596be;
   --teal-dark: #1a7a9e;
   --banner-height: 360px;
+  --section-px: 32px;
 }
 
 * {
@@ -231,4 +232,59 @@ nav a { cursor: crosshair; }
   background: #2596be;
   color: #fff;
   border-color: #2596be;
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  :root {
+    --banner-height: 180px;
+  }
+
+  /* Nav: tighter padding, smaller gap */
+  nav {
+    padding: 14px 20px !important;
+  }
+  nav .flex.items-center.gap-8 {
+    gap: 20px !important;
+  }
+
+  /* All sections: narrower side padding */
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Hero name: slightly smaller floor */
+  section:first-of-type {
+    padding-top: 100px !important;
+    padding-bottom: 36px !important;
+  }
+
+  /* Prose text a touch smaller */
+  .prose-block {
+    font-size: 0.85rem;
+  }
+
+  /* Writing row: hide desc on very small screens, stack year */
+  .superlink {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .superlink-desc {
+    display: none;
+  }
+  .superlink-title {
+    font-size: 0.82rem;
+  }
+
+  /* Resume buttons: full width stack */
+  .resume-link {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
+
+  /* Fish canvas: reduce fish opacity on mobile so text stays readable */
+  #fish-canvas {
+    opacity: 0.6;
+  }
 }
