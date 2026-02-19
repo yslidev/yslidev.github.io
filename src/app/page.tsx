@@ -36,9 +36,10 @@ export default function Home() {
     <>
       <FishCanvas />
 
-      {/* Fixed banner at bottom — always visible like a skyline */}
+      {/* Fixed banner at bottom — buildings with transparent BG float on teal water */}
       <div className="fixed-banner">
-        <Image src="/banner.jpg" alt="" fill className="object-cover object-top" priority />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/building.png" alt="" />
       </div>
 
       <div className="page-content min-h-screen">
@@ -51,7 +52,7 @@ export default function Home() {
             <span style={{ fontSize: "0.8rem", color: "#999", letterSpacing: "-0.01em" }}>ysli.dev</span>
           </a>
           <div className="flex items-center gap-8">
-            {[["writing", "#writing"], ["now", "#now"]].map(([label, href]) => (
+            {[["writing", "#writing"]].map(([label, href]) => (
               <a key={label} href={href}
                 style={{ fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#bbb", textDecoration: "none" }}
                 onMouseEnter={e => (e.currentTarget.style.color = "#111")}
@@ -77,7 +78,7 @@ export default function Home() {
               <a href="https://shelbydavisfoundation.org" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholarship</a>.
               In 2024–25 I was the first junior hire at{" "}
               <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
-              {" "}— Eric Schmidt's video AI startup — owning product from day one to Series A:
+              {" "}— Eric Schmidt's video AI startup — owning UX from day one to Series A:
               shipped search & discovery, account system, admin dashboard, ran a 200+ creator influencer program, and won the internal hackathon.
             </p>
             <p>
@@ -95,8 +96,8 @@ export default function Home() {
 
           {/* Resume links */}
           <div className="fade-up fade-up-3" style={{ display: "flex", gap: "10px", flexWrap: "wrap", margin: "20px 0 40px" }}>
-            <a href="#" className="resume-link">résumé — product ↗</a>
-            <a href="#" className="resume-link">résumé — engineering ↗</a>
+            <a href="/resume_product.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">résumé — product ↗</a>
+            <a href="/resume_engineering.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">résumé — engineering ↗</a>
           </div>
 
           {/* Living */}
@@ -156,18 +157,6 @@ export default function Home() {
               Substack
             </a>
           </p>
-        </section>
-
-        {/* Now */}
-        <section id="now" style={{ maxWidth: "600px", margin: "0 auto", padding: "60px 32px 100px" }}>
-          <p style={{ fontSize: "0.65rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#bbb", marginBottom: "20px" }}>
-            now
-          </p>
-          <div style={{ fontSize: "0.875rem", color: "#777", lineHeight: 1.85, maxWidth: "440px" }}>
-            <p>
-              Fourth-year at Berkeley. Researching X's open-source rec-sys, building AgentHLE, and figuring out what comes after graduation in December 2026.
-            </p>
-          </div>
         </section>
 
         {/* Footer */}
