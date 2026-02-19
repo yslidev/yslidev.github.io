@@ -81,9 +81,7 @@ export default function Home() {
             </p>
             <p>
               In 2024–25 I was the first junior hire at{" "}
-              <a href="https://hooglee.com" target="_blank" rel="noopener noreferrer" className="text-link">Hooglee</a>
-              {" "}—{" "}
-              <a href="https://www.forbes.com/sites/sarahemerson/2025/01/09/eric-schmidt-is-working-on-an-ai-startup-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">an NDA billionaire</a>
+              <a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">an NDA billionaire</a>
               's video AI startup — owning UX from day one to Series A.
               I shipped search & discovery as PM, built the account system as PM and admin dashboard as SWE,
               ran a 200+ creator influencer program as user ops, and won the internal hackathon on rec-sys user profiling.
