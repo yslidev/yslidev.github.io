@@ -111,23 +111,25 @@ export default async function Home() {
         <div className="hero-banner">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/banner.jpg" alt="" />
+          {/* Name overlay on banner */}
+          <div className="banner-name fade-up fade-up-1">Yushan Li</div>
+          {/* Wave transition into content */}
+          <div className="banner-wave">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0,52 C200,22 400,72 600,47 C800,22 1000,68 1200,42 C1320,30 1400,52 1440,46 L1440,80 L0,80 Z" fill="#9dd4db" opacity="0.45"/>
+              <path d="M0,62 C240,32 480,80 720,58 C960,36 1200,76 1440,58 L1440,80 L0,80 Z" fill="#c5e8ef" opacity="0.6"/>
+              <path d="M0,70 C180,50 360,78 540,65 C720,52 900,76 1080,62 C1260,48 1380,70 1440,68 L1440,80 L0,80 Z" fill="#e8f6f8"/>
+            </svg>
+          </div>
         </div>
 
-        {/* Hero / name */}
-        <section style={{ maxWidth: "600px", margin: "0 auto", padding: "40px 32px 60px" }}>
-          <h1 className="fade-up fade-up-1" style={{ fontSize: "clamp(1.4rem, 3.2vw, 2rem)", fontWeight: 500, lineHeight: 1.3, letterSpacing: "-0.02em", color: "#111", marginBottom: "0" }}>
-            Yushan Li
-          </h1>
-        </section>
-
         {/* About */}
-        <section id="about" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
-          <p className="section-label fade-up fade-up-1">about</p>
+        <section id="about" style={{ maxWidth: "600px", margin: "0 auto", padding: "44px 32px 48px" }}>
           <div className="fade-up fade-up-2 prose-block">
             <p>
-              Fourth-year CS + Cognitive Science at UC Berkeley, fully funded as a{" "}
+              I'm a fourth-year studying CS + Cognitive Science at UC Berkeley, fully funded as a{" "}
               <a href="https://www.davisuwcscholars.org/" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
-              Currently researching X's open-source rec-sys and building the AgentHLE benchmark.
+              I'm currently researching X's open-source rec-sys and building the AgentHLE benchmark.
             </p>
             <p>
               In 2024–25 I was the first junior hire at{" "}
