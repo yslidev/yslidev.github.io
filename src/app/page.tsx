@@ -107,19 +107,12 @@ export default async function Home() {
           </div>
         </nav>
 
-        {/* Cityscape hero banner */}
+        {/* Cityscape hero banner with centered name overlay */}
         <div className="hero-banner">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/banner.jpg" alt="" />
-          {/* Name overlay on banner */}
-          <div className="banner-name fade-up fade-up-1">Yushan Li</div>
-          {/* Wave transition into content */}
-          <div className="banner-wave">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0,52 C200,22 400,72 600,47 C800,22 1000,68 1200,42 C1320,30 1400,52 1440,46 L1440,80 L0,80 Z" fill="#9dd4db" opacity="0.45"/>
-              <path d="M0,62 C240,32 480,80 720,58 C960,36 1200,76 1440,58 L1440,80 L0,80 Z" fill="#c5e8ef" opacity="0.6"/>
-              <path d="M0,70 C180,50 360,78 540,65 C720,52 900,76 1080,62 C1260,48 1380,70 1440,68 L1440,80 L0,80 Z" fill="#e8f6f8"/>
-            </svg>
+          <div className="banner-name fade-up fade-up-1">
+            <h1>Yushan Li</h1>
           </div>
         </div>
 
