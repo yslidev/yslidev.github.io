@@ -89,6 +89,12 @@ export default async function Home() {
     <>
       <FishCanvas />
 
+      {/* Banner — z-index 1, sits below the glass pane */}
+      <div className="hero-banner">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/banner.jpg" alt="" />
+      </div>
+
       <div className="page-content">
 
         {/* Nav */}
@@ -107,17 +113,12 @@ export default async function Home() {
           </div>
         </nav>
 
-        {/* Cityscape hero banner with centered name overlay */}
-        <div className="hero-banner">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/banner.jpg" alt="" />
-          <div className="banner-name fade-up fade-up-1">
-            <h1>Yushan Li</h1>
-          </div>
-        </div>
-
         {/* About */}
         <section id="about" style={{ maxWidth: "600px", margin: "0 auto", padding: "44px 32px 48px" }}>
+          <p className="fade-up fade-up-1" style={{ fontSize: "1.05rem", fontWeight: 500, color: "#222", marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
+            Welcome! I am Yushan!
+            <Image src="/icon.jpg" alt="Yushan" width={36} height={36} style={{ borderRadius: "50%", display: "inline-block", verticalAlign: "middle", flexShrink: 0 }} />
+          </p>
           <div className="fade-up fade-up-2 prose-block">
             <p>
               I'm a fourth-year studying CS + Cognitive Science at UC Berkeley, fully funded as a{" "}
