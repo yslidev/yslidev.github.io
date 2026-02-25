@@ -97,22 +97,6 @@ export default async function Home() {
 
       <div className="page-content">
 
-        {/* Nav */}
-        <nav className="fixed top-0 left-0 right-0 z-50 px-8 py-5 flex items-center justify-between"
-          style={{ background: "rgba(228,246,250,0.88)", backdropFilter: "blur(14px)", borderBottom: "1px solid #9dd4db" }}>
-          <a href="#" className="flex items-center gap-2.5">
-            <Image src="/logo.jpg" alt="ysli" width={24} height={24} className="rounded-sm" />
-            <span style={{ fontSize: "0.8rem", color: "#666", letterSpacing: "-0.01em" }}>ysli.dev</span>
-          </a>
-          <div className="flex items-center gap-8">
-            {[["about", "#about"], ["living", "#living"], ["writing", "#writing"]].map(([label, href]) => (
-              <a key={label} href={href} className="nav-link">
-                {label}
-              </a>
-            ))}
-          </div>
-        </nav>
-
         {/* About */}
         <section id="about" style={{ maxWidth: "600px", margin: "0 auto", padding: "44px 32px 48px" }}>
           <p className="fade-up fade-up-1" style={{ fontSize: "1.05rem", fontWeight: 500, color: "#222", marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
