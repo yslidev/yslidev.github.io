@@ -131,10 +131,6 @@ export default async function Home() {
               — sending teams to Korea.
             </p>
           </div>
-          <div className="fade-up fade-up-3" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "20px" }}>
-            <a href="/resume_product.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">résumé — product ↗</a>
-            <a href="/resume_engineering.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">résumé — engineering ↗</a>
-          </div>
         </section>
 
         {/* Living */}
