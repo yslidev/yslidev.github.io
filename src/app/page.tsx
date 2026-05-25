@@ -111,8 +111,9 @@ export default async function Home() {
             </p>
             <p>
               In 2024–25 I was the first junior hire at{" "}
-              <a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">Eric Schmidt</a>
-              's video AI startup, owning everything UX from day one to Series A. I also sidequested a lot within the company:
+              <a href="https://dipper.com/" target="_blank" rel="noopener noreferrer" className="text-link">Dipper</a>
+              {" "}(<a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">Eric Schmidt</a>
+              's video AI startup), owning everything UX from day one to Series A. I also sidequested a lot within the company:
             </p>
             <ul className="bullet-list">
               <li>Shipped search & discovery — as PM</li>
