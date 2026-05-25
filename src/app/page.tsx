@@ -133,6 +133,16 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Resume */}
+        <section id="resume" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
+          <p className="section-label fade-up fade-up-3">resume</p>
+          <div className="fade-up fade-up-3" style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            <a href="/resume_eval_product.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">eval product ↗</a>
+            <a href="/resume_mle_eval.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">MLE (eval) ↗</a>
+            <a href="/resume_product_ops.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">product ops ↗</a>
+          </div>
+        </section>
+
         {/* Living */}
         <section id="living" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
           <p className="section-label fade-up fade-up-3">living</p>
