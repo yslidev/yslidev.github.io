@@ -111,8 +111,9 @@ export default async function Home() {
             </p>
             <p>
               In 2024–25 I was the first junior hire at{" "}
-              <a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">Eric Schmidt</a>
-              's video AI startup, owning everything UX from day one to Series A. I also sidequested a lot within the company:
+              <a href="https://dipper.com/" target="_blank" rel="noopener noreferrer" className="text-link">Dipper</a>
+              {" "}(<a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">Eric Schmidt</a>
+              's video AI startup), owning everything UX from day one to Series A. I also sidequested a lot within the company:
             </p>
             <ul className="bullet-list">
               <li>Shipped search & discovery — as PM</li>
@@ -131,9 +132,15 @@ export default async function Home() {
               — sending teams to Korea.
             </p>
           </div>
-          <div className="fade-up fade-up-3" style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "20px" }}>
-            <a href="/resume_product.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">résumé — product ↗</a>
-            <a href="/resume_engineering.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">résumé — engineering ↗</a>
+        </section>
+
+        {/* Resume */}
+        <section id="resume" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
+          <p className="section-label fade-up fade-up-3">resume</p>
+          <div className="fade-up fade-up-3" style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            <a href="/resume_eval_product.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">eval product ↗</a>
+            <a href="/resume_mle_eval.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">MLE (eval) ↗</a>
+            <a href="/resume_product_ops.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">product ops ↗</a>
           </div>
         </section>
 
