@@ -17,6 +17,22 @@ interface Fish {
   baseSpeed: number;
 }
 
+// Golden fish, two moods: quiet on ivory paper (day), luminous on navy (night)
+const PALETTES = {
+  day: {
+    body: "#c58f2a",
+    eye: "#14204a",
+    baseOpacity: 0.13,
+    opacityRange: 0.09,
+  },
+  night: {
+    body: "#e6b54d",
+    eye: "#0e1636",
+    baseOpacity: 0.24,
+    opacityRange: 0.16,
+  },
+};
+
 function lerpAngle(a: number, b: number, t: number) {
   let diff = b - a;
   while (diff > Math.PI) diff -= Math.PI * 2;
@@ -31,7 +47,9 @@ function drawFish(
   angle: number,
   size: number,
   opacity: number,
-  wobble: number
+  wobble: number,
+  bodyColor: string,
+  eyeColor: string
 ) {
   ctx.save();
   ctx.translate(x, y);
@@ -42,7 +60,7 @@ function drawFish(
   ctx.globalAlpha = opacity;
 
   // Body
-  ctx.fillStyle = "#1a2a2a";
+  ctx.fillStyle = bodyColor;
   ctx.beginPath();
   ctx.ellipse(0, 0, size, size * 0.4, 0, 0, Math.PI * 2);
   ctx.fill();
@@ -56,15 +74,15 @@ function drawFish(
   ctx.fill();
 
   // Eye
-  ctx.globalAlpha = opacity * 2.0;
-  ctx.fillStyle = "#4eb3b3";
+  ctx.globalAlpha = Math.min(1, opacity * 2.0);
+  ctx.fillStyle = eyeColor;
   ctx.beginPath();
   ctx.arc(size * 0.45, -size * 0.08, size * 0.1, 0, Math.PI * 2);
   ctx.fill();
 
   // Dorsal fin
   ctx.globalAlpha = opacity * 0.6;
-  ctx.fillStyle = "#1a2a2a";
+  ctx.fillStyle = bodyColor;
   ctx.beginPath();
   ctx.moveTo(size * 0.1, -size * 0.36);
   ctx.quadraticCurveTo(size * 0.3, -size * 0.68, size * 0.5, -size * 0.38);
@@ -74,7 +92,11 @@ function drawFish(
   ctx.restore();
 }
 
-export default function FishCanvas() {
+export default function FishCanvas({
+  variant = "day",
+}: {
+  variant?: "day" | "night";
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -9999, y: -9999, active: false });
   const fishRef = useRef<Fish[]>([]);
@@ -85,6 +107,8 @@ export default function FishCanvas() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    const palette = PALETTES[variant];
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -108,7 +132,7 @@ export default function FishCanvas() {
       y: Math.random() * window.innerHeight,
       angle: Math.random() * Math.PI * 2,
       size: 9 + Math.random() * 15,
-      opacity: 0.08 + Math.random() * 0.07,
+      opacity: palette.baseOpacity + Math.random() * palette.opacityRange,
       wobble: Math.random() * Math.PI * 2,
       wobbleSpeed: 0.0245 + Math.random() * 0.021,
       roamAngle: Math.random() * Math.PI * 2,
@@ -147,18 +171,12 @@ export default function FishCanvas() {
 
         if (mouseActive) {
           // Soft falloff: all fish orient toward cursor, stronger when closer
-          // attractStrength: 1 when right on cursor, ~0.05 at screen edge
           const attractStrength = Math.max(0, 1 - dist / (diag * 0.65));
           const towardCursor = Math.atan2(dy, dx);
 
-          // Blend between roam angle and cursor angle by attractStrength
-          // Use lerpAngle so it doesn't snap
           targetAngle = lerpAngle(fish.roamAngle, towardCursor, attractStrength * 0.9);
-
-          // Speed: base + boost when close
           speed = fish.baseSpeed * (1 + attractStrength * 1.4);
 
-          // Keep roamAngle roughly in sync so fish don't jerk when cursor leaves
           if (attractStrength > 0.1) {
             fish.roamAngle = lerpAngle(fish.roamAngle, towardCursor, 0.01);
           }
@@ -182,7 +200,17 @@ export default function FishCanvas() {
         if (fish.y < -m) fish.y = h + m;
         if (fish.y > h + m) fish.y = -m;
 
-        drawFish(ctx!, fish.x, fish.y, fish.angle, fish.size, fish.opacity, fish.wobble);
+        drawFish(
+          ctx!,
+          fish.x,
+          fish.y,
+          fish.angle,
+          fish.size,
+          fish.opacity,
+          fish.wobble,
+          palette.body,
+          palette.eye
+        );
       });
 
       animFrameRef.current = requestAnimationFrame(animate);
@@ -196,7 +224,7 @@ export default function FishCanvas() {
       document.removeEventListener("mouseleave", onMouseLeave);
       cancelAnimationFrame(animFrameRef.current);
     };
-  }, []);
+  }, [variant]);
 
   return <canvas ref={canvasRef} id="fish-canvas" />;
 }
