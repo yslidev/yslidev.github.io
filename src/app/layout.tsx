@@ -159,7 +159,7 @@ const profilePageLd = {
     // Speakable: marks the sections most useful for voice/AI reading
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["h1", "#about .prose-block > p:first-child"],
+      cssSelector: ["h1", "#now .prose-block > p:first-child"],
     },
   },
 };
