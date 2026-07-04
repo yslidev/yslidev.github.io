@@ -276,7 +276,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: jsonLdString(faqLd) }}
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={inter.variable}>
         {children}
       </body>
     </html>
