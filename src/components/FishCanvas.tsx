@@ -1,6 +1,23 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import * as stylex from "@stylexjs/stylex";
+
+const styles = stylex.create({
+  canvas: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    pointerEvents: "none",
+    zIndex: 10,
+    opacity: {
+      default: 1,
+      "@media (max-width: 720px)": 0.6,
+    },
+  },
+});
 
 interface Fish {
   x: number;
@@ -226,5 +243,5 @@ export default function FishCanvas({
     };
   }, [variant]);
 
-  return <canvas ref={canvasRef} id="fish-canvas" />;
+  return <canvas ref={canvasRef} {...stylex.props(styles.canvas)} />;
 }

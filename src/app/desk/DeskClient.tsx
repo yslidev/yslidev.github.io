@@ -1,9 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import * as stylex from "@stylexjs/stylex";
 import Image from "next/image";
 import FishCanvas from "@/components/FishCanvas";
 import type { WritingEntry } from "@/lib/substack";
+import { colors, fonts } from "../globalTokens.stylex";
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 // The private "brain" repo the desk reads from. Change this one line if the
@@ -72,6 +74,270 @@ interface HealthSummary {
   days: HealthDay[];
 }
 
+// ─── Styles ──────────────────────────────────────────────────────────────────
+
+const styles = stylex.create({
+  desk: {
+    minHeight: "100vh",
+    backgroundColor: colors.navyDeep,
+    color: colors.paper,
+    position: "relative",
+    zIndex: 5,
+  },
+  inner: {
+    maxWidth: 1100,
+    marginInline: "auto",
+    padding: { default: 40, "@media (max-width: 720px)": "24px 18px" },
+    position: "relative",
+    zIndex: 5,
+  },
+  header: {
+    display: "flex",
+    alignItems: "baseline",
+    justifyContent: "space-between",
+    gap: 16,
+    flexWrap: "wrap",
+    marginBottom: 36,
+  },
+  title: {
+    fontFamily: fonts.serif,
+    fontStyle: "italic",
+    fontWeight: 300,
+    fontSize: "2rem",
+    color: colors.paper,
+  },
+  titleStar: { color: colors.persimmon, fontStyle: "normal", fontSize: "1.2rem" },
+  sub: {
+    fontSize: "0.64rem",
+    letterSpacing: "0.18em",
+    textTransform: "uppercase",
+    color: "rgba(250, 247, 240, 0.5)",
+  },
+  signout: {
+    fontSize: "0.62rem",
+    letterSpacing: "0.14em",
+    textTransform: "uppercase",
+    fontWeight: 600,
+    color: { default: colors.teal, ":hover": colors.navyDeep },
+    backgroundColor: { default: "transparent", ":hover": colors.persimmon },
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: { default: colors.hairlineNight, ":hover": colors.persimmon },
+    borderRadius: 999,
+    padding: "6px 14px",
+    cursor: "pointer",
+    transform: { default: "rotate(0deg)", ":hover": "rotate(-3deg)" },
+    transition: "all 0.15s ease",
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: { default: "repeat(2, 1fr)", "@media (max-width: 720px)": "1fr" },
+    gap: 18,
+  },
+  card: {
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: colors.hairlineNight,
+    borderRadius: 14,
+    backgroundColor: "rgba(250, 247, 240, 0.03)",
+    boxShadow: "6px 6px 0 rgba(101, 202, 210, 0.12)",
+    padding: "22px 24px",
+    minHeight: 160,
+  },
+  wide: { gridColumn: "1 / -1" },
+  cardLabel: {
+    marginBottom: 16,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    gap: 10,
+  },
+  cardPill: {
+    fontSize: "0.6rem",
+    letterSpacing: "0.2em",
+    textTransform: "uppercase",
+    fontWeight: 700,
+    color: colors.navyDeep,
+    backgroundColor: colors.teal,
+    borderRadius: 999,
+    padding: "3px 12px",
+    display: "inline-block",
+    transform: "rotate(-2deg)",
+  },
+  cardPillGold: { backgroundColor: colors.gold, transform: "rotate(1.5deg)" },
+  cardPillPersimmon: { backgroundColor: colors.persimmon, transform: "rotate(-1.5deg)" },
+  cardHint: {
+    fontSize: "0.62rem",
+    color: "rgba(250, 247, 240, 0.35)",
+  },
+  empty: {
+    fontSize: "0.8rem",
+    color: "rgba(250, 247, 240, 0.45)",
+    lineHeight: 1.7,
+  },
+  code: { color: colors.gold, fontSize: "0.72rem", fontFamily: fonts.mono },
+
+  row: {
+    display: "flex",
+    alignItems: "baseline",
+    gap: 12,
+    padding: "7px 6px",
+    borderBottomWidth: { default: 1, ":last-child": 0 },
+    borderBottomStyle: { default: "solid", ":last-child": "none" },
+    borderBottomColor: "rgba(250, 247, 240, 0.07)",
+    fontSize: "0.8rem",
+    textDecoration: "none",
+    color: { default: colors.paper, ":hover": colors.persimmon },
+    backgroundColor: { default: "transparent", ":hover": "rgba(230, 181, 77, 0.08)" },
+    borderRadius: 6,
+    transition: "background-color 0.15s ease, color 0.15s ease",
+  },
+  rowMain: {
+    flexGrow: 1,
+    minWidth: 0,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    color: "inherit",
+    transition: "color 0.15s",
+  },
+  rowMeta: {
+    fontFamily: fonts.mono,
+    fontSize: "0.66rem",
+    color: "rgba(250, 247, 240, 0.45)",
+    flexShrink: 0,
+  },
+  rowTag: {
+    fontSize: "0.6rem",
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+    color: colors.gold,
+    flexShrink: 0,
+  },
+
+  note: {
+    fontSize: "0.82rem",
+    lineHeight: 1.85,
+    color: "rgba(250, 247, 240, 0.82)",
+    whiteSpace: "pre-wrap",
+    maxHeight: 340,
+    overflowY: "auto",
+    fontFamily: fonts.sans,
+  },
+
+  statRow: { display: "flex", gap: 28, flexWrap: "wrap" },
+  stat: { flexGrow: 1, minWidth: 130 },
+  statValue: {
+    fontFamily: fonts.serif,
+    fontWeight: 300,
+    fontSize: "2rem",
+    color: colors.paper,
+    lineHeight: 1.1,
+  },
+  statUnit: {
+    fontSize: "0.7rem",
+    color: "rgba(250, 247, 240, 0.5)",
+    marginLeft: 4,
+  },
+  statName: {
+    fontSize: "0.62rem",
+    letterSpacing: "0.16em",
+    textTransform: "uppercase",
+    color: "rgba(250, 247, 240, 0.5)",
+    marginTop: 6,
+    marginBottom: 10,
+  },
+  sparkline: { display: "block" },
+  sparkPath: {
+    fill: "none",
+    stroke: colors.teal,
+    strokeWidth: 1.5,
+    strokeLinejoin: "round",
+    strokeLinecap: "round",
+  },
+
+  gate: {
+    minHeight: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 40,
+    position: "relative",
+    zIndex: 5,
+  },
+  gateCard: {
+    width: "100%",
+    maxWidth: 420,
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: colors.hairlineNight,
+    borderRadius: 16,
+    backgroundColor: "rgba(250, 247, 240, 0.03)",
+    boxShadow: `8px 8px 0 rgba(101, 202, 210, 0.15)`,
+    padding: 36,
+    transform: "rotate(-0.5deg)",
+  },
+  gateLogo: {
+    borderRadius: 10,
+    marginBottom: 22,
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: colors.hairlineNight,
+    transform: "rotate(-8deg)",
+  },
+  gateTitle: {
+    fontFamily: fonts.serif,
+    fontStyle: "italic",
+    fontWeight: 300,
+    fontSize: "1.6rem",
+    color: colors.paper,
+    marginBottom: 8,
+  },
+  gateSub: {
+    fontSize: "0.76rem",
+    lineHeight: 1.7,
+    color: "rgba(250, 247, 240, 0.55)",
+    marginBottom: 24,
+  },
+  gateInput: {
+    width: "100%",
+    backgroundColor: "rgba(250, 247, 240, 0.06)",
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: { default: colors.hairlineNight, ":focus": colors.teal },
+    borderRadius: 8,
+    color: colors.paper,
+    fontFamily: fonts.mono,
+    fontSize: "0.8rem",
+    padding: "11px 14px",
+    outline: "none",
+    marginBottom: 14,
+  },
+  gateButton: {
+    width: "100%",
+    backgroundColor: colors.persimmon,
+    color: colors.navyDeep,
+    borderWidth: 2,
+    borderStyle: "solid",
+    borderColor: colors.persimmon,
+    borderRadius: 8,
+    fontSize: "0.7rem",
+    fontWeight: 700,
+    letterSpacing: "0.16em",
+    textTransform: "uppercase",
+    padding: 12,
+    cursor: { default: "pointer", ":disabled": "wait" },
+    opacity: { default: 1, ":hover": 0.9, ":disabled": 0.5 },
+    boxShadow: {
+      default: `4px 4px 0 ${colors.gold}`,
+      ":hover": `1px 1px 0 ${colors.gold}`,
+    },
+    transform: { default: "translate(0, 0)", ":hover": "translate(3px, 3px)" },
+    transition: "transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease",
+  },
+  gateError: { fontSize: "0.72rem", color: "#ff9d7a", marginTop: 12 },
+});
+
 // ─── Small components ────────────────────────────────────────────────────────
 
 function Sparkline({ values }: { values: number[] }) {
@@ -90,8 +356,8 @@ function Sparkline({ values }: { values: number[] }) {
     )
     .join(" ");
   return (
-    <svg className="sparkline" width={w} height={h} viewBox={`0 0 ${w} ${h}`}>
-      <polyline points={pts} />
+    <svg {...stylex.props(styles.sparkline)} width={w} height={h} viewBox={`0 0 ${w} ${h}`}>
+      <polyline {...stylex.props(styles.sparkPath)} points={pts} />
     </svg>
   );
 }
@@ -115,12 +381,12 @@ function HealthStat({
   if (series.length === 0) return null;
   const latest = series[series.length - 1];
   return (
-    <div className="stat">
-      <div className="stat-value">
+    <div {...stylex.props(styles.stat)}>
+      <div {...stylex.props(styles.statValue)}>
         {format(latest)}
-        <span className="stat-unit">{unit}</span>
+        <span {...stylex.props(styles.statUnit)}>{unit}</span>
       </div>
-      <div className="stat-name">{name}</div>
+      <div {...stylex.props(styles.statName)}>{name}</div>
       <Sparkline values={series.slice(-30)} />
     </div>
   );
@@ -313,23 +579,25 @@ export default function DeskClient({ writing }: { writing: WritingEntry[] }) {
     };
   }, [token]);
 
-  if (!checked) return <div className="desk" />;
+  if (!checked) return <div {...stylex.props(styles.desk)} />;
 
   // ── Locked ──
   if (!token) {
     return (
-      <div className="desk">
+      <div {...stylex.props(styles.desk)}>
         <FishCanvas variant="night" />
-        <div className="gate">
-          <div className="gate-card">
-            <Image src="/logo.jpg" alt="" width={40} height={40} />
-            <div className="gate-title">the desk</div>
-            <p className="gate-sub">
+        <div {...stylex.props(styles.gate)}>
+          <div {...stylex.props(styles.gateCard)}>
+            <Image src="/logo.jpg" alt="" width={40} height={40} {...stylex.props(styles.gateLogo)} />
+            <div {...stylex.props(styles.gateTitle)}>the desk</div>
+            <p {...stylex.props(styles.gateSub)}>
               This side is for Yushan. Paste a fine-grained GitHub token with
-              read access to <code>{BRAIN_REPO}</code> — it&apos;s both the key
-              and the credential. Stored only in this browser.
+              read access to <code {...stylex.props(styles.code)}>{BRAIN_REPO}</code> —
+              it&apos;s both the key and the credential. Stored only in this
+              browser.
             </p>
             <input
+              {...stylex.props(styles.gateInput)}
               type="password"
               placeholder="github_pat_…"
               value={input}
@@ -337,10 +605,10 @@ export default function DeskClient({ writing }: { writing: WritingEntry[] }) {
               onKeyDown={(e) => e.key === "Enter" && unlock()}
               autoComplete="off"
             />
-            <button onClick={unlock} disabled={busy}>
+            <button {...stylex.props(styles.gateButton)} onClick={unlock} disabled={busy}>
               {busy ? "checking…" : "unlock"}
             </button>
-            {error && <p className="gate-error">{error}</p>}
+            {error && <p {...stylex.props(styles.gateError)}>{error}</p>}
           </div>
         </div>
       </div>
@@ -355,40 +623,45 @@ export default function DeskClient({ writing }: { writing: WritingEntry[] }) {
   });
 
   return (
-    <div className="desk">
+    <div {...stylex.props(styles.desk)}>
       <FishCanvas variant="night" />
-      <div className="desk-inner">
-        <header className="desk-header">
+      <div {...stylex.props(styles.inner)}>
+        <header {...stylex.props(styles.header)}>
           <div>
-            <div className="desk-title">the desk</div>
-            <div className="desk-sub">{today} — hi, yushan</div>
+            <div {...stylex.props(styles.title)}>
+              the desk <span {...stylex.props(styles.titleStar)}>✺</span>
+            </div>
+            <div {...stylex.props(styles.sub)}>{today} — hi, yushan</div>
           </div>
-          <button className="desk-signout" onClick={signOut}>
+          <button {...stylex.props(styles.signout)} onClick={signOut}>
             lock up ↗
           </button>
         </header>
 
-        <div className="desk-grid">
+        <div {...stylex.props(styles.grid)}>
           {/* Latest note */}
-          <div className="desk-card wide">
-            <div className="desk-card-label">
-              <span>brain — latest note</span>
-              {note && <span className="hint">{note.name}</span>}
+          <div {...stylex.props(styles.card, styles.wide)}>
+            <div {...stylex.props(styles.cardLabel)}>
+              <span {...stylex.props(styles.cardPill)}>brain — latest note</span>
+              {note && <span {...stylex.props(styles.cardHint)}>{note.name}</span>}
             </div>
             {note ? (
-              <div className="desk-note">{note.text}</div>
+              <div {...stylex.props(styles.note)}>{note.text}</div>
             ) : (
-              <p className="desk-empty">
+              <p {...stylex.props(styles.empty)}>
                 {brainMissing ? (
                   <>
-                    No <code>{BRAIN_REPO}</code> repo found (or the token
-                    can&apos;t see it). Create it, then add{" "}
-                    <code>notes/2026-07-04.md</code> and it&apos;ll appear here.
+                    No <code {...stylex.props(styles.code)}>{BRAIN_REPO}</code>{" "}
+                    repo found (or the token can&apos;t see it). Create it, then
+                    add <code {...stylex.props(styles.code)}>notes/2026-07-04.md</code>{" "}
+                    and it&apos;ll appear here.
                   </>
                 ) : (
                   <>
-                    No notes yet — add <code>notes/YYYY-MM-DD.md</code> to{" "}
-                    <code>{BRAIN_REPO}</code> and the latest one lands here.
+                    No notes yet — add{" "}
+                    <code {...stylex.props(styles.code)}>notes/YYYY-MM-DD.md</code>{" "}
+                    to <code {...stylex.props(styles.code)}>{BRAIN_REPO}</code>{" "}
+                    and the latest one lands here.
                   </>
                 )}
               </p>
@@ -396,50 +669,50 @@ export default function DeskClient({ writing }: { writing: WritingEntry[] }) {
           </div>
 
           {/* Brain commits */}
-          <div className="desk-card">
-            <div className="desk-card-label">
-              <span>brain — commits</span>
+          <div {...stylex.props(styles.card)}>
+            <div {...stylex.props(styles.cardLabel)}>
+              <span {...stylex.props(styles.cardPill, styles.cardPillGold)}>brain — commits</span>
             </div>
             {commits && commits.length > 0 ? (
               commits.map((c) => (
-                <a key={c.sha} href={c.url} target="_blank" rel="noopener noreferrer" className="desk-row">
-                  <span className="desk-row-main">{c.message}</span>
-                  <span className="desk-row-meta">{c.date ? timeAgo(c.date) : ""}</span>
+                <a key={c.sha} href={c.url} target="_blank" rel="noopener noreferrer" {...stylex.props(styles.row)}>
+                  <span {...stylex.props(styles.rowMain)}>{c.message}</span>
+                  <span {...stylex.props(styles.rowMeta)}>{c.date ? timeAgo(c.date) : ""}</span>
                 </a>
               ))
             ) : (
-              <p className="desk-empty">Nothing committed to the brain yet.</p>
+              <p {...stylex.props(styles.empty)}>Nothing committed to the brain yet.</p>
             )}
           </div>
 
           {/* Code activity */}
-          <div className="desk-card">
-            <div className="desk-card-label">
-              <span>code — recent</span>
+          <div {...stylex.props(styles.card)}>
+            <div {...stylex.props(styles.cardLabel)}>
+              <span {...stylex.props(styles.cardPill, styles.cardPillPersimmon)}>code — recent</span>
             </div>
             {activity && activity.length > 0 ? (
               activity.map((a) => (
-                <div key={a.id} className="desk-row">
-                  <span className="desk-row-tag">{a.repo.split("/")[1] ?? a.repo}</span>
-                  <span className="desk-row-main">{a.action}</span>
-                  <span className="desk-row-meta">{timeAgo(a.date)}</span>
+                <div key={a.id} {...stylex.props(styles.row)}>
+                  <span {...stylex.props(styles.rowTag)}>{a.repo.split("/")[1] ?? a.repo}</span>
+                  <span {...stylex.props(styles.rowMain)}>{a.action}</span>
+                  <span {...stylex.props(styles.rowMeta)}>{timeAgo(a.date)}</span>
                 </div>
               ))
             ) : (
-              <p className="desk-empty">Quiet on GitHub lately.</p>
+              <p {...stylex.props(styles.empty)}>Quiet on GitHub lately.</p>
             )}
           </div>
 
           {/* Health */}
-          <div className="desk-card wide">
-            <div className="desk-card-label">
-              <span>body — last 30 days</span>
+          <div {...stylex.props(styles.card, styles.wide)}>
+            <div {...stylex.props(styles.cardLabel)}>
+              <span {...stylex.props(styles.cardPill)}>body — last 30 days</span>
               {health?.updated && (
-                <span className="hint">updated {health.updated}</span>
+                <span {...stylex.props(styles.cardHint)}>updated {health.updated}</span>
               )}
             </div>
             {health ? (
-              <div className="stat-row">
+              <div {...stylex.props(styles.statRow)}>
                 <HealthStat
                   name="steps"
                   days={health.days}
@@ -463,23 +736,24 @@ export default function DeskClient({ writing }: { writing: WritingEntry[] }) {
                 />
               </div>
             ) : (
-              <p className="desk-empty">
+              <p {...stylex.props(styles.empty)}>
                 Export Apple Health, run{" "}
-                <code>scripts/apple_health_to_summary.py</code>, and commit the
-                result to <code>{BRAIN_REPO}/health/summary.json</code>.
+                <code {...stylex.props(styles.code)}>scripts/apple_health_to_summary.py</code>,
+                and commit the result to{" "}
+                <code {...stylex.props(styles.code)}>{BRAIN_REPO}/health/summary.json</code>.
               </p>
             )}
           </div>
 
           {/* Writing */}
-          <div className="desk-card wide">
-            <div className="desk-card-label">
-              <span>writing — substack</span>
+          <div {...stylex.props(styles.card, styles.wide)}>
+            <div {...stylex.props(styles.cardLabel)}>
+              <span {...stylex.props(styles.cardPill, styles.cardPillGold)}>writing — substack</span>
             </div>
             {writing.map((w, i) => (
-              <a key={i} href={w.href} target="_blank" rel="noopener noreferrer" className="desk-row">
-                <span className="desk-row-main">{w.title}</span>
-                <span className="desk-row-meta">{w.year}</span>
+              <a key={i} href={w.href} target="_blank" rel="noopener noreferrer" {...stylex.props(styles.row)}>
+                <span {...stylex.props(styles.rowMain)}>{w.title}</span>
+                <span {...stylex.props(styles.rowMeta)}>{w.year}</span>
               </a>
             ))}
           </div>
