@@ -9,9 +9,9 @@ import * as stylex from "@stylexjs/stylex";
 
 const FISH_COUNT = 12;
 const CRUMB_MS = 16000;
-const CRUMB_SETTLE_MS = 2200; // let the school travel before anyone can nibble
-const NIBBLE_COOLDOWN_MS = 1400;
-const CRUMB_LIFE = 6;
+const CRUMB_SETTLE_MS = 800; // a beat for the school to turn before the first bite
+const NIBBLE_COOLDOWN_MS = 550;
+const CRUMB_LIFE = 5;
 
 interface Fish {
   img: HTMLImageElement;
@@ -149,8 +149,8 @@ export default function FishCanvas() {
 
       const dot = document.createElement("span");
       dot.style.cssText =
-        `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:6px;height:6px;` +
-        "margin:-3px 0 0 -3px;border-radius:50%;background:#f06a17;z-index:4;" +
+        `position:fixed;left:${e.clientX}px;top:${e.clientY}px;width:7px;height:7px;` +
+        "margin:-3.5px 0 0 -3.5px;border-radius:50%;background:#f06a17;z-index:4;" +
         "pointer-events:none;transition:opacity .35s ease, transform 16s linear";
       document.body.appendChild(dot);
       requestAnimationFrame(() => {
@@ -281,7 +281,7 @@ export default function FishCanvas() {
           const ty = food.y + f.offsetY * 0.28;
           const toFood = Math.atan2(ty - f.y, tx - f.x);
           target = lerpAngle(f.roamAngle, toFood, 0.85);
-          speed = f.speed * 2.1;
+          speed = f.speed * 3.1;
           f.roamAngle = lerpAngle(f.roamAngle, toFood, 0.06);
         } else if (baitPull > 0.01) {
           const tx = baitPoint.x + f.offsetX;
