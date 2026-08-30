@@ -1,206 +1,124 @@
+import * as stylex from "@stylexjs/stylex";
 import FishCanvas from "@/components/FishCanvas";
-import Image from "next/image";
+import PeekLayer from "@/components/PeekLayer";
+import LockScroll from "@/components/LockScroll";
+import Rail from "@/components/Rail";
+import { contactLinks } from "@/components/PageFoot";
+import { ui } from "@/components/ui";
 
-interface WritingEntry {
-  title: string;
-  desc: string;
-  href: string;
-  year: string;
-}
-
-const writingFallback: WritingEntry[] = [
-  {
-    title: "Learning, In The Omnipresent Classroom",
-    desc: "Winter 2025, 1/4",
-    href: "https://liyushan27.substack.com/p/learning-in-the-omnipresent-classroom",
-    year: "Feb 2025",
-  },
-  {
-    title: "The Power of Cults, Charisma, and the Fluidity of Influence",
-    desc: "not inspired by election and AI corporate dramas",
-    href: "https://liyushan27.substack.com/p/the-power-of-cults-charisma-and-the",
-    year: "Dec 2024",
-  },
-  {
-    title: "Turning Tides: The Unseen Journeys of Grief and Growth",
-    desc: "The unexpected will surely happen again, like waves.",
-    href: "https://liyushan27.substack.com/p/turning-tides-the-unseen-journeys",
-    year: "Mar 2024",
-  },
+// email first on the card, the way the original name card reads
+const doors = [
+  contactLinks.find((l) => l.href.startsWith("mailto:"))!,
+  ...contactLinks.filter((l) => !l.href.startsWith("mailto:")),
 ];
 
-async function getSubstackPosts(): Promise<WritingEntry[] | null> {
-  try {
-    const res = await fetch(
-      "https://liyushan27.substack.com/api/v1/posts?limit=5",
-      { cache: "no-store" }
-    );
-    if (!res.ok) return null;
-    const data = await res.json();
-    if (!Array.isArray(data) || data.length === 0) return null;
+const styles = stylex.create({
+  card: {
+    position: "relative",
+    zIndex: 3,
+    minHeight: "100svh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    gap: { default: 18, "@media (max-width: 640px)": 14 },
+    maxWidth: 640,
+    marginInline: "auto",
+    padding: "76px clamp(22px, 6vw, 48px) 40px",
+  },
+  lede: { fontSize: 17, maxWidth: "40ch" },
+  prose: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 14,
+    fontSize: 16,
+    maxWidth: "56ch",
+  },
+  doors: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "8px 22px",
+    marginTop: 6,
+  },
+  door: { fontSize: 16 },
+});
 
-    return data.map(
-      (post: {
-        title?: string;
-        subtitle?: string;
-        canonical_url?: string;
-        slug?: string;
-        post_date?: string;
-      }) => {
-        // Only accept https:// URLs from the API to prevent javascript: injection
-        const href =
-          post.canonical_url?.startsWith("https://")
-            ? post.canonical_url
-            : `https://liyushan27.substack.com/p/${post.slug ?? ""}`;
-        let year = "";
-        if (post.post_date) {
-          const d = new Date(post.post_date);
-          if (!isNaN(d.getTime())) {
-            year = d.toLocaleDateString("en-US", {
-              month: "short",
-              year: "numeric",
-            });
-          }
-        }
-        return {
-          title: post.title ?? "",
-          desc: post.subtitle ?? "",
-          href,
-          year,
-        };
-      }
-    );
-  } catch {
-    return null;
-  }
-}
-
-const links = [
-  { label: "github", href: "https://github.com/yslidev" },
-  { label: "linkedin", href: "https://linkedin.com/in/liyushan27" },
-  { label: "substack", href: "https://liyushan27.substack.com" },
-  { label: "email", href: "mailto:yushanli@berkeley.edu" },
-];
-
-export default async function Home() {
-  const writing = (await getSubstackPosts()) ?? writingFallback;
-
+export default function Home() {
   return (
     <>
+      <LockScroll />
       <FishCanvas />
+      <PeekLayer />
+      <Rail />
 
-      {/* Banner — z-index 1, sits below the glass pane */}
-      <div className="hero-banner">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/banner.jpg" alt="" />
-      </div>
+      <main {...stylex.props(styles.card)}>
+        <h1 {...stylex.props(ui.h1)}>yushan li</h1>
+        <p {...stylex.props(styles.lede)}>
+          i build ai products and study how people think.
+        </p>
 
-      <div className="page-content">
-
-        {/* About */}
-        <section id="about" style={{ maxWidth: "600px", margin: "0 auto", padding: "44px 32px 48px" }}>
-          <p className="fade-up fade-up-1" style={{ fontSize: "1.05rem", fontWeight: 500, color: "#222", marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
-            Welcome! I am Yushan!
-            <Image src="/icon.jpg" alt="Yushan" width={36} height={36} style={{ borderRadius: "50%", display: "inline-block", verticalAlign: "middle", flexShrink: 0 }} />
+        <div {...stylex.props(styles.prose)}>
+          <p>
+            i&apos;m a fourth-year at berkeley studying cs and cognitive science,
+            fully funded as a{" "}
+            <a
+              data-fish
+              data-peek="/assets/photo-campanile.jpg"
+              data-peek-alt="Yushan under the Berkeley clock tower"
+              href="https://www.davisuwcscholars.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              {...stylex.props(ui.link)}
+            >
+              shelby davis scholar
+            </a>
+            . before that i was the first junior hire at{" "}
+            <a
+              data-fish
+              data-peek="/assets/photo-dipper.jpg"
+              data-peek-alt="Yushan with colleagues at Dipper"
+              href="https://dipper.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              {...stylex.props(ui.link)}
+            >
+              dipper
+            </a>
+            , where i started and fumbled with a lot of things.
           </p>
-          <div className="fade-up fade-up-2 prose-block">
-            <p>
-              I'm a fourth-year studying CS + Cognitive Science at UC Berkeley, fully funded as a{" "}
-              <a href="https://www.davisuwcscholars.org/" target="_blank" rel="noopener noreferrer" className="text-link">Shelby Davis Scholar</a>.
-              I'm currently researching X's open-source rec-sys and building the AgentHLE benchmark.
-            </p>
-            <p>
-              In 2024–25 I was the first junior hire at{" "}
-              <a href="https://dipper.com/" target="_blank" rel="noopener noreferrer" className="text-link">Dipper</a>
-              {" "}(<a href="https://www.forbes.com.au/news/innovation/eric-schmidts-new-secret-project-is-an-ai-video-platform-called-hooglee/" target="_blank" rel="noopener noreferrer" className="text-link">Eric Schmidt</a>
-              's video AI startup), owning everything UX from day one to Series A. I also sidequested a lot within the company:
-            </p>
-            <ul className="bullet-list">
-              <li>Shipped search & discovery — as PM</li>
-              <li>Built the account system — as PM</li>
-              <li>Built the admin dashboard — as SWE</li>
-              <li>Ran a 200+ creator influencer program — as user ops</li>
-              <li>Won the internal hackathon on rec-sys user profiling</li>
-            </ul>
-            <p>
-              I also spent a year as Head TA for{" "}
-              <a href="https://scet.berkeley.edu/students/courses/berkeley-method-of-entrepreneurship-bootcamp/" target="_blank" rel="noopener noreferrer" className="text-link">Berkeley's largest engineering startup class</a>
-              {" "}and{" "}
-              <a href="https://scet.berkeley.edu/students/courses/how-to-be-a-futurist/" target="_blank" rel="noopener noreferrer" className="text-link">How to Be a Futurist</a>,
-              mentored 500+ student founders, and helped organize the first{" "}
-              <a href="https://globalstudentstartup.org/" target="_blank" rel="noopener noreferrer" className="text-link">Global Student Startup Competition</a>{" "}
-              — sending teams to Korea.
-            </p>
-          </div>
-        </section>
+          <p>
+            i went to{" "}
+            <a
+              data-fish
+              data-peek="/assets/photo-uwc.jpg"
+              data-peek-alt="Yushan with classmates at United World College in Bosnia"
+              href="https://uwc.org/school/uwc-mostar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              {...stylex.props(ui.link)}
+            >
+              united world college
+            </a>{" "}
+            in bosnia.
+          </p>
+        </div>
 
-        {/* Resume */}
-        <section id="resume" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
-          <p className="section-label fade-up fade-up-3">resume</p>
-          <div className="fade-up fade-up-3" style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-            <a href="/resume_eval_product.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">eval product ↗</a>
-            <a href="/resume_mle_eval.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">MLE (eval) ↗</a>
-            <a href="/resume_product_ops.pdf" target="_blank" rel="noopener noreferrer" className="resume-link">product ops ↗</a>
-          </div>
-        </section>
-
-        {/* Living */}
-        <section id="living" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
-          <p className="section-label fade-up fade-up-3">living</p>
-          <div className="fade-up fade-up-4 prose-block">
-            <p>
-              I grew up in China and did high school at{" "}
-              <a href="https://uwc.org/school/uwc-mostar/" target="_blank" rel="noopener noreferrer" className="text-link">United World College</a>{" "}
-              in 🇧🇦, where I somehow ended up studying Cultural Anthropology instead of anything practical.
-              I've been to 20+ countries since — the list keeps growing and I have no plans to stop.
-            </p>
-            <p>
-              Right now I figure skate with the Cal team. A long time before that, I was a national champion in artistic swimming.
-              I barely talk about it anymore, but it probably shaped how I think about discipline more than anything else has.
-            </p>
-            <p>
-              I paint too. The <span style={{ color: "#666" }}>logo and banner</span> on this page are mine.
-            </p>
-          </div>
-        </section>
-
-        {/* Writing */}
-        <section id="writing" style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 48px" }}>
-          <p className="section-label fade-up fade-up-4">writing</p>
-          {writing.map((w, i) => (
-            <a key={i} href={w.href} target="_blank" rel="noopener noreferrer" className="superlink">
-              <span className="superlink-title">{w.title}</span>
-              {w.desc && <span className="superlink-desc">{w.desc}</span>}
-              <span className="superlink-year">{w.year}</span>
-              <span className="superlink-arrow">↗</span>
+        <nav {...stylex.props(styles.doors)}>
+          {doors.map((l) => (
+            <a
+              key={l.label}
+              data-fish
+              href={l.href}
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              {...stylex.props(ui.link, styles.door)}
+            >
+              {l.label}
             </a>
           ))}
-          <p style={{ fontSize: "0.75rem", color: "#666", marginTop: "16px" }}>
-            more on{" "}
-            <a href="https://liyushan27.substack.com" target="_blank" rel="noopener noreferrer"
-              className="text-link" style={{ fontSize: "0.75rem", color: "#666" }}>
-              Substack
-            </a>
-          </p>
-        </section>
+        </nav>
 
-        {/* Contact */}
-        <section style={{ maxWidth: "600px", margin: "0 auto", padding: "0 32px 80px" }}>
-          <p className="section-label fade-up fade-up-5">say hi</p>
-          <div className="fade-up fade-up-5" style={{ display: "flex", flexWrap: "wrap", gap: "18px" }}>
-            {links.map((l) => (
-              <a key={l.label} href={l.href}
-                target={l.href.startsWith("http") ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className="text-link"
-                style={{ fontSize: "0.8rem", color: "#666" }}>
-                {l.label}
-              </a>
-            ))}
-          </div>
-        </section>
-
-      </div>
+        <p {...stylex.props(ui.hint)}>double-click the water to feed the fish</p>
+      </main>
     </>
   );
 }

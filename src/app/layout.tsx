@@ -1,11 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
 
 const SITE_URL = "https://ysli.dev";
 
@@ -159,7 +153,7 @@ const profilePageLd = {
     // Speakable: marks the sections most useful for voice/AI reading
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["h1", "#about .prose-block > p:first-child"],
+      cssSelector: ["h1"],
     },
   },
 };
@@ -276,7 +270,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: jsonLdString(faqLd) }}
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body>
         {children}
       </body>
     </html>
