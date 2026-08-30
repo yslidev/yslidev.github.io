@@ -79,7 +79,7 @@ interface HealthSummary {
 const styles = stylex.create({
   desk: {
     minHeight: "100vh",
-    backgroundColor: colors.navyDeep,
+    backgroundColor: colors.ink,
     color: colors.paper,
     position: "relative",
     zIndex: 5,
@@ -100,13 +100,13 @@ const styles = stylex.create({
     marginBottom: 36,
   },
   title: {
-    fontFamily: fonts.serif,
+    fontFamily: fonts.sans,
     fontStyle: "italic",
     fontWeight: 300,
     fontSize: "2rem",
     color: colors.paper,
   },
-  titleStar: { color: colors.persimmon, fontStyle: "normal", fontSize: "1.2rem" },
+  titleStar: { color: colors.orange, fontStyle: "normal", fontSize: "1.2rem" },
   sub: {
     fontSize: "0.64rem",
     letterSpacing: "0.18em",
@@ -118,11 +118,11 @@ const styles = stylex.create({
     letterSpacing: "0.14em",
     textTransform: "uppercase",
     fontWeight: 600,
-    color: { default: colors.teal, ":hover": colors.navyDeep },
-    backgroundColor: { default: "transparent", ":hover": colors.persimmon },
+    color: { default: colors.teal, ":hover": colors.ink },
+    backgroundColor: { default: "transparent", ":hover": colors.orange },
     borderWidth: 2,
     borderStyle: "solid",
-    borderColor: { default: colors.hairlineNight, ":hover": colors.persimmon },
+    borderColor: { default: colors.deskRule, ":hover": colors.orange },
     borderRadius: 999,
     padding: "6px 14px",
     cursor: "pointer",
@@ -137,7 +137,7 @@ const styles = stylex.create({
   card: {
     borderWidth: 2,
     borderStyle: "solid",
-    borderColor: colors.hairlineNight,
+    borderColor: colors.deskRule,
     borderRadius: 14,
     backgroundColor: "rgba(250, 247, 240, 0.03)",
     boxShadow: "6px 6px 0 rgba(101, 202, 210, 0.12)",
@@ -157,15 +157,15 @@ const styles = stylex.create({
     letterSpacing: "0.2em",
     textTransform: "uppercase",
     fontWeight: 700,
-    color: colors.navyDeep,
+    color: colors.ink,
     backgroundColor: colors.teal,
     borderRadius: 999,
     padding: "3px 12px",
     display: "inline-block",
     transform: "rotate(-2deg)",
   },
-  cardPillGold: { backgroundColor: colors.gold, transform: "rotate(1.5deg)" },
-  cardPillPersimmon: { backgroundColor: colors.persimmon, transform: "rotate(-1.5deg)" },
+  cardPillGold: { backgroundColor: colors.tealDk, transform: "rotate(1.5deg)" },
+  cardPillPersimmon: { backgroundColor: colors.orange, transform: "rotate(-1.5deg)" },
   cardHint: {
     fontSize: "0.62rem",
     color: "rgba(250, 247, 240, 0.35)",
@@ -175,7 +175,7 @@ const styles = stylex.create({
     color: "rgba(250, 247, 240, 0.45)",
     lineHeight: 1.7,
   },
-  code: { color: colors.gold, fontSize: "0.72rem", fontFamily: fonts.mono },
+  code: { color: colors.tealDk, fontSize: "0.72rem", fontFamily: fonts.mono },
 
   row: {
     display: "flex",
@@ -187,7 +187,7 @@ const styles = stylex.create({
     borderBottomColor: "rgba(250, 247, 240, 0.07)",
     fontSize: "0.8rem",
     textDecoration: "none",
-    color: { default: colors.paper, ":hover": colors.persimmon },
+    color: { default: colors.paper, ":hover": colors.orange },
     backgroundColor: { default: "transparent", ":hover": "rgba(230, 181, 77, 0.08)" },
     borderRadius: 6,
     transition: "background-color 0.15s ease, color 0.15s ease",
@@ -211,7 +211,7 @@ const styles = stylex.create({
     fontSize: "0.6rem",
     letterSpacing: "0.08em",
     textTransform: "uppercase",
-    color: colors.gold,
+    color: colors.tealDk,
     flexShrink: 0,
   },
 
@@ -228,7 +228,7 @@ const styles = stylex.create({
   statRow: { display: "flex", gap: 28, flexWrap: "wrap" },
   stat: { flexGrow: 1, minWidth: 130 },
   statValue: {
-    fontFamily: fonts.serif,
+    fontFamily: fonts.sans,
     fontWeight: 300,
     fontSize: "2rem",
     color: colors.paper,
@@ -270,7 +270,7 @@ const styles = stylex.create({
     maxWidth: 420,
     borderWidth: 2,
     borderStyle: "solid",
-    borderColor: colors.hairlineNight,
+    borderColor: colors.deskRule,
     borderRadius: 16,
     backgroundColor: "rgba(250, 247, 240, 0.03)",
     boxShadow: `8px 8px 0 rgba(101, 202, 210, 0.15)`,
@@ -282,11 +282,11 @@ const styles = stylex.create({
     marginBottom: 22,
     borderWidth: 2,
     borderStyle: "solid",
-    borderColor: colors.hairlineNight,
+    borderColor: colors.deskRule,
     transform: "rotate(-8deg)",
   },
   gateTitle: {
-    fontFamily: fonts.serif,
+    fontFamily: fonts.sans,
     fontStyle: "italic",
     fontWeight: 300,
     fontSize: "1.6rem",
@@ -304,7 +304,7 @@ const styles = stylex.create({
     backgroundColor: "rgba(250, 247, 240, 0.06)",
     borderWidth: 2,
     borderStyle: "solid",
-    borderColor: { default: colors.hairlineNight, ":focus": colors.teal },
+    borderColor: { default: colors.deskRule, ":focus": colors.teal },
     borderRadius: 8,
     color: colors.paper,
     fontFamily: fonts.mono,
@@ -315,11 +315,11 @@ const styles = stylex.create({
   },
   gateButton: {
     width: "100%",
-    backgroundColor: colors.persimmon,
-    color: colors.navyDeep,
+    backgroundColor: colors.orange,
+    color: colors.ink,
     borderWidth: 2,
     borderStyle: "solid",
-    borderColor: colors.persimmon,
+    borderColor: colors.orange,
     borderRadius: 8,
     fontSize: "0.7rem",
     fontWeight: 700,
@@ -329,8 +329,8 @@ const styles = stylex.create({
     cursor: { default: "pointer", ":disabled": "wait" },
     opacity: { default: 1, ":hover": 0.9, ":disabled": 0.5 },
     boxShadow: {
-      default: `4px 4px 0 ${colors.gold}`,
-      ":hover": `1px 1px 0 ${colors.gold}`,
+      default: `4px 4px 0 ${colors.tealDk}`,
+      ":hover": `1px 1px 0 ${colors.tealDk}`,
     },
     transform: { default: "translate(0, 0)", ":hover": "translate(3px, 3px)" },
     transition: "transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease",
@@ -585,7 +585,7 @@ export default function DeskClient({ writing }: { writing: WritingEntry[] }) {
   if (!token) {
     return (
       <div {...stylex.props(styles.desk)}>
-        <FishCanvas variant="night" />
+        <FishCanvas />
         <div {...stylex.props(styles.gate)}>
           <div {...stylex.props(styles.gateCard)}>
             <Image src="/logo.jpg" alt="" width={40} height={40} {...stylex.props(styles.gateLogo)} />
@@ -624,7 +624,7 @@ export default function DeskClient({ writing }: { writing: WritingEntry[] }) {
 
   return (
     <div {...stylex.props(styles.desk)}>
-      <FishCanvas variant="night" />
+      <FishCanvas />
       <div {...stylex.props(styles.inner)}>
         <header {...stylex.props(styles.header)}>
           <div>
