@@ -6,7 +6,11 @@ import Rail from "@/components/Rail";
 import PageFoot from "@/components/PageFoot";
 import { ui } from "@/components/ui";
 import { colors, fonts } from "../globalTokens.stylex";
-import { getSubstackPosts, writingFallback } from "@/lib/substack";
+import {
+  getSubstackPosts,
+  writingFallback,
+  writingPinned,
+} from "@/lib/substack";
 
 export const metadata: Metadata = {
   title: "writing",
@@ -66,7 +70,10 @@ const styles = stylex.create({
 });
 
 export default async function Writing() {
-  const posts = (await getSubstackPosts()) ?? writingFallback;
+  const posts = [
+    ...writingPinned,
+    ...((await getSubstackPosts()) ?? writingFallback),
+  ];
 
   return (
     <>
@@ -83,12 +90,16 @@ export default async function Writing() {
               key={i}
               data-fish
               href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(p.href.startsWith("/")
+                ? {}
+                : { target: "_blank", rel: "noopener noreferrer" })}
               {...stylex.props(styles.row)}
             >
               <h3 {...stylex.props(styles.title)}>{p.title}</h3>
-              <span {...stylex.props(styles.meta)}>{p.year} ↗</span>
+              <span {...stylex.props(styles.meta)}>
+                {p.year}
+                {p.href.startsWith("/") ? "" : " ↗"}
+              </span>
             </a>
           ))}
         </div>

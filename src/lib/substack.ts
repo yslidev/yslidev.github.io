@@ -5,6 +5,17 @@ export interface WritingEntry {
   year: string;
 }
 
+// Self-hosted long-form. /writing is populated from the Substack API, so a
+// piece that does not live on Substack has to be pinned or it never appears.
+export const writingPinned: WritingEntry[] = [
+  {
+    title: "Inside the Machine",
+    desc: "a technical analysis of X's 2026 recommendation algorithm",
+    href: "/writings/x-recsys/",
+    year: "Aug 2026",
+  },
+];
+
 export const writingFallback: WritingEntry[] = [
   {
     title: "Learning, In The Omnipresent Classroom",
