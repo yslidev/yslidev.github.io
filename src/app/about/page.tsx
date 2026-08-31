@@ -24,7 +24,7 @@ export default function About() {
         <h1 {...stylex.props(ui.h1)}>about</h1>
 
         <p {...stylex.props(ui.p)}>
-          i was born in china and left at fifteen for{" "}
+          i was born in china and left at sixteen for{" "}
           <a
             data-fish
             data-peek="/assets/photo-uwc.jpg"
@@ -53,20 +53,29 @@ export default function About() {
 
         <h2 {...stylex.props(ui.h2)}>teaching</h2>
         <p {...stylex.props(ui.p)}>
-          i spent a year as head ta for berkeley&apos;s largest engineering
-          startup class and for{" "}
+          i spent a year as head ta for berkeley&apos;s largest engineering{" "}
           <a
             data-fish
             data-peek="/assets/photo-campanile.jpg"
             data-peek-alt="Yushan on the Berkeley campus"
+            href="https://scet.berkeley.edu/students/courses/berkeley-method-of-entrepreneurship-bootcamp/"
+            target="_blank"
+            rel="noopener noreferrer"
+            {...stylex.props(ui.link)}
+          >
+            startup bootcamp
+          </a>{" "}
+          and the{" "}
+          <a
+            data-fish
             href="https://scet.berkeley.edu/students/courses/how-to-be-a-futurist/"
             target="_blank"
             rel="noopener noreferrer"
             {...stylex.props(ui.link)}
           >
             how to be a futurist
-          </a>
-          , and helped organize the first{" "}
+          </a>{" "}
+          class, and helped organize the first{" "}
           <a
             data-fish
             href="https://globalstudentstartup.org/"

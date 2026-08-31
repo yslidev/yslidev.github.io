@@ -71,7 +71,7 @@ export default function Rail({
         </Link>
         <a
           data-fish
-          href="/resume_eval_product.pdf"
+          href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           {...stylex.props(styles.link)}

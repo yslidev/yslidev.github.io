@@ -75,18 +75,18 @@ export default function Home() {
             <a
               data-fish
               data-peek="/assets/photo-dipper.jpg"
-              data-peek-alt="Yushan with colleagues at Dipper"
+              data-peek-alt="Yushan with colleagues at Hooglee"
               href="https://dipper.com/"
               target="_blank"
               rel="noopener noreferrer"
               {...stylex.props(ui.link)}
             >
-              dipper
+              hooglee
             </a>
             , where i started and fumbled with a lot of things.
           </p>
           <p>
-            i went to{" "}
+            at 16, i went to{" "}
             <a
               data-fish
               data-peek="/assets/photo-uwc.jpg"
