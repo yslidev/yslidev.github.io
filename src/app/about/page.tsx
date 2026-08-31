@@ -24,7 +24,7 @@ export default function About() {
         <h1 {...stylex.props(ui.h1)}>about</h1>
 
         <p {...stylex.props(ui.p)}>
-          i was born in china and left at fifteen for{" "}
+          i was born in china and left at sixteen for{" "}
           <a
             data-fish
             data-peek="/assets/photo-uwc.jpg"
