@@ -17,7 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: "https://ysli.dev/writings/x-recsys/",
+      url: "https://ysli.dev/writing/x-recsys/",
       lastModified: new Date("2026-08-31"),
       changeFrequency: "monthly",
       priority: 0.8,
