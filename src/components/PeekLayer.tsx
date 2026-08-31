@@ -13,7 +13,7 @@ const styles = stylex.create({
     left: 0,
     top: 0,
     zIndex: 10,
-    width: "clamp(180px, 20vw, 260px)",
+    width: "clamp(220px, 24vw, 320px)",
     pointerEvents: "none",
     transition: "opacity .22s ease",
     willChange: "transform",
@@ -23,7 +23,7 @@ const styles = stylex.create({
   off: { opacity: 0 },
   img: {
     width: "100%",
-    aspectRatio: "4 / 5",
+    aspectRatio: "4 / 3",
     objectFit: "cover",
     display: "block",
     backgroundColor: colors.tealDk,
