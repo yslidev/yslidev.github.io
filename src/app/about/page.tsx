@@ -9,8 +9,8 @@ import { ui } from "@/components/ui";
 export const metadata: Metadata = {
   title: "about",
   description:
-    "Yushan Li grew up in China, went to United World College in Mostar, Bosnia " +
-    "on a full scholarship, and studies CS and cognitive science at UC Berkeley.",
+    "Yushan Li grew up in China, went to United World College in Mostar, Bosnia, " +
+    "and studies CS and cognitive science at UC Berkeley.",
 };
 
 export default function About() {
@@ -36,7 +36,7 @@ export default function About() {
           >
             united world college
           </a>{" "}
-          in mostar, bosnia, on a full scholarship. the school put a couple
+          in mostar, bosnia. the school put a couple
           hundred teenagers from eighty countries in a town still marked by a war
           most of us had only read about. i went in expecting to study something
           practical and came out with cultural anthropology, which turned out to
