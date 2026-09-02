@@ -32,3 +32,15 @@ body {
 
 /* Replaced with StyleX-generated CSS by @stylexjs/postcss-plugin at build time */
 @stylex;
+
+/* Print: the project pages get handed in as PDFs, so drop the ambient
+   canvas/nav chrome, go to paper, and keep figures off page seams. */
+@media print {
+  html, body { background: #fff; color: #0c1c20; cursor: auto; }
+  canvas { display: none !important; }
+  header { position: static !important; background: #fff !important; }
+  header a { color: #0c1c20 !important; }
+  main { max-width: none !important; padding-top: 12px !important; }
+  figure { break-inside: avoid; page-break-inside: avoid; }
+  img { max-width: 100%; }
+}
