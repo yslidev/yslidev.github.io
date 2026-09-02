@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import FishCanvas from "@/components/FishCanvas";
 
 export const metadata: Metadata = {
-  title: "cs180 · project 0",
+  title: { absolute: "CS 180, project 0" },
   description:
     "CS180 Project 0, Become Friends with Your Camera. A selfie taken two " +
     "ways, a brick wall at 3x and 1x, and a dolly zoom. Shot on an iPhone 13 Pro.",
