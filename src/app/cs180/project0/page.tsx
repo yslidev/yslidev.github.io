@@ -17,6 +17,7 @@ const css = `
          letter-spacing: -0.02em; text-transform: lowercase; }
 .p0 h2 { font-weight: 500; font-size: clamp(19px, 2.4vw, 23px); text-transform: lowercase;
          margin-bottom: 12px; }
+.p0 h2.sub { text-transform: none; font-size: clamp(17px, 2.2vw, 21px); margin-bottom: 0; }
 .p0 p { margin-bottom: 14px; }
 .p0 section { margin-top: 48px; padding-top: 26px; border-top: 1px solid rgba(12,28,32,0.2); }
 
@@ -38,7 +39,7 @@ export default function Project0() {
 
       <main className="p0">
         <h1>become friends with your camera</h1>
-        <p>CS 180, project 0. Shot on an iPhone 13 Pro.</p>
+        <h2 className="sub">CS 180, project 0. Shot on an iPhone 13 Pro.</h2>
 
         <section>
           <h2>1. the selfie</h2>
