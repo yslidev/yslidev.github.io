@@ -71,12 +71,12 @@ export default function Rail({
         </Link>
         <a
           data-fish
-          href="/resume.pdf"
+          href="/cv.pdf"
           target="_blank"
           rel="noopener noreferrer"
           {...stylex.props(styles.link)}
         >
-          résumé
+          cv
         </a>
       </nav>
     </header>
