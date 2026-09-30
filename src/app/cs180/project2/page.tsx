@@ -202,7 +202,7 @@ export default function Project2() {
               <figcaption>sharpened, α = 1</figcaption>
             </figure>
           </div>
-          <div className="four">
+          <div className="five">
             <figure data-fish>
               <img src="/cs180/project2/21_library.jpg" alt="original" loading="lazy" />
               <figcaption>original</figcaption>
@@ -219,7 +219,17 @@ export default function Project2() {
               <img src="/cs180/project2/21_library_sharp.jpg" alt="sharpened, α = 1" loading="lazy" />
               <figcaption>sharpened, α = 1</figcaption>
             </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/21_library_resharp.jpg" alt="blurred, then sharpened, α = 2" loading="lazy" />
+              <figcaption>blurred, then sharpened, α = 2</figcaption>
+            </figure>
           </div>
+          <p>
+            Sharpening the blurred copy brings the edge contrast back, but not the
+            leaf and brick detail. Mean error against the original only falls from
+            0.037 to 0.031. The blur shrank those frequencies to nearly zero, and
+            sharpening can only amplify what is left.
+          </p>
           <h3>varying α</h3>
           <div className="four">
             <figure data-fish>
@@ -240,27 +250,6 @@ export default function Project2() {
             </figure>
           </div>
           <p>Larger α strengthens the edges until halos and noise take over.</p>
-          <h3>blur, then sharpen</h3>
-          <div className="three">
-            <figure data-fish>
-              <img src="/cs180/project2/21_library.jpg" alt="original" loading="lazy" />
-              <figcaption>original</figcaption>
-            </figure>
-            <figure data-fish>
-              <img src="/cs180/project2/21_eval_blurred.jpg" alt="blurred" loading="lazy" />
-              <figcaption>blurred</figcaption>
-            </figure>
-            <figure data-fish>
-              <img src="/cs180/project2/21_eval_resharp.jpg" alt="sharpened again, α = 2" loading="lazy" />
-              <figcaption>sharpened again, α = 2</figcaption>
-            </figure>
-          </div>
-          <p>
-            The edges get their contrast back, but the leaves and brickwork stay
-            soft. Mean error against the original only falls from 0.045 to 0.039.
-            The blur shrank those frequencies to nearly zero, and sharpening can
-            only amplify what is left.
-          </p>
         </section>
 
         <section>
