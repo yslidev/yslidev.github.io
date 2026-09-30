@@ -20,7 +20,6 @@ const css = `
 .p2 h2.sub { text-transform: none; font-size: clamp(17px, 2.2vw, 21px); margin-bottom: 0; }
 .p2 p { margin-bottom: 14px; }
 .p2 section { margin-top: 48px; padding-top: 26px; border-top: 1px solid rgba(12,28,32,0.2); }
-
 .p2 .one   { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 18px 0; }
 .p2 .two   { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 18px 0; }
 .p2 .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0; }
@@ -30,7 +29,6 @@ const css = `
 @media (max-width: 720px) {
   .p2 .three, .p2 .four, .p2 .five { grid-template-columns: repeat(2, 1fr); }
 }
-
 .p2 img { width: 100%; height: auto; display: block; }
 .p2 figure { margin: 0; }
 .p2 figcaption { margin-top: 7px; font-size: 14px; line-height: 1.45; }
@@ -47,23 +45,20 @@ export default function Project2() {
     <>
       <FishCanvas />
       <style>{css}</style>
-
       <main className="p2">
         <h1>fun with filters and frequencies</h1>
         <h2 className="sub">CS 180, project 2.</h2>
 
         <section>
           <h2>1.1 convolutions from scratch</h2>
-
           <p>
             Both versions flip the filter, pad with zeros, and return an output
             the same size as the input. The four-loop version walks every output
             pixel and, inside that, every kernel tap. The two-loop version loops
             over the kernel only: for each tap it multiplies the whole shifted
-            image by that weight and accumulates. Same arithmetic, but NumPy
-            does the per-pixel part in C.
+            image by that weight and accumulates. Same arithmetic, but NumPy does
+            the per-pixel part in C.
           </p>
-
           <pre><code>{`def conv2d_4loop(im, k):
     k = np.flip(np.flip(k, 0), 1)          # convolution flips the filter
     kh, kw = k.shape
@@ -87,12 +82,8 @@ export default function Project2() {
         for b in range(kw):
             out += k[a, b] * p[a:a+H, b:b+W]
     return out`}</code></pre>
-
           <h3>runtime</h3>
-          <p>
-            Timed on a 128x128 crop with the 9x9 box filter, best of several
-            runs.
-          </p>
+          <p>Timed on a 128x128 crop with the 9x9 box filter, best of several runs.</p>
           <table>
             <thead><tr><th>method</th><th>time</th><th>vs four loops</th></tr></thead>
             <tbody>
@@ -107,17 +98,15 @@ export default function Project2() {
             version is level with scipy at this size and about 30% slower on the
             full image, where scipy switches to a smarter algorithm.
           </p>
-
           <h3>boundaries</h3>
           <p>
             I pad with zeros, which is what scipy does by default, so the two can
-            be compared directly. The cost is a darkened border, because the
-            filter averages real pixels with invented black ones. My output and
+            be compared directly. The cost is a darkened border, because the filter
+            averages real pixels with invented black ones. My output and
             scipy&apos;s agree to 1.2e-15, which is floating point rounding rather
             than a difference in method. Everywhere in part 2 I switch to edge
-            padding instead, since a blurred flat region has to stay flat.
+            padding, since a blurred flat region has to stay flat.
           </p>
-
           <div className="three">
             <figure data-fish>
               <img src="/cs180/project2/11_selfie.jpg" alt="original, grayscale" loading="lazy" />
@@ -159,11 +148,11 @@ export default function Project2() {
             into one edge strength, independent of edge direction.
           </p>
           <p>
-            Picking the threshold is a trade. At 0.10 every real edge survives
-            but so does most of the grass, which is texture rather than edge. At
-            0.30 the grass is gone but so are the tripod legs and the far
-            skyline. I settled on 0.18: the camera, the coat and the buildings
-            stay continuous, and only a scatter of grass speckle remains.
+            Picking the threshold is a trade. At 0.10 every real edge survives but
+            so does most of the grass, which is texture rather than edge. At 0.30
+            the grass is gone but so are the tripod legs and the far skyline. I
+            settled on 0.18: the camera, the coat and the buildings stay
+            continuous, and only a scatter of grass speckle remains.
           </p>
           <div className="three">
             <figure data-fish>
@@ -211,13 +200,12 @@ export default function Project2() {
             removes that band before differentiating.
           </p>
           <p>
-            The difference is easy to see. The edges come out thicker and
-            smoother, the grass speckle is almost entirely gone, and the edges
-            that remain are continuous instead of broken. The cost is that fine
-            detail goes too: the tripod legs thin out and the far skyline nearly
-            disappears. Blurring also lets me use a lower threshold, 0.10 instead
-            of 0.18, because there is much less noise competing with the real
-            edges.
+            The difference is easy to see. The edges come out thicker and smoother,
+            the grass speckle is almost entirely gone, and the edges that remain
+            are continuous instead of broken. The cost is that fine detail goes
+            too: the tripod legs thin out and the far skyline nearly disappears.
+            Blurring also lets me use a lower threshold, 0.10 instead of 0.18,
+            because there is much less noise competing with the real edges.
           </p>
           <div className="three">
             <figure data-fish>
@@ -248,7 +236,6 @@ export default function Project2() {
               <figcaption>binarized at 0.10</figcaption>
             </figure>
           </div>
-
           <h3>one convolution instead of two</h3>
           <p>
             Convolution is associative, so instead of blurring the image and then
@@ -258,10 +245,9 @@ export default function Project2() {
           </p>
           <p>
             Verified numerically: the two routes agree to 1.7e-15 across the
-            interior of the image. They differ at the border, by up to 0.29,
-            which is not a bug. Two sequential zero-padded convolutions invent
-            black pixels twice, once per pass, while the single combined kernel
-            invents them once.
+            interior. They differ at the border, by up to 0.29, which is not a bug.
+            Two sequential zero-padded convolutions invent black pixels twice, once
+            per pass, while the single combined kernel invents them once.
           </p>
           <div className="four">
             <figure data-fish>
@@ -290,19 +276,18 @@ export default function Project2() {
             direction. Mapping the angle to hue puts it back.
           </p>
           <p>
-            Without a built-in angle function, np.arctan(gy / gx) only covers
-            half the circle, because it cannot tell (gx, gy) from (-gx, -gy). I
-            recover the full turn by adding pi when gx is negative, adding 2 pi
-            in the fourth quadrant, and handling gx = 0 separately.
+            Without a built-in angle function, np.arctan(gy / gx) only covers half
+            the circle, because it cannot tell (gx, gy) from (-gx, -gy). I recover
+            the full turn by adding pi when gx is negative, adding 2 pi in the
+            fourth quadrant, and handling gx = 0 separately.
           </p>
           <p>
             Brightness carries the gradient magnitude. That matters: in a flat
             region the gradient is pure noise, so its angle is meaningless, and
-            leaving those pixels bright would paint the whole frame in
-            confident-looking random colour. Notice the coat edge changes hue
-            smoothly as it curves, and the two sides of the tripod legs take
-            opposite hues, because the brightness rises on one side and falls on
-            the other.
+            leaving those pixels bright would paint the frame in
+            confident-looking random colour. The coat edge changes hue smoothly as
+            it curves, and the two sides of each tripod leg take opposite hues,
+            because brightness rises on one side and falls on the other.
           </p>
           <div className="one">
             <figure data-fish>
@@ -315,16 +300,15 @@ export default function Project2() {
         <section>
           <h2>2.1 image sharpening</h2>
           <p>
-            A Gaussian is a low pass: it keeps the slow variation and discards
-            the fast. Subtracting the blurred image from the original therefore
-            leaves exactly the fast part, the edges and fine texture. Adding some
-            of that back exaggerates detail that was already there, which reads
-            as sharper.
+            A Gaussian is a low pass: it keeps the slow variation and discards the
+            fast. Subtracting the blurred image from the original therefore leaves
+            exactly the fast part, the edges and fine texture. Adding some of that
+            back exaggerates detail that was already there, which reads as sharper.
           </p>
           <p>
-            Distributivity folds the three steps into one kernel, so it is a
-            single convolution. Its weights sum to 1, so flat regions come
-            through untouched.
+            Distributivity folds the three steps into one kernel, so it is a single
+            convolution. Its weights sum to 1, so flat regions come through
+            untouched.
           </p>
           <pre><code>{`def unsharp_kernel(alpha, sigma):
     g = gaussian_kernel(ksize_for(sigma), sigma)
@@ -349,13 +333,11 @@ export default function Project2() {
               <figcaption>sharpened, alpha 1</figcaption>
             </figure>
           </div>
-
           <h3>varying the amount</h3>
           <p>
             As alpha grows the edges gain contrast, then overshoot. By alpha 4
-            there is a visible bright halo along the roofline and the sky beside
-            the dome has gone grainy, because the filter cannot tell noise from
-            detail.
+            there is a visible bright halo along the roofline and the sky beside the
+            dome has gone grainy, because the filter cannot tell noise from detail.
           </p>
           <div className="five">
             <figure data-fish>
@@ -379,33 +361,31 @@ export default function Project2() {
               <figcaption>alpha 4, haloing is obvious</figcaption>
             </figure>
           </div>
-
           <h3>another image</h3>
           <div className="three">
             <figure data-fish>
-              <img src="/cs180/project2/21_rabbit_original.jpg" alt="original" loading="lazy" />
+              <img src="/cs180/project2/21_library_original.jpg" alt="original" loading="lazy" />
               <figcaption>original</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/21_rabbit_high.jpg" alt="high frequencies" loading="lazy" />
+              <img src="/cs180/project2/21_library_high.jpg" alt="high frequencies" loading="lazy" />
               <figcaption>high frequencies</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/21_rabbit_sharp.jpg" alt="sharpened, alpha 1" loading="lazy" />
+              <img src="/cs180/project2/21_library_sharp.jpg" alt="sharpened, alpha 1" loading="lazy" />
               <figcaption>sharpened, alpha 1</figcaption>
             </figure>
           </div>
-
           <h3>blur it, then sharpen it back</h3>
           <p>
             Sharpening does not undo blurring. Mean absolute error against the
-            original is 0.0250 for the blurred version and 0.0215 after
-            sharpening, so it recovers only a small part of what was lost. The
-            edges regain contrast, but the fur texture and the puzzle detail do
+            original is 0.0453 for the blurred version and 0.0386 after sharpening,
+            so it recovers only a small part of what was lost. The window frames
+            and the bench regain contrast, but the leaf detail and the brickwork do
             not come back, and the result picks up halos the original never had.
             The reason is that the blur multiplied the high frequencies by nearly
-            zero. Sharpening applies a bounded gain to what survived, and no
-            finite gain brings back a band that was already erased.
+            zero. Sharpening applies a bounded gain to what survived, and no finite
+            gain brings back a band that was already erased.
           </p>
           <div className="three">
             <figure data-fish>
@@ -426,19 +406,18 @@ export default function Project2() {
         <section>
           <h2>2.2 hybrid images</h2>
           <p>
-            Up close your eye resolves fine detail and that dominates what you
-            see. From far away the fine detail falls below what you can resolve
-            and only the blurred image is left. So: high frequencies of one
-            image, low frequencies of another, added together.
+            Up close your eye resolves fine detail and that dominates what you see.
+            From far away the fine detail falls below what you can resolve and only
+            the blurred image is left. So: high frequencies of one image, low
+            frequencies of another, added together.
           </p>
           <p>
             Alignment comes first, because the illusion depends on the two
-            images&apos; features grouping as one object. I pick two matching
-            points in each image, the eyes, which pins down a similarity
-            transform exactly: their separation fixes the scale, their angle
-            fixes the rotation, their position fixes the shift. Rotating leaves
-            empty corners, so I crop both images to the largest rectangle that
-            lies entirely inside the warped one.
+            images&apos; features grouping as one object. I pick two matching points
+            in each image, the eyes, which pins down a similarity transform exactly:
+            their separation fixes the scale, their angle fixes the rotation, their
+            position fixes the shift. Rotating leaves empty corners, so I crop both
+            images to the largest rectangle lying entirely inside the warped one.
           </p>
           <div className="three">
             <figure data-fish>
@@ -454,15 +433,14 @@ export default function Project2() {
               <figcaption>Nutmeg after aligning the eyes</figcaption>
             </figure>
           </div>
-
           <h3>choosing the cutoffs</h3>
           <p>
-            Two separate cutoffs, chosen by trying values. Sigma 4 on the cat:
-            lower and Derek&apos;s features leak through up close, higher and only
-            whisker wisps survive. Sigma 8 on Derek: lower and his eyes stay
-            sharp enough to fight the cat at close range, higher and there is
-            nothing left to see at a distance. The low-pass cutoff wants to sit
-            above the high-pass one, so the two bands barely overlap.
+            Two separate cutoffs, chosen by trying values. Sigma 4 on the cat: lower
+            and Derek&apos;s features leak through up close, higher and only whisker
+            wisps survive. Sigma 8 on Derek: lower and his eyes stay sharp enough to
+            fight the cat at close range, higher and there is nothing left to see at
+            a distance. The low-pass cutoff wants to sit above the high-pass one, so
+            the two bands barely overlap.
           </p>
           <div className="three">
             <figure data-fish>
@@ -478,15 +456,14 @@ export default function Project2() {
               <figcaption>the hybrid</figcaption>
             </figure>
           </div>
-
           <h3>frequency analysis</h3>
           <p>
             Log magnitude spectra, centred, so low frequencies sit in the middle.
-            Both inputs have energy spread throughout. After the low pass, Derek
-            is a bright blob at the centre with the outside knocked out. After the
-            high pass, Nutmeg is the reverse, a dark hole in the middle with
-            energy around it. The hybrid has both: the centre from Derek and the
-            outer ring from the cat, which is the whole trick in one picture.
+            Both inputs have energy spread throughout. After the low pass, Derek is
+            a bright blob at the centre with the outside knocked out. After the high
+            pass, Nutmeg is the reverse, a dark hole in the middle with energy
+            around it. The hybrid has both: the centre from Derek and the outer ring
+            from the cat, which is the whole trick in one picture.
           </p>
           <div className="five">
             <figure data-fish>
@@ -510,22 +487,29 @@ export default function Project2() {
               <figcaption>the hybrid</figcaption>
             </figure>
           </div>
-
-          <h3>two of my own</h3>
+          <h3>my own: a change of expression</h3>
           <p>
-            The first works. My face supplies the high frequencies and a blurred
-            rabbit the low, so the rabbit&apos;s silhouette takes over as you step
-            back.
+            Same person, two photographs: indoors with a neutral face, and outdoors
+            in sunlight mid-laugh. The outdoor shot supplies the high frequencies,
+            so up close you get the squint and the open smile. Step back and the
+            blurred indoor face takes over. Sigma 5 on the smile, sigma 10 on the
+            neutral face.
           </p>
-          <p>
-            The second is an honest failure and I kept it for that reason. It
-            hybridises my own two project 0 selfies, shot at 23 mm close up and
-            30 mm from farther back. Because both inputs are the same face in the
-            same pose, there is no interpretation to switch between, and the
-            result just reads as a slightly soft selfie. A hybrid needs its two
-            images to disagree about what the object is. Lens perspective is not
-            a big enough disagreement.
-          </p>
+          <div className="three">
+            <figure data-fish>
+              <img src="/cs180/project2/22_expr_indoor.jpg" alt="indoors, neutral. low frequencies" loading="lazy" />
+              <figcaption>indoors, neutral. low frequencies</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/22_expr_outdoor_aligned.jpg" alt="outdoors, smiling, aligned. high frequencies" loading="lazy" />
+              <figcaption>outdoors, smiling, aligned. high frequencies</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/22_hybrid_expression.jpg" alt="hybrid: smiling up close, neutral from across the room" loading="lazy" />
+              <figcaption>hybrid: smiling up close, neutral from across the room</figcaption>
+            </figure>
+          </div>
+          <h3>my own: a person into a rabbit</h3>
           <div className="three">
             <figure data-fish>
               <img src="/cs180/project2/22_me_input.jpg" alt="me, high frequencies" loading="lazy" />
@@ -540,32 +524,36 @@ export default function Project2() {
               <figcaption>hybrid: me close up, rabbit far away</figcaption>
             </figure>
           </div>
-
-          <div className="three">
+          <h3>the pairing that did not work</h3>
+          <p>
+            My first attempt hybridised my own two project 0 selfies, shot at 23 mm
+            close up and 30 mm from farther back. It produced doubled edges around
+            the chair and the curtains rather than an illusion. The cause is not the
+            filtering: aligning on the eyes puts the two faces on top of each other,
+            but the camera moved between the shots, so everything behind the face
+            sits in a different place in each image. Measured, the two frames
+            disagree by 0.14 on average overall and only 0.074 on the face, so the
+            background mismatch is nearly twice the facial one. The high-frequency
+            edges of one scene then land on displaced low-frequency structure from
+            the other. A hybrid needs two images that agree about where everything
+            is and disagree only about what it is.
+          </p>
+          <div className="one">
             <figure data-fish>
-              <img src="/cs180/project2/22_lens_close.jpg" alt="23 mm, close" loading="lazy" />
-              <figcaption>23 mm, close</figcaption>
-            </figure>
-            <figure data-fish>
-              <img src="/cs180/project2/22_lens_far.jpg" alt="30 mm, farther back" loading="lazy" />
-              <figcaption>30 mm, farther back</figcaption>
-            </figure>
-            <figure data-fish>
-              <img src="/cs180/project2/22_hybrid_lens.jpg" alt="hybrid of the two, barely changes" loading="lazy" />
-              <figcaption>hybrid of the two, barely changes</figcaption>
+              <img src="/cs180/project2/22_hybrid_lens_failed.jpg" alt="the pairing that failed: two selfies at 23 mm and 30 mm" loading="lazy" />
+              <figcaption>the pairing that failed: two selfies at 23 mm and 30 mm</figcaption>
             </figure>
           </div>
-
           <h3>bells and whistles: colour</h3>
           <p>
             Colour in the low frequencies is what matters. Colour is itself a
             low-frequency signal, so putting it in the high-pass band adds almost
-            nothing: the high-pass output is near zero mean and reads grey
-            whatever you feed it. Putting colour only in the low band gives
-            nearly the full effect and makes the far-away reading arrive faster,
-            because the colour cue groups the blurred shape before you can
-            resolve any detail. Grayscale throughout is the weakest, since both
-            readings then compete on luminance alone.
+            nothing: the high-pass output is near zero mean and reads grey whatever
+            you feed it. Colour in the low band alone gives nearly the full effect
+            and makes the far-away reading arrive faster, because the colour cue
+            groups the blurred shape before you can resolve any detail. Grayscale
+            throughout is weakest, since both readings then compete on luminance
+            alone.
           </p>
           <div className="four">
             <figure data-fish>
@@ -590,61 +578,112 @@ export default function Project2() {
         <section>
           <h2>2.3 gaussian and laplacian stacks</h2>
           <p>
-            A stack is a pyramid without the downsampling, so every level keeps
-            the full resolution. Level 0 of the Gaussian stack is the original
-            and each level after it is the previous one blurred again, with sigma
-            doubling, so the stack sees the same run of scales a pyramid would.
+            A stack is a pyramid without the downsampling, so every level keeps full
+            resolution. Level 0 of the Gaussian stack is the original and each level
+            after it is the previous one blurred again, with sigma doubling, so the
+            stack sees the same run of scales a pyramid would.
           </p>
           <p>
-            Each Laplacian level is the difference between two neighbouring
-            Gaussian levels, which is one band of frequencies: the detail that
-            one extra blur removed. The last level is the leftover low-pass
-            residual. That last level is what makes the stack sum exactly back to
-            the original, which I check numerically: 1.1e-16.
+            Each Laplacian level is the difference between two neighbouring Gaussian
+            levels, which is one band of frequencies: the detail that one extra blur
+            removed. The last level is the leftover low-pass residual. That last
+            level is what makes the stack sum exactly back to the original, which I
+            check numerically: 1.1e-16.
           </p>
-          <h3>laplacian bands</h3>
+          <p>
+            The Gaussian is separable, so I run it as two 1D passes rather than one
+            2D window. At the coarse end sigma reaches 16, a 97-tap kernel, which is
+            194 multiplies per pixel instead of 9409. It took the whole pipeline
+            from three minutes to fourteen seconds.
+          </p>
+          <h3>apple</h3>
           <div className="five">
             <figure data-fish>
-              <img src="/cs180/project2/23_apple_l0.jpg" alt="apple, band 0" loading="lazy" />
-              <figcaption>apple, band 0</figcaption>
+              <img src="/cs180/project2/23_apple_g0.jpg" alt="apple, Gaussian level 0" loading="lazy" />
+              <figcaption>apple, Gaussian level 0</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_apple_l1.jpg" alt="apple, band 1" loading="lazy" />
-              <figcaption>apple, band 1</figcaption>
+              <img src="/cs180/project2/23_apple_g1.jpg" alt="apple, Gaussian level 1" loading="lazy" />
+              <figcaption>apple, Gaussian level 1</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_apple_l2.jpg" alt="apple, band 2" loading="lazy" />
-              <figcaption>apple, band 2</figcaption>
+              <img src="/cs180/project2/23_apple_g2.jpg" alt="apple, Gaussian level 2" loading="lazy" />
+              <figcaption>apple, Gaussian level 2</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_apple_l3.jpg" alt="apple, band 3" loading="lazy" />
-              <figcaption>apple, band 3</figcaption>
+              <img src="/cs180/project2/23_apple_g3.jpg" alt="apple, Gaussian level 3" loading="lazy" />
+              <figcaption>apple, Gaussian level 3</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_apple_l4.jpg" alt="apple, band 4" loading="lazy" />
-              <figcaption>apple, band 4</figcaption>
+              <img src="/cs180/project2/23_apple_g4.jpg" alt="apple, Gaussian level 4" loading="lazy" />
+              <figcaption>apple, Gaussian level 4</figcaption>
             </figure>
           </div>
           <div className="five">
             <figure data-fish>
-              <img src="/cs180/project2/23_orange_l0.jpg" alt="orange, band 0" loading="lazy" />
-              <figcaption>orange, band 0</figcaption>
+              <img src="/cs180/project2/23_apple_l0.jpg" alt="apple, Laplacian band 0" loading="lazy" />
+              <figcaption>apple, Laplacian band 0</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_orange_l1.jpg" alt="orange, band 1" loading="lazy" />
-              <figcaption>orange, band 1</figcaption>
+              <img src="/cs180/project2/23_apple_l1.jpg" alt="apple, Laplacian band 1" loading="lazy" />
+              <figcaption>apple, Laplacian band 1</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_orange_l2.jpg" alt="orange, band 2" loading="lazy" />
-              <figcaption>orange, band 2</figcaption>
+              <img src="/cs180/project2/23_apple_l2.jpg" alt="apple, Laplacian band 2" loading="lazy" />
+              <figcaption>apple, Laplacian band 2</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_orange_l3.jpg" alt="orange, band 3" loading="lazy" />
-              <figcaption>orange, band 3</figcaption>
+              <img src="/cs180/project2/23_apple_l3.jpg" alt="apple, Laplacian band 3" loading="lazy" />
+              <figcaption>apple, Laplacian band 3</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_orange_l4.jpg" alt="orange, band 4" loading="lazy" />
-              <figcaption>orange, band 4</figcaption>
+              <img src="/cs180/project2/23_apple_l4.jpg" alt="apple, Laplacian band 4" loading="lazy" />
+              <figcaption>apple, Laplacian band 4</figcaption>
+            </figure>
+          </div>
+          <h3>orange</h3>
+          <div className="five">
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_g0.jpg" alt="orange, Gaussian level 0" loading="lazy" />
+              <figcaption>orange, Gaussian level 0</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_g1.jpg" alt="orange, Gaussian level 1" loading="lazy" />
+              <figcaption>orange, Gaussian level 1</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_g2.jpg" alt="orange, Gaussian level 2" loading="lazy" />
+              <figcaption>orange, Gaussian level 2</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_g3.jpg" alt="orange, Gaussian level 3" loading="lazy" />
+              <figcaption>orange, Gaussian level 3</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_g4.jpg" alt="orange, Gaussian level 4" loading="lazy" />
+              <figcaption>orange, Gaussian level 4</figcaption>
+            </figure>
+          </div>
+          <div className="five">
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_l0.jpg" alt="orange, Laplacian band 0" loading="lazy" />
+              <figcaption>orange, Laplacian band 0</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_l1.jpg" alt="orange, Laplacian band 1" loading="lazy" />
+              <figcaption>orange, Laplacian band 1</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_l2.jpg" alt="orange, Laplacian band 2" loading="lazy" />
+              <figcaption>orange, Laplacian band 2</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_l3.jpg" alt="orange, Laplacian band 3" loading="lazy" />
+              <figcaption>orange, Laplacian band 3</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/23_orange_l4.jpg" alt="orange, Laplacian band 4" loading="lazy" />
+              <figcaption>orange, Laplacian band 4</figcaption>
             </figure>
           </div>
           <h3>the mask, blurred level by level</h3>
@@ -655,30 +694,39 @@ export default function Project2() {
           </p>
           <div className="five">
             <figure data-fish>
-              <img src="/cs180/project2/23_mask_g0.jpg" alt="mask, level 0" loading="lazy" />
-              <figcaption>mask, level 0</figcaption>
+              <img src="/cs180/project2/23_mask_g0.jpg" alt="mask, Gaussian level 0" loading="lazy" />
+              <figcaption>mask, Gaussian level 0</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_mask_g1.jpg" alt="mask, level 1" loading="lazy" />
-              <figcaption>mask, level 1</figcaption>
+              <img src="/cs180/project2/23_mask_g1.jpg" alt="mask, Gaussian level 1" loading="lazy" />
+              <figcaption>mask, Gaussian level 1</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_mask_g2.jpg" alt="mask, level 2" loading="lazy" />
-              <figcaption>mask, level 2</figcaption>
+              <img src="/cs180/project2/23_mask_g2.jpg" alt="mask, Gaussian level 2" loading="lazy" />
+              <figcaption>mask, Gaussian level 2</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_mask_g3.jpg" alt="mask, level 3" loading="lazy" />
-              <figcaption>mask, level 3</figcaption>
+              <img src="/cs180/project2/23_mask_g3.jpg" alt="mask, Gaussian level 3" loading="lazy" />
+              <figcaption>mask, Gaussian level 3</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/23_mask_g4.jpg" alt="mask, level 4" loading="lazy" />
-              <figcaption>mask, level 4</figcaption>
+              <img src="/cs180/project2/23_mask_g4.jpg" alt="mask, Gaussian level 4" loading="lazy" />
+              <figcaption>mask, Gaussian level 4</figcaption>
             </figure>
           </div>
+          <h3>figure 3.42</h3>
+          <p>
+            Rows one to three are Laplacian levels 0, 2 and 4, the high, medium and
+            low frequency bands. The left column is the apple weighted by the mask
+            at that level, the middle is the orange weighted by one minus the mask,
+            and the right column is their sum. The bottom row sums each contribution
+            over every level: (j) is the apple&apos;s total contribution, (k) the
+            orange&apos;s, and (l) the finished oraple.
+          </p>
           <div className="one">
             <figure data-fish>
-              <img src="/cs180/project2/23_fig342.jpg" alt="Szeliski figure 3.42: each band of each image, masked, and their sum" loading="lazy" />
-              <figcaption>Szeliski figure 3.42: each band of each image, masked, and their sum</figcaption>
+              <img src="/cs180/project2/23_fig342.jpg" alt="my recreation of Szeliski figure 3.42, panels (a) through (l)" loading="lazy" />
+              <figcaption>my recreation of Szeliski figure 3.42, panels (a) through (l)</figcaption>
             </figure>
           </div>
         </section>
@@ -687,10 +735,10 @@ export default function Project2() {
           <h2>2.4 multiresolution blending</h2>
           <p>
             Blend each frequency band separately, each with its own softness of
-            seam, then add the bands back up. Fine detail switches over within a
-            few pixels, so the apple stays crisp right up to the join, while the
-            coarse colour blends across a wide region, so there is no visible
-            edge. A single blur of the finished composite cannot do both at once.
+            seam, then add the bands back up. Fine detail switches over within a few
+            pixels, so the apple stays crisp right up to the join, while the coarse
+            colour blends across a wide region, so there is no visible edge. A
+            single blur of the finished composite cannot do both at once.
           </p>
           <div className="two">
             <figure data-fish>
@@ -702,32 +750,36 @@ export default function Project2() {
               <figcaption>multiresolution blend</figcaption>
             </figure>
           </div>
-
-          <h3>two of my own</h3>
+          <h3>vertical seam: two poses, one frame</h3>
           <p>
-            The first is a vertical seam between my two project 0 selfies, left
-            half at 23 mm and right half at 30 mm, which quietly splices two
-            different perspective distortions into one face. The second uses an
-            irregular mask, an ellipse, to put the rabbit&apos;s face where mine
-            was. Compare each against its hard-seam version: the join stops being
-            a line and becomes a region.
+            Two frames from the same walk, spliced down the middle, so both poses
+            appear at once. The backgrounds do not quite line up between the shots,
+            which is exactly the kind of mismatch the coarse bands absorb.
           </p>
-          <div className="three">
+          <div className="four">
             <figure data-fish>
-              <img src="/cs180/project2/24_custom_lens_naive.jpg" alt="hard seam" loading="lazy" />
+              <img src="/cs180/project2/24_pose_a.jpg" alt="pose A" loading="lazy" />
+              <figcaption>pose A</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/24_pose_b.jpg" alt="pose B" loading="lazy" />
+              <figcaption>pose B</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/24_custom_poses_naive.jpg" alt="hard seam" loading="lazy" />
               <figcaption>hard seam</figcaption>
             </figure>
             <figure data-fish>
-              <img src="/cs180/project2/24_custom_lens.jpg" alt="blended: left half at 23 mm, right half at 30 mm" loading="lazy" />
-              <figcaption>blended: left half at 23 mm, right half at 30 mm</figcaption>
+              <img src="/cs180/project2/24_custom_poses.jpg" alt="blended, vertical seam" loading="lazy" />
+              <figcaption>blended, vertical seam</figcaption>
             </figure>
+          </div>
+          <h3>irregular mask: the rabbit&apos;s face on mine</h3>
+          <div className="three">
             <figure data-fish>
               <img src="/cs180/project2/24_mask_ellipse.jpg" alt="irregular mask" loading="lazy" />
               <figcaption>irregular mask</figcaption>
             </figure>
-          </div>
-
-          <div className="three">
             <figure data-fish>
               <img src="/cs180/project2/24_custom_rabbitface_naive.jpg" alt="hard seam" loading="lazy" />
               <figcaption>hard seam</figcaption>
@@ -737,10 +789,40 @@ export default function Project2() {
               <figcaption>blended</figcaption>
             </figure>
           </div>
+          <h3>irregular mask: the portrait in the library courtyard</h3>
+          <p>
+            An ellipse around the figure drops the outdoor portrait into the campus
+            building shot. Against the hard-seam version the difference is the
+            bougainvillea: with a hard mask it stops dead at the ellipse, and
+            blended it dissolves into the facade over a wide band while her collar
+            and the lace stay sharp.
+          </p>
+          <div className="five">
+            <figure data-fish>
+              <img src="/cs180/project2/24_lib_input.jpg" alt="the library" loading="lazy" />
+              <figcaption>the library</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/24_por_input.jpg" alt="the portrait" loading="lazy" />
+              <figcaption>the portrait</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/24_mask_portrait.jpg" alt="irregular mask" loading="lazy" />
+              <figcaption>irregular mask</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/24_custom_portrait_library_naive.jpg" alt="hard seam" loading="lazy" />
+              <figcaption>hard seam</figcaption>
+            </figure>
+            <figure data-fish>
+              <img src="/cs180/project2/24_custom_portrait_library.jpg" alt="blended" loading="lazy" />
+              <figcaption>blended</figcaption>
+            </figure>
+          </div>
           <div className="one">
             <figure data-fish>
-              <img src="/cs180/project2/24_stack_process.jpg" alt="each band of both images and the blended band, for the irregular mask" loading="lazy" />
-              <figcaption>each band of both images and the blended band, for the irregular mask</figcaption>
+              <img src="/cs180/project2/24_stack_process.jpg" alt="every band of both images and the blended band, for the portrait and library blend" loading="lazy" />
+              <figcaption>every band of both images and the blended band, for the portrait and library blend</figcaption>
             </figure>
           </div>
         </section>
@@ -749,19 +831,17 @@ export default function Project2() {
           <h2>what I learned</h2>
           <p>
             That every part of this project is the same two sentences rearranged.
-            Low frequencies are the blurred image; high frequencies are the
-            original minus the blurred image. Sharpening adds high frequencies
-            back to their own image. Hybrids take the two bands from different
-            images. Blending splits into many bands and picks a different seam
-            width for each. I wrote four small functions and everything after
-            that was three or four lines.
+            Low frequencies are the blurred image; high frequencies are the original
+            minus the blurred image. Sharpening adds high frequencies back to their
+            own image. Hybrids take the two bands from different images. Blending
+            splits into many bands and picks a different seam width for each.
           </p>
           <p>
-            The other thing, which cost me an hour, is that a filter is only
-            defined once you say what happens at the border. Zero padding is fine
-            for comparing against scipy and it is what part 1.1 asks for, but it
-            silently darkens a blurred mask at the frame edge, which put a false
-            seam around every blend until I switched those to edge padding.
+            The other lesson was that a filter is only defined once you say what
+            happens at the border. Zero padding is what part 1.1 asks for and it is
+            what scipy does, but it silently darkens a blurred mask at the frame
+            edge, which planted a false seam around every blend until I switched
+            part 2 to edge padding.
           </p>
         </section>
       </main>
