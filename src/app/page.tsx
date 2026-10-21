@@ -86,6 +86,19 @@ export default function Home() {
             , where i started and fumbled with a lot of things.
           </p>
           <p>
+            recently i&apos;ve been helping out and investing at{" "}
+            <a
+              data-fish
+              href="https://nichevp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              {...stylex.props(ui.link)}
+            >
+              niche vp
+            </a>
+            . i also deal source for moxxie, monolith, and a few others.
+          </p>
+          <p>
             at 16, i went to{" "}
             <a
               data-fish
