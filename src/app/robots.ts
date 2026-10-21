@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://ysli.dev/sitemap.xml",
+    sitemap: "https://yushan.li/sitemap.xml",
   };
 }

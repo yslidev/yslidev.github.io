@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://ysli.dev";
+const SITE_URL = "https://yushan.li";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       "Yushan Li — CS + Cognitive Science at UC Berkeley, Shelby Davis Scholar. " +
       "AI product builder, figure skater, painter.",
     url: SITE_URL,
-    siteName: "ysli.dev",
+    siteName: "yushan.li",
     locale: "en_US",
     images: [
       {
@@ -230,7 +230,7 @@ const faqLd = {
         "@type": "Answer",
         text:
           "Yushan Li figure skates on the UC Berkeley team and is a former national champion in artistic swimming. " +
-          "She paints and created the logo and banner art on her personal website ysli.dev. " +
+          "She paints and created the logo and banner art on her personal website yushan.li. " +
           "She has traveled to more than 20 countries.",
       },
     },
