@@ -86,6 +86,27 @@ export default function Home() {
             , where i started and fumbled with a lot of things.
           </p>
           <p>
+            i do research at{" "}
+            <a
+              data-fish
+              href="https://bair.berkeley.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              {...stylex.props(ui.link)}
+            >
+              bair
+            </a>{" "}
+            on agent evals, and i took apart{" "}
+            <a
+              data-fish
+              href="/writing/x-recsys/"
+              {...stylex.props(ui.link)}
+            >
+              x&apos;s recommendation algorithm
+            </a>
+            .
+          </p>
+          <p>
             recently i&apos;ve been helping out and investing at{" "}
             <a
               data-fish
