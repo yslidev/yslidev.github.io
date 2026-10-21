@@ -13,6 +13,17 @@ const doors = [
 ];
 
 const styles = stylex.create({
+  // Front page only — the rest of the site stays on IBM Plex Sans.
+  nameScript: {
+    fontFamily: "'Pinyon Script', 'Birds of Paradise', cursive",
+    fontWeight: 400,
+    fontSize: "clamp(3.6rem, 11vw, 6rem)",
+    lineHeight: 1.1,
+    letterSpacing: "0.01em",
+  },
+  frontBody: {
+    fontFamily: "'Karla', 'IBM Plex Sans', -apple-system, sans-serif",
+  },
   card: {
     position: "relative",
     zIndex: 3,
@@ -50,8 +61,8 @@ export default function Home() {
       <PeekLayer />
       <Rail />
 
-      <main {...stylex.props(styles.card)}>
-        <h1 {...stylex.props(ui.h1)}>yushan li</h1>
+      <main {...stylex.props(styles.card, styles.frontBody)}>
+        <h1 {...stylex.props(ui.h1, styles.nameScript)}>yushan li</h1>
         <p {...stylex.props(styles.lede)}>
           i build ai products and study how people think.
         </p>

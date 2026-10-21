@@ -3,7 +3,7 @@ import * as stylex from "@stylexjs/stylex";
 // Palette pulled straight from the banner painting: the water, the ink the
 // fish and skyline are drawn in, and the persimmon from the logo.
 export const colors = stylex.defineVars({
-  teal: "#77d0d7",   // banner.jpg's water (#64cad1), lifted ~12% for brightness
+  teal: "#7de7f0",   // banner.jpg's water (#64cad1), lightened and saturated up
   tealLt: "#a8e3e8",
   tealDk: "#3aa8b2",
   ink: "#0c1c20",
