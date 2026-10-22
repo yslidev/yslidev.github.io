@@ -5,8 +5,8 @@ export interface WritingEntry {
   year: string;
 }
 
-// Self-hosted long-form. /writing is populated from the Substack API, so a
-// piece that does not live on Substack has to be pinned or it never appears.
+// Self-hosted technical writing, listed on yushan.li/writing. The Substack
+// essays below are the personal site's (ysli.dev) and are fetched live there.
 export const writingPinned: WritingEntry[] = [
   {
     title: "Inside the Machine",

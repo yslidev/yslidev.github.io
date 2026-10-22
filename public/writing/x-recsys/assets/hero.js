@@ -34,7 +34,7 @@
   /* ---- palette ---------------------------------------------------------- */
 
   var C = {
-    // ysli.dev palette. Teal family = sources you already have a relationship
+    // site palette. Teal family = sources you already have a relationship
     // with; the site's orange accent is reserved for the model path, which is
     // the thing the article is actually about.
     ink:     '#111111',                  // --foreground

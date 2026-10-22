@@ -1,6 +1,7 @@
 import Link from "next/link";
 import * as stylex from "@stylexjs/stylex";
 import { colors, fonts } from "../app/globalTokens.stylex";
+import { isPersonal } from "@/lib/site";
 
 const styles = stylex.create({
   rail: {
@@ -41,6 +42,27 @@ const styles = stylex.create({
   current: { color: colors.ink, backgroundColor: colors.orange },
 });
 
+type Item = {
+  label: string;
+  href: string;
+  // opens in a new tab: off-site links, and the cv pdf
+  newTab?: boolean;
+  page?: "writing" | "about";
+};
+
+// Each site gets its own nav over the same rail. The personal site is a
+// single page, so its "writing" is an anchor rather than a route.
+const NAV: Item[] = isPersonal
+  ? [
+      { label: "writing", href: "/#writing" },
+      { label: "substack", href: "https://liyushan27.substack.com", newTab: true },
+    ]
+  : [
+      { label: "writing", href: "/writing", page: "writing" },
+      { label: "about", href: "/about", page: "about" },
+      { label: "cv", href: "/cv.pdf", newTab: true },
+    ];
+
 export default function Rail({
   current,
 }: {
@@ -48,36 +70,27 @@ export default function Rail({
 }) {
   return (
     <header {...stylex.props(styles.rail)}>
-      {/* The mark is a plain span on the home page so it isn't a link to itself */}
       <Link href="/" {...stylex.props(styles.mark)}>
         yushan li
       </Link>
       <nav {...stylex.props(styles.nav)}>
-        <Link
-          data-fish
-          href="/writing"
-          aria-current={current === "writing" ? "page" : undefined}
-          {...stylex.props(styles.link, current === "writing" && styles.current)}
-        >
-          writing
-        </Link>
-        <Link
-          data-fish
-          href="/about"
-          aria-current={current === "about" ? "page" : undefined}
-          {...stylex.props(styles.link, current === "about" && styles.current)}
-        >
-          about
-        </Link>
-        <a
-          data-fish
-          href="/cv.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          {...stylex.props(styles.link)}
-        >
-          cv
-        </a>
+        {NAV.map((item) => {
+          const here = item.page !== undefined && item.page === current;
+          const props = {
+            "data-fish": true,
+            "aria-current": here ? ("page" as const) : undefined,
+            ...stylex.props(styles.link, here && styles.current),
+          };
+          return item.newTab ? (
+            <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" {...props}>
+              {item.label}
+            </a>
+          ) : (
+            <Link key={item.label} href={item.href} {...props}>
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
     </header>
   );
