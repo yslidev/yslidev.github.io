@@ -59,46 +59,72 @@ export default function About() {
             alt="Yushan with colleagues at Hooglee"
           >
             hooglee
-          </Ext>{" "}
-          i owned user research, data, and support end to end. i ran 200
-          structured interviews and weekly feedback reviews that fed straight
-          into the roadmap and the ai team&apos;s post-training, led 15 growth
-          interns as head of the product track, recruited and managed 450+
-          creators, and shipped segmented video search — gemini 2.5 pro
-          embeddings with asr indexing — at under 200ms.
+          </Ext>
+          , eric schmidt&apos;s video ai startup, as the first junior hire:
         </p>
+        <ul {...stylex.props(ui.list, ui.p)}>
+          <li {...stylex.props(ui.item)}>owned user research, data, and support end to end</li>
+          <li {...stylex.props(ui.item)}>
+            ran 200 structured interviews and weekly feedback reviews that fed the
+            roadmap and the ai team&apos;s post-training
+          </li>
+          <li {...stylex.props(ui.item)}>led 15 growth interns as head of the product track</li>
+          <li {...stylex.props(ui.item)}>recruited and managed 450+ creators</li>
+          <li {...stylex.props(ui.item)}>
+            shipped segmented video search at under 200ms (gemini 2.5 pro
+            embeddings, asr indexing)
+          </li>
+          <li {...stylex.props(ui.item)}>
+            won the company hackathon with a user-profiling pipeline that became
+            the base of its production recommendations
+          </li>
+        </ul>
 
         <h2 {...stylex.props(ui.h2)}>teaching</h2>
+        <ul {...stylex.props(ui.list, ui.p)}>
+          <li {...stylex.props(ui.item)}>
+            head ta for berkeley&apos;s largest engineering{" "}
+            <Ext
+              href="https://scet.berkeley.edu/students/courses/berkeley-method-of-entrepreneurship-bootcamp/"
+              peek="/assets/photo-campanile.jpg"
+              alt="Yushan on the Berkeley campus"
+            >
+              startup bootcamp
+            </Ext>{" "}
+            and{" "}
+            <Ext href="https://scet.berkeley.edu/students/courses/how-to-be-a-futurist/">
+              how to be a futurist
+            </Ext>
+          </li>
+          <li {...stylex.props(ui.item)}>
+            mentored 500+ students; analyzed 300+ startups across ai, blockchain,
+            and healthcare
+          </li>
+          <li {...stylex.props(ui.item)}>
+            founded and ran the first{" "}
+            <Ext href="https://globalstudentstartup.org/">
+              global student startup competition
+            </Ext>{" "}
+            in korea, and coached the team that won
+          </li>
+        </ul>
         <p {...stylex.props(ui.p)}>
-          i spent a year as head ta for berkeley&apos;s largest engineering{" "}
-          <Ext
-            href="https://scet.berkeley.edu/students/courses/berkeley-method-of-entrepreneurship-bootcamp/"
-            peek="/assets/photo-campanile.jpg"
-            alt="Yushan on the Berkeley campus"
-          >
-            startup bootcamp
-          </Ext>{" "}
-          and the{" "}
-          <Ext href="https://scet.berkeley.edu/students/courses/how-to-be-a-futurist/">
-            how to be a futurist
-          </Ext>{" "}
-          class — 500+ students mentored and 300+ startups analyzed across ai,
-          blockchain, and healthcare. i also founded and ran the first-ever{" "}
-          <Ext href="https://globalstudentstartup.org/">
-            global student startup competition
-          </Ext>{" "}
-          in korea, building the program, format, and judging, and coached the
-          winning team. teaching a room of founders is the fastest way i know to
-          find out whether you actually understand something.
+          teaching a room of founders is the fastest way i know to find out
+          whether you actually understand something.
         </p>
 
         <h2 {...stylex.props(ui.h2)}>recognition</h2>
-        <p {...stylex.props(ui.p)}>
-          fully funded{" "}
-          <Ext href="https://www.davisuwcscholars.org/">shelby davis scholar</Ext>{" "}
-          at berkeley. top 10 globally — the top 0.1% — at the international stem
-          mathematics olympiad, 2021.
-        </p>
+        <ul {...stylex.props(ui.list, ui.p)}>
+          <li {...stylex.props(ui.item)}>
+            fully funded{" "}
+            <Ext href="https://www.davisuwcscholars.org/">shelby davis scholar</Ext>{" "}
+            at berkeley
+          </li>
+          <li {...stylex.props(ui.item)}>
+            top 10 globally (top 0.1%), international stem mathematics olympiad
+            2021
+          </li>
+        </ul>
 
         <PageFoot />
       </main>

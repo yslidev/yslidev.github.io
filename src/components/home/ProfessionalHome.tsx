@@ -31,9 +31,7 @@ export default function ProfessionalHome() {
 
         <div {...stylex.props(front.prose)}>
           <p>
-            i do research on agent evals at{" "}
-            <Ext href="https://bair.berkeley.edu/">bair</Ext>, and study cs and
-            cognitive science at berkeley as a fully funded{" "}
+            cs and cognitive science at berkeley, fully funded as a{" "}
             <Ext
               href="https://www.davisuwcscholars.org/"
               peek="/assets/photo-campanile.jpg"
@@ -43,40 +41,45 @@ export default function ProfessionalHome() {
             </Ext>
             .
           </p>
-          <p>
-            i was one of five external reviewers of{" "}
-            <Ext href="https://github.com/xai-org/x-algorithm">
-              x&apos;s open-source recommendation algorithm
-            </Ext>{" "}
-            before it launched, working with x&apos;s vp of product — my feedback
-            shaped its new under the hood transparency tool. then i{" "}
-            <Ext href="/writing/x-recsys/">took the ranker apart</Ext> and found
-            the two mechanisms that suppress in-network posts.
-          </p>
-          <p>
-            i also contribute to{" "}
-            <Ext href="https://agenthle.org/">agent last exam</Ext>, a benchmark of
-            long-horizon tasks for frontier computer-use agents — submitted to
-            neurips 2026 and adopted by gpt-6 astra.
-          </p>
-          <p>
-            before that i was the first junior hire at{" "}
-            <Ext
-              href="https://dipper.com/"
-              peek="/assets/photo-dipper.jpg"
-              alt="Yushan with colleagues at Hooglee"
-            >
-              hooglee
-            </Ext>
-            , eric schmidt&apos;s video ai startup, from seed through series a. i
-            won the company hackathon with a user-profiling pipeline that became
-            the foundation of its production recommendation system.
-          </p>
-          <p>
-            now i help out and invest at{" "}
-            <Ext href="https://nichevp.com">niche vp</Ext>, and source deals for
-            moxxie and monolith.
-          </p>
+          <ul {...stylex.props(ui.list)}>
+            <li {...stylex.props(ui.item)}>
+              research on agent evals at{" "}
+              <Ext href="https://bair.berkeley.edu/">bair</Ext>
+            </li>
+            <li {...stylex.props(ui.item)}>
+              one of five external reviewers of{" "}
+              <Ext href="https://github.com/xai-org/x-algorithm">
+                x&apos;s open-source recommendation algorithm
+              </Ext>{" "}
+              before launch; my feedback went into its under the hood tool
+            </li>
+            <li {...stylex.props(ui.item)}>
+              <Ext href="/writing/x-recsys/">took the ranker apart</Ext> and found
+              two mechanisms that suppress in-network posts
+            </li>
+            <li {...stylex.props(ui.item)}>
+              contributor to{" "}
+              <Ext href="https://agenthle.org/">agent last exam</Ext>: submitted to
+              neurips 2026, adopted by gpt-6 astra
+            </li>
+            <li {...stylex.props(ui.item)}>
+              first junior hire at{" "}
+              <Ext
+                href="https://dipper.com/"
+                peek="/assets/photo-dipper.jpg"
+                alt="Yushan with colleagues at Hooglee"
+              >
+                hooglee
+              </Ext>
+              , eric schmidt&apos;s video ai startup, seed to series a; won the
+              company hackathon with the pipeline behind its production
+              recommendations
+            </li>
+            <li {...stylex.props(ui.item)}>
+              investing at <Ext href="https://nichevp.com">niche vp</Ext>; deal
+              sourcing for moxxie and monolith
+            </li>
+          </ul>
         </div>
 
         <nav {...stylex.props(front.doors)}>

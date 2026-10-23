@@ -31,7 +31,7 @@ export default async function PersonalHome() {
       <main {...stylex.props(ui.page, front.body)}>
         <h1 {...stylex.props(ui.h1, front.name)}>yushan</h1>
         <p {...stylex.props(front.lede)}>
-          hi — i paint, figure skate, and write things down.
+          hi! i paint, figure skate, and write things down.
         </p>
 
         <div {...stylex.props(front.prose)}>
@@ -44,10 +44,10 @@ export default async function PersonalHome() {
             >
               united world college
             </Ext>{" "}
-            in mostar, bosnia — a couple hundred teenagers from eighty countries,
+            in mostar, bosnia: a couple hundred teenagers from eighty countries,
             in a town still marked by a war most of us had only read about.
-            twenty-odd countries since, and the list keeps growing. these days
-            i&apos;m in{" "}
+            i&apos;ve been to twenty-odd countries since, and the list keeps
+            growing. these days i&apos;m in{" "}
             <Ext
               href="https://www.berkeley.edu/"
               peek="/assets/photo-campanile.jpg"
@@ -64,7 +64,7 @@ export default async function PersonalHome() {
             than anything else has.
           </p>
           <p>
-            i paint, too. the fish swimming around this page are cut out of{" "}
+            i paint too. the fish swimming around this page are cut out of{" "}
             <Ext href="/banner.jpg" peek="/banner.jpg" alt="Yushan's painting of fish over a city skyline">
               one of my paintings
             </Ext>
@@ -94,14 +94,14 @@ export default async function PersonalHome() {
             ))}
           </div>
           <p {...stylex.props(styles.more)}>
-            new pieces land on{" "}
-            <Ext href="https://liyushan27.substack.com">substack</Ext> first —
-            subscribe there if you want them in your inbox.
+            new pieces go up on{" "}
+            <Ext href="https://liyushan27.substack.com">substack</Ext> first,
+            so subscribe there if you want them in your inbox.
           </p>
         </section>
 
         <p {...stylex.props(styles.work)}>
-          here for work? that lives at{" "}
+          here for work? that&apos;s at{" "}
           <Ext href="https://yushan.li">yushan.li</Ext>.
         </p>
 
