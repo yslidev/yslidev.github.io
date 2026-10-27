@@ -58,26 +58,4 @@ export const ui = stylex.create({
     color: colors.inkSoft,
     marginTop: 10,
   },
-  // Scannable claims: a persimmon dot, no default list chrome.
-  list: {
-    listStyle: "none",
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-  },
-  item: {
-    position: "relative",
-    paddingLeft: 18,
-    lineHeight: 1.6,
-    "::before": {
-      content: '""',
-      position: "absolute",
-      left: 2,
-      top: "0.68em",
-      width: 6,
-      height: 6,
-      borderRadius: "50%",
-      backgroundColor: colors.orange,
-    },
-  },
 });

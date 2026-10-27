@@ -1,10 +1,10 @@
 import * as stylex from "@stylexjs/stylex";
 import { ui } from "./ui";
 
-// Professional contact points. Substack lives on the personal site (ysli.dev).
 export const contactLinks = [
   { label: "github", href: "https://github.com/yslidev" },
   { label: "linkedin", href: "https://linkedin.com/in/liyushan27" },
+  { label: "substack", href: "https://liyushan27.substack.com" },
   { label: "yushanli@berkeley.edu", href: "mailto:yushanli@berkeley.edu" },
 ];
 

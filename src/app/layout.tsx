@@ -1,17 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { isPersonal, SITE_URL } from "@/lib/site";
 
-const professionalMetadata: Metadata = {
+const SITE_URL = "https://yushan.li";
+
+export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: "Yushan Li",
     template: "%s — Yushan Li",
   },
   description:
-    "Yushan Li researches agent evals at Berkeley AI Research, reviewed X's open-source " +
-    "recommendation algorithm before launch, and invests with Niche VP. Previously the first " +
-    "junior hire at Eric Schmidt's video AI startup. CS + Cognitive Science at UC Berkeley.",
+    "Yushan Li is a CS + Cognitive Science student at UC Berkeley and a Shelby Davis Scholar. " +
+    "She builds AI products, figure skates on the Cal team, and paints.",
   keywords: [
     "Yushan Li",
     "ysli",
@@ -20,10 +20,8 @@ const professionalMetadata: Metadata = {
     "Shelby Davis Scholar",
     "product design",
     "AI products",
-    "Berkeley AI Research",
-    "agent evals",
-    "recommendation systems",
-    "Niche VP",
+    "figure skater Berkeley",
+    "United World College",
   ],
   authors: [{ name: "Yushan Li", url: SITE_URL }],
   creator: "Yushan Li",
@@ -34,8 +32,8 @@ const professionalMetadata: Metadata = {
     username: "yslidev",
     title: "Yushan Li",
     description:
-      "Agent evals at Berkeley AI Research, external reviewer of X's recommendation " +
-      "algorithm, investing with Niche VP. CS + Cognitive Science at UC Berkeley.",
+      "Yushan Li — CS + Cognitive Science at UC Berkeley, Shelby Davis Scholar. " +
+      "AI product builder, figure skater, painter.",
     url: SITE_URL,
     siteName: "yushan.li",
     locale: "en_US",
@@ -52,7 +50,7 @@ const professionalMetadata: Metadata = {
     card: "summary",
     title: "Yushan Li",
     description:
-      "Agent evals at Berkeley AI Research, external reviewer of X's recommendation algorithm, investing with Niche VP.",
+      "CS + Cognitive Science at UC Berkeley. Building AI products, figure skater, painter.",
     images: ["/logo.jpg"],
   },
   alternates: {
@@ -69,31 +67,6 @@ const professionalMetadata: Metadata = {
     },
   },
 };
-
-// ysli.dev is for friends and family: kept out of search results and never
-// linked to yushan.li. Crawling is still allowed (see robots.ts) so that
-// search engines can read this noindex rather than index a bare URL.
-const personalMetadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: { default: "yushan", template: "%s — yushan" },
-  description: "paintings, figure skating, and writing — for friends and family.",
-  // link previews still matter here: this site travels by text message
-  openGraph: {
-    type: "website",
-    title: "yushan",
-    description: "paintings, figure skating, and writing.",
-    url: SITE_URL,
-    siteName: "ysli.dev",
-    images: [{ url: "/logo.jpg", width: 400, height: 400, alt: "a persimmon, painted by Yushan" }],
-  },
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: { index: false, follow: false },
-  },
-};
-
-export const metadata: Metadata = isPersonal ? personalMetadata : professionalMetadata;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -130,16 +103,16 @@ const profilePageLd = {
       height: 400,
     },
     description:
-      "Yushan Li does research on agent evals at Berkeley AI Research and contributes to the " +
-      "Agent Last Exam benchmark. She was one of five external reviewers of X's open-source " +
-      "recommendation algorithm before launch, was the first junior hire at Eric Schmidt's video " +
-      "AI startup Hooglee from seed through Series A, and invests with Niche VP. She studies CS " +
-      "and Cognitive Science at UC Berkeley as a fully funded Shelby Davis Scholar.",
-    jobTitle: "Undergraduate Research Assistant",
+      "Yushan Li is a fourth-year CS and Cognitive Science student at UC Berkeley, " +
+      "fully funded as a Shelby Davis Scholar. She builds AI products, figure skates " +
+      "on the Cal team, and is a former national champion in artistic swimming. " +
+      "She grew up in China, attended United World College in Bosnia, and paints — " +
+      "including the logo and banner on this site.",
+    jobTitle: "CS + Cognitive Science Student",
     worksFor: {
-      "@type": "ResearchOrganization",
-      name: "Berkeley AI Research (BAIR)",
-      url: "https://bair.berkeley.edu/",
+      "@type": "CollegeOrUniversity",
+      name: "University of California, Berkeley",
+      url: "https://berkeley.edu",
     },
     alumniOf: [
       {
@@ -217,12 +190,12 @@ const faqLd = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Yushan Li does research on agent evals at Berkeley AI Research (BAIR) and contributes to " +
-          "Agent Last Exam, a benchmark of long-horizon tasks for frontier computer-use agents submitted " +
-          "to NeurIPS 2026. She was one of five external reviewers of X's open-source recommendation " +
-          "algorithm before launch, and later reverse-engineered two mechanisms in it that suppress " +
-          "in-network content. She was the first junior hire at Eric Schmidt's video AI startup Hooglee, " +
-          "invests with Niche VP, and studies CS and Cognitive Science at UC Berkeley as a Shelby Davis Scholar.",
+          "Yushan Li is a fourth-year CS and Cognitive Science student at UC Berkeley, " +
+          "fully funded as a Shelby Davis Scholar. She built AI products as the first junior hire " +
+          "at Eric Schmidt's video AI startup (Hooglee), owned end-to-end UX from day one to Series A, " +
+          "and shipped search, account systems, and an admin dashboard. She figure skates on the Cal team, " +
+          "is a former national champion in artistic swimming, and paints. She grew up in China and " +
+          "attended United World College in Bosnia where she studied Cultural Anthropology.",
       },
     },
     {
@@ -231,16 +204,12 @@ const faqLd = {
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "At Berkeley AI Research, Yushan Li works on agent evals and contributes to the Agent Last Exam " +
-          "benchmark. She was one of five external reviewers of X's open-source recommendation algorithm, " +
-          "working with X's VP of Product, and her feedback shaped X's Under the Hood transparency tool. " +
-          "As the first junior hire at Hooglee, Eric Schmidt's video AI startup, from seed through Series A, " +
-          "she ran 200 structured user interviews, led 15 growth interns, managed 450+ creators, shipped " +
-          "segmented video search at under 200ms, and won the company hackathon with a user-profiling " +
-          "pipeline that became the foundation of the production recommendation system. As head TA for " +
-          "Berkeley's largest engineering startup bootcamp she mentored 500+ students, and she founded and " +
-          "ran the first Global Student Startup Competition in Korea. She invests with Niche VP and sources " +
-          "deals for Moxxie and Monolith.",
+          "Yushan Li was the first junior hire at Eric Schmidt's video AI startup Hooglee, " +
+          "where she owned all UX from day one to Series A. She shipped search and discovery as PM, " +
+          "built the account system as PM, built the admin dashboard as SWE, ran a 200+ creator " +
+          "influencer program, and won the internal hackathon on recommendation-system user profiling. " +
+          "She also served as Head TA for Berkeley's largest engineering startup class and How to Be a Futurist, " +
+          "mentored 500+ student founders, and helped organize the first Global Student Startup Competition.",
       },
     },
     {
@@ -261,7 +230,8 @@ const faqLd = {
         "@type": "Answer",
         text:
           "Yushan Li figure skates on the UC Berkeley team and is a former national champion in artistic swimming. " +
-          "She paints, and has traveled to more than 20 countries.",
+          "She paints and created the logo and banner art on her personal website yushan.li. " +
+          "She has traveled to more than 20 countries.",
       },
     },
     {
@@ -287,16 +257,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Structured data names Yushan for search and AI engines — the
-            professional site only; ysli.dev should stay unattributed. */}
-        {!isPersonal &&
-          [profilePageLd, websiteLd, faqLd].map((ld, i) => (
-            <script
-              key={i}
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: jsonLdString(ld) }}
-            />
-          ))}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdString(profilePageLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdString(websiteLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdString(faqLd) }}
+        />
       </head>
       <body>
         {children}
