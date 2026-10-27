@@ -43,15 +43,22 @@ const styles = stylex.create({
 
 export default function Rail({
   current,
+  home,
 }: {
   current?: "writing" | "about";
+  home?: boolean;
 }) {
   return (
     <header {...stylex.props(styles.rail)}>
-      {/* The mark is a plain span on the home page so it isn't a link to itself */}
-      <Link href="/" {...stylex.props(styles.mark)}>
-        yushan li
-      </Link>
+      {/* The home card already says the name in script, so the mark steps
+          aside there; the empty span keeps the nav pinned right. */}
+      {home ? (
+        <span />
+      ) : (
+        <Link href="/" {...stylex.props(styles.mark)}>
+          yushan li
+        </Link>
+      )}
       <nav {...stylex.props(styles.nav)}>
         <Link
           data-fish
