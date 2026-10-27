@@ -26,6 +26,10 @@ const css = `
 .p3 img.small { width: 64px; image-rendering: auto; }
 .p3 figure { margin: 0; }
 .p3 figcaption { margin-top: 7px; font-size: 14px; line-height: 1.45; }
+@media print {
+  .p3 h2, .p3 h3 { break-after: avoid; }
+  .p3 figure, .p3 p { break-inside: avoid; }
+}
 `;
 
 function Fig({ src, cap }: { src: string; cap?: string }) {
