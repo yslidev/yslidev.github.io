@@ -21,7 +21,7 @@ export default function About() {
       <Rail current="about" />
 
       <main {...stylex.props(ui.page)}>
-        <h1 {...stylex.props(ui.h1)}>about</h1>
+        <h1 {...stylex.props(ui.srOnly)}>about</h1>
 
         <p {...stylex.props(ui.p)}>
           i was born in china and left at sixteen for{" "}
@@ -51,7 +51,6 @@ export default function About() {
           never see.
         </p>
 
-        <h2 {...stylex.props(ui.h2)}>teaching</h2>
         <p {...stylex.props(ui.p)}>
           i spent a year as head ta for berkeley&apos;s largest engineering{" "}
           <a
@@ -89,7 +88,6 @@ export default function About() {
           way i know to find out whether you actually understand something.
         </p>
 
-        <h2 {...stylex.props(ui.h2)}>elsewhere</h2>
         <p {...stylex.props(ui.p)}>
           twenty-odd countries so far, and the list keeps growing. currently in
           berkeley, california.

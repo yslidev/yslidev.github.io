@@ -24,11 +24,6 @@ const styles = stylex.create({
     textTransform: "lowercase",
     cursor: "pointer",
   },
-  chevron: {
-    display: "inline-block",
-    transition: "transform .35s cubic-bezier(.16,1,.3,1)",
-  },
-  chevronOpen: { transform: "rotate(180deg)" },
   // Animating grid rows 0fr -> 1fr opens to the content's real height.
   panel: {
     display: "grid",
@@ -57,9 +52,6 @@ export default function More({ children }: { children: React.ReactNode }) {
         {...stylex.props(styles.toggle)}
       >
         {open ? "less" : "more"}
-        <span aria-hidden="true" {...stylex.props(styles.chevron, open && styles.chevronOpen)}>
-          ↓
-        </span>
       </button>
       <div id={id} inert={!open} {...stylex.props(styles.panel, open && styles.panelOpen)}>
         <div {...stylex.props(styles.clip)}>

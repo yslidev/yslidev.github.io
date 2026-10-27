@@ -181,8 +181,6 @@ export default function Home() {
             </a>
           ))}
         </nav>
-
-        <p {...stylex.props(ui.hint)}>double-click the water to feed the fish</p>
       </main>
     </>
   );

@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { colors, fonts } from "../app/globalTokens.stylex";
+import { colors } from "../app/globalTokens.stylex";
 
 // Shared pieces: the persimmon-underlined link, the inner-page shell, and the
 // footer strip that closes writing and about.
@@ -31,12 +31,15 @@ export const ui = stylex.create({
     textTransform: "lowercase",
     marginBottom: 6,
   },
-  h2: {
-    fontWeight: 500,
-    fontSize: 16,
-    textTransform: "lowercase",
-    color: "rgba(12, 28, 32, 0.7)",
-    marginTop: 14,
+  // The rail already marks which page you're on; the title stays for screen
+  // readers and the tab, not the eye.
+  srOnly: {
+    position: "absolute",
+    width: 1,
+    height: 1,
+    overflow: "hidden",
+    clipPath: "inset(50%)",
+    whiteSpace: "nowrap",
   },
   p: { fontSize: 16 },
   foot: {
@@ -50,12 +53,4 @@ export const ui = stylex.create({
     borderTopColor: colors.rule,
   },
   footLink: { fontSize: 15 },
-  hint: {
-    fontFamily: fonts.mono,
-    fontSize: 10.5,
-    letterSpacing: "0.2em",
-    textTransform: "lowercase",
-    color: colors.inkSoft,
-    marginTop: 10,
-  },
 });

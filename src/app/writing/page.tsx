@@ -66,7 +66,6 @@ const styles = stylex.create({
     color: colors.inkSoft,
     whiteSpace: "nowrap",
   },
-  more: { marginTop: 16, fontSize: 15 },
 });
 
 export default async function Writing() {
@@ -82,7 +81,7 @@ export default async function Writing() {
       <Rail current="writing" />
 
       <main {...stylex.props(ui.page)}>
-        <h1 {...stylex.props(ui.h1)}>writing</h1>
+        <h1 {...stylex.props(ui.srOnly)}>writing</h1>
 
         <div {...stylex.props(styles.rows)}>
           {posts.map((p, i) => (
@@ -96,27 +95,10 @@ export default async function Writing() {
               {...stylex.props(styles.row)}
             >
               <h3 {...stylex.props(styles.title)}>{p.title}</h3>
-              <span {...stylex.props(styles.meta)}>
-                {p.year}
-                {p.href.startsWith("/") ? "" : " ↗"}
-              </span>
+              <span {...stylex.props(styles.meta)}>{p.year}</span>
             </a>
           ))}
         </div>
-
-        <p {...stylex.props(styles.more)}>
-          older pieces live on{" "}
-          <a
-            data-fish
-            href="https://liyushan27.substack.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            {...stylex.props(ui.link)}
-          >
-            substack
-          </a>
-          . new ones will appear in this list.
-        </p>
 
         <PageFoot />
       </main>
