@@ -1,7 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import FishCanvas from "@/components/FishCanvas";
 import PeekLayer from "@/components/PeekLayer";
-import More from "@/components/More";
 import Rail from "@/components/Rail";
 import { contactLinks } from "@/components/PageFoot";
 import { ui } from "@/components/ui";
@@ -146,26 +145,6 @@ export default function Home() {
           </p>
         </div>
 
-        <More>
-          <div {...stylex.props(styles.prose)}>
-            <p>
-              at bair i was one of five outside reviewers of x&apos;s open-source
-              recommendation algorithm before it launched, and my notes went
-              into its under the hood tool. i also work on agent last exam, a
-              benchmark for long-horizon computer-use agents.
-            </p>
-            <p>
-              at hooglee i talked to 200 users, led 15 growth interns, shipped
-              video search that answers in under 200ms, and won the company
-              hackathon with the pipeline behind its recommendations.
-            </p>
-            <p>
-              i was also head ta for berkeley&apos;s largest engineering startup
-              bootcamp, have mentored 500+ founders, and started the first
-              global student startup competition in korea.
-            </p>
-          </div>
-        </More>
 
         <nav {...stylex.props(styles.doors)}>
           {doors.map((l) => (
