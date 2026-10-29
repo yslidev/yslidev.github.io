@@ -116,8 +116,8 @@ H =
             <Fig src="rect_crop_bilinear.jpg" cap="bilinear" px />
           </div>
           <p>
-            Nearest neighbor took 0.07 s for the book and bilinear 0.19 s,
-            about 3× slower. Nearest neighbor gives jagged edges on the
+            Nearest neighbor took 0.08 s for the book and bilinear 0.17 s,
+            about 2× slower. Nearest neighbor gives jagged edges on the
             lettering; bilinear is smoother but slightly blurrier.
           </p>
         </section>
