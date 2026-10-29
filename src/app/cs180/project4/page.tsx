@@ -107,8 +107,8 @@ H =
             <Fig src="rect_book_bilinear.jpg" />
           </div>
           <div className="two">
-            <Fig src="rect_laptop_src.jpg" />
-            <Fig src="rect_laptop_bilinear.jpg" />
+            <Fig src="rect_monitor_src.jpg" />
+            <Fig src="rect_monitor_bilinear.jpg" />
           </div>
           <h3>nearest neighbor vs bilinear</h3>
           <div className="two">
@@ -116,9 +116,9 @@ H =
             <Fig src="rect_crop_bilinear.jpg" cap="bilinear" px />
           </div>
           <p>
-            Nearest neighbor took 0.06 s for the laptop and bilinear 0.17 s,
-            about 3× slower. Nearest neighbor gives jagged edges on the text;
-            bilinear is smoother but slightly blurrier.
+            Nearest neighbor took 0.07 s for the book and bilinear 0.19 s,
+            about 3× slower. Nearest neighbor gives jagged edges on the
+            lettering; bilinear is smoother but slightly blurrier.
           </p>
         </section>
 
