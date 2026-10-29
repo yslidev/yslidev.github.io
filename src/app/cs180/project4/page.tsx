@@ -80,17 +80,17 @@ export default function Project4() {
 h21 x + h22 y + h23 − h31 x y′ − h32 y y′ = y′`}</pre>
           <p>
             Stacking n ≥ 4 pairs gives A h = b with A of size 2n × 8, solved by
-            least squares. Correspondences for 786 → 787 (9 points):
+            least squares. Correspondences for 786 → 787 (10 points):
           </p>
           <div className="one"><Fig src="corr_786_787.jpg" /></div>
           <pre>{`first two rows of A h = b:
-[332  97  1    0   0  0  −13944   −4074] h = 42
-[  0   0  0  332  97  1  −48472  −14162] h = 146
+[347  904  1    0    0  0   −22246   −57958] h = 64.1
+[  0    0  0  347  904  1  −352516  −918436] h = 1016.5
 
 H =
-[ 1.2668   0.0178  −375.21 ]
-[ 0.2125   1.0928   −15.35 ]
-[ 0.0004  −0.0001     1    ]`}</pre>
+[ 1.3539  −0.0053  −398.42 ]
+[ 0.2702   1.1388   −34.89 ]
+[ 0.0005  −0.0001     1    ]`}</pre>
           <div className="one">
             <Fig src="corr_787_788.jpg" />
             <Fig src="corr_789_790.jpg" />
