@@ -192,7 +192,7 @@ const faqLd = {
         text:
           "Yushan Li is a fourth-year CS and Cognitive Science student at UC Berkeley, " +
           "fully funded as a Shelby Davis Scholar. She built AI products as the first junior hire " +
-          "at Eric Schmidt's video AI startup (Hooglee), owned end-to-end UX from day one to Series A, " +
+          "at Eric Schmidt's video AI startup (Hooglee), owned end-to-end UX from day one, " +
           "and shipped search, account systems, and an admin dashboard. She figure skates on the Cal team, " +
           "is a former national champion in artistic swimming, and paints. She grew up in China and " +
           "attended United World College in Bosnia where she studied Cultural Anthropology.",
@@ -205,7 +205,7 @@ const faqLd = {
         "@type": "Answer",
         text:
           "Yushan Li was the first junior hire at Eric Schmidt's video AI startup Hooglee, " +
-          "where she owned all UX from day one to Series A. She shipped search and discovery as PM, " +
+          "where she owned all UX from day one. She shipped search and discovery as PM, " +
           "built the account system as PM, built the admin dashboard as SWE, ran a 200+ creator " +
           "influencer program, and won the internal hackathon on recommendation-system user profiling. " +
           "She also served as Head TA for Berkeley's largest engineering startup class and How to Be a Futurist, " +
