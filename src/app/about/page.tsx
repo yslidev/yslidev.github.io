@@ -52,7 +52,7 @@ export default function About() {
         </p>
 
         <p {...stylex.props(ui.p)}>
-          i spent a year as head ta for berkeley&apos;s largest engineering{" "}
+          i spent a year as course coordinator and ta for berkeley&apos;s largest engineering{" "}
           <a
             data-fish
             data-peek="/assets/photo-campanile.jpg"

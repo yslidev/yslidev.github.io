@@ -208,7 +208,7 @@ const faqLd = {
           "where she owned all UX from day one. She shipped search and discovery as PM, " +
           "built the account system as PM, built the admin dashboard as SWE, ran a 200+ creator " +
           "influencer program, and won the internal hackathon on recommendation-system user profiling. " +
-          "She also served as Head TA for Berkeley's largest engineering startup class and How to Be a Futurist, " +
+          "She also served as course coordinator and TA for Berkeley's largest engineering startup class and How to Be a Futurist, " +
           "mentored 500+ student founders, and helped organize the first Global Student Startup Competition.",
       },
     },
