@@ -136,6 +136,57 @@ H =
           <div className="one"><Fig src="mosaic_tree.jpg" /></div>
           <div className="one"><Fig src="mosaic_desk.jpg" /></div>
         </section>
+
+        <h2 className="part">part b: feature matching for autostitching</h2>
+
+        <section>
+          <h2>b.1 harris corners and anms</h2>
+          <div className="two">
+            <Fig src="b_harris.jpg" cap="all harris corners (27,635)" />
+            <Fig src="b_anms.jpg" cap="after anms (1,000)" />
+          </div>
+        </section>
+
+        <section>
+          <h2>b.2 feature descriptors</h2>
+          <div className="one"><Fig src="b_descriptors.jpg" /></div>
+          <p>
+            Top: the 40×40 window around a corner. Bottom: the 8×8 descriptor,
+            sampled every 5 pixels after a Gaussian blur, then bias/gain
+            normalized.
+          </p>
+        </section>
+
+        <section>
+          <h2>b.3 feature matching</h2>
+          <div className="one"><Fig src="b_matches.jpg" /></div>
+          <p>
+            Lowe&apos;s ratio test, keeping a match when the 1-NN / 2-NN
+            distance ratio is below 0.6: 338 matches.
+          </p>
+        </section>
+
+        <section>
+          <h2>b.4 ransac</h2>
+          <div className="one"><Fig src="b_ransac.jpg" /></div>
+          <p>
+            4-point RANSAC, 5,000 iterations, inlier threshold 2 px. Green: the
+            171 inliers, from which H is refit by least squares. Red: outliers.
+          </p>
+          <h3>manual vs automatic</h3>
+          <div className="two">
+            <Fig src="mosaic_bedroom.jpg" cap="manual" />
+            <Fig src="auto_bedroom.jpg" cap="automatic" />
+          </div>
+          <div className="two">
+            <Fig src="mosaic_tree.jpg" cap="manual" />
+            <Fig src="auto_tree.jpg" cap="automatic" />
+          </div>
+          <div className="two">
+            <Fig src="mosaic_desk.jpg" cap="manual" />
+            <Fig src="auto_desk.jpg" cap="automatic" />
+          </div>
+        </section>
       </main>
     </>
   );
