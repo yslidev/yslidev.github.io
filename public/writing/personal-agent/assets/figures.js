@@ -1,4 +1,4 @@
-// Interactive figures for "Is a personal agent a secretary, a coworker, or a friend?"
+// Interactive figures for "Is a personal agent an executive assistant, a coworker, or a friend?"
 //
 // One IIFE per <d-figure>. Bars are HTML with CSS transitions (they animate
 // when the figure scrolls into view); the map and the heatmap are SVG so they
@@ -8,7 +8,7 @@
 (function () {
   // Site palette: teal from the banner water, persimmon from the logo, ink.
   const C = {
-    sec: '#1a7a9e',      // secretary / coworker (teal-dark)
+    sec: '#1a7a9e',      // executive assistant / coworker (teal-dark)
     chat: '#64cad1',     // assistants that live inside a chat app (teal)
     friend: '#f97316',   // companion (persimmon)
     gray: '#a7b4b7',
@@ -96,13 +96,13 @@
     if (!HOST) return;
     const rows = [
       ['Grok Bot', 'xAI', '2026.8', 'beta', 'own app + cloud PC', 'multi-step background tasks', 'coworker'],
-      ['Meta Muse', 'Meta', '2026.9', 'Sept 8', 'own app, WhatsApp', 'schedule, shopping, goals', 'secretary'],
-      ['OpenAI Dots', 'OpenAI', '2026.9', 'Sept 29', 'ChatGPT / Codex', 'restaurants to websites, "does it all"', 'secretary + coworker'],
+      ['Meta Muse', 'Meta', '2026.9', 'Sept 8', 'own app, WhatsApp', 'schedule, shopping, goals', 'executive assistant'],
+      ['OpenAI Dots', 'OpenAI', '2026.9', 'Sept 29', 'ChatGPT / Codex', 'restaurants to websites, "does it all"', 'executive assistant + coworker'],
       ['Claude Duet', 'Anthropic', '2026.10', 'research preview', 'standalone app', 'briefings, inbox, calendar, drafts', 'coworker'],
-      ['Gemini Spark', 'Google', '2026.5', 'I/O', 'Gemini app, Gmail', 'Workspace-connected, always on', 'secretary + coworker'],
-      ['Instinct', 'Instinct', '2026.8', 'early access', 'iMessage, phone', 'travel, groceries, cancel subs', 'secretary'],
-      ['Poke', 'Interaction Co.', '2025', '2025–26', 'iMessage / SMS', 'automations by text', 'secretary (with a personality)'],
-      ['Tab', 'Tab', '2026', 'out of stealth', 'iMessage, WhatsApp', 'calls, flights, payments', 'secretary'],
+      ['Gemini Spark', 'Google', '2026.5', 'I/O', 'Gemini app, Gmail', 'Workspace-connected, always on', 'executive assistant + coworker'],
+      ['Instinct', 'Instinct', '2026.8', 'early access', 'iMessage, phone', 'travel, groceries, cancel subs', 'executive assistant'],
+      ['Poke', 'Interaction Co.', '2025', '2025–26', 'iMessage / SMS', 'automations by text', 'executive assistant (with a personality)'],
+      ['Tab', 'Tab', '2026', 'out of stealth', 'iMessage, WhatsApp', 'calls, flights, payments', 'executive assistant'],
       ['Town', 'Town', '2026.6', 'June', 'work email / calendar', 'an assistant for every employee', 'coworker'],
       ['Tolan', 'Portola', '2024', '2024–', 'own app', 'an alien friend to talk to', 'friend'],
     ];
@@ -120,7 +120,7 @@
       <figcaption>Sources: company announcements and coverage by TechCrunch, CNBC, Engadget, a16z and others (May–Nov 2026); some launch dates vary by source. The type column is my classification by each product's headline features.</figcaption>`;
     const trs = HOST.querySelectorAll('tbody tr');
     seg($(HOST, '.pa-controls'), [
-      { key: 'all', label: 'all 10' }, { key: 'secretary', label: 'secretary' },
+      { key: 'all', label: 'all 10' }, { key: 'executive assistant', label: 'executive assistant' },
       { key: 'coworker', label: 'coworker' }, { key: 'friend', label: 'friend' },
     ], k => trs.forEach(tr => tr.classList.toggle('pa-out', k !== 'all' && !tr.dataset.type.includes(k))));
   })();
@@ -161,7 +161,7 @@
           <rect x="${P}" y="${P}" width="${W - 2 * P}" height="${H - 2 * P}" fill="#fbfdfd" stroke="#b2dce2"/>
           <line x1="${W / 2}" y1="${P}" x2="${W / 2}" y2="${H - P}" stroke="#b2dce2" stroke-dasharray="3 3"/>
           <line x1="${P}" y1="${H / 2}" x2="${W - P}" y2="${H / 2}" stroke="#b2dce2" stroke-dasharray="3 3"/>
-          <text x="${P + 8}" y="${P + 18}" class="pa-q" fill="${C.sec}">secretary / coworker</text>
+          <text x="${P + 8}" y="${P + 18}" class="pa-q" fill="${C.sec}">executive assistant / coworker</text>
           <text x="${W - P - 8}" y="${H - P - 10}" class="pa-q" text-anchor="end" fill="${C.friend}">friend / companion</text>
           <text x="${P}" y="${H - 10}" class="pa-ax">cold</text><text x="${W - P}" y="${H - 10}" class="pa-ax" text-anchor="end">warm</text>
           <text x="12" y="${H - P}" class="pa-ax" transform="rotate(-90 12 ${H - P})">chat</text>

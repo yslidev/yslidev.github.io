@@ -9,7 +9,7 @@ export interface WritingEntry {
 // piece that does not live on Substack has to be pinned or it never appears.
 export const writingPinned: WritingEntry[] = [
   {
-    title: "Is a personal agent a secretary, a coworker, or a friend?",
+    title: "Is a personal agent an executive assistant, a coworker, or a friend?",
     desc: "five months as a heavy user, and who got my 77 invite codes",
     href: "/writing/personal-agent/",
     year: "Nov 2026",
