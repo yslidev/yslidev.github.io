@@ -6,14 +6,15 @@
 // nothing is interpolated.
 
 (function () {
+  // Site palette: teal from the banner water, persimmon from the logo, ink.
   const C = {
-    sec: '#2596be',      // secretary / coworker
-    chat: '#7c5cc4',     // assistants that live inside a chat app
-    friend: '#f97316',   // companion
-    gray: '#9ca3af',
-    ink: '#111111',
-    soft: 'rgba(17,17,17,0.55)',
-    cn: '#f97316', os: '#2596be', na: '#d1d5db',
+    sec: '#1a7a9e',      // secretary / coworker (teal-dark)
+    chat: '#64cad1',     // assistants that live inside a chat app (teal)
+    friend: '#f97316',   // companion (persimmon)
+    gray: '#a7b4b7',
+    ink: '#0c1c20',
+    soft: 'rgba(0,0,0,0.5)',
+    cn: '#f97316', os: '#1a7a9e', na: '#d6e3e5',
   };
   const $ = (root, sel) => root.querySelector(sel);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -105,7 +106,7 @@
       ['Town', 'Town', '2026.6', 'June', 'work email / calendar', 'an assistant for every employee', 'coworker'],
       ['Tolan', 'Portola', '2024', '2024–', 'own app', 'an alien friend to talk to', 'friend'],
     ];
-    const col = t => t.includes('friend') ? C.friend : t.includes('personality') ? C.chat : C.sec;
+    const col = t => t.includes('friend') ? C.friend : t.includes('personality') ? '#3aa8b2' : C.sec;
     HOST.innerHTML = `
       <p class="fig-title">Personal agents of 2026</p>
       <p class="fig-subtitle">The personal agents that launched or made news in 2026. Filter by what each one is pitched as.</p>
@@ -157,9 +158,9 @@
       <div class="pa-controls"></div>
       <div class="pa-mapwrap">
         <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Personal agents placed by warmth and usefulness">
-          <rect x="${P}" y="${P}" width="${W - 2 * P}" height="${H - 2 * P}" fill="none" stroke="rgba(17,17,17,0.12)"/>
-          <line x1="${W / 2}" y1="${P}" x2="${W / 2}" y2="${H - P}" stroke="rgba(17,17,17,0.12)"/>
-          <line x1="${P}" y1="${H / 2}" x2="${W - P}" y2="${H / 2}" stroke="rgba(17,17,17,0.12)"/>
+          <rect x="${P}" y="${P}" width="${W - 2 * P}" height="${H - 2 * P}" fill="#fbfdfd" stroke="#b2dce2"/>
+          <line x1="${W / 2}" y1="${P}" x2="${W / 2}" y2="${H - P}" stroke="#b2dce2" stroke-dasharray="3 3"/>
+          <line x1="${P}" y1="${H / 2}" x2="${W - P}" y2="${H / 2}" stroke="#b2dce2" stroke-dasharray="3 3"/>
           <text x="${P + 8}" y="${P + 18}" class="pa-q" fill="${C.sec}">secretary / coworker</text>
           <text x="${W - P - 8}" y="${H - P - 10}" class="pa-q" text-anchor="end" fill="${C.friend}">friend / companion</text>
           <text x="${P}" y="${H - 10}" class="pa-ax">cold</text><text x="${W - P}" y="${H - 10}" class="pa-ax" text-anchor="end">warm</text>
@@ -167,12 +168,12 @@
           <text x="12" y="${P + 30}" class="pa-ax" transform="rotate(-90 12 ${P + 30})">tasks</text>
           <g class="pa-money"></g>
           ${pts.map((p, i) => `<g class="pa-pt" data-i="${i}" tabindex="0">
-            <circle cx="${sx(p[1])}" cy="${sy(p[2])}" r="7" fill="${col[p[3]]}" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="${sx(p[1])}" cy="${sy(p[2])}" r="6.5" fill="${col[p[3]]}" stroke="#fff" stroke-width="1.5"/>
             <text x="${sx(p[1]) + 11}" y="${sy(p[2]) + 4}" class="pa-lab">${esc(p[0])}</text></g>`).join('')}
         </svg>
         <p class="pa-read"></p>
       </div>
-      <figcaption>Blue: officially positioned as an assistant or work tool. Purple: an assistant that lives inside iMessage / WhatsApp. Orange: companion. Money figures are as reported: valuations for Instinct and Town, total funding raised for Tolan.</figcaption>`;
+      <figcaption>Dark teal: officially positioned as an assistant or work tool. Light teal: an assistant that lives inside iMessage / WhatsApp. Orange: companion. Money figures are as reported: valuations for Instinct and Town, total funding raised for Tolan.</figcaption>`;
     const svg = $(HOST, 'svg'), read = $(HOST, '.pa-read'), money = $(HOST, '.pa-money');
     const idle = 'Hover or tap a dot to see what it is.';
     read.textContent = idle;
@@ -180,7 +181,7 @@
       svg.querySelectorAll('.pa-pt').forEach(g => g.classList.toggle('pa-dimmed', i != null && +g.dataset.i !== i));
       if (i == null) { read.textContent = idle; return; }
       const p = pts[i];
-      read.innerHTML = `<b>${esc(p[0])}</b>: ${esc(p[4])}${p[5] ? ` · <span style="color:${C.friend}">${esc(p[5])}</span>` : ''}`;
+      read.innerHTML = `<b>${esc(p[0])}</b>: ${esc(p[4])}${p[5] ? ` · <span style="color:#7a2a00">${esc(p[5])}</span>` : ''}`;
     }
     svg.addEventListener('mouseover', e => { const g = e.target.closest('.pa-pt'); if (g) show(+g.dataset.i); });
     svg.addEventListener('mouseleave', () => show(null));
@@ -189,8 +190,8 @@
       money.innerHTML = k === 'on' ? pts.map(p => {
         if (!p[5]) return '';
         const r = p[0] === 'Instinct' ? 46 : p[0] === 'Town' ? 26 : 9;
-        return `<circle cx="${sx(p[1])}" cy="${sy(p[2])}" r="${r}" fill="${col[p[3]]}" opacity="0.16" class="pa-grow"/>
-                <text x="${sx(p[1])}" y="${sy(p[2]) + r + 13}" text-anchor="middle" class="pa-moneylab">${esc(p[5])}</text>`;
+        return `<circle cx="${sx(p[1])}" cy="${sy(p[2])}" r="${r}" fill="${col[p[3]]}" opacity="0.18" class="pa-grow"/>
+                <text x="${sx(p[1])}" y="${sy(p[2]) - r - 5}" text-anchor="middle" class="pa-moneylab">${esc(p[5])}</text>`;
       }).join('') : '';
     });
   })();
@@ -210,7 +211,7 @@
     let picked = 'y24';
     function paint(k) {
       const n = vals[k];
-      cells.forEach((c, i) => { c.style.background = i < n ? C.friend : 'rgba(17,17,17,0.12)'; c.style.transitionDelay = (i * 6) + 'ms'; });
+      cells.forEach((c, i) => { c.style.background = i < n ? C.friend : '#e3eef0'; c.style.transitionDelay = (i * 6) + 'ms'; });
       big.innerHTML = `<b>${n}%</b><span>not about work, June ${k === 'y24' ? '2024' : '2025'}</span>`;
     }
     const pick = seg($(HOST, '.pa-controls'), [{ key: 'y24', label: 'June 2024' }, { key: 'y25', label: 'June 2025' }], k => { picked = k; paint(k); });
@@ -264,7 +265,7 @@
     const HOST = document.getElementById('heatmap-figure');
     if (!HOST) return;
     const DAYS = {"2026-06-03":5,"2026-06-04":5,"2026-06-06":2,"2026-06-07":2,"2026-06-08":6,"2026-06-10":1,"2026-07-08":1,"2026-07-26":1,"2026-08-06":1,"2026-08-13":1,"2026-08-21":2,"2026-08-22":2,"2026-08-23":6,"2026-08-24":3,"2026-08-25":3,"2026-08-26":5,"2026-08-27":8,"2026-08-28":1,"2026-08-29":1,"2026-08-30":2,"2026-08-31":4,"2026-09-01":4,"2026-09-02":9,"2026-09-03":14,"2026-09-04":9,"2026-09-05":8,"2026-09-06":4,"2026-09-07":3,"2026-09-08":11,"2026-09-09":7,"2026-09-10":11,"2026-09-11":5,"2026-09-12":8,"2026-09-13":2,"2026-09-14":12,"2026-09-15":18,"2026-09-16":24,"2026-09-17":16,"2026-09-18":12,"2026-09-19":13,"2026-09-20":4,"2026-09-21":6,"2026-09-22":10,"2026-09-23":4,"2026-09-24":2,"2026-09-25":2,"2026-09-26":3,"2026-09-27":4,"2026-09-28":1,"2026-09-29":4,"2026-09-30":20,"2026-10-01":7,"2026-10-02":7,"2026-10-03":9,"2026-10-04":5,"2026-10-05":13,"2026-10-06":12,"2026-10-07":3,"2026-10-08":6,"2026-10-09":6,"2026-10-10":5,"2026-10-11":2,"2026-10-12":8,"2026-10-13":5,"2026-10-14":9,"2026-10-15":14,"2026-10-16":13,"2026-10-17":1,"2026-10-18":11,"2026-10-19":3,"2026-10-20":8,"2026-10-21":7,"2026-10-22":3,"2026-10-23":7,"2026-10-24":4,"2026-10-26":4,"2026-10-27":6,"2026-10-28":7,"2026-10-29":4,"2026-10-30":5,"2026-10-31":2,"2026-11-01":4,"2026-11-02":4,"2026-11-03":3,"2026-11-04":4,"2026-11-05":7,"2026-11-06":2,"2026-11-07":13,"2026-11-08":2,"2026-11-09":4,"2026-11-10":1,"2026-11-11":1,"2026-11-12":3,"2026-11-13":6,"2026-11-16":1};
-    const shades = ['#eef0f3', '#c7d7fb', '#8db0f7', '#4f86f0', '#1d4fc4'];
+    const shades = ['#eef4f5', '#c9ecef', '#8fd9e0', '#3aa8b2', '#1a7a9e'];
     const shade = n => !n ? shades[0] : n <= 2 ? shades[1] : n <= 5 ? shades[2] : n <= 10 ? shades[3] : shades[4];
     const start = new Date(Date.UTC(2026, 5, 1)), first = new Date(Date.UTC(2026, 5, 3)), last = new Date(Date.UTC(2026, 10, 16));
     const CELL = 14, GAP = 3, L = 34, T = 22, weeks = 25;
@@ -291,8 +292,8 @@
         <text x="${L - 8}" y="${T + 3 * (CELL + GAP) + 11}" class="pa-ax" text-anchor="end">Thu</text>
         <text x="${L - 8}" y="${T + 6 * (CELL + GAP) + 11}" class="pa-ax" text-anchor="end">Sun</text>
         ${cells}
-        <path d="M${aw} ${H - 26} v6 H${ae} v-6" fill="none" stroke="${C.ink}" stroke-width="1"/>
-        <text x="${(aw + ae) / 2}" y="${H - 6}" text-anchor="middle" class="pa-ax" fill="${C.ink}">August: Instinct launches</text>
+        <path d="M${aw} ${H - 26} v6 H${ae} v-6" fill="none" stroke="rgba(0,0,0,0.5)" stroke-width="1"/>
+        <text x="${(aw + ae) / 2}" y="${H - 6}" text-anchor="middle" class="pa-ax">August: Instinct launches</text>
       </svg></div>
       <p class="pa-read"></p>
       <div class="pa-tiles">
@@ -346,8 +347,8 @@
         view.appendChild(stack);
         hbars(view)(where.map(r => ({ label: r[0], v: r[1], text: r[3] || r[1], color: r[2] })), 15);
       } else if (k === 'followers') {
-        vbars(view, 190)([{ label: '&lt; 100', v: 42, color: C.ink }, { label: '100 – 1k', v: 27, color: '#6b7280' },
-          { label: '1k – 10k', v: 7, color: '#9ca3af' }, { label: '10k +', v: 1, color: '#d1d5db' }]);
+        vbars(view, 190)([{ label: '&lt; 100', v: 42, color: C.sec }, { label: '100 – 1k', v: 27, color: '#3aa8b2' },
+          { label: '1k – 10k', v: 7, color: '#8fd9e0' }, { label: '10k +', v: 1, color: '#c9ecef' }]);
         const p = document.createElement('p'); p.className = 'pa-read'; p.innerHTML = '<b>Median: 96 followers.</b>';
         view.appendChild(p);
       } else {
@@ -360,8 +361,8 @@
   (function () {
     const HOST = document.getElementById('tasklog-figure');
     if (!HOST) return;
-    const AREAS = [['求职 / 申请', 'Jobs / applications', '#1d4fc4'], ['学校', 'School', '#4f86f0'], ['出行 / 活动 / 社交', 'Travel / events / social', '#f97316'],
-      ['生活杂务', 'Life admin', '#fdba74'], ['日历 / 时间管理', 'Calendar / time', '#8db0f7'], ['阅读 / 研究 / 写作', 'Reading / research / writing', '#7c5cc4'], ['其他', 'Other', '#d1d5db']];
+    const AREAS = [['求职 / 申请', 'Jobs / applications', '#1a7a9e'], ['学校', 'School', '#3aa8b2'], ['日历 / 时间管理', 'Calendar / time', '#8fd9e0'],
+      ['出行 / 活动 / 社交', 'Travel / events / social', '#f97316'], ['生活杂务', 'Life admin', '#fbbf8a'], ['阅读 / 研究 / 写作', 'Reading / research / writing', '#0c1c20'], ['其他', 'Other', '#d6e3e5']];
     const MONTH = {"2026-06":{"日历 / 时间管理":3,"阅读 / 研究 / 写作":9,"出行 / 活动 / 社交":3,"生活杂务":4,"求职 / 申请":2},"2026-07":{"求职 / 申请":1,"日历 / 时间管理":1},"2026-08":{"日历 / 时间管理":8,"出行 / 活动 / 社交":14,"求职 / 申请":7,"生活杂务":3,"其他":1,"学校":4,"阅读 / 研究 / 写作":2},"2026-09":{"日历 / 时间管理":37,"学校":60,"求职 / 申请":65,"出行 / 活动 / 社交":31,"生活杂务":43,"阅读 / 研究 / 写作":11,"其他":3},"2026-10":{"出行 / 活动 / 社交":28,"生活杂务":20,"求职 / 申请":90,"学校":34,"阅读 / 研究 / 写作":16,"日历 / 时间管理":7,"其他":1},"2026-11":{"求职 / 申请":21,"日历 / 时间管理":6,"阅读 / 研究 / 写作":7,"学校":9,"生活杂务":5,"出行 / 活动 / 社交":6,"其他":1}};
     const CAT = {"日历 / 时间管理":62,"阅读 / 研究 / 写作":45,"出行 / 活动 / 社交":82,"生活杂务":75,"求职 / 申请":186,"其他":6,"学校":107};
     const HOURS = {"20":24,"22":33,"23":27,"18":17,"19":29,"12":14,"17":45,"9":20,"2":9,"21":24,"0":33,"14":46,"16":69,"11":24,"1":16,"6":2,"10":35,"13":35,"15":41,"8":10,"3":6,"4":3,"7":1};

@@ -1796,15 +1796,20 @@ span.katex {
     }
   </style>
 <style>
+:root {
+      --serif: "Iowan Old Style", "Iowan Old Style BT", Iowan, Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "Times New Roman", serif;
+      --mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "PingFang SC", monospace;
+    }
+    d-title, d-article, d-appendix { font-family: var(--serif); }
 /* --- Personal agents essay: figures (assets/figures.js) ------------------
        Same house style as the other articles: a declarative .fig-title, a
        .fig-subtitle saying what a mark means, a mono legend, and a caption. */
     d-figure[id$="-figure"] { margin: 2rem 0 1.75rem; }
     #landscape-figure, #map-figure, #heatmap-figure, #invite-figure, #tasklog-figure { grid-column: text-start / page-end; }
     d-figure figcaption {
-      margin-top: 0.9rem; font-size: 12.5px; line-height: 1.55; color: rgba(17,17,17,0.5);
+      margin-top: 0.9rem; font-size: 13px; line-height: 1.5; color: rgba(0,0,0,0.5);
     }
-    .fig-title { font-family: var(--serif); font-size: 19px; font-weight: 700; margin: 0 0 4px; }
+    .fig-title { font-family: var(--serif); font-size: 15px; font-weight: 600; margin: 0 0 4px; }
 
     .pa-controls { margin: 0 0 14px; }
     .pa-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
@@ -1816,17 +1821,17 @@ span.katex {
     .pa-seg button:hover { border-color: var(--teal-dark); }
     .pa-seg button.on { background: var(--teal-dark); border-color: var(--teal-dark); color: #fff; }
 
-    .pa-read { font-size: 13.5px; line-height: 1.6; color: rgba(17,17,17,0.72); min-height: 1.6em; margin: 10px 0 0; }
+    .pa-read { font-size: 13px; line-height: 1.6; color: rgba(17,17,17,0.72); min-height: 1.6em; margin: 10px 0 0; }
     .pa-read b { color: var(--foreground); font-weight: 600; }
     .pa-dim { color: rgba(17,17,17,0.45); font-size: 0.92em; }
 
     /* horizontal bars */
     .pa-hbars { display: flex; flex-direction: column; gap: 7px; }
-    .pa-hrow { display: grid; grid-template-columns: minmax(7.5rem, 32%) 1fr 5.2rem; gap: 10px; align-items: center; font-size: 13.5px; }
+    .pa-hrow { display: grid; grid-template-columns: minmax(7.5rem, 32%) 1fr 5.2rem; gap: 10px; align-items: center; font-size: 13px; }
     .pa-hlab { text-align: right; color: rgba(17,17,17,0.75); line-height: 1.25; }
-    .pa-htrack { height: 18px; background: rgba(17,17,17,0.04); border-radius: 3px; overflow: hidden; }
+    .pa-htrack { height: 16px; background: var(--wash); border-radius: 3px; overflow: hidden; }
     .pa-htrack i { display: block; height: 100%; border-radius: 3px; transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
-    .pa-hval { font-family: var(--mono); font-size: 12px; color: rgba(17,17,17,0.7); }
+    .pa-hval { font-family: var(--mono); font-size: 11px; color: rgba(17,17,17,0.7); }
 
     /* vertical bars */
     .pa-vbars { display: flex; align-items: flex-end; gap: 10px; border-bottom: 1px solid rgba(17,17,17,0.15); padding-top: 6px; }
@@ -1834,8 +1839,8 @@ span.katex {
     .pa-vbar, .pa-vstack { width: 70%; max-width: 68px; border-radius: 3px 3px 0 0; transition: height 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
     .pa-vstack { display: flex; flex-direction: column-reverse; overflow: hidden; }
     .pa-vstack i { display: block; min-height: 1px; }
-    .pa-vval { font-family: var(--mono); font-size: 11.5px; color: rgba(17,17,17,0.75); margin-bottom: 4px; }
-    .pa-vlab { font-size: 12px; color: rgba(17,17,17,0.6); margin-top: 6px; height: 2.6em; text-align: center; line-height: 1.25; transform: translateY(100%); margin-bottom: -2.6em; }
+    .pa-vval { font-family: var(--mono); font-size: 11px; color: rgba(17,17,17,0.75); margin-bottom: 4px; }
+    .pa-vlab { font-family: var(--mono); font-size: 10.5px; color: rgba(17,17,17,0.6); margin-top: 6px; height: 2.6em; text-align: center; line-height: 1.25; transform: translateY(100%); margin-bottom: -2.6em; }
     .pa-vbars { margin-bottom: 3em; }
     .pa-thin { gap: 3px; }
     .pa-thin .pa-vbar { width: 100%; }
@@ -1849,8 +1854,8 @@ span.katex {
 
     /* cards (invite: who) */
     .pa-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: 10px; }
-    .pa-cards div { background: var(--wash, #f6f7f9); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; }
-    .pa-cards b { display: block; font-size: 14px; margin-bottom: 4px; }
+    .pa-cards div { background: var(--wash); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; }
+    .pa-cards b { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 4px; }
     .pa-cards span { font-size: 13px; line-height: 1.5; color: rgba(17,17,17,0.62); }
 
     /* tiles (heatmap) */
@@ -1863,34 +1868,34 @@ span.katex {
     /* map + heatmap svg */
     .pa-mapwrap svg { width: 100%; height: auto; display: block; }
     .pa-scrollx { overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
-    .pa-q { font-family: var(--mono); font-size: 11px; font-weight: 700; }
+    .pa-q { font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; }
     .pa-empty { fill: rgba(17,17,17,0.35); font-weight: 400; font-style: italic; }
-    .pa-ax { font-family: var(--mono); font-size: 10px; fill: rgba(17,17,17,0.5); }
-    .pa-lab { font-size: 12px; fill: #111; pointer-events: none; }
+    .pa-ax { font-family: var(--mono); font-size: 9.5px; fill: rgba(0,0,0,0.5); }
+    .pa-lab { font-family: var(--mono); font-size: 10px; fill: rgba(0,0,0,0.8); pointer-events: none; }
     .pa-pt { cursor: pointer; transition: opacity .2s; outline: none; }
     .pa-pt circle { transition: r .2s; }
     .pa-pt:hover circle, .pa-pt:focus circle { r: 9; }
     .pa-dimmed { opacity: 0.25; }
-    .pa-moneylab { font-family: var(--mono); font-size: 10.5px; fill: rgba(17,17,17,0.7); }
+    .pa-moneylab { font-family: var(--mono); font-size: 9.5px; fill: rgba(17,17,17,0.7); }
     .pa-grow { animation: pa-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; transform-box: fill-box; transform-origin: center; }
     @keyframes pa-grow { from { transform: scale(0); } to { transform: scale(1); } }
     .pa-day { cursor: pointer; }
-    .pa-day:hover { stroke: #111; stroke-width: 1.2; }
+    .pa-day:hover { stroke: var(--foreground); stroke-width: 1.2; }
 
     /* waffle */
     .pa-waffle-row { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; }
     .pa-waffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; width: min(260px, 100%); }
-    .pa-waffle i { aspect-ratio: 1; border-radius: 2px; background: rgba(17,17,17,0.12); transition: background 0.35s ease; }
-    .pa-big b { display: block; font-family: var(--serif); font-size: 48px; line-height: 1; color: #f97316; }
-    .pa-big span { font-size: 13.5px; color: rgba(17,17,17,0.65); }
+    .pa-waffle i { aspect-ratio: 1; border-radius: 2px; background: #e3eef0; transition: background 0.35s ease; }
+    .pa-big b { display: block; font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--accent); }
+    .pa-big span { font-size: 13px; color: rgba(17,17,17,0.65); }
 
     /* tables (landscape figure + appendix) */
     .pa-tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .pa-table { border-collapse: collapse; width: 100%; font-size: 13.5px; line-height: 1.45; }
-    .pa-table th { text-align: left; font-weight: 600; padding: 7px 10px 7px 0; border-bottom: 1.5px solid #111; white-space: nowrap; }
+    .pa-table { border-collapse: collapse; width: 100%; font-size: 13px; line-height: 1.45; }
+    .pa-table th { text-align: left; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em; font-weight: 400; color: rgba(0,0,0,0.6); padding: 7px 10px 7px 0; border-bottom: 1.5px solid #111; white-space: nowrap; }
     .pa-table td { text-align: left; vertical-align: top; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); }
     .pa-table tbody tr { transition: opacity .25s; }
-    .pa-table tbody tr:hover { background: rgba(37,150,190,0.05); }
+    .pa-table tbody tr:hover { background: var(--wash); }
     .pa-table tr.pa-out { opacity: 0.18; }
     .pa-pill { display: inline-block; white-space: nowrap; font-family: var(--mono); font-size: 10.5px; padding: 2px 8px;
                border-radius: 999px; color: var(--c); border: 1px solid var(--c); }
