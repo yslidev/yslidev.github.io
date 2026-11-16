@@ -1805,7 +1805,12 @@ span.katex {
        Same house style as the other articles: a declarative .fig-title, a
        .fig-subtitle saying what a mark means, a mono legend, and a caption. */
     d-figure[id$="-figure"] { margin: 2rem 0 1.75rem; }
-    #landscape-figure, #map-figure, #invite-figure, #tasklog-figure { grid-column: text-start / page-end; }
+    /* No margin notes in this essay, so text and figures share one measure
+       (text-start..page-end); a slightly narrower column unit keeps the line length readable. */
+    @media (min-width: 768px) {
+      d-title, d-article, d-byline { --col: clamp(36px, 3.6vw, 60px); }
+      d-article > *:not(d-toc), d-title > h1, d-title .title-byline { grid-column: text-start / page-end; }
+    }
     d-figure figcaption {
       margin-top: 0.9rem; font-size: 13px; line-height: 1.5; color: rgba(0,0,0,0.5);
     }
