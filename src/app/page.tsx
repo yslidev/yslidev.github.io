@@ -126,7 +126,7 @@ export default function Home() {
             >
               niche vp
             </a>
-            . i also deal source for moxxie, monolith, and a few others.
+            . i also deal source for moxxie and a few others.
           </p>
           <p>
             at 16, i went to{" "}
