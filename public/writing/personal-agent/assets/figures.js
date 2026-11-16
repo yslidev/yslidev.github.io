@@ -184,7 +184,7 @@
       </div>
       <div class="pa-controls"></div>
       <div class="pa-mapwrap">
-        <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Personal agents placed by warmth and usefulness">
+        <svg viewBox="0 0 ${W} ${H}" style="max-width:${Math.round(W * 1.2)}px" role="img" aria-label="Personal agents placed by warmth and usefulness">
           <rect x="${P}" y="${P}" width="${W - 2 * P}" height="${H - 2 * P}" fill="#fbfdfd" stroke="#b2dce2"/>
           <line x1="${W / 2}" y1="${P}" x2="${W / 2}" y2="${H - P}" stroke="#b2dce2" stroke-dasharray="3 3"/>
           <line x1="${P}" y1="${H / 2}" x2="${W - P}" y2="${H / 2}" stroke="#b2dce2" stroke-dasharray="3 3"/>
@@ -314,7 +314,7 @@
     HOST.innerHTML = `
       <p class="fig-title">${T('Task sessions per day', '每日任务会话数')}</p>
       <p class="fig-subtitle">${T('My Instinct task sessions, one square per day, Jun 3 – Nov 16, 2026. Darker means more tasks. Hover a day.', '我的Instinct任务会话，2026年6月3日–11月16日，一格一天，颜色越深当天任务越多。鼠标放上去看每天。')}</p>
-      <div class="pa-mapwrap pa-scrollx"><svg viewBox="0 0 ${W} ${H}" style="min-width:520px" role="img" aria-label="Daily task sessions heatmap">
+      <div class="pa-mapwrap pa-scrollx"><svg viewBox="0 0 ${W} ${H}" style="min-width:440px;max-width:${Math.round(W * 1.4)}px" role="img" aria-label="Daily task sessions heatmap">
         ${months}
         <text x="${L - 8}" y="${TOP + 11}" class="pa-ax" text-anchor="end">${T('Mon', '周一')}</text>
         <text x="${L - 8}" y="${TOP + 3 * (CELL + GAP) + 11}" class="pa-ax" text-anchor="end">${T('Thu', '周四')}</text>
