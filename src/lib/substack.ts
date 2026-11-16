@@ -15,7 +15,7 @@ export const writingPinned: WritingEntry[] = [
     year: "Nov 2026",
   },
   {
-    title: "Inside the Machine: A Technical Analysis of X's 2026 Recommendation Algorithm",
+    title: "Inside the Machine: X's Recommendation Algorithm",
     desc: "a technical analysis of X's 2026 recommendation algorithm",
     href: "/writing/x-recsys/",
     year: "Aug 2026",
