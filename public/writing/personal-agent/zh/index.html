@@ -1,0 +1,2247 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><script>
+window.addEventListener('WebComponentsReady', function() {
+  console.warn('WebComponentsReady');
+  const loaderTag = document.createElement('script');
+  loaderTag.src = 'https://distill.pub/template.v2.js';
+  document.head.insertBefore(loaderTag, document.head.firstChild);
+});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.17/webcomponents-loader.js"></script>
+  <!--
+    Distill template runtime, built locally from ../template.
+    Rebuild + re-copy it with `make template` after editing the framework source.
+    Swap in the commented line below to use the published build instead (no npm needed).
+  -->
+  <style id="distill-prerendered-styles" type="text/css">/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+html {
+  font-size: 14px;
+	line-height: 1.6em;
+  /* font-family: "Libre Franklin", "Helvetica Neue", sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  /*, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media(min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: #004276;
+}
+
+figure {
+  margin: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table th {
+	text-align: left;
+}
+
+table thead {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+table thead th {
+  padding-bottom: 0.5em;
+}
+
+table tbody :first-child td {
+  padding-top: 0.5em;
+}
+
+pre {
+  overflow: auto;
+  max-width: 100%;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+sup, sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+  line-height: 1em;
+}
+
+sub {
+  top: 0.4em;
+}
+
+.kicker,
+.marker {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* Headline */
+
+@media(min-width: 1024px) {
+  d-title h1 span {
+    display: block;
+  }
+}
+
+/* Figure */
+
+figure {
+  position: relative;
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+
+figcaption+figure {
+
+}
+
+figure img {
+  width: 100%;
+}
+
+figure svg text,
+figure svg tspan {
+}
+
+figcaption,
+.figcaption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+@media(min-width: 1024px) {
+figcaption,
+.figcaption {
+    font-size: 13px;
+  }
+}
+
+figure.external img {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+figcaption a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+figcaption b,
+figcaption strong, {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@supports not (display: grid) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    display: block;
+    padding: 8px;
+  }
+}
+
+.base-grid,
+distill-header,
+d-title,
+d-abstract,
+d-article,
+d-appendix,
+distill-appendix,
+d-byline,
+d-footnote-list,
+d-citation-list,
+distill-footer {
+  display: grid;
+  justify-items: stretch;
+  grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
+  grid-column-gap: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-column-gap: 8px;
+}
+
+@media(min-width: 768px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+}
+
+@media(min-width: 1000px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+}
+
+@media(min-width: 1180px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+
+
+
+.base-grid {
+  grid-column: screen;
+}
+
+/* .l-body,
+d-article > *  {
+  grid-column: text;
+}
+
+.l-page,
+d-title > *,
+d-figure {
+  grid-column: page;
+} */
+
+.l-gutter {
+  grid-column: gutter;
+}
+
+.l-text,
+.l-body {
+  grid-column: text;
+}
+
+.l-page {
+  grid-column: page;
+}
+
+.l-body-outset {
+  grid-column: middle;
+}
+
+.l-page-outset {
+  grid-column: page;
+}
+
+.l-screen {
+  grid-column: screen;
+}
+
+.l-screen-inset {
+  grid-column: screen;
+  padding-left: 16px;
+  padding-left: 16px;
+}
+
+
+/* Aside */
+
+d-article aside {
+  grid-column: gutter;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: rgba(0, 0, 0, 0.6)
+}
+
+@media(min-width: 768px) {
+  aside {
+    grid-column: gutter;
+  }
+
+  .side {
+    grid-column: gutter;
+  }
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+d-title {
+  padding: 2rem 0 1.5rem;
+  contain: layout style;
+  overflow-x: hidden;
+}
+
+@media(min-width: 768px) {
+  d-title {
+    padding: 4rem 0 1.5rem;
+  }
+}
+
+d-title h1 {
+  grid-column: text;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+@media(min-width: 768px) {
+  d-title h1 {
+    font-size: 50px;
+  }
+}
+
+d-title p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.55em;
+  grid-column: text;
+}
+
+d-title .status {
+  margin-top: 0px;
+  font-size: 12px;
+  color: #009688;
+  opacity: 0.8;
+  grid-column: kicker;
+}
+
+d-title .status span {
+  line-height: 1;
+  display: inline-block;
+  padding: 6px 0;
+  border-bottom: 1px solid #80cbc4;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+d-byline {
+  contain: style;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+  line-height: 1.8em;
+  padding: 1.5rem 0;
+  min-height: 1.8em;
+}
+
+
+d-byline .byline {
+  grid-template-columns: 1fr 1fr;
+  grid-column: text;
+}
+
+@media(min-width: 768px) {
+  d-byline .byline {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+d-byline .authors-affiliations {
+  grid-column-end: span 2;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1em;
+}
+
+@media(min-width: 768px) {
+  d-byline .authors-affiliations {
+    margin-bottom: 0;
+  }
+}
+
+d-byline h3 {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+d-byline p {
+  margin: 0;
+}
+
+d-byline a,
+d-article d-byline a {
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  border-bottom: none;
+}
+
+d-article d-byline a:hover {
+  text-decoration: underline;
+  border-bottom: none;
+}
+
+d-byline p.author {
+  font-weight: 500;
+}
+
+d-byline .affiliations {
+
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+d-article {
+  contain: layout style;
+  overflow-x: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 2rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+d-article > * {
+  grid-column: text;
+}
+
+@media(min-width: 768px) {
+  d-article {
+    font-size: 16px;
+  }
+}
+
+@media(min-width: 1024px) {
+  d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+  }
+}
+
+
+/* H2 */
+
+
+d-article .marker {
+  text-decoration: none;
+  border: none;
+  counter-reset: section;
+  grid-column: kicker;
+  line-height: 1.7em;
+}
+
+d-article .marker:hover {
+  border: none;
+}
+
+d-article .marker span {
+  padding: 0 3px 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: 4px;
+}
+
+d-article .marker:hover span {
+  color: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+}
+
+d-article h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25em;
+  margin: 2rem 0 1.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 1rem;
+}
+
+@media(min-width: 1024px) {
+  d-article h2 {
+    font-size: 36px;
+  }
+}
+
+/* H3 */
+
+d-article h3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4em;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
+@media(min-width: 1024px) {
+  d-article h3 {
+    font-size: 20px;
+  }
+}
+
+/* H4 */
+
+d-article h4 {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+d-article a {
+  color: inherit;
+}
+
+d-article p,
+d-article ul,
+d-article ol,
+d-article blockquote {
+  margin-top: 0;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+d-article blockquote {
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
+  padding-left: 2em;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+d-article a {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+}
+
+d-article a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+}
+
+d-article .link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+d-article ul,
+d-article ol {
+  padding-left: 24px;
+}
+
+d-article li {
+  margin-bottom: 1em;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+d-article li:last-child {
+  margin-bottom: 0;
+}
+
+d-article pre {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+d-article hr {
+  grid-column: screen;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+d-article section {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+d-article span.equation-mimic {
+  font-family: georgia;
+  font-size: 115%;
+  font-style: italic;
+}
+
+d-article > d-code,
+d-article section > d-code  {
+  display: block;
+}
+
+d-article > d-math[block],
+d-article section > d-math[block]  {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  d-article > d-code,
+  d-article section > d-code,
+  d-article > d-math[block],
+  d-article section > d-math[block] {
+      overflow-x: scroll;
+      -ms-overflow-style: none;  // IE 10+
+      overflow: -moz-scrollbars-none;  // Firefox
+  }
+
+  d-article > d-code::-webkit-scrollbar,
+  d-article section > d-code::-webkit-scrollbar,
+  d-article > d-math[block]::-webkit-scrollbar,
+  d-article section > d-math[block]::-webkit-scrollbar {
+    display: none;  // Safari and Chrome
+  }
+}
+
+d-article .citation {
+  color: #668;
+  cursor: pointer;
+}
+
+d-include {
+  width: auto;
+  display: block;
+}
+
+d-figure {
+  contain: layout style;
+}
+
+/* KaTeX */
+
+.katex, .katex-prerendered {
+  contain: style;
+  display: inline-block;
+}
+
+/* Tables */
+
+d-article table {
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+d-article table th {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+d-article table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+d-article table tr:last-of-type td {
+  border-bottom: none;
+}
+
+d-article table th,
+d-article table td {
+  font-size: 15px;
+  padding: 2px 8px;
+}
+
+d-article table tbody :first-child td {
+  padding-top: 2px;
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+span.katex-display {
+  text-align: left;
+  padding: 8px 0 8px 0;
+  margin: 0.5em 0 0.5em 1em;
+}
+
+span.katex {
+  -webkit-font-smoothing: antialiased;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1.18em;
+}
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@media print {
+
+  @page {
+    size: 8in 11in;
+    @bottom-right {
+      content: counter(page) " of " counter(pages);
+    }
+  }
+
+  html {
+    /* no general margins -- CSS Grid takes care of those */
+  }
+
+  p, code {
+    page-break-inside: avoid;
+  }
+
+  h2, h3 {
+    page-break-after: avoid;
+  }
+
+  d-header {
+    visibility: hidden;
+  }
+
+  d-footer {
+    display: none!important;
+  }
+
+}
+</style>
+  <!-- <script src="https://distill.pub/template.v2.js"></script> -->
+  
+  
+
+  <style>
+    /* --- site colour tokens (from the site's globals.css) ------------- */
+    :root {
+      --foreground: #111111;
+      --accent:     #f97316;
+      --teal:       #64cad1;
+      --teal-deep:  #2596be;
+      --teal-dark:  #1a7a9e;
+      --border:     #b2dce2;
+      --rule:       rgba(164, 218, 222, 0.45);   /* the .superlink hairline */
+      --wash:       #f4fafb;
+    }
+
+    ::selection { background: rgba(249, 115, 22, 0.15); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 2px; }
+
+    d-article a { color: var(--foreground); border-bottom-color: #bbb; }
+    d-article a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* --- Typography -------------------------------------------------------
+       Iowan Old Style (Bitstream) for prose and headings, Berkeley Mono for
+       code. Both are self-hosted from assets/fonts; nothing is fetched from
+       a CDN, so the page renders identically offline.
+
+       Note on the metadata: the Black faces ship under their own family name
+       ("IowanOldSt Blk BT") and both Black files report usWeightClass 400,
+       while Berkeley Mono's oblique faces are separate families too. The
+       weights and styles below are therefore declared explicitly rather than
+       inherited from the files. */
+
+    @font-face {
+      font-family: "Iowan Old Style";
+      src: url("../../x-recsys/assets/fonts/IowanOldStyle/IowanOldStyle-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Iowan Old Style";
+      src: url("../../x-recsys/assets/fonts/IowanOldStyle/IowanOldStyle-Italic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Iowan Old Style";
+      src: url("../../x-recsys/assets/fonts/IowanOldStyle/IowanOldStyle-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Iowan Old Style";
+      src: url("../../x-recsys/assets/fonts/IowanOldStyle/IowanOldStyle-BoldItalic.woff2") format("woff2");
+      font-weight: 700;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Iowan Old Style";
+      src: url("../../x-recsys/assets/fonts/IowanOldStyle/IowanOldStyle-Black.woff2") format("woff2");
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Iowan Old Style";
+      src: url("../../x-recsys/assets/fonts/IowanOldStyle/IowanOldStyle-BlackItalic.woff2") format("woff2");
+      font-weight: 900;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Berkeley Mono";
+      src: url("../../x-recsys/assets/fonts/BerkeleyMono/BerkeleyMono-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berkeley Mono";
+      src: url("../../x-recsys/assets/fonts/BerkeleyMono/BerkeleyMono-Oblique.ttf") format("truetype");
+      font-weight: 400;
+      font-style: oblique;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berkeley Mono";
+      src: url("../../x-recsys/assets/fonts/BerkeleyMono/BerkeleyMono-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Berkeley Mono";
+      src: url("../../x-recsys/assets/fonts/BerkeleyMono/BerkeleyMono-Bold-Oblique.ttf") format("truetype");
+      font-weight: 700;
+      font-style: oblique;
+      font-display: swap;
+    }
+
+    :root {
+      --serif: "Iowan Old Style", "Iowan Old Style BT", Iowan, Georgia, "Times New Roman", serif;
+      --mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    /* The article commits to a light design; without an explicit background a
+       dark-mode browser paints its own dark ground behind the page. */
+    body { background: #fff; color-scheme: light; }
+
+    /* The template sets its sans stack on `html`; this rule sits after the
+       injected stylesheet, so it wins on equal specificity and everything
+       that inherits (prose, headings, byline, appendix, TOC) follows. */
+    html { font-family: var(--serif); }
+
+    d-title h1,
+    d-article h1, d-article h2, d-article h3, d-article h4,
+    d-appendix h3 {
+      font-family: var(--serif);
+    }
+
+    d-article { font-size: 1rem; }
+
+    /* Headings a step down from the template's 36/20px, so they sit under the
+       38px title rather than competing with it. Same specificity as the
+       template's rules, so they win on document order. */
+    @media (min-width: 1024px) {
+      d-article h2 { font-size: 30px; }
+      d-article h3 { font-size: 18px; }
+    }
+
+    /* Title: centred, and a size down from the template's 40/50px. Same
+       specificity as the template's rule, so it wins on document order. */
+    d-title h1 {
+      text-align: center;
+      font-size: 30px;
+      line-height: 1.15em;
+      margin: 0 0 1rem;
+    }
+
+    @media (min-width: 768px) {
+      d-title h1 { font-size: 38px; }
+    }
+
+    /* Centred author line + date under the title, replacing the template's
+       byline grid (the <d-byline> tag stays in the document, hidden below). */
+    d-title .title-byline {
+      grid-column: text;    /* d-title lays children on the article grid */
+      text-align: center;
+      margin: 1.4rem 0 0.5rem;
+    }
+
+    d-title .title-byline p { margin: 0; }
+
+    d-title .title-byline .authors {
+      font-size: 18px;
+      color: rgba(0, 0, 0, 0.8);
+    }
+
+    d-title .title-byline .date {
+      margin-top: 0.5rem;
+      font-size: 15px;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    d-byline { display: none; }
+
+    /* --- Page entrance ----------------------------------------------------
+       A whisper of motion on load. The top matter fades up 5px, lightly
+       staggered; the article, appendix and footer fade in with NO delay and
+       NO transform — a refresh anywhere in the page gets the same instant,
+       gentle arrival, and while a transform animates on d-article its sticky
+       TOC would come unstuck, so those blocks change opacity only. The h1 is
+       injected by the d-title component at runtime, so its animation simply
+       starts when it appears. */
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    d-title h1,
+    d-title .title-byline,
+    d-title #hero-pipeline,
+    d-title > p {
+      animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    d-title .title-byline { animation-delay: 100ms; }
+    d-title #hero-pipeline { animation-delay: 200ms; }
+    d-title > p { animation-delay: 300ms; }
+
+    /* `both` also applies the from-state BEFORE the animation starts, so the
+       article sits at opacity 0 until styles resolve and the animation is
+       scheduled. On a 5,700-word page that is a visible flash of blank
+       content, and a screenshot taken during it shows an empty column.
+       `forwards` keeps the fade but never hides content ahead of it. */
+    d-article,
+    d-appendix,
+    distill-footer {
+      animation: fade-in 0.5s ease-out forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      d-title h1,
+      d-title .title-byline,
+      d-title #hero-pipeline,
+      d-title > p,
+      d-article,
+      d-appendix,
+      distill-footer {
+        animation: none;
+      }
+    }
+
+    /* Berkeley Mono runs optically larger than Iowan at the same nominal size,
+       so inline code is stepped down to sit level with the prose around it.
+       Without this, a line of param names reads as a heading. */
+    d-article p > code,
+    d-article li > code,
+    d-article aside code,
+    d-article figcaption code { font-size: 0.85em; }
+
+    /* Rust identifiers are long and unbreakable; in a narrow margin column one
+       token can be wider than the column. Let them break rather than spill. */
+    d-article code, .site-footer code, #weights-extras code {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    /* Reference data attached to the value-model figure: the modifiers that
+       are not action weights. Sits at caption scale, like the figcaption. */
+    #weights-extras {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: rgba(17, 17, 17, 0.6);
+    }
+    #weights-extras code { font-size: 0.92em; color: var(--teal-dark); }
+
+    code, pre, kbd, samp,
+    d-code, d-code * {
+      font-family: var(--mono);
+      font-feature-settings: normal;
+    }
+
+    /* --- <d-toc> as a docked sidebar --------------------------------------
+       The stock component ships with no layout styles and is not in the
+       template's grid list, so by default it renders full-bleed against the
+       left edge. It also emits an always-empty <nav class="table-of-contents">
+       and a stray <br> after every h2 entry.
+
+       These rules must sit AFTER the template <script> above: the framework
+       injects its stylesheet immediately before the first script tag in head,
+       so anything declared after it wins on equal specificity. The
+       `d-article >` qualifier also outranks the component's own inline
+       `d-toc { display: block }`, injected into the body at runtime. */
+
+    /* Narrow screens: no room for a margin, so the TOC flows inline. */
+    d-article > d-toc {
+      --toc-dot: 6px;       /* diameter of the marker */
+      --toc-gutter: 0.3rem; /* its distance from the list's left edge */
+      --toc-text: 1.5rem;   /* where entry text starts, clearing the gutter */
+
+      position: relative;   /* offset parent for .toc-indicator */
+      grid-column: text;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* The component always emits an <h2>Table of contents</h2>; the list reads
+       fine without a label. Delete this rule to bring the heading back. */
+    d-article > d-toc h2 { display: none; }
+
+    d-article > d-toc ul { margin: 0; padding-left: 0; list-style: none; }
+    /* Nesting adds no padding of its own: every <a> shares one left edge,
+       which is what keeps the dot on a single vertical line whether the
+       current section is a heading or a sub-heading. Sub-entries indent
+       their text with their own padding instead. */
+    d-article > d-toc ul > ul { margin: 0; padding-left: 0; }
+    d-article > d-toc li { margin: 0; }
+
+    d-article > d-toc a {
+      position: relative;   /* anchors the hover dot */
+      display: block;
+      padding: 0.2rem 0 0.2rem var(--toc-text);
+      border: none;
+      line-height: 1.4;
+      font-family: var(--serif);
+      font-size: 14px;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    d-article > d-toc ul > ul a {
+      padding-left: calc(var(--toc-text) + 0.9rem);
+    }
+
+    /* Faint dot under the cursor, in the same gutter as the live one. */
+    d-article > d-toc a::before {
+      content: "";
+      position: absolute;
+      left: var(--toc-gutter);
+      top: 50%;
+      width: var(--toc-dot);
+      height: var(--toc-dot);
+      margin-top: calc(var(--toc-dot) / -2);
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    /* The template's `d-article a:hover` puts a full-width underline on every
+       link, and it outranks the rule above (a pseudo-class outweighs the extra
+       element selector), so the border has to be cleared at hover specificity. */
+    d-article > d-toc a:hover {
+      border-bottom: none;
+      color: var(--accent);
+    }
+
+    d-article > d-toc a:hover::before { opacity: 0.3; }
+
+    /* Set by the scroll-spy below on the section currently in view. Its dot is
+       drawn by .toc-indicator, which slides between entries, so the link's own
+       hover dot stays hidden. */
+    d-article > d-toc a.active {
+      color: var(--foreground);
+      font-weight: 600;
+    }
+
+    d-article > d-toc a.active::before,
+    d-article > d-toc a.active:hover::before { opacity: 0; }
+
+    /* The single dot that glides from one entry to the next. It only ever
+       moves vertically -- `left` is fixed, so sub-entries do not shift it. */
+    d-article > d-toc .toc-indicator {
+      position: absolute;
+      top: 0;
+      left: var(--toc-gutter);
+      width: var(--toc-dot);
+      height: var(--toc-dot);
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.2s ease;
+    }
+
+    /* Artifacts of the component's own generated markup. */
+    d-article > d-toc br { display: none; }
+    d-article > d-toc nav.table-of-contents { display: none; }
+
+    /* Wide screens: dock it in the left margin, beside the writing.
+       1000px is where the template's own grid gains enough room
+       (screen-start -> text-start is ~250px and grows from there). */
+
+    /* Anchor jumps land with the heading clear of the viewport edge. */
+    /* --- Distill site footer -----------------------------------------------
+       The component renders distill.pub's own chrome: their logo, "Distill is
+       dedicated to clear explanations of machine learning", and links to their
+       About/Submit/Prize/Archive/RSS. That's their masthead, and this article
+       isn't published there, so it's hidden.
+
+       Note this can't be done the way the header is. `distill-prerendered`
+       only short-circuits connectedCallback, and shadow-DOM components append
+       their template in the *constructor* — so the attribute skips ShadyCSS
+       styling but the footer still renders. The tag itself stays put so
+       `make render` doesn't decide one is missing and insert a fresh one.
+       The <d-appendix> above is the article's real footer. */
+
+    /* --- Value-model figure (assets/weights-figure.js) ---------------------
+       Two panels: the weights as readable chips, then the arithmetic as a
+       waterfall. Wider than the text column so 26 chips wrap sensibly. */
+    #weights-figure { grid-column: text-start / page-end; margin: 2rem 0 1.5rem; }
+    #weights-figure .wf-panel {
+      border-top: 1px solid var(--rule); padding-top: 10px; margin-top: 14px;
+    }
+    #weights-figure .wf-panel-head {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.07em;
+       color: var(--teal-dark); margin-bottom: 10px;
+    }
+    #weights-figure .wf-panel-head i { font-style: italic; text-transform: none; }
+
+    /* Panel A -- the weights */
+    #weights-figure .wf-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    #weights-figure .wf-chip {
+      display: inline-flex; align-items: baseline; gap: 6px;
+      padding: 3px 9px; border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+      background: color-mix(in srgb, var(--c) calc(var(--a) * 16%), transparent);
+      font-size: 11.5px; line-height: 1.35; white-space: nowrap;
+    }
+    #weights-figure .wf-chip b { font-weight: 400; color: rgba(17,17,17,0.82); }
+    #weights-figure .wf-chip em {
+      font-family: var(--mono); font-style: normal; font-size: 10.5px;
+      color: var(--c); font-weight: 700;
+    }
+    #weights-figure .wf-chip-stale { border-style: dashed; background: none; }
+
+    /* Panel B -- the arithmetic */
+    #weights-figure .wf-dial {
+      display: grid; grid-template-columns: 10.5rem 1fr 3.4rem 4.4rem;
+      align-items: center; gap: 10px; margin-bottom: 4px; font-size: 13px;
+    }
+    #weights-figure .wf-dial-name { color: rgba(17,17,17,0.8); }
+    #weights-figure .wf-dial input { width: 100%; accent-color: var(--teal-deep); }
+    #weights-figure .wf-dial-p,
+    #weights-figure .wf-dial-w { font-family: var(--mono); font-size: 11px; text-align: right; }
+    #weights-figure .wf-dial-p { color: rgba(17,17,17,0.75); }
+    #weights-figure .wf-dial-w { color: rgba(17,17,17,0.38); }
+
+    #weights-figure .wf-fall { display: block; width: 100%; margin-top: 10px; }
+    #weights-figure .wf-fall rect { transition: x 0.25s ease, width 0.25s ease; }
+    #weights-figure .wf-tick {
+      font-family: var(--mono); font-size: 9.5px; fill: rgba(17,17,17,0.45);
+    }
+    #weights-figure .wf-score {
+      margin-top: 6px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+    }
+    #weights-figure .wf-score-lab {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+       color: rgba(17,17,17,0.45);
+    }
+    #weights-figure .wf-score-val  { font-family: var(--mono); font-size: 19px; font-weight: 700; }
+    #weights-figure .wf-score-note { font-size: 13px; color: rgba(17,17,17,0.55); }
+    #weights-figure figcaption { margin-top: 1.1rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      #weights-figure .wf-fall rect { transition: none; }
+    }
+
+    /* --- Visibility figure (assets/visibility-figure.js) -------------------
+       Two rule lists scanned side by side. The columns must animate at the
+       same time -- the point is that the two scans are identical until one
+       simply keeps going. */
+    #visibility-figure { grid-column: text-start / page-end; margin: 2rem 0 1.5rem; }
+    #visibility-figure .vf-chips {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+    }
+    #visibility-figure .vf-chip {
+      font-family: var(--mono); font-size: 11px; color: var(--teal-dark);
+      background: none; border: 1px solid var(--border); border-radius: 999px;
+      padding: 3px 11px; cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    #visibility-figure .vf-chip:hover { background: var(--wash); }
+    #visibility-figure .vf-chip[aria-pressed="true"] {
+      background: var(--teal-dark); border-color: var(--teal-dark); color: #fff;
+    }
+
+    #visibility-figure .vf-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    #visibility-figure .vf-col { display: grid; grid-template-rows: auto auto auto auto; align-content: start; }
+    #visibility-figure .vf-col-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 8px; margin-bottom: 8px;
+    }
+    #visibility-figure .vf-who { font-size: 14px; color: var(--foreground); }
+    #visibility-figure .vf-level { font-family: var(--mono); font-size: 9.5px; color: rgba(17,17,17,0.4); }
+
+    /* the rule list: one tick per rule, in evaluation order */
+    #visibility-figure .vf-scan {
+      display: flex; flex-wrap: wrap; gap: 2px; align-content: flex-start;
+      min-height: 34px; margin-bottom: 12px;
+    }
+    #visibility-figure .vf-tick {
+      width: 7px; height: 14px; border-radius: 1px;
+      background: rgba(164,218,222,0.30);
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+    /* the 26 appended rules read as a distinct block even before the scan */
+    #visibility-figure .vf-tick-oon { background: rgba(249,115,22,0.14); }
+    #visibility-figure .vf-ran      { background: rgba(17,17,17,0.16); }
+    #visibility-figure .vf-hit-inter { background: #c9a227; transform: scaleY(1.5); }
+    #visibility-figure .vf-hit-drop  { background: #f97316; transform: scaleY(1.5); }
+
+    #visibility-figure .vf-post {
+      border: 1px solid var(--border); border-radius: 6px; background: #fff;
+      padding: 10px; position: relative; overflow: hidden;
+      transition: opacity 0.4s ease, max-height 0.4s ease, padding 0.4s ease,
+                  margin 0.4s ease, border-width 0.4s ease;
+      max-height: 90px;
+    }
+    #visibility-figure .vf-lines { display: flex; flex-direction: column; gap: 6px; }
+    #visibility-figure .vf-lines i {
+      display: block; height: 7px; border-radius: 3px; background: rgba(37,150,190,0.30);
+    }
+    #visibility-figure .vf-veil {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.72); backdrop-filter: blur(4px);
+      font-size: 10.5px; color: var(--teal-dark);
+      opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+    }
+    #visibility-figure .vf-col[data-verdict="inter"] .vf-lines { filter: blur(3.5px); }
+    #visibility-figure .vf-col[data-verdict="inter"] .vf-veil  { opacity: 1; }
+    #visibility-figure .vf-col[data-verdict="drop"] .vf-post {
+      opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0;
+      border-width: 0; margin-bottom: 0;
+    }
+
+    #visibility-figure .vf-verdict {
+      display: flex; align-items: baseline; gap: 8px; margin-top: 9px; min-height: 1.3em;
+    }
+    #visibility-figure .vf-word {
+      font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    }
+    #visibility-figure .vf-rule {
+      font-family: var(--mono); font-size: 9.5px; color: rgba(17,17,17,0.45); word-break: break-all;
+    }
+    #visibility-figure .vf-note {
+      margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--rule);
+      font-size: 13.5px; line-height: 1.6; color: rgba(17,17,17,0.7); min-height: 3.2em;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #visibility-figure .vf-tick, #visibility-figure .vf-post,
+      #visibility-figure .vf-veil { transition: none; }
+    }
+
+    /* --- Phoenix attention figure (assets/phoenix-figure.js) --------------- */
+    #phoenix-figure { grid-column: text-start / page-end; margin: 2rem 0 1.5rem; }
+    #phoenix-figure .px-wrap {
+      display: grid; grid-template-columns: minmax(240px, 360px) 1fr; gap: 24px;
+      align-items: start;
+    }
+    #phoenix-figure .px-grid { max-width: 360px; }
+    #phoenix-figure .px-cell { transition: opacity 0.15s ease, fill 0.15s ease; }
+    #phoenix-figure .px-toggle {
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      background: none; border: 1px solid var(--border); border-radius: 999px;
+      padding: 3px 11px; cursor: pointer;
+    }
+    #phoenix-figure .px-toggle:hover { background: var(--wash); }
+    #phoenix-figure .px-read {
+      margin-top: 12px; font-size: 13px; line-height: 1.6; color: rgba(17,17,17,0.7);
+      min-height: 5em;
+    }
+    #phoenix-figure .px-read b { color: var(--foreground); font-weight: 600; }
+
+    /* --- Label loop figure (assets/labelloop-figure.js) -------------------- */
+    #labelloop-figure { grid-column: text-start / page-end; margin: 2rem 0 1.5rem; }
+    #labelloop-figure .ll {
+      display: grid; grid-template-columns: minmax(220px, 300px) 1fr; gap: 28px;
+      align-items: start;
+    }
+    #labelloop-figure .ll-stage {
+      display: grid; grid-template-columns: 12px 1fr; gap: 8px;
+      align-items: baseline; font-size: 12.5px; color: rgba(17,17,17,0.45);
+      transition: color 0.2s ease;
+    }
+    #labelloop-figure .ll-stage.ll-on { color: var(--foreground); }
+    #labelloop-figure .ll-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: rgba(164,218,222,0.6);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    #labelloop-figure .ll-stage.ll-on .ll-dot { background: var(--accent); transform: scale(1.5); }
+    #labelloop-figure .ll-arrow {
+      grid-column: 1; font-size: 10px; color: rgba(164,218,222,0.8); line-height: 1.1;
+    }
+    #labelloop-figure .ll-return {
+      font-family: var(--mono); font-size: 9.5px; color: rgba(17,17,17,0.35);
+      margin-top: 6px;
+    }
+
+    #labelloop-figure .ll-col-head {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.07em;
+       color: var(--teal-dark); margin-bottom: 10px;
+    }
+    #labelloop-figure .ll-account {
+      /* a status chip, not a form field: full width read as an empty input */
+      display: inline-flex; align-items: baseline; gap: 10px;
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: 8px 12px; margin-bottom: 12px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    #labelloop-figure .ll-account[data-labelled="true"] {
+      background: rgba(201,162,39,0.10); border-color: #c9a227;
+    }
+    #labelloop-figure .ll-acc-name { font-size: 13.5px; color: var(--foreground); }
+    #labelloop-figure .ll-acc-tag {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+       color: rgba(17,17,17,0.45);
+    }
+    #labelloop-figure .ll-account[data-labelled="true"] .ll-acc-tag { color: #a07d12; }
+
+    #labelloop-figure .ll-posts {
+      display: flex; flex-wrap: wrap; gap: 4px; min-height: 34px; margin-bottom: 12px;
+    }
+    #labelloop-figure .ll-post {
+      width: 15px; height: 15px; border-radius: 3px;
+      background: rgba(37,150,190,0.35);
+      animation: llPop 0.3s cubic-bezier(0.16,1,0.3,1);
+      transition: background 0.3s ease;
+    }
+    #labelloop-figure .ll-post-flagged { background: #f97316; }
+    @keyframes llPop { from { transform: scale(0.4); opacity: 0 } to { transform: none; opacity: 1 } }
+
+    #labelloop-figure .ll-controls { display: flex; gap: 8px; }
+    #labelloop-figure .ll-controls button {
+      font-family: var(--mono); font-size: 11px; border-radius: 999px;
+      padding: 4px 13px; cursor: pointer; border: 1px solid var(--border);
+      background: none; color: var(--teal-dark);
+    }
+    #labelloop-figure .ll-go {
+      background: var(--teal-dark) !important; border-color: var(--teal-dark) !important;
+      color: #fff !important;
+    }
+    #labelloop-figure .ll-controls button:hover { opacity: 0.85; }
+    #labelloop-figure .ll-read {
+      margin-top: 12px; font-size: 13px; line-height: 1.6;
+      color: rgba(17,17,17,0.7); min-height: 3.6em;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #labelloop-figure .ll-post { animation: none; }
+      #labelloop-figure .ll-dot, #labelloop-figure .ll-stage { transition: none; }
+    }
+
+    /* --- Article-wide tag key ----------------------------------------------
+       Sits in the text column, not the margin: five entries with glosses will
+       not wrap sensibly in a ~180px gutter, and putting it there also left a
+       tall hole beside the one-line provenance note. Margin asides stay for
+       the short per-section file paths, which is what they fit. */
+    .tag-key {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 3px 22px; margin: 0 0 1.6rem;
+      padding: 12px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    }
+    .tag-key .tk-row { display: flex; align-items: baseline; gap: 8px; }
+    .tag-key code {
+      font-family: var(--mono); font-size: 10px; color: var(--teal-dark);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 1px 7px; white-space: nowrap;
+    }
+    .tag-key i {
+      font-style: normal; font-size: 12.5px; color: rgba(17,17,17,0.6); line-height: 1.4;
+    }
+
+    /* Figures span text-start..page-end, never `page`. At >=1000px the grid
+       puts page-start two columns LEFT of text-start, and the docked <d-toc>
+       occupies screen-start..text-start -- so `grid-column: page` lands a
+       figure on top of the sidebar. This gains the extra width on the right,
+       where there is nothing to collide with. */
+
+    /* --- Site footer -------------------------------------------------------
+       Hiding Distill's own footer left the page terminating in bare white,
+       with nothing to say it had ended. This is the replacement: the site's
+       palette, a way back to the site, and the repo. */
+    .site-footer {
+      margin-top: 3rem; padding: 2rem 0 2.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--wash);
+    }
+    .site-footer .sf-inner {
+      max-width: 704px; margin: 0 auto; padding: 0 1rem;
+      display: flex; flex-wrap: wrap; gap: 10px 26px;
+      align-items: baseline; justify-content: space-between;
+    }
+    .site-footer a {
+      color: var(--foreground); text-decoration: none;
+      border-bottom: 1px solid #bbb;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+    .site-footer a:hover { color: var(--accent); border-color: var(--accent); }
+    .site-footer .sf-links {
+      display: flex; gap: 18px; font-size: 13px;
+    }
+    .site-footer .sf-meta {
+      font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em;
+      color: rgba(17,17,17,0.45);
+    }
+
+    /* --- The grid ----------------------------------------------------------
+       Distill sizes its 12 columns in fixed pixels and steps them at 768 /
+       1000 / 1180px, so the layout jumps at three widths and then stops
+       growing: on a wide screen the article sits in a narrow ribbon with
+       empty margins, and between the steps it never quite fits.
+
+       One clamped column unit replaces all three steps. Every column, the
+       text measure, the margin notes and the figures now scale continuously
+       with the viewport, with a floor so it stays usable on a small laptop
+       and a ceiling so the line length never gets too long to read.
+
+       Below 768px Distill's own fractional grid still applies -- at that size
+       the columns have to be fractions of the screen, not multiples of a
+       unit, or the row would be wider than the phone. */
+    @media (min-width: 768px) {
+      .base-grid, distill-header, d-title, d-abstract, d-article, d-appendix,
+      distill-appendix, d-byline, d-footnote-list, d-citation-list, distill-footer {
+        --col: clamp(42px, 4.4vw, 84px);
+        grid-template-columns:
+          [screen-start] 1fr
+          [page-start kicker-start] var(--col)
+          [middle-start] var(--col)
+          [text-start kicker-end] var(--col) var(--col) var(--col) var(--col)
+                                  var(--col) var(--col) var(--col) var(--col)
+          [text-end gutter-start] var(--col)
+          [middle-end] var(--col)
+          [page-end gutter-end] 1fr
+          [screen-end];
+      }
+    }
+
+    /* The sidebar docks as soon as the screen column can actually hold it,
+       rather than at a round number. */
+    @media (min-width: 880px) {
+      d-article { overflow-x: clip; }
+      d-article > d-toc {
+        grid-column: screen-start / text-start;
+        justify-self: end;
+        align-self: start;
+        position: sticky;
+        top: 1.5rem;
+        width: 100%;
+        max-width: 260px;
+        max-height: calc(100vh - 3rem);
+        overflow-y: auto;
+        margin-bottom: 0;
+        padding: 0 1.5rem 0 0;
+        border-bottom: none;
+        border-right: 1px solid var(--rule);
+      }
+      d-article .marker { display: none; }
+    }
+
+    /* --- Sizing ------------------------------------------------------------
+       No width breakpoints. Everything below sizes from its own container or
+       its own content, so there is no viewport where a hand-picked number is
+       wrong. Two mechanisms do the work:
+
+       clamp() for type — one rule instead of a ladder of font sizes.
+
+       minmax() + overflow-x:auto for figures — a figure reflows while it can
+       and scrolls inside itself once it cannot, so the page never scrolls
+       sideways and a diagram never renders its labels at 4px. Diagrams drawn
+       at a fixed logical size (the hero, the attention grid) keep a legible
+       floor; everything made of parts (chips, dials, ticks, rows) simply
+       rewraps. */
+
+    d-title h1 { font-size: clamp(1.45rem, 4.4vw, 2.4rem); }
+    d-article  { font-size: clamp(1rem, 0.97rem + 0.15vw, 1.12rem); }
+
+    /* Fixed-geometry diagrams: reflow is impossible, so scroll instead. */
+    #hero-pipeline,
+    #phoenix-figure .px-grid-scroll,
+    #visibility-figure .vf-cols {
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      padding-bottom: 10px;   /* the scrollbar sits off the caption */
+    }
+    #hero-pipeline canvas    { min-width: 40rem; }
+    #phoenix-figure .px-grid { min-width: 20rem; }
+
+    /* Comparison figures keep their columns side by side at any width: the
+       whole argument is reading one against the other. */
+    #visibility-figure .vf-cols {
+      grid-template-columns: repeat(2, minmax(15rem, 1fr));
+      gap: clamp(0.75rem, 2vw, 1.6rem);
+    }
+
+    /* Part-based figures rewrap on their own. */
+    #phoenix-figure .px-wrap,
+    #labelloop-figure .ll {
+      grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+      gap: clamp(1rem, 2.5vw, 1.75rem);
+    }
+    #weights-figure .wf-dial {
+      grid-template-columns:
+        minmax(5.5rem, 10.5rem) minmax(6rem, 1fr) minmax(2.6rem, auto) minmax(0, auto);
+      gap: clamp(6px, 1.2vw, 10px);
+    }
+    .tag-key { grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr)); }
+
+    /* --- Semantic ID figure (assets/sid-figure.js) ------------------------- */
+    #sid-figure { grid-column: text-start / page-end; margin: 2rem 0 1.5rem; }
+    #sid-figure .sid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+      gap: clamp(1rem, 2.5vw, 1.75rem);
+      align-items: start;
+    }
+    #sid-figure .sid-plot svg {
+      width: 100%; max-width: 300px; height: auto;
+      border: 1px solid var(--rule); border-radius: 6px; background: #fff;
+    }
+    #sid-figure .sid-axis {
+      font-family: var(--mono); font-size: 9px; fill: rgba(17,17,17,0.45);
+    }
+    #sid-figure .sid-code {
+      display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px;
+    }
+    #sid-figure .sid-byte {
+      min-width: 2.6rem; text-align: center; padding: 5px 7px;
+      font-family: var(--mono); font-size: 12px;
+      border: 1px solid var(--rule); border-radius: 4px;
+      color: rgba(17,17,17,0.3); background: var(--wash);
+      transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+    #sid-figure .sid-byte-on {
+      color: var(--teal-dark); border-color: var(--border); background: #fff; font-weight: 700;
+    }
+    #sid-figure .sid-read {
+      font-size: 13px; line-height: 1.6; color: rgba(17,17,17,0.7); min-height: 5.6em;
+    }
+    #sid-figure .sid-read b { color: var(--foreground); font-weight: 600; }
+    #sid-figure .sid-controls { display: flex; gap: 8px; }
+    #sid-figure .sid-controls button {
+      font-family: var(--mono); font-size: 11px; border-radius: 999px;
+      padding: 4px 13px; cursor: pointer; border: 1px solid var(--border);
+      background: none; color: var(--teal-dark);
+    }
+    #sid-figure .sid-step {
+      background: var(--teal-dark) !important; border-color: var(--teal-dark) !important;
+      color: #fff !important;
+    }
+    #sid-figure .sid-step:disabled { opacity: 0.45; cursor: default; }
+    @media (prefers-reduced-motion: reduce) {
+      #sid-figure .sid-byte { transition: none; }
+    }
+
+    /* --- Figure house style ------------------------------------------------
+       Borrowed from the Chameleon and Thinking Machines pieces in inspo/:
+       a declarative title, a subtitle saying what one mark means and in what
+       units, and a legend that decodes the marks. The figcaption is then free
+       to carry provenance and argument rather than instructions. */
+    .fig-title {
+      font-size: 15px; font-weight: 600; color: var(--foreground);
+      margin: 0 0 3px; letter-spacing: -0.005em;
+    }
+    .fig-subtitle {
+      font-size: 12.5px; line-height: 1.5; color: rgba(17,17,17,0.55);
+      margin: 0 0 12px; max-width: 62ch;
+    }
+    .fig-legend {
+      display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 12px;
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em;
+      color: rgba(17,17,17,0.6);
+    }
+    .fig-legend span { display: inline-flex; align-items: center; gap: 5px; }
+    .fig-legend i {
+      width: 11px; height: 11px; border-radius: 2px; display: inline-block;
+    }
+
+    distill-footer { display: none; }
+
+    d-article h2, d-article h3 { scroll-margin-top: 2rem; }
+
+    /* Smooth scrolling is enabled from a script AFTER load: with it set
+       unconditionally, the browser also animates its scroll RESTORATION, so
+       refreshing mid-article lands at the top and visibly glides back down. */
+    html.smooth-scroll { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html.smooth-scroll { scroll-behavior: auto; }
+      d-article > d-toc a,
+      d-article > d-toc .toc-indicator { transition: none; }
+    }
+
+    /* --- Hero figure -------------------------------------------------------
+       The animated pipeline in <d-title>, drawn by assets/hero.js onto the
+       canvas below. All geometry lives in the script's logical coordinate
+       system; these rules only size the frame and style the hover card. */
+    #hero-pipeline {
+      /* Wider than `page`: the hero takes the full screen column, capped so
+         the mono labels stay in proportion on very large displays. */
+      grid-column: screen;
+      width: min(1360px, calc(100% - 2rem));
+      justify-self: center;
+      position: relative;
+      margin: 2rem 0 0.75rem;
+    }
+
+    #hero-pipeline canvas {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1160 / 590;
+      background: transparent;
+    }
+
+    #hero-pipeline .hero-note {
+      position: absolute;
+      /* Anchored at the origin and moved purely by transform: translate3d,
+         set from the animation loop, compositor-only, no layout work, so
+         the card's motion can't stutter against the canvas. */
+      left: 0;
+      top: 0;
+      z-index: 3;
+      max-width: min(280px, calc(100% - 24px));
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(26, 122, 158, 0.13);
+      pointer-events: none;
+      opacity: 0;
+      will-change: transform;
+      transition: opacity 140ms ease;
+    }
+
+    #hero-pipeline .hero-note[data-show="true"] { opacity: 1; }
+
+    #hero-pipeline .hero-note strong {
+      display: block;
+      margin-bottom: 2px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.85);
+    }
+
+    #hero-pipeline .hero-note span {
+      display: block;
+      font-family: var(--serif);
+      font-size: 13px;
+      line-height: 1.45;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Where in the repo this stage lives. */
+    #hero-pipeline .hero-note .note-path {
+      display: block;
+      margin-top: 6px;
+      padding-top: 5px;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.02em;
+      color: var(--teal-dark);
+    }
+
+    #hero-pipeline figcaption {
+      max-width: 704px;
+      margin: 0.6rem auto 0;
+      padding: 0 1rem;
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    /* The hover card and its hint assume a pointer; the animation itself
+       still runs on touch screens, where stages respond to a tap. */
+    @media (hover: none) {
+      #hero-pipeline .pointer-hint { display: none; }
+    }
+  </style>
+<style>
+:root {
+      --serif: "Iowan Old Style", "Iowan Old Style BT", Iowan, Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "Times New Roman", serif;
+      --mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "PingFang SC", monospace;
+    }
+    d-title, d-article, d-appendix { font-family: var(--serif); }
+/* --- Personal agents essay: figures (assets/figures.js) ------------------
+       Same house style as the other articles: a declarative .fig-title, a
+       .fig-subtitle saying what a mark means, a mono legend, and a caption. */
+    d-figure[id$="-figure"] { margin: 2rem 0 1.75rem; }
+    #landscape-figure, #map-figure, #heatmap-figure, #invite-figure, #tasklog-figure { grid-column: text-start / page-end; }
+    d-figure figcaption {
+      margin-top: 0.9rem; font-size: 13px; line-height: 1.5; color: rgba(0,0,0,0.5);
+    }
+    .fig-title { font-family: var(--serif); font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+
+    .pa-controls { margin: 0 0 14px; }
+    .pa-seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+    .pa-seg button {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em; border-radius: 999px;
+      padding: 4px 13px; cursor: pointer; border: 1px solid var(--border);
+      background: #fff; color: var(--teal-dark); transition: background .2s, color .2s;
+    }
+    .pa-seg button:hover { border-color: var(--teal-dark); }
+    .pa-seg button.on { background: var(--teal-dark); border-color: var(--teal-dark); color: #fff; }
+
+    .pa-read { font-size: 13px; line-height: 1.6; color: rgba(17,17,17,0.72); min-height: 1.6em; margin: 10px 0 0; }
+    .pa-read b { color: var(--foreground); font-weight: 600; }
+    .pa-dim { color: rgba(17,17,17,0.45); font-size: 0.92em; }
+
+    /* horizontal bars */
+    .pa-hbars { display: flex; flex-direction: column; gap: 7px; }
+    .pa-hrow { display: grid; grid-template-columns: minmax(7.5rem, 32%) 1fr 5.2rem; gap: 10px; align-items: center; font-size: 13px; }
+    .pa-hlab { text-align: right; color: rgba(17,17,17,0.75); line-height: 1.25; }
+    .pa-htrack { height: 16px; background: var(--wash); border-radius: 3px; overflow: hidden; }
+    .pa-htrack i { display: block; height: 100%; border-radius: 3px; transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .pa-hval { font-family: var(--mono); font-size: 11px; color: rgba(17,17,17,0.7); }
+
+    /* vertical bars */
+    .pa-vbars { display: flex; align-items: flex-end; gap: 10px; border-bottom: 1px solid rgba(17,17,17,0.15); padding-top: 6px; }
+    .pa-vcol { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 0; }
+    .pa-vbar, .pa-vstack { width: 70%; max-width: 68px; border-radius: 3px 3px 0 0; transition: height 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+    .pa-vstack { display: flex; flex-direction: column-reverse; overflow: hidden; }
+    .pa-vstack i { display: block; min-height: 1px; }
+    .pa-vval { font-family: var(--mono); font-size: 11px; color: rgba(17,17,17,0.75); margin-bottom: 4px; }
+    .pa-vlab { font-family: var(--mono); font-size: 10.5px; color: rgba(17,17,17,0.6); margin-top: 6px; height: 2.6em; text-align: center; line-height: 1.25; transform: translateY(100%); margin-bottom: -2.6em; }
+    .pa-vbars { margin-bottom: 3em; }
+    .pa-thin { gap: 3px; }
+    .pa-thin .pa-vbar { width: 100%; }
+    .pa-thin .pa-vval { display: none; }
+    .pa-vcol:hover .pa-vbar, .pa-vcol:hover .pa-vstack { filter: brightness(0.92); }
+
+    /* stacked share bar (invite: where) */
+    .pa-stack { display: flex; height: 26px; border-radius: 4px; overflow: hidden; margin: 0 0 16px; gap: 2px; }
+    .pa-stack i { display: flex; align-items: center; justify-content: center; color: #fff; font-style: normal;
+                  font-family: var(--mono); font-size: 11px; white-space: nowrap; overflow: hidden; }
+
+    /* cards (invite: who) */
+    .pa-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: 10px; }
+    .pa-cards div { background: var(--wash); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; }
+    .pa-cards b { display: block; font-size: 13.5px; font-weight: 600; margin-bottom: 4px; }
+    .pa-cards span { font-size: 13px; line-height: 1.5; color: rgba(17,17,17,0.62); }
+
+    /* tiles (heatmap) */
+    .pa-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr)); gap: 10px; margin-top: 16px; }
+    .pa-tiles div { border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; background: #fff; }
+    .pa-tiles b { display: block; font-family: var(--serif); font-size: 26px; line-height: 1.1; color: var(--teal-dark); }
+    .pa-tiles span { display: block; font-size: 13px; margin-top: 2px; }
+    .pa-tiles em { display: block; font-style: normal; font-size: 12px; color: rgba(17,17,17,0.5); }
+
+    /* map + heatmap svg */
+    .pa-mapwrap svg { width: 100%; height: auto; display: block; }
+    .pa-scrollx { overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+    .pa-q { font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; }
+    .pa-empty { fill: rgba(17,17,17,0.35); font-weight: 400; font-style: italic; }
+    .pa-ax { font-family: var(--mono); font-size: 9.5px; fill: rgba(0,0,0,0.5); }
+    .pa-lab { font-family: var(--mono); font-size: 10px; fill: rgba(0,0,0,0.8); pointer-events: none; }
+    .pa-pt { cursor: pointer; transition: opacity .2s; outline: none; }
+    .pa-pt circle { transition: r .2s; }
+    .pa-pt:hover circle, .pa-pt:focus circle { r: 9; }
+    .pa-dimmed { opacity: 0.25; }
+    .pa-moneylab { font-family: var(--mono); font-size: 9.5px; fill: rgba(17,17,17,0.7); }
+    .pa-grow { animation: pa-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; transform-box: fill-box; transform-origin: center; }
+    @keyframes pa-grow { from { transform: scale(0); } to { transform: scale(1); } }
+    .pa-day { cursor: pointer; }
+    .pa-day:hover { stroke: var(--foreground); stroke-width: 1.2; }
+
+    /* waffle */
+    .pa-waffle-row { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; }
+    .pa-waffle { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; width: min(260px, 100%); }
+    .pa-waffle i { aspect-ratio: 1; border-radius: 2px; background: #e3eef0; transition: background 0.35s ease; }
+    .pa-big b { display: block; font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--accent); }
+    .pa-big span { font-size: 13px; color: rgba(17,17,17,0.65); }
+
+    /* tables (landscape figure + appendix) */
+    .pa-tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pa-table { border-collapse: collapse; width: 100%; font-size: 13px; line-height: 1.45; }
+    .pa-table th { text-align: left; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em; font-weight: 400; color: rgba(0,0,0,0.6); padding: 7px 10px 7px 0; border-bottom: 1.5px solid #111; white-space: nowrap; }
+    .pa-table td { text-align: left; vertical-align: top; padding: 7px 10px 7px 0; border-bottom: 1px solid var(--rule); }
+    .pa-table tbody tr { transition: opacity .25s; }
+    .pa-table tbody tr:hover { background: var(--wash); }
+    .pa-table tr.pa-out { opacity: 0.18; }
+    .pa-pill { display: inline-block; white-space: nowrap; font-family: var(--mono); font-size: 10.5px; padding: 2px 8px;
+               border-radius: 999px; color: var(--c); border: 1px solid var(--c); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pa-htrack i, .pa-vbar, .pa-vstack, .pa-waffle i, .pa-grow { transition: none !important; animation: none !important; }
+    }
+
+    /* Links: brand teal at rest, persimmon on hover (site tokens tealDk / orange). */
+    d-article a, d-appendix a, d-figure figcaption a {
+      color: #3aa8b2; border-bottom: 1.5px solid rgba(125, 231, 240, 0.9); text-decoration: none;
+      transition: color .15s, border-color .15s;
+    }
+    d-article a:hover, d-appendix a:hover, d-figure figcaption a:hover { color: #f06a17; border-bottom-color: #f06a17; }
+
+    /* EN / 中文 switch under the byline */
+    d-title .pa-lang { grid-column: text; text-align: center; margin: 0.2rem 0 0.4rem; }
+    d-title .pa-lang a {
+      display: inline-block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em;
+      padding: 4px 14px; border-radius: 999px; border: 1px solid #3aa8b2; color: #0c1c20; text-decoration: none;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    d-title .pa-lang a:hover { background: #f06a17; border-color: #f06a17; color: #fff; }
+    d-title .pa-lang span { font-family: var(--mono); font-size: 11.5px; color: rgba(0,0,0,0.35); margin: 0 6px; }
+
+    /* Chinese page: CJK prose reads better a touch looser, without the Latin hanging punctuation */
+    html:lang(zh-CN) d-article p, html:lang(zh-CN) d-article li { line-height: 1.85; }
+    html:lang(zh-CN) d-title h1 { letter-spacing: 0.01em; }
+
+</style>
+    <link rel="icon" href="/icon.jpg">
+    <title>personal agent到底是秘书、同事还是朋友？</title>
+    <meta property="description" itemprop="description" content="一个重度用户眼里的2026年personal agent：秘书、同事还是朋友？附五个月的Instinct使用数据和77个分享码的去向。">
+    <meta name="description" content="一个重度用户眼里的2026年personal agent：秘书、同事还是朋友？附五个月的Instinct使用数据和77个分享码的去向。">
+    <meta property="article:published" itemprop="datePublished" content="2026-11-16">
+    <meta property="article:author" content="李雨珊 Yushan Li">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="personal agent到底是秘书、同事还是朋友？">
+    <meta property="og:description" content="一个重度用户眼里的2026年personal agent：秘书、同事还是朋友？附五个月的Instinct使用数据和77个分享码的去向。">
+    <meta property="og:url" content="https://yushan.li/writing/personal-agent/zh/">
+    <meta property="og:image" content="https://yushan.li/writing/personal-agents/assets/01-positioning.png">
+    <meta property="og:site_name" content="yushan.li">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="personal agent到底是秘书、同事还是朋友？">
+    <meta name="twitter:description" content="一个重度用户眼里的2026年personal agent：秘书、同事还是朋友？附五个月的Instinct使用数据和77个分享码的去向。">
+    <meta name="twitter:image" content="https://yushan.li/writing/personal-agents/assets/01-positioning.png">
+    <link rel="alternate" hreflang="en" href="https://yushan.li/writing/personal-agent/">
+    <link rel="alternate" hreflang="zh-CN" href="https://yushan.li/writing/personal-agent/zh/">
+  </head>
+<body distill-prerendered="">
+  <distill-header distill-prerendered=""></distill-header>
+
+  <d-front-matter>
+    <script id="distill-front-matter" type="text/json">{
+  "title": "personal agent到底是秘书、同事还是朋友？",
+  "description": "一个重度用户眼里的2026年personal agent：秘书、同事还是朋友？附五个月的Instinct使用数据和77个分享码的去向。",
+  "published": "Nov 16, 2026",
+  "authors": [
+    {
+      "author": "Yushan Li",
+      "authorURL": "https://yushan.li",
+      "affiliations": [
+        {
+          "name": "UC Berkeley",
+          "url": "https://berkeley.edu"
+        }
+      ]
+    }
+  ],
+  "journal": {
+    "title": "yushan.li",
+    "full_title": "yushan.li",
+    "url": "https://yushan.li"
+  },
+  "url": "https://yushan.li/writing/personal-agent/zh/",
+  "doi": ""
+}
+    </script>
+  </d-front-matter>
+
+  <d-title><h1>personal agent到底是秘书、同事还是朋友？</h1>
+    <div class="title-byline">
+      <p class="authors">李雨珊</p>
+      <p class="date">2026年11月16日</p>
+    </div>
+    <p class="pa-lang"><a href="../" hreflang="en" lang="en">Read in English</a></p>
+  </d-title>
+
+  <d-byline></d-byline>
+
+  <d-article>
+    <d-toc prerendered="true">
+  <style>
+
+  d-toc {
+    contain: layout style;
+    display: block;
+  }
+
+  d-toc ul {
+    padding-left: 0;
+  }
+
+  d-toc ul > ul {
+    padding-left: 24px;
+  }
+
+  d-toc a {
+    border-bottom: none;
+    text-decoration: none;
+  }
+
+  </style>
+  <nav role="navigation" class="table-of-contents"></nav>
+  <h2>目录</h2>
+  <ul><li><a href="#xiaoice">小冰</a></li><br><li><a href="#three-shapes">到底是秘书、同事还是朋友？</a></li><br><li><a href="#not-for-work">普通用户使用AI不是为了工作</a></li><br><li><a href="#metrics">指标？</a></li><br><li><a href="#tested-on-myself">本人实测</a></li><br><li><a href="#invite-codes">我发了77个instinct分享码</a></li><br><li><a href="#ending">结尾</a></li><br><li><a href="#appendix">附录</a></li></ul>
+</d-toc>
+
+    <p>半年里，SF 2c应用好像只剩下做personal agent一件事。光今年就有：</p>
+    <ul>
+    <li>2026年5月，Google在I/O发布Gemini Spark，一个常驻后台的personal agent。<a href="https://www.engadget.com/2176556/googles-gemini-spark-is-an-agentic-ai-assistant/">Engadget</a></li>
+    <li>2026年8月11日，xAI发布Grok Bot beta：一组常驻的agent，各自有云端电脑，开放给SuperGrok和Cursor付费用户。<a href="https://x.ai/news/introducing-grok-bot">xAI</a></li>
+    <li>2026年9月，住在iMessage里的Instinct完成10亿美元C轮，估值100亿美元，产品还在early access。<a href="https://theaiinsider.tech/2026/09/29/instinct-announces-1b-in-series-c-funding-from-sequoia-benchmark-and-coatue-at-10b-valuation/">The AI Insider</a></li>
+    <li>2026年9月8日，Meta发布Muse。一个半月后扎克伯格在财报会上说美国和加拿大用户超过1000万，大概四分之一每天都用。<a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a>、<a href="https://finance.yahoo.com/ai/meta-ai/articles/meta-muse-popular-personal-agents-195002408.html">Yahoo Finance</a></li>
+    <li>2026年9月29日，OpenAI在DevDay发布dots。<a href="https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/">TechCrunch</a></li>
+    <li>2026年10月，Anthropic发布Claude Duet研究预览。<a href="https://www.cnbc.com/2026/10/21/anthropic-preview-of-claude-duet-personal-ai-agent-take-on-muse-dots.html">CNBC</a></li>
+    </ul>
+    <d-figure id="landscape-figure"></d-figure>
+    <p>大厂也好，明星startup也好，估值一百亿了还在early access的也好，感觉全挤在一条赛道上卷。我自己算是个超级重度用户，过去3个月天天在用，也天天在小红书回复评论贴文。但越着迷我越迷惑，这东西到底是给谁用的？</p>
+    <h2 id="xiaoice">小冰</h2>
+    <p>作为00后我对“personal agent”的第一印象就是2014年的微软小冰，回头看，这是chat形态作为当下最火的AI应用（除了recsys和FSD）的第一个线索。十二年后的今天，我想，今天的personal agent也如同当年的微软小冰：足够惊艳到让大家能看到未来，演化出很多重度使用者，DAU，retention表现非常亮眼，但总好像缺了些什么。</p>
+    <p>微软2018论文把小冰定位为兼顾IQ与EQ的“共情社交机器人”，但核心是共情计算（empathetic computing）模块【<a href="https://arxiv.org/abs/1812.08989">arXiv</a>、<a href="https://aclanthology.org/2020.cl-1.2">ACL Anthology</a>】。与之不同的是，今天的Grok Bot、OpenAI Dots、Instinct和Claude Duet把自己定位为IQ+生产力工具，细分为纯生产力型和秘书型（轻量工作，以协调为主）。这让我想，真正能服务到大众用户的personal agent到底是什么形态、切入口呢？</p>
+    <p>我按能不能办事、有没有温度，把今年火的这些agent大概摆了一下（纯主观）：</p>
+    <d-figure id="map-figure"></d-figure>
+    <p>最贵的几家（Instinct 100亿、Town 10亿）都是秘书或同事型，陪伴型的Tolan总共才融了6000万。钱也在往左上角挤。</p>
+    <h2 id="three-shapes">到底是秘书、同事还是朋友？</h2>
+    <p>三种我都觉得有点问题。</p>
+    <p>秘书型的话，典型用户像“需要生活秘书的忙碌年轻牛马（比如本人）”、“真正需要秘书，甚至可能已经有一个了的硅谷vc”；但普罗大众的生活其实不需要秘书/EA。而且好的秘书很难，他们需要预见问题并且提供选项。“贴心”需要很多的揣测，这并不是一件简单的事情。这需要非常强的协调能力、memory management（在什么合适的时候出现什么合适的memory），以及人对秘书做长线任务的信任。</p>
+    <p>一个非常八面玲珑的顶级秘书会是好的personal agent切入点吗？秘书这个产物感觉也非常像当代白领商业社会的产物。但是当AI在对白领知识工作进行大批量的改革和替代的时候，大家真正需要的秘书也不一定是有像安排日程、做提醒一样的形象。而且agent高度依赖生态，生态又极度缺乏秦始皇式的大一统。AI眼镜也一样，各家大厂都希望接入自己的软件生态。软件好做，对于用户来说，换生态非常麻烦，而且可能本来完全在某个生态上的人非常少，即便是在人人都用苹果的加州。</p>
+    <p>同事型的话，如果一个personal agent太没有人情味（比如Claude Duet：Every的评测者称它是第一个可以称为“专业工具”的personal agent。<a href="https://every.to/vibe-check/vibe-check-duet-anthropic-s-always-on-agent">Every</a>.），作为personal agent retention就不会太好。工作感太强，在生活中就少有打开的习惯，只有想起来工作才会打开。工作账号又和个人账号一般分离，谁会下班还用自己的账号工作呢？</p>
+    <p>朋友型的话，有两个思路：第二人生（用户的数字分身），或者随叫随到的陪伴型朋友。都需要非常细致的人设对齐和角色设计。每个人在不同的人生阶段需要的朋友性格都很不一样。虽然LLM让这种动态的产品形态成为可能，但如何精准击中还是有难度。</p>
+    <p>我观察，Z世代整体上都很ADHD，和核心体验就是基座模型的app对话，宛如搜索框Pro Max。问完情感问代码，问完代码问健康。好的消费级体验似乎非常通用，那么personal agent对于泛大众变得好用似乎也需要这样，能够在大众任务上全面开花。</p>
+    <p>那普通人到底想要什么呢？我觉得可以先看看大家平时拿AI在干嘛。</p>
+    <h2 id="not-for-work">普通用户使用AI不是为了工作</h2>
+    <d-figure id="nonwork-figure"></d-figure>
+    <p>OpenAI自己发的数据，ChatGPT消费者版里跟工作没关系的消息，从2024年6月的53%涨到了2025年6月的73%（<a href="https://openai.com/index/how-people-are-using-chatgpt/">OpenAI</a>）。HBR扒了一年网上的公开讨论，2025年大家用AI排第一的居然是心理疏导和陪伴（<a href="https://hbr.org/2025/04/how-people-are-really-using-gen-ai-in-2025">HBR</a>）。</p>
+    <p>既然大家用AI大多不是为了工作，那personal agent也该按consumer产品的逻辑来做。好的consumer产品得有娱乐性，不能太像上班，大概80%爽20%有用。爽是新鲜感，任务完成的感觉，游戏化的打勾，可以像推荐系统一样迎合当代人类稀碎的注意力；有用是任务完成真正解决了痛点。中国consumer近十年玩法比美国多得多，比如字节系。知乎、小红书是先有用后爽，Tiktok、bilibili是先爽后有用。反观今天的personal agent，基本都是先有用后爽的路子，有的干脆只有有用，没有爽。</p>
+    <p>可能有人会说，“人（人的注意力）才是瓶颈”（Human attention is the bottleneck），这句话我在新闻里、在好几场闭门分享里都听到过。Atomic Object有一篇《With AI Agents, Attention is the New Bottleneck》，还有好几位工程师写过“我成了瓶颈”（<a href="https://spin.atomicobject.com/ai-agents-attention-bottleneck/">Atomic Object</a>、<a href="https://julien.danjou.info/blog/the-human-is-the-new-bottleneck">Julien Danjou</a>）。不过他们说的主要是开发者同时管很多个agent、每个结果都得人来看的场景，这个判断是工程师从自己的工作流里得出来的，直接搬到大众消费场景并不成立。这话无非是为不够好的用户体验找借口，好像用户该去适应agent。但“训练用户”永远不是正确的，好的用户体验会把用户本来的样子考虑进去。</p>
+    <p>大众早已被短视频训练得很“ADHD”，单次注意力是短，可总的注意力一点都不少。不信可以看看数据：</p>
+    <d-figure id="minutes-figure"></d-figure>
+    <p>大众每天愿意给短视频将近一小时、给AI角色一个多小时，注意力并不稀缺，稀缺的是值得给注意力的产品。那么，也许persona; agent也会遵循同样的逻辑。</p>
+    <h2 id="metrics">指标？</h2>
+    <p>那personal agent的爽和有用，分别该看什么指标？</p>
+    <p>微软小冰以retention为目标：论文把优化目标定为CPS（每次会话轮数），平均CPS 23，高于其他聊天机器人，甚至高于人类之间的对话，呼应“低质量用户数据，保留retention高数据迭代”。一次平均聊23轮，爽是真的爽到了，但聊得久不代表下周你还会回来找它。RL是一码事，有意义的关系在于bouncing back。Muse就很典型：</p>
+    <d-figure id="retention-figure"></d-figure>
+    <p>Muse第一天的爽（新鲜感，加上Meta的分发能力）把次日回访拉得很高，但第14天还愿意回来的，靠的是有用和信任，也就是bouncing back。所以CPS、次日回访量的是爽，第14天还回不回来量的才是有用。先爽后有用，前提是后面真的得有用。</p>
+    <p>我们要如何衡量对personal agent的信任？留存不一定等于注意力，答案可能要回到心理学、人与人的交往里去找。</p>
+    <p>说到留存，我自己的数据倒是可以拿出来看看。</p>
+    <h2 id="tested-on-myself">本人实测</h2>
+    <p>我恰好就是那个需要秘书的牛马，所以以下体验证明的是类似秘书的personal agent对我这类人确实有用。在Noah做出Instinct前，我就在用自己手搓的小补件，天天用补丁版的Claude Code帮我处理琐事。</p>
+    <p>得益于5月正好找Noah一趟，我6月就开始作为内测用户用上Instinct了。但为了提供测试数据我硬着头皮用了一周就搁下了，7月基本没碰。8月preview正式发布，突然好用了很多，又刚好撞上开学和求职季，之后88天里我用了85天，最长连着65天，平均一天开快6个任务。</p>
+    <d-figure id="heatmap-figure"></d-figure>
+    <p>用来干嘛呢？大部分还真是秘书活。极重度用户，留存和app屏幕使用时间天天++：日历、位置、邮件起草、活动协调，还有辅助运营（大概是个运营实习生水平），一整件事丢给它独立处理还不太行。</p>
+    <p>我翻了下任务记录，563个任务里三分之一是求职申请，五分之一是学校的事，快三成就是帮我动谷歌日历。不过我觉得最好用的反而是长线的：帮我“等”。这类任务在agent工程里叫watcher，我的大概有这几种：</p>
+    <ol>
+    <li>定时例行：每个工作日的早安打卡、每周日的负载检查（标出过载日和ddl风险日）、每天早上看天气决定要不要提醒游泳、每晚催关电脑。</li>
+    <li>等人回信：等招聘方、教授、助教、住房办公室的回信。</li>
+    <li>等东西开放、到货、降价：职位开放申请、活动门票、快递到货、文档寄到、双11清单、二手衣物。</li>
+    <li>全局巡查：求职邮箱watcher，每天多次扫两个Gmail账号和日历，把招聘回复、拒信、面试邀请同步进追踪表。</li>
+    </ol>
+    <p>我觉得watcher是最AI native的东西。App做不到“等X发生了再告诉我”，你得自己打开它。watcher让agent在我不打开它的时候也活在我生活里，所以按用户打开次数算的DAU其实是低估它的。这也是为什么我说留存≠注意力。</p>
+    <p>翻车也是有的。让它在原平台转卖演唱会门票，一直卡在人机验证过不去；还有一次没二次确认就直接把邮件发出去了。想让秘书越有用，就得交出去越多东西，信任门槛也就越高。</p>
+    <p>A2A的话，即使在旧金山，身边朋友人手不止一个personal agent，它好像也没什么用。A2A是“我的agent和你的agent之间的沟通”，在高强度项目协作、有娃家庭共享日历时最有用。这可能不是personal agent最好的切入点，因为需要很好的组织架构而不是优秀的单体助理。我用它跟课程项目的组员协调过日程，确实方便了一点，但增加的价值不大。</p>
+    <p>agent消费就更难了。让agent替你花钱，信任要求比替你发邮件又高了一个量级。比价、做购买功课它都帮我做过，但付款真的是另一个级别。我个人觉得这个决定很难让agent来做。毕竟我们牛马赚钱就是为了花钱爽的。你不让我花钱我怎么爽！</p>
+    <h2 id="invite-codes">我发了77个instinct分享码</h2>
+    <p>我在小红书发了一篇Instinct体验帖。在过去的一个月我每天两眼一睁就是为爱发电免费客服：一个月里我陆续发出去77个邀请链接，顺手claude computer use统计了一下这些人都是谁：</p>
+    <d-figure id="invite-figure"></d-figure>
+    <p>大概三分之二是国内IP，粉丝中位数96，很多人主页跟AI一点关系都没有，新手妈妈、绘本博主、旅行博主都有。好奇心早就出圈了，不只是创投圈的人在玩。</p>
+    <p>但问题是中国手机号注册不了，邀请码、海外手机号、iMessage，大部分人我估计卡在这几关就放弃了。</p>
+    <p>回头看我自己也一样：6月刚拿到内测，用了一周就找不到什么回头的理由了（当时能力不强，不太主动，和Claude app能做的事情高度重合）。两个月后，我回头真香。Instinct正式发布前，产品变主动，再加上我刚开学一下变忙，对于agent能干活的需求也是暴涨。</p>
+    <h2 id="ending">结尾</h2>
+    <p>所以personal agent到底是秘书、同事还是朋友？</p>
+    <p>对我，它是生活秘书，而且找到了某些真实的使用价值。对有些人，它可能是同事。但对普罗大众，秘书和同事大概都不是好的入口，也不能提供无可替代的价值。</p>
+    <p>十年前小冰赌的是朋友，最后也没成为每个人手机里的那个朋友。今天大家都在赌秘书助理类型的定位。我猜真正的入口可能在两者中间：先让你觉得好玩、愿意拉朋友进来，再顺手把事给你办了。先爽后有用！</p>
+    <p>以上全是猜测，仅代表个人意见，欢迎讨论！</p>
+    <h2 id="appendix">附录</h2>
+    <div class="pa-tablewrap"><table class="pa-table"><thead><tr><th>动作</th><th>约数</th><th>例子</th></tr></thead><tbody><tr><td>查证 / 核实</td><td>~86</td><td>作业截止时间、考场、申请截止日</td></tr><tr><td>调研 / 比价 / 挑选</td><td>~52</td><td>门票定价、礼物、墨水屏选型、职位筛选</td></tr><tr><td>申请 / 填表 / 提交</td><td>~51</td><td>投简历、OPT申请、活动报名回复</td></tr><tr><td>重排日程</td><td>~49</td><td>“把周六的块挪到周日”“今天压缩到晚上”</td></tr><tr><td>起草沟通</td><td>~44</td><td>回信草稿、内推请求、邮件</td></tr><tr><td>读 / 总结</td><td>~36</td><td>读推文、读论文、整理链接</td></tr><tr><td>替你等（watcher）</td><td>~23</td><td>见上文</td></tr><tr><td>修正 / 重做</td><td>~23（约4%）</td><td>同一个文件夹读了4遍，日历颜色改了又改，重复建的日程</td></tr></tbody></table></div>
+    <d-figure id="tasklog-figure"></d-figure>
+  </d-article>
+
+  <d-appendix>
+    <h3>关于数据</h3>
+    <p>任务记录、每日活跃和分享码的数字都是我自己的：导出的Instinct任务历史和小红书私信。任务分类是按任务标题关键词估的。市场数据在正文里都附了来源链接；来源是公司自报或付费墙的，图注里会写明。</p>
+    <h3>关于这篇</h3>
+    <p>原文是给thinkingloop写的客座文章。<a href="../">English version</a>。</p>
+  </d-appendix>
+
+  <footer class="site-footer">
+    <div class="sf-inner">
+      <span class="sf-links">
+        <a href="https://yushan.li">yushan.li</a>
+        <a href="https://yushan.li/writing/">文章</a>
+      </span>
+      <span class="sf-meta">李雨珊 · 2026</span>
+    </div>
+  </footer>
+
+  <distill-footer></distill-footer>
+
+  <script>
+    // Smooth scrolling is class-gated (see the html.smooth-scroll rule) and
+    // switched on only after load: enabled from the start, the browser also
+    // animates its scroll restoration, so refreshing mid-article would glide
+    // down from the top instead of landing instantly.
+    window.addEventListener('load', function () {
+      requestAnimationFrame(function () {
+        document.documentElement.classList.add('smooth-scroll');
+      });
+    });
+  </script>
+
+  <script src="../assets/figures.js" defer=""></script>
+
+  <script>
+    // --- Table of contents: scroll-spy + sticky sizing ----------------------
+    // The <d-toc> component builds its own markup, either at build time
+    // (`make render`, which stamps prerendered="true") or on window load.
+    // We wire up once its links exist, whichever path got us there.
+    (function () {
+      // Distance from the top of the viewport that counts as "you are here".
+      const SPY_LINE = 100;
+
+      let wired = false;
+
+      function wire() {
+        if (wired) return true;
+
+        const article = document.querySelector('d-article');
+        const toc = document.querySelector('d-toc');
+        if (!article || !toc) return false;
+
+        const sections = Array.from(toc.querySelectorAll('a[href^="#"]'))
+          .map(link => ({ link: link, target: document.getElementById(decodeURIComponent(link.hash.slice(1))) }))
+          .filter(s => s.target);
+        if (!sections.length) return false;
+
+        wired = true;
+
+        // `position: sticky` only travels within the element's own grid area,
+        // so the sidebar has to span every row of the article. Only in the
+        // wide layout, inline, spanning rows would overlap the body text.
+        const wide = window.matchMedia('(min-width: 1000px)');
+        function setSpan() {
+          toc.style.gridRow = wide.matches
+            ? '1 / span ' + Math.max(article.children.length, 1)
+            : '';
+        }
+
+        // A single dot that slides between entries, rather than each link
+        // switching its own marker on and off.
+        const indicator = document.createElement('span');
+        indicator.className = 'toc-indicator';
+        toc.appendChild(indicator);
+
+        let active = null;
+        let shown = false;
+
+        function moveIndicator() {
+          if (!active) {
+            indicator.style.opacity = '0';
+            shown = false;
+            return;
+          }
+          const link = active.link;
+          // Read offsets after the .active class is applied, so the dot centres
+          // on the entry at its final (bold) size. Only the vertical position
+          // is set: the dot's `left` is fixed in CSS, so it holds one column
+          // whether the active entry is a section or a sub-section.
+          const y = link.offsetTop + (link.offsetHeight / 2) - (indicator.offsetHeight / 2);
+          // Don't glide in from the top the first time it appears.
+          if (!shown) indicator.style.transition = 'none';
+          indicator.style.transform = 'translateY(' + y + 'px)';
+          indicator.style.opacity = '1';
+          if (!shown) {
+            void indicator.offsetHeight; // flush before re-enabling the transition
+            indicator.style.transition = '';
+            shown = true;
+          }
+        }
+
+        function setActive(next) {
+          if (next === active) return;
+          if (active) active.link.classList.remove('active');
+          active = next;
+          if (active) active.link.classList.add('active');
+          moveIndicator();
+        }
+
+        // The current section is the last one whose heading has crossed the line.
+        function update() {
+          let current = null;
+          for (const section of sections) {
+            if (section.target.getBoundingClientRect().top - SPY_LINE > 0) break;
+            current = section;
+          }
+          setActive(current);
+        }
+
+        let queued = false;
+        function onScroll() {
+          if (queued) return;
+          queued = true;
+          requestAnimationFrame(function () { queued = false; update(); });
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', function () { setSpan(); update(); moveIndicator(); });
+        window.addEventListener('hashchange', update);
+
+        // Jumping is handled natively by the #anchors, but highlight the
+        // clicked entry straight away rather than waiting for the scroll.
+        toc.addEventListener('click', function (event) {
+          const link = event.target.closest('a[href^="#"]');
+          if (!link) return;
+          const match = sections.find(function (s) { return s.link === link; });
+          if (match) setActive(match);
+        });
+
+        setSpan();
+        update();
+        return true;
+      }
+
+      // The component renders on load; retry until its links show up.
+      if (!wire()) {
+        document.addEventListener('DOMContentLoaded', wire);
+        window.addEventListener('load', wire);
+        const toc = document.querySelector('d-toc');
+        if (toc) {
+          const observer = new MutationObserver(function () {
+            if (wire()) observer.disconnect();
+          });
+          observer.observe(toc, { childList: true });
+        }
+      }
+    })();
+  </script>
+
+</body></html>
