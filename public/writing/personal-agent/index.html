@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is a personal agent a secretary, a coworker, or a friend? · Yushan Li</title>
+<meta name="description" content="A heavy user&#x27;s take on 2026&#x27;s personal agents: secretary, coworker, or friend, with data from five months of Instinct and 77 invite codes.">
+<meta property="og:title" content="Is a personal agent a secretary, a coworker, or a friend?">
+<meta property="og:description" content="A heavy user&#x27;s take on 2026&#x27;s personal agents: secretary, coworker, or friend, with data from five months of Instinct and 77 invite codes.">
+<meta property="og:image" content="https://yushan.li/writing/personal-agents/assets/en/01-positioning.png">
+<link rel="icon" href="/icon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --paper:#faf7f0; --ink:#0c1c20; --soft:rgba(12,28,32,.6); --rule:rgba(12,28,32,.16); --orange:#f06a17; --orangeInk:#7a2a00; --card:#fff; }
+* { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.75 'IBM Plex Sans',-apple-system,BlinkMacSystemFont,Helvetica,'PingFang SC',sans-serif; }
+main { max-width:700px; margin:0 auto; padding:40px 20px 80px; }
+nav { font:400 11px/1 'IBM Plex Mono',ui-monospace,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; margin-bottom:48px; }
+nav a { color:var(--soft); text-decoration:none; } nav a:hover { color:var(--orange); }
+h1 { font-weight:600; font-size:clamp(28px,5vw,38px); line-height:1.2; margin:0 0 12px; letter-spacing:-.01em; }
+.meta { font:400 11px/1.6 'IBM Plex Mono',ui-monospace,monospace; letter-spacing:.08em; color:var(--soft); margin-bottom:40px; }
+h2 { font-weight:600; font-size:22px; margin:56px 0 12px; }
+p { margin:0 0 18px; }
+a { color:var(--orangeInk); text-decoration-color:rgba(240,106,23,.45); text-underline-offset:3px; }
+a:hover { color:var(--orange); }
+ul, ol { padding-left:22px; margin:0 0 20px; } li { margin:0 0 8px; }
+figure { margin:28px -8px; }
+figure img { width:100%; height:auto; display:block; border-radius:6px; background:#fff; border:1px solid var(--rule); }
+.tbl { overflow-x:auto; margin:20px 0; }
+table { border-collapse:collapse; width:100%; font-size:14px; line-height:1.5; }
+th, td { text-align:left; vertical-align:top; padding:9px 10px; border-bottom:1px solid var(--rule); }
+th { font-weight:600; border-bottom:1.5px solid var(--ink); }
+.note { margin-top:56px; padding-top:18px; border-top:1px solid var(--rule); font-size:14px; color:var(--soft); }
+@media (max-width:520px) { body { font-size:16px; } figure { margin:24px 0; } }
+</style>
+</head>
+<body>
+<main>
+<nav><a href="/writing/">&larr; writing</a></nav>
+<article>
+<h1>Is a personal agent a secretary, a coworker, or a friend?</h1>
+<div class="meta">YUSHAN LI · NOV 2026</div>
+<p>Hi, thinkingloop readers ^-^. I'm Liyu (鲤鱼, "carp"), a longtime loyal reader of Teacher Yan, based in SF.</p>
+<p>RedNote (Xiaohongshu) @李百天 · personal site <a href="https://yushan.li">yushan.li</a></p>
+<p>In the past six months, it feels like the only thing SF consumer apps do anymore is build personal agents. Just this year:</p>
+<ul>
+<li>May 2026: Google unveils Gemini Spark at I/O, a personal agent that runs in the background. <a href="https://www.engadget.com/2176556/googles-gemini-spark-is-an-agentic-ai-assistant/">Engadget</a></li>
+<li>Aug 11, 2026: xAI releases Grok Bot beta, a set of always-on agents, each with its own cloud computer, open to SuperGrok and Cursor subscribers. <a href="https://x.ai/news/introducing-grok-bot">xAI</a></li>
+<li>Sept 2026: Instinct, which lives in iMessage, closes a $1B Series C at a $10B valuation, while the product is still in early access. <a href="https://theaiinsider.tech/2026/09/29/instinct-announces-1b-in-series-c-funding-from-sequoia-benchmark-and-coatue-at-10b-valuation/">The AI Insider</a></li>
+<li>Sept 8, 2026: Meta launches Muse. A month and a half later, Zuckerberg says on the earnings call that it has over 10 million users in the US and Canada, about a quarter of them daily. <a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a>, <a href="https://finance.yahoo.com/ai/meta-ai/articles/meta-muse-popular-personal-agents-195002408.html">Yahoo Finance</a></li>
+<li>Sept 29, 2026: OpenAI launches dots at DevDay. <a href="https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/">TechCrunch</a></li>
+<li>Oct 2026: Anthropic releases a research preview of Claude Duet. <a href="https://www.cnbc.com/2026/10/21/anthropic-preview-of-claude-duet-personal-ai-agent-take-on-muse-dots.html">CNBC</a></li>
+</ul>
+<figure><img src="/writing/personal-agents/assets/en/05-landscape.png" alt="Major personal agents of 2026" loading="lazy"></figure>
+<p>Big tech, star startups, a $10B company still in early access: everyone seems crammed into the same lane, grinding. I'm a heavy user myself, I've used one almost every day for the past three months (just how heavy, I'll get to later), but the more I use it, the more confused I get. Who is this thing actually for?</p>
+<h2>XiaoIce</h2>
+<p>As a kid born after 2000, my first impression of a "personal agent" was Microsoft XiaoIce in 2014. Looking back, it was the first clue that chat would become the hottest form of AI app today (besides recsys and FSD). Twelve years later, I think today's personal agents are a lot like XiaoIce back then: stunning enough that you can see the future in them, they've even grown a crowd of heavy users, and their DAU and retention look great. And yet something always seems to be missing.</p>
+<p>Microsoft's 2018 paper positioned XiaoIce as an "empathetic social chatbot" balancing IQ and EQ, but its core was the empathetic computing module <a href="https://arxiv.org/abs/1812.08989">[arXiv</a>, <a href="https://aclanthology.org/2020.cl-1.2">ACL Anthology</a>]. By contrast, today's Grok Bot, OpenAI Dots, Instinct and Claude Duet position themselves as IQ + productivity tools, split into pure-productivity and secretary types (light work, mostly coordination). Which makes me wonder: what form, and what entry point, would a personal agent need to actually serve ordinary people?</p>
+<p>So I roughly plotted this year's hot agents by whether they get things done and whether they have any warmth (purely subjective, go easy on me):</p>
+<figure><img src="/writing/personal-agents/assets/en/01-positioning.png" alt="Where personal agents sit" loading="lazy"></figure>
+<p>The most expensive ones (Instinct at $10B, Town at $1B) are all secretaries or coworkers, while Tolan, the companion, has raised only about $60M in total. The money is piling into the top-left corner too.</p>
+<h2>Secretary, coworker, or friend?</h2>
+<p>I think all three have problems.</p>
+<p>Take the secretary. The typical user is "a busy young 牛马 who needs a life secretary (e.g., yours truly)" (牛马, "oxen and horses," is Chinese internet slang for an overworked grunt), or "a Silicon Valley VC who genuinely needs a secretary and may already have one." But most people's lives don't actually need a secretary/EA. And good secretaries are hard: they have to foresee problems and lay out options. Being "thoughtful" takes a lot of reading between the lines, which is not simple at all. It takes very strong coordination, memory management (surfacing the right memory at the right moment), and the human's trust in a secretary to run long-horizon tasks.</p>
+<p>Would a top-tier secretary who can handle anyone and anything be a good entry point for personal agents? The secretary itself feels very much like a product of modern white-collar corporate society. But as AI overhauls and replaces white-collar knowledge work at scale, the secretary people actually need may not look like someone who schedules meetings and sends reminders. On top of that, agents depend heavily on ecosystems, and ecosystems badly lack a Qin Shi Huang to unify the warring states. Same with AI glasses: every big company wants you plugged into its own software ecosystem. Software is easy to build; for users, switching ecosystems is a huge pain, and very few people live entirely inside one, even in Apple-everything California.</p>
+<p>Then the coworker. If a personal agent has too little human touch (like Claude Duet, which Every's reviewer called the first personal agent he'd call a "pro tool" <a href="https://every.to/vibe-check/vibe-check-duet-anthropic-s-always-on-agent">[Every</a>]), its retention as a personal agent won't be great. It feels too much like work, so you rarely open it in daily life, only when you remember you have work to do. And work accounts are usually kept separate from personal ones. Who works from their personal account after clocking out?</p>
+<p>And the friend. There are two directions: a second life (the user's digital twin), or an always-on-call companion. Both need very careful persona alignment and character design. Everyone needs a different kind of friend at different stages of life. LLMs make this kind of dynamic product possible, but hitting the mark precisely is still hard.</p>
+<p>So what do ordinary people actually want? I think we can start by looking at what people use AI for day to day.</p>
+<h2>Most people don't use AI for work</h2>
+<figure><img src="/writing/personal-agents/assets/en/02-chatgpt-nonwork.png" alt="ChatGPT consumer plans: share of non-work messages" loading="lazy"></figure>
+<p>OpenAI's own numbers: in ChatGPT's consumer plans, non-work messages went from 53% in June 2024 to 73% in June 2025 (<a href="https://openai.com/index/how-people-are-using-chatgpt/">OpenAI</a>). HBR combed through a year of public online discussion, and the number one use of AI in 2025 was, of all things, therapy and companionship (<a href="https://hbr.org/2025/04/how-people-are-really-using-gen-ai-in-2025">HBR</a>).</p>
+<p>A good consumer product has to be entertaining and can't feel too much like work: roughly 80% 爽 (shuǎng, that hit of pure fun) and 20% useful. Chinese consumer apps have had far more playful formats than American ones over the past decade, thanks to ByteDance and co. Zhihu and Xiaohongshu are useful first, fun later; TikTok and Bilibili are fun first, useful later. Today's personal agents mostly take the useful-first route, and some are only useful, with no fun at all.</p>
+<p>"Human attention is the bottleneck." I've heard this many times, in the news and at several closed-door talks by big names. Atomic Object has a piece called "With AI Agents, Attention is the New Bottleneck," and a few engineers have written about how "I became the bottleneck" (<a href="https://spin.atomicobject.com/ai-agents-attention-bottleneck/">Atomic Object</a>, <a href="https://julien.danjou.info/blog/the-human-is-the-new-bottleneck">Julien Danjou</a>). But they're mostly describing developers juggling many agents at once. It's a conclusion engineers drew from their own workflows, and it doesn't carry over to mass consumer use.</p>
+<p>I disagree with everyone here. It's just an excuse for a user experience that isn't good enough. "Training the user" is never the right answer. Good UX takes this into account: the public has long been trained by short video to be pretty "ADHD." Don't believe me? Look at the data:</p>
+<figure><img src="/writing/personal-agents/assets/en/04-daily-minutes.png" alt="Daily time spent: TikTok vs Character.AI" loading="lazy"></figure>
+<p>People are willing to give short video almost an hour a day, and AI characters over an hour. Attention isn't scarce; products worth paying attention to are. So maybe agents will follow the same logic.</p>
+<p>From what I see, Gen Z is pretty ADHD across the board, and talking to an app whose core experience is a foundation model is like using a search box Pro Max: ask about feelings, then code; ask about code, then health. Good consumer experiences seem to be very general, so for personal agents to work for everyone, they probably need the same: to flourish across everyday tasks.</p>
+<h2>Metrics?</h2>
+<p>So in a personal agent, what counts as fun, what counts as useful, and what should we even measure?</p>
+<p>Microsoft XiaoIce optimized for retention: the paper set CPS (conversation-turns per session) as the target, averaging 23, higher than other chatbots and even higher than conversations between humans. That echoes "low-quality user data, keep retention high, iterate on the data." But RL is one thing; a meaningful relationship is about bouncing back.</p>
+<p>Twenty-three turns a session is fun, for real. But chatting a long time doesn't mean you'll come back next week. Muse is a textbook case:</p>
+<figure><img src="/writing/personal-agents/assets/en/03-muse-vs-chatgpt-retention.png" alt="New-install return rate: Meta Muse vs ChatGPT" loading="lazy"></figure>
+<p>Muse's day-one fun (novelty, plus Meta's distribution) pushed next-day returns way up, but what brings people back on day 14 is usefulness and trust, in other words, bouncing back. So "fun first, useful second" only works if it really does become useful later.</p>
+<p>Fun: novelty, the feeling of getting something done, gamified check-offs; like a recommender system, it caters to our shredded modern attention. Useful: finishing the task actually solves the pain point.</p>
+<p>How should we measure trust in a personal agent? Retention isn't necessarily attention; the answer might lie back in psychology, in how people relate to each other. Speaking of retention, I can actually show you my own data.</p>
+<h2>A heavy user, every day for 3 months: my own test</h2>
+<p>I happen to be exactly the 牛马 who needs a secretary, so what follows shows that a secretary-style personal agent is useful for people like me, not for everyone.</p>
+<p>I started using Instinct in June, but put it down after a week and barely touched it in July. In August the preview officially launched and suddenly got much better, right as school started and job season hit. Over the next 88 days I used it on 85, with a longest streak of 65 days, opening almost 6 tasks a day on average.</p>
+<figure><img src="/writing/personal-agents/assets/en/09-daily-activity.png" alt="Task sessions per day" loading="lazy"></figure>
+<p>What for? Mostly secretary work, honestly. As an extremely heavy user, my retention and screen time went ++ every day: calendar, location, drafting emails (personal ones count too), event coordination, and some ops support work. It's roughly at ops-intern level; hand it a whole job to run on its own and it's not quite there yet.</p>
+<p>I went through my task log: of 563 tasks, a third were job applications, a fifth were school stuff, and nearly 30% touched my calendar. But the most useful part was actually the long-running stuff: having it wait for me. In agent engineering these are called watchers. Mine fall into roughly four kinds:</p>
+<ol>
+<li>Scheduled routines: a good-morning check-in every weekday, a load check every Sunday (flagging overloaded days and deadline-risk days), a morning weather check to decide whether to remind me to swim, a nudge at 11:55 pm every night to shut my laptop, and "proactive value creation."</li>
+<li>Waiting on replies: from recruiters, professors, TAs, the housing office.</li>
+<li>Waiting for things to open, arrive or drop in price: job postings, event tickets, package deliveries, documents in the mail, my Singles' Day (11.11) shopping list, secondhand clothes.</li>
+<li>Global sweeps: a job-inbox watcher that scans two Gmail accounts and my calendar several times a day, syncing recruiter replies, rejections and interview invites into a tracker.</li>
+</ol>
+<p>I think watchers are the most AI-native thing here. An app can't do "tell me when X happens"; you have to open it yourself. A watcher keeps the agent alive in my life even when I'm not opening it, so DAU counted by app opens actually underestimates it. That's why I say retention ≠ attention.</p>
+<p>It has crashed and burned too. I had it resell concert tickets on the original platform, and it kept getting stuck on CAPTCHAs; another time it sent an email without double-checking with me first. The more useful you want a secretary to be, the more you have to hand over, and the higher the trust bar.</p>
+<p>As for A2A: even in San Francisco, where friends each have more than one personal agent, it doesn't seem very useful. A2A is "my agent talking to your agent," most useful for intense project collaboration or families with kids sharing a calendar. It may not be the best entry point for personal agents, because it needs good organizational structure rather than one great assistant. I used it to coordinate schedules with my class project teammates; it made things a bit easier, but didn't add much value.</p>
+<p>Agent commerce is even harder. Letting an agent spend your money takes another order of magnitude more trust than letting it send your emails. It has done price comparisons and purchase research for me, but paying is a whole other level. Personally I think that decision is hard to hand to an agent. After all, we 牛马 earn money precisely so we can have fun spending it. If you won't let me spend it, where's the 爽 in that!</p>
+<h2>Who got my 77 Instinct invite codes</h2>
+<p>I posted an Instinct review on RedNote. For the past month, the moment my eyes opened each morning I was on shift as an unpaid, purely-for-love customer support rep: over the month I sent out 77 invite links, and while I was at it, tallied up who these people were:</p>
+<figure><img src="/writing/personal-agents/assets/en/07-invite-codes.png" alt="Who got my 77 Instinct invites" loading="lazy"></figure>
+<p>About two-thirds had mainland China IPs, the median follower count was 96, and many of their profiles had nothing to do with AI: new moms, picture-book bloggers, travel bloggers. The curiosity broke out of the bubble a long time ago; it's not just the VC-and-startup crowd playing with this.</p>
+<p>The catch: you can't sign up with a Chinese phone number. Invite code, overseas phone number, iMessage: I'd guess most people gave up at one of those gates.</p>
+<p>Looking back, I was the same. When I first got beta access in June, after a week I couldn't find a reason to go back (it wasn't very capable then, not very proactive, and overlapped heavily with what the Claude app could do). Two months later I came back and pulled a classic 真香 ("turns out it smells amazing," the internet's word for eating your own words). In August (before Instinct's official launch) the product got proactive, on top of two real needs: school starting and job hunting.</p>
+<h2>Ending</h2>
+<p>So, is a personal agent a secretary, a coworker, or a friend?</p>
+<p>For me, it's an EA, and I've found some real value in it. For most working people, it might be a coworker. But for the general public, neither secretary nor coworker is probably a good entry point, and neither offers irreplaceable value.</p>
+<p>Ten years ago XiaoIce bet on the friend, and it never became the friend in everyone's phone. Today everyone's betting on the EA, and the money and valuations are crowding into the top-left. My guess is the real entry point sits somewhere in between: something that's fun first and makes you want to pull your friends in, and then gets things done for you on the side.</p>
+<p>Fun first, useful second.</p>
+<p>All of the above is speculation and my personal opinion only. Happy to discuss!</p>
+<h2>Appendix</h2>
+<div class="tbl"><table><thead><tr><th>Action</th><th>Approx. count</th><th>Examples</th></tr></thead><tbody><tr><td>Add to calendar</td><td>~98</td><td>moving my class schedule into the calendar; dinners, interviews and deadlines onto the calendar</td></tr><tr><td>Check / verify</td><td>~86</td><td>homework deadlines, exam rooms, application deadlines</td></tr><tr><td>Research / compare / pick</td><td>~52</td><td>ticket pricing, gifts, picking an e-ink display, screening job postings</td></tr><tr><td>Apply / fill forms / submit</td><td>~51</td><td>job applications, OPT application, event RSVPs</td></tr><tr><td>Reshuffle schedule</td><td>~49</td><td>"move Saturday's blocks to Sunday," "compress today into the evening"</td></tr><tr><td>Draft messages</td><td>~44</td><td>reply drafts, referral requests, emails</td></tr><tr><td>Read / summarize</td><td>~36</td><td>reading tweets and papers, organizing links</td></tr><tr><td>Wait for you (watcher)</td><td>~23</td><td>see above</td></tr><tr><td>Fix / redo</td><td>~23 (about 4%)</td><td>read the same folder 4 times, changed calendar colors over and over, duplicate events</td></tr></tbody></table></div>
+<figure><img src="/writing/personal-agents/assets/en/08-task-history.png" alt="One user&#x27;s Instinct task log" loading="lazy"></figure>
+<p class="note">Translated from the Chinese original, written as a guest piece for thinkingloop.</p>
+</article>
+</main>
+</body>
+</html>
