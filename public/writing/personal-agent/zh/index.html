@@ -1911,15 +1911,15 @@ span.katex {
     }
     d-article a:hover, d-appendix a:hover, d-figure figcaption a:hover { color: #f06a17; border-bottom-color: #f06a17; }
 
-    /* EN / 中文 switch under the byline */
-    d-title .pa-lang { grid-column: text; text-align: center; margin: 0.2rem 0 0.4rem; }
-    d-title .pa-lang a {
-      display: inline-block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em;
-      padding: 4px 14px; border-radius: 999px; border: 1px solid #3aa8b2; color: #0c1c20; text-decoration: none;
-      transition: background .15s, color .15s, border-color .15s;
-    }
-    d-title .pa-lang a:hover { background: #f06a17; border-color: #f06a17; color: #fff; }
-    d-title .pa-lang span { font-family: var(--mono); font-size: 11.5px; color: rgba(0,0,0,0.35); margin: 0 6px; }
+    /* EN | 中文 switch, top-right of the page */
+    .pa-lang { position: absolute; top: 18px; right: 24px; z-index: 20; display: flex; align-items: center;
+               font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; }
+    .pa-lang > * { padding: 2px 8px; line-height: 1.4; }
+    .pa-lang > * + * { border-left: 1px solid rgba(12, 28, 32, 0.25); }
+    .pa-lang span { color: #0c1c20; font-weight: 600; }
+    .pa-lang a { color: rgba(12, 28, 32, 0.5); text-decoration: none; transition: color .15s; }
+    .pa-lang a:hover { color: #f06a17; }
+    @media (max-width: 600px) { .pa-lang { top: 12px; right: 12px; } }
 
     /* Chinese page: CJK prose reads better a touch looser, without the Latin hanging punctuation */
     html:lang(zh-CN) d-article p, html:lang(zh-CN) d-article li { line-height: 1.85; }
@@ -1946,6 +1946,7 @@ span.katex {
     <link rel="alternate" hreflang="zh-CN" href="https://yushan.li/writing/personal-agent/zh/">
   </head>
 <body distill-prerendered="">
+  <nav class="pa-lang" aria-label="Language"><a href="../" hreflang="en" lang="en">EN</a><span aria-current="true">中文</span></nav>
   <distill-header distill-prerendered=""></distill-header>
 
   <d-front-matter>
@@ -1981,7 +1982,6 @@ span.katex {
       <p class="authors">李雨珊</p>
       <p class="date">2026年11月16日</p>
     </div>
-    <p class="pa-lang"><a href="../" hreflang="en" lang="en">Read in English</a></p>
   </d-title>
 
   <d-byline></d-byline>
@@ -2059,6 +2059,7 @@ span.katex {
     <p>得益于5月正好找Noah一趟，我6月就开始作为内测用户用上Instinct了。但为了提供测试数据我硬着头皮用了一周就搁下了，7月基本没碰。8月preview正式发布，突然好用了很多，又刚好撞上开学和求职季，之后88天里我用了85天，最长连着65天，平均一天开快6个任务。</p>
     <d-figure id="heatmap-figure"></d-figure>
     <p>用来干嘛呢？大部分还真是秘书活。极重度用户，留存和app屏幕使用时间天天++：日历、位置、邮件起草、活动协调，还有辅助运营（大概是个运营实习生水平），一整件事丢给它独立处理还不太行。</p>
+    <d-figure id="tasklog-figure"></d-figure>
     <p>我翻了下任务记录，563个任务里三分之一是求职申请，五分之一是学校的事，快三成就是帮我动谷歌日历。不过我觉得最好用的反而是长线的：帮我“等”。这类任务在agent工程里叫watcher，我的大概有这几种：</p>
     <ol>
     <li>定时例行：每个工作日的早安打卡、每周日的负载检查（标出过载日和ddl风险日）、每天早上看天气决定要不要提醒游泳、每晚催关电脑。</li>

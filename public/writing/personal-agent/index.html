@@ -1911,15 +1911,15 @@ span.katex {
     }
     d-article a:hover, d-appendix a:hover, d-figure figcaption a:hover { color: #f06a17; border-bottom-color: #f06a17; }
 
-    /* EN / 中文 switch under the byline */
-    d-title .pa-lang { grid-column: text; text-align: center; margin: 0.2rem 0 0.4rem; }
-    d-title .pa-lang a {
-      display: inline-block; font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em;
-      padding: 4px 14px; border-radius: 999px; border: 1px solid #3aa8b2; color: #0c1c20; text-decoration: none;
-      transition: background .15s, color .15s, border-color .15s;
-    }
-    d-title .pa-lang a:hover { background: #f06a17; border-color: #f06a17; color: #fff; }
-    d-title .pa-lang span { font-family: var(--mono); font-size: 11.5px; color: rgba(0,0,0,0.35); margin: 0 6px; }
+    /* EN | 中文 switch, top-right of the page */
+    .pa-lang { position: absolute; top: 18px; right: 24px; z-index: 20; display: flex; align-items: center;
+               font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; }
+    .pa-lang > * { padding: 2px 8px; line-height: 1.4; }
+    .pa-lang > * + * { border-left: 1px solid rgba(12, 28, 32, 0.25); }
+    .pa-lang span { color: #0c1c20; font-weight: 600; }
+    .pa-lang a { color: rgba(12, 28, 32, 0.5); text-decoration: none; transition: color .15s; }
+    .pa-lang a:hover { color: #f06a17; }
+    @media (max-width: 600px) { .pa-lang { top: 12px; right: 12px; } }
 
     /* Chinese page: CJK prose reads better a touch looser, without the Latin hanging punctuation */
     html:lang(zh-CN) d-article p, html:lang(zh-CN) d-article li { line-height: 1.85; }
@@ -1946,6 +1946,7 @@ span.katex {
     <link rel="alternate" hreflang="zh-CN" href="https://yushan.li/writing/personal-agent/zh/">
   </head>
 <body distill-prerendered="">
+  <nav class="pa-lang" aria-label="Language"><span aria-current="true">EN</span><a href="zh/" hreflang="zh-CN" lang="zh-CN">中文</a></nav>
   <distill-header distill-prerendered=""></distill-header>
 
   <d-front-matter>
@@ -1981,7 +1982,6 @@ span.katex {
       <p class="authors">Yushan Li</p>
       <p class="date">Nov 16, 2026</p>
     </div>
-    <p class="pa-lang"><a href="zh/" hreflang="zh-CN" lang="zh-CN">读中文版</a></p>
   </d-title>
 
   <d-byline></d-byline>
@@ -2059,6 +2059,7 @@ span.katex {
     <p>Since I happened to go see Noah in May, I got onto Instinct as a beta tester in June. But after forcing myself through a week of it to give them test data, I put it down and barely touched it in July. In August the preview officially launched and suddenly got much better, right as school started and job season hit. Over the next 88 days I used it on 85, with a longest streak of 65 days, opening almost 6 tasks a day on average.</p>
     <d-figure id="heatmap-figure"></d-figure>
     <p>What for? Mostly executive assistant work, honestly. As an extremely heavy user, my retention and screen time went ++ every day: calendar, location, drafting emails, event coordination, and some ops support (roughly ops-intern level); hand it a whole job to run on its own and it's not quite there yet.</p>
+    <d-figure id="tasklog-figure"></d-figure>
     <p>I went through my task log: of 563 tasks, a third were job applications, a fifth were school stuff, and nearly 30% were just it editing my Google Calendar. But the most useful part was actually the long-running stuff: having it wait for me. In agent engineering these are called watchers. Mine fall into roughly four kinds:</p>
     <ol>
     <li>Scheduled routines: a good-morning check-in every weekday, a load check every Sunday (flagging overloaded days and deadline-risk days), a morning weather check to decide whether to remind me to swim, and a nudge every night to shut my laptop.</li>
@@ -2083,7 +2084,6 @@ span.katex {
     <p>All of the above is speculation and my personal opinion only. Happy to discuss!</p>
     <h2 id="appendix">Appendix</h2>
     <div class="pa-tablewrap"><table class="pa-table"><thead><tr><th>Action</th><th>Approx. count</th><th>Examples</th></tr></thead><tbody><tr><td>Add to calendar</td><td>~98</td><td>moving my class schedule into the calendar; dinners, interviews and deadlines onto the calendar</td></tr><tr><td>Check / verify</td><td>~86</td><td>homework deadlines, exam rooms, application deadlines</td></tr><tr><td>Research / compare / pick</td><td>~52</td><td>ticket pricing, gifts, picking an e-ink display, screening job postings</td></tr><tr><td>Apply / fill forms / submit</td><td>~51</td><td>job applications, OPT application, event RSVPs</td></tr><tr><td>Reshuffle schedule</td><td>~49</td><td>"move Saturday's blocks to Sunday," "compress today into the evening"</td></tr><tr><td>Draft messages</td><td>~44</td><td>reply drafts, referral requests, emails</td></tr><tr><td>Read / summarize</td><td>~36</td><td>reading tweets and papers, organizing links</td></tr><tr><td>Wait for you (watcher)</td><td>~23</td><td>see above</td></tr><tr><td>Fix / redo</td><td>~23 (about 4%)</td><td>read the same folder 4 times, changed calendar colors over and over, duplicate events</td></tr></tbody></table></div>
-    <d-figure id="tasklog-figure"></d-figure>
   </d-article>
 
   <d-appendix>
