@@ -97,29 +97,30 @@
   (function () {
     const HOST = document.getElementById('landscape-figure');
     if (!HOST) return;
+    // Newest first. Launch = one date; the grey note only when it adds something (beta, I/O...).
     const rowsEn = [
-      ['Grok Bot', 'xAI', '2026.8', 'beta', 'own app + cloud PC', 'multi-step background tasks', 'coworker'],
-      ['Meta Muse', 'Meta', '2026.9', 'Sept 8', 'own app, WhatsApp', 'schedule, shopping, goals', 'executive assistant'],
-      ['OpenAI Dots', 'OpenAI', '2026.9', 'Sept 29', 'ChatGPT / Codex', 'restaurants to websites, "does it all"', 'executive assistant + coworker'],
       ['Claude Duet', 'Anthropic', '2026.10', 'research preview', 'standalone app', 'briefings, inbox, calendar, drafts', 'coworker'],
-      ['Gemini Spark', 'Google', '2026.5', 'I/O', 'Gemini app, Gmail', 'Workspace-connected, always on', 'executive assistant + coworker'],
+      ['OpenAI Dots', 'OpenAI', '2026.9.29', '', 'ChatGPT / Codex', 'restaurants to websites, "does it all"', 'executive assistant + coworker'],
+      ['Meta Muse', 'Meta', '2026.9.8', '', 'own app, WhatsApp', 'schedule, shopping, goals', 'executive assistant'],
+      ['Grok Bot', 'xAI', '2026.8', 'beta', 'own app + cloud PC', 'multi-step background tasks', 'coworker'],
       ['Instinct', 'Instinct', '2026.8', 'early access', 'iMessage, phone', 'travel, groceries, cancel subs', 'executive assistant'],
-      ['Poke', 'Interaction Co.', '2025', '2025–26', 'iMessage / SMS', 'automations by text', 'executive assistant (with a personality)'],
+      ['Town', 'Town', '2026.6', '', 'work email / calendar', 'an assistant for every employee', 'coworker'],
+      ['Gemini Spark', 'Google', '2026.5', 'at I/O', 'Gemini app, Gmail', 'Workspace-connected, always on', 'executive assistant + coworker'],
       ['Tab', 'Tab', '2026', 'out of stealth', 'iMessage, WhatsApp', 'calls, flights, payments', 'executive assistant'],
-      ['Town', 'Town', '2026.6', 'June', 'work email / calendar', 'an assistant for every employee', 'coworker'],
-      ['Tolan', 'Portola', '2024', '2024–', 'own app', 'an alien friend to talk to', 'friend'],
+      ['Poke', 'Interaction Co.', '2025', '', 'iMessage / SMS', 'automations by text', 'executive assistant (with a personality)'],
+      ['Tolan', 'Portola', '2024', '', 'own app', 'an alien friend to talk to', 'friend'],
     ];
     const rowsZh = [
-      ['Grok Bot', 'xAI', '2026.8', 'beta', '自家app + 云电脑', '后台跑多步任务'],
-      ['Meta Muse', 'Meta', '2026.9', '9月8日', '自家app、WhatsApp', '日程、购物、长期目标'],
-      ['OpenAI Dots', 'OpenAI', '2026.9', '9月29日', 'ChatGPT / Codex', '订餐厅到做网站，“什么都管”'],
       ['Claude Duet', 'Anthropic', '2026.10', '研究预览', '独立app', '晨报、收件箱、日程、代拟回复'],
-      ['Gemini Spark', 'Google', '2026.5', 'I/O', 'Gemini app、Gmail', '接Workspace，后台常驻'],
+      ['OpenAI Dots', 'OpenAI', '2026.9.29', '', 'ChatGPT / Codex', '订餐厅到做网站，“什么都管”'],
+      ['Meta Muse', 'Meta', '2026.9.8', '', '自家app、WhatsApp', '日程、购物、长期目标'],
+      ['Grok Bot', 'xAI', '2026.8', 'beta', '自家app + 云电脑', '后台跑多步任务'],
       ['Instinct', 'Instinct', '2026.8', 'early access', 'iMessage、电话', '旅行、买菜、退订阅'],
-      ['Poke', 'Interaction Co.', '2025', '2025–26', 'iMessage / SMS', '发短信就能设自动化'],
-      ['Tab', 'Tab', '2026', '出隐身', 'iMessage、WhatsApp', '打电话、订机票、付款'],
-      ['Town', 'Town', '2026.6', '6月', '工作邮箱 / 日历', '给每个员工一个助理'],
-      ['Tolan', 'Portola', '2024', '2024–', '自家app', '外星人朋友，陪你聊'],
+      ['Town', 'Town', '2026.6', '', '工作邮箱 / 日历', '给每个员工一个助理'],
+      ['Gemini Spark', 'Google', '2026.5', 'I/O发布', 'Gemini app、Gmail', '接Workspace，后台常驻'],
+      ['Tab', 'Tab', '2026', '结束隐身', 'iMessage、WhatsApp', '打电话、订机票、付款'],
+      ['Poke', 'Interaction Co.', '2025', '', 'iMessage / SMS', '发短信就能设自动化'],
+      ['Tolan', 'Portola', '2024', '', '自家app', '外星人朋友，陪你聊'],
     ];
     const TYPE = { 'coworker': '同事', 'executive assistant': '秘书', 'executive assistant + coworker': '秘书+同事', 'executive assistant (with a personality)': '秘书（有性格）', 'friend': '朋友' };
     const rows = rowsEn.map((r, i) => ZH ? [...rowsZh[i], r[6]] : r);
@@ -131,7 +132,7 @@
       <div class="pa-tablewrap"><table class="pa-table">
         <thead><tr>${T(['Product', 'Company', 'Launch', 'Lives in', 'Pitched as', 'Type'], ['产品', '公司', '上线', '住在哪', '官方主打', '归类']).map(h => `<th>${h}</th>`).join('')}</tr></thead>
         <tbody>${rows.map(r => `<tr data-type="${esc(r[6])}"><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td>
-          <td>${esc(r[2])} <span class="pa-dim">${esc(r[3])}</span></td><td>${esc(r[4])}</td><td>${esc(r[5])}</td>
+          <td><span style="white-space:nowrap">${esc(r[2])}</span>${r[3] ? `<br><span class="pa-dim">${esc(r[3])}</span>` : ''}</td><td>${esc(r[4])}</td><td>${esc(r[5])}</td>
           <td><span class="pa-pill" style="--c:${col(r[6])}">${esc(T(r[6], TYPE[r[6]]))}</span></td></tr>`).join('')}</tbody>
       </table></div>
       <figcaption>${T("Sources: company announcements and coverage by TechCrunch, CNBC, Engadget, a16z and others (May–Nov 2026); some launch dates vary by source. The type column is my classification by each product's headline features. Launch coverage: Gemini Spark (<a href='https://www.engadget.com/2176556/googles-gemini-spark-is-an-agentic-ai-assistant/'>Engadget</a>), Grok Bot (<a href='https://x.ai/news/introducing-grok-bot'>xAI</a>), Instinct (<a href='https://theaiinsider.tech/2026/09/29/instinct-announces-1b-in-series-c-funding-from-sequoia-benchmark-and-coatue-at-10b-valuation/'>The AI Insider</a>), Muse (<a href='https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html'>CNBC</a>, <a href='https://finance.yahoo.com/ai/meta-ai/articles/meta-muse-popular-personal-agents-195002408.html'>Yahoo Finance</a>), dots (<a href='https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/'>TechCrunch</a>), Claude Duet (<a href='https://www.cnbc.com/2026/10/21/anthropic-preview-of-claude-duet-personal-ai-agent-take-on-muse-dots.html'>CNBC</a>).", '来源：各公司公告，以及TechCrunch、CNBC、Engadget、a16z等报道（2026年5–11月），部分上线时间各方说法略有出入。最后一列是我按各产品官方主打功能归的类。发布报道：Gemini Spark（<a href="https://www.engadget.com/2176556/googles-gemini-spark-is-an-agentic-ai-assistant/">Engadget</a>）、Grok Bot（<a href="https://x.ai/news/introducing-grok-bot">xAI</a>）、Instinct（<a href="https://theaiinsider.tech/2026/09/29/instinct-announces-1b-in-series-c-funding-from-sequoia-benchmark-and-coatue-at-10b-valuation/">The AI Insider</a>）、Muse（<a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a>、<a href="https://finance.yahoo.com/ai/meta-ai/articles/meta-muse-popular-personal-agents-195002408.html">Yahoo Finance</a>）、dots（<a href="https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/">TechCrunch</a>）、Claude Duet（<a href="https://www.cnbc.com/2026/10/21/anthropic-preview-of-claude-duet-personal-ai-agent-take-on-muse-dots.html">CNBC</a>）。')}</figcaption>`;
