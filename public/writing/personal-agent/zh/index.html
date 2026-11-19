@@ -2020,47 +2020,39 @@ span.katex {
 </d-toc>
 
     <p>半年里，SF 2c应用好像只剩下做personal agent一件事。光今年就有：</p>
-    <ul>
-    <li>2026年5月，Google在I/O发布Gemini Spark，一个常驻后台的personal agent。<a href="https://www.engadget.com/2176556/googles-gemini-spark-is-an-agentic-ai-assistant/">Engadget</a></li>
-    <li>2026年8月11日，xAI发布Grok Bot beta：一组常驻的agent，各自有云端电脑，开放给SuperGrok和Cursor付费用户。<a href="https://x.ai/news/introducing-grok-bot">xAI</a></li>
-    <li>2026年9月，住在iMessage里的Instinct完成10亿美元C轮，估值100亿美元，产品还在early access。<a href="https://theaiinsider.tech/2026/09/29/instinct-announces-1b-in-series-c-funding-from-sequoia-benchmark-and-coatue-at-10b-valuation/">The AI Insider</a></li>
-    <li>2026年9月8日，Meta发布Muse。一个半月后扎克伯格在财报会上说美国和加拿大用户超过1000万，大概四分之一每天都用。<a href="https://www.cnbc.com/2026/09/08/meta-personal-ai-agents-public-reckoning-privacy-safety.html">CNBC</a>、<a href="https://finance.yahoo.com/ai/meta-ai/articles/meta-muse-popular-personal-agents-195002408.html">Yahoo Finance</a></li>
-    <li>2026年9月29日，OpenAI在DevDay发布dots。<a href="https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/">TechCrunch</a></li>
-    <li>2026年10月，Anthropic发布Claude Duet研究预览。<a href="https://www.cnbc.com/2026/10/21/anthropic-preview-of-claude-duet-personal-ai-agent-take-on-muse-dots.html">CNBC</a></li>
-    </ul>
     <d-figure id="landscape-figure"></d-figure>
-    <p>大厂也好，明星startup也好，估值一百亿了还在early access的也好，感觉全挤在一条赛道上卷。我自己算是个超级重度用户，过去3个月天天在用，也天天在小红书回复评论贴文。但越着迷我越迷惑，这东西到底是给谁用的？</p>
+    <p>大厂也好，明星startup也好，估值一百亿了还在early access的也好，感觉全挤在一条赛道上卷。我自己算是个超级重度用户，过去3个月retention 99%，也天天在小红书回复评论贴文。但越着迷我越迷惑，这东西到底是谁做给谁用的？</p>
     <h2 id="xiaoice">小冰</h2>
     <p>作为00后我对“personal agent”的第一印象就是2014年的微软小冰，回头看，这是chat形态作为当下最火的AI应用（除了recsys和FSD）的第一个线索。十二年后的今天，我想，今天的personal agent也如同当年的微软小冰：足够惊艳到让大家能看到未来，演化出很多重度使用者，DAU，retention表现非常亮眼，但总好像缺了些什么。</p>
-    <p>微软2018论文把小冰定位为兼顾IQ与EQ的“共情社交机器人”，但核心是共情计算（empathetic computing）模块【<a href="https://arxiv.org/abs/1812.08989">arXiv</a>、<a href="https://aclanthology.org/2020.cl-1.2">ACL Anthology</a>】。与之不同的是，今天的Grok Bot、OpenAI Dots、Instinct和Claude Duet把自己定位为IQ+生产力工具，细分为纯生产力型和秘书型（轻量工作，以协调为主）。这让我想，真正能服务到大众用户的personal agent到底是什么形态、切入口呢？</p>
+    <p>微软2018论文把小冰定位为兼顾IQ与EQ的“共情社交机器人”，但核心是共情计算（empathetic computing）模块（<a href="https://arxiv.org/abs/1812.08989">arXiv</a>、<a href="https://aclanthology.org/2020.cl-1.2">ACL Anthology</a>）。与之不同的是，今天的Grok Bot、OpenAI dots、Instinct和Claude Duet把自己定位为IQ+生产力工具，细分为纯生产力型和秘书型（轻量工作，以协调为主）。这让我想，真正能服务到大众用户的personal agent到底是什么形态、切入口呢？</p>
     <p>我按能不能办事、有没有温度，把今年火的这些agent大概摆了一下（纯主观）：</p>
     <d-figure id="map-figure"></d-figure>
-    <p>最贵的几家（Instinct 100亿、Town 10亿）都是秘书或同事型，陪伴型的Tolan总共才融了6000万。钱也在往左上角挤。</p>
+    <p>最贵的几家（Instinct <a href="https://www.thestar.com.my/tech/tech-news/2026/09/28/ai-agent-firm-instinct-raises-1-billion-in-latest-funding-round">100亿</a>、Town <a href="https://thenextweb.com/news/town-108m-series-b-1b-valuation-ai-assistants">10亿</a>）都是秘书或同事型，陪伴型的Tolan总共才融了<a href="https://www.globaldatinginsights.com/featured/tolan-ai-companion-raises-30m-funding/">6000万</a>。钱也在往左上角挤。</p>
     <h2 id="three-shapes">到底是秘书、同事还是朋友？</h2>
     <p>三种我都觉得有点问题。</p>
     <p>秘书型的话，典型用户像“需要生活秘书的忙碌年轻牛马（比如本人）”、“真正需要秘书，甚至可能已经有一个了的硅谷vc”；但普罗大众的生活其实不需要秘书/EA。而且好的秘书很难，他们需要预见问题并且提供选项。“贴心”需要很多的揣测，这并不是一件简单的事情。这需要非常强的协调能力、memory management（在什么合适的时候出现什么合适的memory），以及人对秘书做长线任务的信任。</p>
     <p>一个非常八面玲珑的顶级秘书会是好的personal agent切入点吗？秘书这个产物感觉也非常像当代白领商业社会的产物。但是当AI在对白领知识工作进行大批量的改革和替代的时候，大家真正需要的秘书也不一定是有像安排日程、做提醒一样的形象。而且agent高度依赖生态，生态又极度缺乏秦始皇式的大一统。AI眼镜也一样，各家大厂都希望接入自己的软件生态。软件好做，对于用户来说，换生态非常麻烦，而且可能本来完全在某个生态上的人非常少，即便是在人人都用苹果的加州。</p>
-    <p>同事型的话，如果一个personal agent太没有人情味（比如Claude Duet：Every的评测者称它是第一个可以称为“专业工具”的personal agent。<a href="https://every.to/vibe-check/vibe-check-duet-anthropic-s-always-on-agent">Every</a>.），作为personal agent retention就不会太好。工作感太强，在生活中就少有打开的习惯，只有想起来工作才会打开。工作账号又和个人账号一般分离，谁会下班还用自己的账号工作呢？</p>
+    <p>同事型的话，如果一个personal agent太没有人情味（比如Claude Duet：<a href="https://every.to/vibe-check/vibe-check-duet-anthropic-s-always-on-agent">Every的评测者</a>称它是第一个可以称为“专业工具”的personal agent。），作为personal agent retention就不会太好。工作感太强，在生活中就少有打开的习惯，只有想起来工作才会打开。工作账号又和个人账号一般分离，谁会下班还用自己的账号工作呢？</p>
     <p>朋友型的话，有两个思路：第二人生（用户的数字分身），或者随叫随到的陪伴型朋友。都需要非常细致的人设对齐和角色设计。每个人在不同的人生阶段需要的朋友性格都很不一样。虽然LLM让这种动态的产品形态成为可能，但如何精准击中还是有难度。</p>
     <p>我观察，Z世代整体上都很ADHD，和核心体验就是基座模型的app对话，宛如搜索框Pro Max。问完情感问代码，问完代码问健康。好的消费级体验似乎非常通用，那么personal agent对于泛大众变得好用似乎也需要这样，能够在大众任务上全面开花。</p>
     <p>那普通人到底想要什么呢？我觉得可以先看看大家平时拿AI在干嘛。</p>
     <h2 id="not-for-work">普通用户使用AI不是为了工作</h2>
     <d-figure id="nonwork-figure"></d-figure>
-    <p>OpenAI自己发的数据，ChatGPT消费者版里跟工作没关系的消息，从2024年6月的53%涨到了2025年6月的73%（<a href="https://openai.com/index/how-people-are-using-chatgpt/">OpenAI</a>）。HBR扒了一年网上的公开讨论，2025年大家用AI排第一的居然是心理疏导和陪伴（<a href="https://hbr.org/2025/04/how-people-are-really-using-gen-ai-in-2025">HBR</a>）。</p>
-    <p>既然大家用AI大多不是为了工作，那personal agent也该按consumer产品的逻辑来做。好的consumer产品得有娱乐性，不能太像上班，大概80%爽20%有用。爽是新鲜感，任务完成的感觉，游戏化的打勾，可以像推荐系统一样迎合当代人类稀碎的注意力；有用是任务完成真正解决了痛点。中国consumer近十年玩法比美国多得多，比如字节系。知乎、小红书是先有用后爽，Tiktok、bilibili是先爽后有用。反观今天的personal agent，基本都是先有用后爽的路子，有的干脆只有有用，没有爽。</p>
+    <p>OpenAI自己发的数据，ChatGPT消费者版里跟工作没关系的消息，从2024年6月的53%涨到了2025年6月的73%（<a href="https://www.nber.org/papers/w34255">NBER</a>）。HBR扒了一年网上的公开讨论，2025年大家用AI排第一的居然是心理疏导和陪伴（<a href="https://hbr.org/2025/04/how-people-are-really-using-gen-ai-in-2025">HBR</a>）。</p>
+    <p>既然大家用AI大多不是为了工作，那personal agent也该按consumer产品的逻辑来做。好的consumer产品得有娱乐性，不能太像上班，大概80%爽20%有用。爽是新鲜感，任务完成的感觉，游戏化的打勾，可以像推荐系统一样迎合当代人类稀碎的注意力；有用是任务完成真正解决了痛点。中国consumer近十年玩法比美国多得多，比如字节系。知乎、小红书是先有用后爽，TikTok、bilibili是先爽后有用。反观今天的personal agent，基本都是先有用后爽的路子，有的干脆只有有用，没有爽。</p>
     <p>可能有人会说，“人（人的注意力）才是瓶颈”（Human attention is the bottleneck），这句话我在新闻里、在好几场闭门分享里都听到过。Atomic Object有一篇《With AI Agents, Attention is the New Bottleneck》，还有好几位工程师写过“我成了瓶颈”（<a href="https://spin.atomicobject.com/ai-agents-attention-bottleneck/">Atomic Object</a>、<a href="https://julien.danjou.info/blog/the-human-is-the-new-bottleneck">Julien Danjou</a>）。不过他们说的主要是开发者同时管很多个agent、每个结果都得人来看的场景，这个判断是工程师从自己的工作流里得出来的，直接搬到大众消费场景并不成立。这话无非是为不够好的用户体验找借口，好像用户该去适应agent。但“训练用户”永远不是正确的，好的用户体验会把用户本来的样子考虑进去。</p>
     <p>大众早已被短视频训练得很“ADHD”，单次注意力是短，可总的注意力一点都不少。不信可以看看数据：</p>
     <d-figure id="minutes-figure"></d-figure>
-    <p>大众每天愿意给短视频将近一小时、给AI角色一个多小时，注意力并不稀缺，稀缺的是值得给注意力的产品。那么，也许persona; agent也会遵循同样的逻辑。</p>
+    <p>大众每天愿意给短视频将近一小时（<a href="https://www.emarketer.com/content/time-spent-on-tiktok">eMarketer</a>）、给AI角色一个多小时（<a href="https://the-decoder.com/character-ai-keeps-young-people-glued-to-their-smartphones-for-an-average-of-80-minutes-a-day/">The Decoder</a>），注意力并不稀缺，稀缺的是值得给注意力的产品。那么，也许personal agent也会遵循同样的逻辑。</p>
     <h2 id="metrics">指标？</h2>
     <p>那personal agent的爽和有用，分别该看什么指标？</p>
-    <p>微软小冰以retention为目标：论文把优化目标定为CPS（每次会话轮数），平均CPS 23，高于其他聊天机器人，甚至高于人类之间的对话，呼应“低质量用户数据，保留retention高数据迭代”。一次平均聊23轮，爽是真的爽到了，但聊得久不代表下周你还会回来找它。RL是一码事，有意义的关系在于bouncing back。Muse就很典型：</p>
+    <p>微软小冰以retention为目标：论文把优化目标定为CPS（每次会话轮数），平均CPS 23，高于其他聊天机器人，甚至高于人类之间的对话（<a href="https://arxiv.org/abs/1812.08989">arXiv</a>），呼应“低质量用户数据，保留retention高数据迭代”。一次平均聊23轮，爽是真的爽到了，但聊得久不代表下周你还会回来找它。RL是一码事，有意义的关系在于bouncing back。Muse就很典型：</p>
     <d-figure id="retention-figure"></d-figure>
     <p>Muse第一天的爽（新鲜感，加上Meta的分发能力）把次日回访拉得很高，但第14天还愿意回来的，靠的是有用和信任，也就是bouncing back。所以CPS、次日回访量的是爽，第14天还回不回来量的才是有用。先爽后有用，前提是后面真的得有用。</p>
     <p>我们要如何衡量对personal agent的信任？留存不一定等于注意力，答案可能要回到心理学、人与人的交往里去找。</p>
     <p>说到留存，我自己的数据倒是可以拿出来看看。</p>
     <h2 id="tested-on-myself">本人实测</h2>
-    <p>我恰好就是那个需要秘书的牛马，所以以下体验证明的是类似秘书的personal agent对我这类人确实有用。在Noah做出Instinct前，我就在用自己手搓的小补件，天天用补丁版的Claude Code帮我处理琐事。</p>
+    <p>我恰好就是那个需要秘书的牛马，所以以下体验证明的是类似秘书的personal agent对我这类人确实有用。在Noah做出Instinct前，我就在用自己手搓的小插件，天天用补丁版的Claude Code帮我处理琐事。</p>
     <p>得益于5月正好找Noah一趟，我6月就开始作为内测用户用上Instinct了。但为了提供测试数据我硬着头皮用了一周就搁下了，7月基本没碰。8月preview正式发布，突然好用了很多，又刚好撞上开学和求职季，之后88天里我用了85天，最长连着65天，平均一天开快6个任务。</p>
     <d-figure id="heatmap-figure"></d-figure>
     <p>用来干嘛呢？大部分还真是秘书活。极重度用户，留存和app屏幕使用时间天天++：日历、位置、邮件起草、活动协调，还有辅助运营（大概是个运营实习生水平），一整件事丢给它独立处理还不太行。</p>
@@ -2077,7 +2069,7 @@ span.katex {
     <p>A2A的话，即使在旧金山，身边朋友人手不止一个personal agent，它好像也没什么用。A2A是“我的agent和你的agent之间的沟通”，在高强度项目协作、有娃家庭共享日历时最有用。这可能不是personal agent最好的切入点，因为需要很好的组织架构而不是优秀的单体助理。我用它跟课程项目的组员协调过日程，确实方便了一点，但增加的价值不大。</p>
     <p>agent消费就更难了。让agent替你花钱，信任要求比替你发邮件又高了一个量级。比价、做购买功课它都帮我做过，但付款真的是另一个级别。我个人觉得这个决定很难让agent来做。毕竟我们牛马赚钱就是为了花钱爽的。你不让我花钱我怎么爽！</p>
     <h2 id="invite-codes">我发了77个instinct分享码</h2>
-    <p>我在小红书发了一篇Instinct体验帖。在过去的一个月我每天两眼一睁就是为爱发电免费客服：一个月里我陆续发出去77个邀请链接，顺手claude computer use统计了一下这些人都是谁：</p>
+    <p>我在小红书发了一篇Instinct体验帖。在过去的一个月我每天两眼一睁就是为爱发电免费客服：一个月里我陆续发出去77个邀请链接，顺手用Claude computer use统计了一下这些人都是谁：</p>
     <d-figure id="invite-figure"></d-figure>
     <p>大概三分之二是国内IP，粉丝中位数96，很多人主页跟AI一点关系都没有，新手妈妈、绘本博主、旅行博主都有。好奇心早就出圈了，不只是创投圈的人在玩。</p>
     <p>但问题是中国手机号注册不了，邀请码、海外手机号、iMessage，大部分人我估计卡在这几关就放弃了。</p>
@@ -2085,11 +2077,10 @@ span.katex {
     <h2 id="ending">结尾</h2>
     <p>所以personal agent到底是秘书、同事还是朋友？</p>
     <p>对我，它是生活秘书，而且找到了某些真实的使用价值。对有些人，它可能是同事。但对普罗大众，秘书和同事大概都不是好的入口，也不能提供无可替代的价值。</p>
-    <p>十年前小冰赌的是朋友，最后也没成为每个人手机里的那个朋友。今天大家都在赌秘书助理类型的定位。我猜真正的入口可能在两者中间：先让你觉得好玩、愿意拉朋友进来，再顺手把事给你办了。先爽后有用！</p>
+    <p>十二年前小冰赌的是朋友，最后也没成为每个人手机里的那个朋友。今天大家都在赌秘书助理类型的定位。我猜真正的入口可能在两者中间：先让你觉得好玩、愿意拉朋友进来，再顺手把事给你办了。先爽后有用！</p>
     <p>以上全是猜测，仅代表个人意见，欢迎讨论！</p>
     <h2 id="appendix">附录</h2>
-    <div class="pa-tablewrap"><table class="pa-table"><thead><tr><th>动作</th><th>约数</th><th>例子</th></tr></thead><tbody><tr><td>查证 / 核实</td><td>~86</td><td>作业截止时间、考场、申请截止日</td></tr><tr><td>调研 / 比价 / 挑选</td><td>~52</td><td>门票定价、礼物、墨水屏选型、职位筛选</td></tr><tr><td>申请 / 填表 / 提交</td><td>~51</td><td>投简历、OPT申请、活动报名回复</td></tr><tr><td>重排日程</td><td>~49</td><td>“把周六的块挪到周日”“今天压缩到晚上”</td></tr><tr><td>起草沟通</td><td>~44</td><td>回信草稿、内推请求、邮件</td></tr><tr><td>读 / 总结</td><td>~36</td><td>读推文、读论文、整理链接</td></tr><tr><td>替你等（watcher）</td><td>~23</td><td>见上文</td></tr><tr><td>修正 / 重做</td><td>~23（约4%）</td><td>同一个文件夹读了4遍，日历颜色改了又改，重复建的日程</td></tr></tbody></table></div>
-    <d-figure id="tasklog-figure"></d-figure>
+    <div class="pa-tablewrap"><table class="pa-table"><thead><tr><th>动作</th><th>约数</th><th>例子</th></tr></thead><tbody><tr><td>加日历</td><td>~98</td><td>把课表搬进日历，饭局、面试、截止日期上日历</td></tr><tr><td>查证 / 核实</td><td>~86</td><td>作业截止时间、考场、申请截止日</td></tr><tr><td>调研 / 比价 / 挑选</td><td>~52</td><td>门票定价、礼物、墨水屏选型、职位筛选</td></tr><tr><td>申请 / 填表 / 提交</td><td>~51</td><td>投简历、OPT申请、活动报名回复</td></tr><tr><td>重排日程</td><td>~49</td><td>“把周六的块挪到周日”“今天压缩到晚上”</td></tr><tr><td>起草沟通</td><td>~44</td><td>回信草稿、内推请求、邮件</td></tr><tr><td>读 / 总结</td><td>~36</td><td>读推文、读论文、整理链接</td></tr><tr><td>watcher</td><td>~23</td><td>见上文</td></tr><tr><td>修正 / 重做</td><td>~23</td><td>同一个文件夹读了4遍，日历颜色改了又改，重复建的日程</td></tr><tr><td>其他</td><td>~101</td><td>没归入以上几类的任务</td></tr><tr><td>合计</td><td>563</td><td></td></tr></tbody></table></div>
   </d-article>
 
   <d-appendix>
