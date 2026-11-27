@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://yushan.li/writing/monitor/",
+      lastModified: new Date("2026-11-27"),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: "https://yushan.li/about",
       lastModified: new Date(),
       changeFrequency: "yearly",
