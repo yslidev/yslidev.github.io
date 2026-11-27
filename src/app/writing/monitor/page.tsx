@@ -7,7 +7,7 @@ import { ui } from "@/components/ui";
 import { colors, fonts } from "../../globalTokens.stylex";
 
 export const metadata: Metadata = {
-  title: "Monitor Consumer Extension: Core Logic",
+  title: "Agents, Platforms, and the Consumer App After Them",
   description:
     "Monitoring agents at the tool-call layer, and a three-phase view of agents, agent platforms, and the consumer AI app that follows.",
 };
@@ -50,7 +50,7 @@ export default function Monitor() {
 
       <main {...stylex.props(ui.page)}>
         <h1 {...stylex.props(ui.h1, styles.title)}>
-          Monitor Consumer Extension: Core Logic
+          Agents, Platforms, and the Consumer App After Them
         </h1>
         <p {...stylex.props(styles.date)}>Nov 2026</p>
 

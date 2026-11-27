@@ -9,7 +9,7 @@ export interface WritingEntry {
 // piece that does not live on Substack has to be pinned or it never appears.
 export const writingPinned: WritingEntry[] = [
   {
-    title: "Monitor Consumer Extension: Core Logic",
+    title: "Agents, Platforms, and the Consumer App After Them",
     desc: "tool-call monitoring, and the road from agents to a consumer AI app",
     href: "/writing/monitor/",
     year: "Nov 2026",
