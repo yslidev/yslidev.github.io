@@ -9,10 +9,10 @@ import { colors, fonts } from "../../globalTokens.stylex";
 export const metadata: Metadata = {
   title: "Monitor Consumer Extension: Core Logic",
   description:
-    "A third-party consumer agent plugin that monitors safety at the tool-call layer: thesis, timeline, open questions, org design.",
+    "Monitoring agents at the tool-call layer, and a three-phase view of agents, agent platforms, and the consumer AI app that follows.",
 };
 
-// Working notes, kept as written: numbered sections, bullets inside them.
+// Working notes: numbered sections, bullets inside them.
 const styles = stylex.create({
   title: { textTransform: "none" },
   date: {
@@ -54,20 +54,23 @@ export default function Monitor() {
         </h1>
         <p {...stylex.props(styles.date)}>Nov 2026</p>
 
-        <h2 {...stylex.props(styles.h2)}>1. Core thesis</h2>
+        <h2 {...stylex.props(styles.h2)}>1. Watch what agents do</h2>
         <ul {...ul}>
           <li>
-            Product: a third-party consumer agent plugin that monitors safety at
-            the tool-call layer.
+            Product: a third-party, consumer-side plugin that monitors agent
+            safety at the tool-call layer.
           </li>
           <li>
-            Why tool calls: an agent&apos;s safety depends on what it does, not
-            on what it thinks. Monitoring actions is enough, so this layer can
-            act as the last line of defense.
+            Why tool calls: judge an agent by its actions, not its thoughts.
+            Someone who thinks about a crime and never commits it has done
+            nothing wrong; arguably they did something right by stopping
+            themselves. A questionable plan that never becomes a tool call is
+            harmless too. That makes the tool call a natural last line of
+            defense.
           </li>
         </ul>
 
-        <h2 {...stylex.props(styles.h2)}>2. Three-phase timeline</h2>
+        <h2 {...stylex.props(styles.h2)}>2. Three phases</h2>
         <ol {...ol}>
           <li>
             Phase 1 (now): the competition is over foundation models, tokens,
@@ -75,60 +78,68 @@ export default function Monitor() {
           </li>
           <li>
             Phase 2: platforms for agents appear. They either host agents or
-            help users choose the right one.
+            help people choose the right one.
           </li>
-          <li>Phase 3: a mass consumer AI application emerges.</li>
+          <li>
+            Phase 3: a mass consumer AI application emerges, the way TikTok and
+            the recommendation feed did for mobile.
+          </li>
         </ol>
         <p {...stylex.props(ui.p)}>
-          Entry point: enter during the move from Phase 1 to Phase 2, through
-          agent evaluation and safety monitoring. Deep trust is the moat.
+          Entry point: the move from Phase 1 to Phase 2, through agent
+          evaluation and safety monitoring that people trust a lot. Trust is
+          the moat.
         </p>
         <p {...stylex.props(ui.p)}>
-          Assumption: by then, agent protocols, APIs, and harness access are
-          industry standard, so third parties can plug in.
+          Assumption: by then, common protocols, APIs, and developer access to
+          agent harnesses are industry standard, so a third party can plug in.
         </p>
 
-        <h2 {...stylex.props(styles.h2)}>3. Open questions</h2>
+        <h2 {...stylex.props(styles.h2)}>3. What Phase 3 might look like</h2>
+        <ul {...ul}>
+          <li>
+            Attention spans keep shrinking, so consumer products move from the
+            French dessert to the bag of See&apos;s candies: a collection of
+            small, packaged hits. In search, the hit is a question answered, so
+            serve the clip of exactly the moment someone asked for, not the
+            whole video.
+          </li>
+          <li>
+            Watch teenage girls. They are the earliest signal of an emerging
+            consumer market (K-pop, beauty, TikTok). Right now that signal
+            points at human&ndash;AI romance communities on Xiaohongshu.
+          </li>
+          <li>
+            Agents may not stay in software. Vision-language models, AR
+            hardware, and on-device &ldquo;visual intelligence&rdquo; could be
+            where the consumer form shows up first.
+          </li>
+        </ul>
+
+        <h2 {...stylex.props(styles.h2)}>4. Open questions</h2>
         <ol {...ol}>
-          <li>Will tool calls stay the right layer to monitor?</li>
+          <li>
+            Is the tool call still the best layer? Latent-space probes and
+            chain-of-thought monitoring may not survive as models change.
+          </li>
           <li>Does tool-call monitoring actually beat probes on latency?</li>
           <li>
-            How do you become a third party everyone trusts?
+            How does a third party earn everyone&apos;s trust? It is about as
+            hard as founding the UN.
             <ul {...stylex.props(styles.list, styles.bullets, styles.sub)}>
               <li>
-                It needs buy-in from both agent companies and the public, plus
-                credible neutrality.
+                Agent companies have to respect it and the public has to trust
+                it, and it has to stay neutral through politics.
               </li>
-              <li>Timing decides it, and the window is limited.</li>
+              <li>Timing decides it, and the window is short.</li>
             </ul>
           </li>
+          <li>
+            Can a plugin become a platform? Few great platforms started as a
+            small add-on. Most were built as platforms or as entry-point
+            products from day one; ByteDance started with a news app.
+          </li>
         </ol>
-
-        <h2 {...stylex.props(styles.h2)}>4. Organization design</h2>
-        <ul {...ul}>
-          <li>Task-driven: people are held together by shared work.</li>
-          <li>
-            Mission-driven: stronger cohesion, but internal conviction has to be
-            balanced against external public trust.
-          </li>
-          <li>
-            What a flat org offers talent: unique problems and resources, high
-            trust in individual contributors, welfare, and a &ldquo;do no
-            evil&rdquo; baseline.
-          </li>
-        </ul>
-
-        <h2 {...stylex.props(styles.h2)}>5. Personal path</h2>
-        <ul {...ul}>
-          <li>
-            Where do I stand now, and what has to happen before Phase 2?
-          </li>
-          <li>
-            Core challenge: turning a third-party plugin into a platform. Most
-            big platforms were built as platforms or as entry-point products from
-            day one, so the plugin-first path needs a direct answer to that.
-          </li>
-        </ul>
 
         <PageFoot />
       </main>

@@ -10,7 +10,7 @@ export interface WritingEntry {
 export const writingPinned: WritingEntry[] = [
   {
     title: "Monitor Consumer Extension: Core Logic",
-    desc: "safety monitoring at the tool-call layer",
+    desc: "tool-call monitoring, and the road from agents to a consumer AI app",
     href: "/writing/monitor/",
     year: "Nov 2026",
   },
